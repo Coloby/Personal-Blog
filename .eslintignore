@@ -1,0 +1,16 @@
+# The rest it's in .eslintrc.json on "ignorePatterns"
+*
+# Shadcn stuff
+src/components/logic/**
+src/components/shadcn-ui/**
+src/lib/utils.ts
+
+# General
+*.scss
+*.json
+*.yaml
+*.tsbuildinfo
+/public/**
+/docs/**
+/node_modules/**
+/dist/**

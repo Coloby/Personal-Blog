@@ -1,0 +1,17 @@
+.default-theme-color {
+  /* contents */
+  --primary: 144, 89, 255;
+  --muted_primary: 95, 54, 178;
+  --secondary: 255, 64, 255;
+  --skipped: 115, 96, 0;
+  --record: 255, 107, 38;
+
+  /* shades */
+  --body-shade: 26, 26, 26; 
+  --footer-shade: 30, 30, 30;
+  --box-shade: 40, 40, 40;
+
+  /* text */
+  --text-primary: 255, 255, 255;
+  --text-muted: 210, 210, 210;
+}

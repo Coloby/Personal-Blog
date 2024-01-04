@@ -1,0 +1,109 @@
+{
+  "editor.tokenColorCustomizations": {
+    "[Beautiful Dracula Darker - No Highlight]": {
+      "textMateRules": [
+        {
+          "name": "keywords",
+          "scope": [
+            "keyword"
+          ],
+          "settings": {
+            "foreground": "#FF7272"
+          }
+        },
+        {
+          "name": "nomi costanti, variabili, proprietà",
+          "scope": [
+            "variable.other.constant.js",
+            "variable.other.readwrite.js",
+            "variable.other.property.js"
+          ],
+          "settings": {
+            "foreground": "#46A2FF"
+          }
+        },
+        {
+          "name": "funzioni",
+          "scope": [
+            "entity.name.function",
+            "storage.type.function.arrow.js"
+          ],
+          "settings": {
+            "foreground": "#ddbb88"
+          }
+        },
+        {
+          "name": "keyword let const",
+          "scope": [
+            "storage.type.js"
+          ],
+          "settings": {
+            "foreground": "#C288E4"
+          }
+        },
+        {},
+        {},
+        {}
+      ]
+    },
+    "[Abyss]": {
+      "textMateRules": [
+        {
+          "name": "keyword e arrow func",
+          "scope": [
+            "keyword",
+            "storage.type.function.arrow.js"
+          ],
+          "settings": {
+            "foreground": "#3075BA"
+          }
+        },
+        {
+          "name": "let e const",
+          "scope": [
+            "storage.type.js"
+          ],
+          "settings": {
+            "foreground": "#9966b8"
+          }
+        },
+        {},
+        {
+          "name": "new",
+          "scope": [
+            "keyword.operator.new.js"
+          ],
+          "settings": {
+            "foreground": "#225588"
+          }
+        },
+        {
+          "name": "nomi costanti, variabili, proprietà, e parentesi",
+          "scope": [
+            "variable.other.constant.js",
+            "variable.other.readwrite.js",
+            "variable.other.property.js",
+            "new.expr.js",
+            "meta.var.expr.js",
+            "meta.block.js",
+            "switch-block.expr.js",
+            "switch-statement.expr.js",
+            "meta.block.js",
+            "meta.arrow.js",
+            "meta.var.expr.js",
+            "meta.block.js",
+            "meta.arrow.js",
+            "meta.var.expr.js",
+            "source.js"
+          ],
+          "settings": {
+            "foreground": "#6F95DF"
+          }
+        },
+        {}
+      ]
+    },
+    "comments": "",
+    "textMateRules": []
+  }
+}
