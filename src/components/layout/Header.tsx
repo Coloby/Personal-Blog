@@ -23,7 +23,7 @@ const Header = () => {
       </Link>
       <div className="flex items-center space-x-10">
         <nav className=" space-x-10">
-          <Link href="/sub_page" className=" text-xl">goSubPage</Link>
+          <Link href="/sub_page" className="">goSubPage</Link>
           <Link href="/posts_home" className="">Blog</Link>
         </nav>
         <ThemeModeBtn />

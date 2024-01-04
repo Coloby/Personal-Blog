@@ -11,7 +11,7 @@ module.exports = {
   plugins: [
     require("tailwindcss-animate"),
     require("tailwindcss-debug-screens"), // activate me to show current tailwind screen size only in dev env
-    require("@tailwindcss/typography"),
+    // require("@tailwindcss/typography"),
   ],
   darkMode: ["class"],
   content: [
