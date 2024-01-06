@@ -14,9 +14,9 @@ export default async function Home() {
 
   return (
     <Provider>
-      <div className="flex flex-col items-center min-h-screen">
-        <Link href="/sub_page" className="">goSubPage</Link>
-        <Link href="/posts_home" className="">Blog</Link>
+      <div className="flex flex-col items-center ">
+        <Link href="/sub_page" className=" text-primary">goSubPage</Link>
+        <Link href="/posts_home" className=" text-black">Blog</Link>
       </div>
     </Provider> 
   )

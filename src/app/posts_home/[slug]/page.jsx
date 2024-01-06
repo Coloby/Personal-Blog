@@ -14,8 +14,8 @@ const Page = async ({ params }) => {
   const { content } = await getPageContent(params.slug)
 
   return (
-    <section className='py-24'>
-      <div className='container py-4 prose'>{content}</div>
+    <section className=''>
+      <div className='prose'>{content}</div>
     </section>
   )
 }

@@ -11,14 +11,14 @@ module.exports = {
   plugins: [
     require("tailwindcss-animate"),
     require("tailwindcss-debug-screens"), // activate me to show current tailwind screen size only in dev env
-    // require("@tailwindcss/typography"),
+    require("@tailwindcss/typography"),
   ],
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx,js,jsx,mdx}',
+    './src/**/*.{ts,tsx,js,jsx,mdx}',
+    './pages/**/*.{ts,tsx,js,jsx,mdx}',
+    './components/**/*.{ts,tsx,js,jsx,mdx}',
 	],
   theme: {
     screens: {
