@@ -1,23 +1,20 @@
 import { getPostBySlug } from '@/lib/next-mdx-remote'
 
-const getPageContent = async slug => {
+const getMDXRawContent = async slug => {
   const { meta, content } = await getPostBySlug(slug)
   return { meta, content }
 }
 
-export async function generateMetadata({ params }) {
-  const { meta } = await getPageContent(params.slug)
-  return { title: meta.title }
-}
-
 const Page = async ({ params }) => {
-  const { content } = await getPageContent(params.slug)
+  const { content } = await getMDXRawContent(params.slug)
 
   return (
-    <section className=''>
-      <div className='prose'>{content}</div>
+    <section className=' xs:max-w-full'>
+      <div className='prose prose-purple prose-lg prose-p:dark:text-[#D9D9D9]  prose-li:dark:text-[#D9D9D9] prose-code:text-base dark:prose-invert'>{content}</div>
     </section>
   )
 }
-
+// strong
+// prose-headings:text-red-900
+// 
 export default Page

@@ -21,7 +21,7 @@ const Header = () => {
           // sizes="(max-width: 31px) 100%"
         />
       </Link>
-      <div className="flex items-center space-x-10">
+      <div className="flex items-center space-x-10 h-[64px]">
         <nav className=" space-x-10">
           <Link href="/sub_page" className="">goSubPage</Link>
           <Link href="/posts_home" className="">Blog</Link>
