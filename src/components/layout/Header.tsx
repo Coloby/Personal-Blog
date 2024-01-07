@@ -25,7 +25,8 @@ const Header = () => {
         /> */}
       </Link>
       <div className="">
-        <nav className=" space-x-10 md:flex hidden justify-center items-center ">
+        {/* <nav className=" space-x-10 md:flex hidden justify-center items-center "> */}
+        <nav className=" space-x-10 flex justify-center items-center ">
           <ul className="flexy gap-4 items-center">
             <li>
               <Link href="/" className="">Home</Link>
@@ -38,11 +39,11 @@ const Header = () => {
       </div>
       <div className="flex gap-4">
         <ThemeModeBtn />
-        <button className="md:hidden">
+        {/* <button className="md:hidden">
           <svg className="h-[40px] w-[36px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" >
             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
-        </button>
+        </button> */}
       </div>
     </header>
   )
