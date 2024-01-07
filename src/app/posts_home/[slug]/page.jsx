@@ -1,10 +1,5 @@
 import { getPostBySlug } from '@/lib/next-mdx-remote'
 
-// const getMDXRawContent = async slug => {
-//   const { meta, content } = await getPostBySlug(slug)
-//   return { meta, content }
-// }
-
 const Page = async ({ params }) => {
   const { meta, content } = await getPostBySlug(params.slug)
 
@@ -21,5 +16,4 @@ const Page = async ({ params }) => {
 }
 // strong
 // prose-headings:text-red-900
-// 
 export default Page

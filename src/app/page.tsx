@@ -19,15 +19,16 @@ export default async function Home() {
         <div className=" justify-center items-center flex flex-col lg:flex-row max-w-none ">
           <div className=" max-w-prose">
             <h1>Welcome to Ed's Corner (EC)</h1>
-            <p>That's my little place to share valuable thoughs on my interests.</p>
+            <p>My little online space to share valuable thoughts on my interests.</p>
             <p>Everything it's still under work but I just want to share as fast as possible! If something's missing or breaks it's all under control, until it's not anymore...</p>
+            <p>Criticism and tips are always embraced.</p>
           </div>
           <div className="h-[240px] w-[240px] xs:h-[250px] xs:w-[250px] sm:h-[300px] sm:w-[400px] overflow-hidden rounded-[30px] relative">
             <Image
               src="/assets/media/imgs/cool_cat.jpg"
               width={400}
               height={400}
-              className=" object-cover text-white fill-white lg:h-[300px] scale-[1.5] ml-6 mt-12 absolute top-0"
+              className=" object-cover text-white fill-white lg:h-[300px] lg:w-[300px] scale-[1.5] ml-6 xl:ml-16 mt-12 absolute top-0"
               color="white"
               alt="logo"
               priority={true}
@@ -39,7 +40,10 @@ export default async function Home() {
         </div>
         <div className="top-4 flex flex-col justify-center items-center mt-20 text-center">
           <h1>Visit the <span><a href="posts_home">blog</a></span> or Contact me in the meantime</h1>
-          <p>socials</p>
+          <div className="flex flex-col prose-p:h-5">
+            <p>Discord: derenx</p>
+            {/* <p>Discord: derenx</p> */}
+          </div>
         </div>
       </div>
     </Provider> 
