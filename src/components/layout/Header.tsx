@@ -8,7 +8,7 @@ import { useAtom } from "jotai"
 const Header = () => {
 
   return (
-    <header className="between flex items-center justify-center min-w-[280px] px-4 gap-10 h-[64px]">
+    <header className="between flex items-center justify-center px-4 gap-12 h-[64px]">
       <Link href={"/"}>
         <SvgComponent color="text-primary_text_color" width={40} height={36} />
         {/* <Image
@@ -28,10 +28,10 @@ const Header = () => {
         <nav className=" space-x-10 md:flex hidden justify-center items-center ">
           <ul className="flexy gap-4 items-center">
             <li>
-              <Link href="/posts_home" className="">Blog</Link>
+              <Link href="/" className="">Home</Link>
             </li>
             <li>
-              <Link href="/" className="">Home</Link>
+              <Link href="/posts_home" className="">Blog</Link>
             </li>
           </ul>
         </nav>
