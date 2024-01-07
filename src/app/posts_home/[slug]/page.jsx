@@ -1,16 +1,21 @@
 import { getPostBySlug } from '@/lib/next-mdx-remote'
 
-const getMDXRawContent = async slug => {
-  const { meta, content } = await getPostBySlug(slug)
-  return { meta, content }
-}
+// const getMDXRawContent = async slug => {
+//   const { meta, content } = await getPostBySlug(slug)
+//   return { meta, content }
+// }
 
 const Page = async ({ params }) => {
-  const { content } = await getMDXRawContent(params.slug)
+  const { meta, content } = await getPostBySlug(params.slug)
 
   return (
-    <section className=' xs:max-w-full'>
-      <div className='prose prose-purple prose-lg prose-p:dark:text-[#D9D9D9]  prose-li:dark:text-[#D9D9D9] prose-code:text-base dark:prose-invert'>{content}</div>
+    <section className=' max-w-full md:max-w-prose prose prose-purple sm:prose-lg sm:prose-code:text-base prose-p:dark:text-[#D9D9D9]  prose-li:dark:text-[#D9D9D9] prose-img:rounded-xs  dark:prose-invert'>
+      <article className="">
+        <span className="flex flex-wrap gap-4 mb-4"><address>{meta.author}</address> | <time>{meta.publishDate}</time></span>
+        <h1 className="">{meta.title}</h1>
+        <div className="lead text-primary_text_color">{meta.description}</div>
+        <div className=''>{content}</div>
+      </article>
     </section>
   )
 }

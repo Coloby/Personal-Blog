@@ -24,15 +24,17 @@ module.exports = {
     screens: {
       "ss": "320px", // super small
       "xs": "360px", // extra small
+      "sm": "640px",
       'md': '768px',
       'lg': '1024px',
       'xl': '1280px',
-      '2xl': '1536px'
+      'sl': '1536px' // super large
     },
     borderRadius: {
       // sm: "calc(var(--radius) - 4px)",
       // md: "calc(var(--radius) - 2px)",           shadcn
       // lg: "var(--radius)",
+      xs: "8px",
       sm: "16px",
       md: "18px",
       lg: "20px",
@@ -96,13 +98,6 @@ module.exports = {
         //   DEFAULT: "hsl(var(--card))",
         //   foreground: "hsl(var(--card-foreground))",
         // },
-        container: {
-          center: true,
-          padding: "2rem",
-          screens: {
-            "2xl": "1400px",
-          },
-        },
       },
       keyframes: {
         "accordion-down": {

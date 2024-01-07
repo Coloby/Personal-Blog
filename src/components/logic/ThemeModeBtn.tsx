@@ -10,12 +10,12 @@ import { useAtom } from "jotai"
 
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  " inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
         // default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        default: "hover:bg-primary/90 hover:text-gray-100 group",
+        default: "hover:bg-primary/90 hover:text-gray-100 group ",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
@@ -26,7 +26,7 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
-        default: "px-3 py-3 rounded-full",
+        default: "rounded-full",
         sm: "h-9 px-3",
         lg: "h-11 rounded-md px-8",
         icon: "h-10 w-10",
@@ -56,7 +56,7 @@ const ThemeModeBtn = React.forwardRef<HTMLButtonElement, ButtonProps>(({ classNa
         onClick={() => {
           setThemeMode(themeMode === "dark" ? "white" : "dark")
           setThemeIcon(themeIcon.type === MoonIcon ?
-            <SunIcon className="group-hover:text-gray-100 hover:text-gray-100 w-6 h-6 text-gray-500" /> : <MoonIcon className="group-hover:text-gray-100 hover:text-gray-100 w-6 h-6 text-gray-500" />)
+            <SunIcon className="group-hover:text-gray-100 hover:text-gray-100 w-[30px] h-[30px] text-gray-500" /> : <MoonIcon className="group-hover:text-gray-100 hover:text-gray-100 w-[30px] h-[30px] text-gray-500" />)
         }}
         {...props}
       >{themeIcon}</Comp>

@@ -1,4 +1,3 @@
 .g {
-  background: var(--contents-primary-streak, linear-gradient(92deg, #9059FF 0%, #C859FF 100%));
-  
+  background: var(--contents-primary-streak, linear-gradient(92deg, #9059FF 0%, #C859FF 100%));  
 }
