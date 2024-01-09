@@ -2,7 +2,7 @@ import React from "react"
 import { ThemeModeBtn } from "../logic/ThemeModeBtn"
 import Link from "next/link"
 import Image from "next/image"
-import SvgComponent from "@/components/ui/logos/HeaderLogo"
+import HeaderLogo from "@/components/ui/logos/HeaderLogo"
 import { useAtom } from "jotai"
 
 const Header = () => {
@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <header className="flex items-center justify-center px-4 gap-12 h-[64px]">
       <Link href={"/"}>
-        <SvgComponent color="text-primary_text_color" width={40} height={36} />
+        <HeaderLogo color="text-primary_text_color" width={40} height={36} />
         {/* <Image
           src="/assets/media/logos/github.svg"
           width={80}

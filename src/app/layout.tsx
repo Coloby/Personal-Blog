@@ -29,7 +29,7 @@ export default function RootLayout({ children } : { children: React.ReactNode}) 
     <html lang="en" className={`${themeColor}-theme-color ${themeMode}-theme-mode ${themeMode}`}> 
       <body className={`${inter.className} ${env === "development" ? "debug-screens" : ""} bg-body_shade  ss:h-auto text-primary_text_color`}>
         <Header />
-        <main className="flex justify-center mt-10 px-[16px] min-h-screen pb-20 ss:min-h-screen h-[1200px]">{children}</main>
+        <main className="flex justify-center mt-10 px-[16px] min-h-screen pb-20 ss:min-h-screen ">{children}</main>
         <Footer />
       </body>
     </html>

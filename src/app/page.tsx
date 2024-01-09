@@ -12,10 +12,9 @@ export const metadata = {
 }
 
 export default async function Home() {
-
   return (
     <Provider>
-      <div className=" sm:w-[1300px] max-w-none h-screen mt-10 flex flex-col gap-10 prose prose-purple sm:prose-lg sm:prose-code:text-base prose-p:dark:text-[#D9D9D9]  prose-li:dark:text-[#D9D9D9] dark:prose-invert">
+      <div className=" sm:w-[1300px] max-w-none min-h-screen mt-10 flex flex-col gap-10 prose prose-purple sm:prose-lg sm:prose-code:text-base prose-p:dark:text-[#D9D9D9]  prose-li:dark:text-[#D9D9D9] dark:prose-invert">
         <div className=" justify-center items-center flex flex-col lg:flex-row max-w-none ">
           <div className=" max-w-prose">
             <h1>Welcome to Ed's Corner (EC)</h1>
@@ -42,7 +41,8 @@ export default async function Home() {
           <h1>Visit the <span><a href="posts_home">blog</a></span> or Contact me in the meantime</h1>
           <div className="flex flex-col prose-p:h-5">
             <p>Discord: derenx</p>
-            {/* <p>Discord: derenx</p> */}
+            <a href="https://github.com/Coloby/Personal-Blog">Github</a>
+            <a href="">Skool</a>
           </div>
         </div>
       </div>

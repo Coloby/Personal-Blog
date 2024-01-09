@@ -1,6 +1,5 @@
 import * as React from "react"
-const SvgComponent = ({color, width, height}) => {
-    console.log(`color:`, color)
+const HeaderLogo = ({color, width, height}) => {
     return (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -56,4 +55,4 @@ const SvgComponent = ({color, width, height}) => {
       </svg>
     )
   }
-export default SvgComponent
+export default HeaderLogo
