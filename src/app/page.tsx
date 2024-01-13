@@ -40,9 +40,10 @@ export default async function Home() {
         <div className="top-4 flex flex-col justify-center items-center mt-20 text-center">
           <h1>Visit the <span><a href="posts_home">blog</a></span> or Contact me in the meantime</h1>
           <div className="flex flex-col prose-p:h-5">
-            <p>Discord: derenx</p>
-            <a href="https://github.com/Coloby/Personal-Blog">Github</a>
-            <a href="">Skool</a>
+            <p>Discord: is_ec</p>
+            {/* <p>E-mail: z</p> */}
+            <a href="https://github.com/Coloby/Personal-Blog">Github - Source code</a>
+            <a href="https://www.skool.com/@leof-dopp-8139">Skool</a>
           </div>
         </div>
       </div>

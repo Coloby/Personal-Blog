@@ -1,3 +1,23 @@
-.g {
+/* .g {
   background: var(--contents-primary-streak, linear-gradient(92deg, #9059FF 0%, #C859FF 100%));  
+} */
+/* .heading-w-link {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  height: 40px;
+} */
+/* .heading-w-link a {
+  position: absolute;
+  left: -20px;
+  bottom: 35px;
+} */
+.autolink-icon {
+  padding-right: 10px;
+  /* position: absolute;
+  left: -20px;
+  bottom: 35px; */
+  /* margin-left: -30px; */
 }

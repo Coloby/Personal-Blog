@@ -1,4 +1,7 @@
 *, *::before, *::after { box-sizing: inherit; }
+* {
+	min-width: 0; /* Here's why https://youtu.be/cH8VbLM1958 */
+}
 html { box-sizing: border-box; }
 
 
