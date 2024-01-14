@@ -1,4 +1,12 @@
-import { getFrontmatterBySlug, getReactElemBySlug } from '@/lib/mdx/mdxManager';
+import { getAllPostsFrontmatter, getFrontmatterBySlug, getReactElemBySlug } from '@/lib/mdx/mdxManager';
+
+export async function generateStaticParams() { // build static routes for every mdx article https://nextjs.org/docs/app/api-reference/functions/generate-static-params
+  const posts = await getAllPostsFrontmatter()
+ 
+  return posts.map((post) => ({
+    slug: post.slug,
+  }))
+}
 
 const Page = async ({ params }) => {
   let { reactElementFromMDX } = await getReactElemBySlug(params.slug)

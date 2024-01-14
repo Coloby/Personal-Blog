@@ -1,9 +1,6 @@
-import React from "react"
-import { ThemeModeBtn } from "../logic/ThemeModeBtn"
-import Link from "next/link"
-import Image from "next/image"
 import HeaderLogo from "@/components/ui/logos/HeaderLogo"
-import { useAtom } from "jotai"
+import Link from "next/link"
+import { ThemeModeBtn } from "../logic/ThemeModeBtn"
 
 const Header = () => {
 
@@ -32,7 +29,7 @@ const Header = () => {
               <Link href="/" className="">Home</Link>
             </li>
             <li>
-              <Link href="/posts_home" className="">Blog</Link>
+              <Link href="/blog" className="">Blog</Link>
             </li>
           </ul>
         </nav>

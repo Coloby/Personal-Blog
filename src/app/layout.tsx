@@ -19,15 +19,10 @@ const inter = interFont({ subsets : ["latin"] })
 export default function RootLayout({ children } : { children: React.ReactNode}) {
   const [themeColor, setThemeColor] = useState("default")
   const [themeMode, setThemeMode] = useAtom(themeModeAtom)
-  const [env, setEnv] = useState("production")
-
-  useEffect(() => {
-    setEnv(process.env.NODE_ENV);
-  }, [])
   
   return (
     <html lang="en" className={`${themeColor}-theme-color ${themeMode}-theme-mode ${themeMode}`}> 
-      <body className={`${inter.className} ${env === "development" ? "debug-screens" : ""} bg-body_shade  ss:h-auto text-primary_text_color`}>
+      <body className={`${inter.className} ${process.env.NODE_ENV === "development" ? "debug-screens" : ""} bg-body_shade  ss:h-auto text-primary_text_color`}>
         <Header />
         <main className="flex justify-center mt-10 px-[16px] min-h-screen pb-20 ss:min-h-screen ">{children}</main>
         <Footer />

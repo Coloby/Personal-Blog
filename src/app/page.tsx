@@ -1,4 +1,3 @@
-import { Provider } from "jotai"
 import Image from "next/image"
 // TODO add <meta name="darkreader-lock"> to metadata to disable dark reader in specific pages
 
@@ -12,40 +11,38 @@ export const metadata = {
 
 export default async function Home() {
   return (
-    <Provider>
-      <div className=" sm:w-[1300px] max-w-none min-h-screen mt-10 flex flex-col gap-10 prose prose-purple sm:prose-lg sm:prose-code:text-base prose-p:dark:text-[#D9D9D9]  prose-li:dark:text-[#D9D9D9] dark:prose-invert">
-        <div className=" justify-center items-center flex flex-col lg:flex-row max-w-none ">
-          <div className=" max-w-prose">
-            <h1>Welcome to Ed's Corner (EC)</h1>
-            <p>My little online space to share valuable thoughts on my interests.</p>
-            <p>Everything it's still under work but I just want to share as fast as possible! If something's missing or breaks it's all under control, until it's not anymore...</p>
-            <p>Criticism and tips are always embraced.</p>
-          </div>
-          <div className="h-[240px] w-[240px] xs:h-[250px] xs:w-[250px] sm:h-[300px] sm:w-[400px] overflow-hidden rounded-[30px] relative">
-            <Image
-              src="/assets/media/imgs/cool_cat.jpg"
-              width={400}
-              height={400}
-              className=" object-cover text-white fill-white lg:h-[300px] lg:w-[300px] scale-[1.5] ml-6 xl:ml-16 mt-12 absolute top-0"
-              color="white"
-              alt="logo"
-              priority={true}
-              // quality={100}
-              // quality={100}
-              // sizes="(max-width: 31px) 100%"
-            />
-          </div>
+    <div className=" sm:w-[1300px] max-w-none min-h-screen mt-10 flex flex-col gap-10 prose prose-purple sm:prose-lg sm:prose-code:text-base prose-p:dark:text-[#D9D9D9]  prose-li:dark:text-[#D9D9D9] dark:prose-invert">
+      <div className=" justify-center items-center flex flex-col lg:flex-row max-w-none ">
+        <div className=" max-w-prose">
+          <h1>Welcome to Ed's Corner (EC)</h1>
+          <p>My little online space to share valuable thoughts on my interests.</p>
+          <p>Everything it's still under work but I just want to share as fast as possible! If something's missing or breaks it's all under control, until it's not anymore...</p>
+          <p>Criticism and tips are always embraced.</p>
         </div>
-        <div className="top-4 flex flex-col justify-center items-center mt-20 text-center">
-          <h1>Visit the <span><a href="posts_home">blog</a></span> or Contact me in the meantime</h1>
-          <div className="flex flex-col prose-p:h-5">
-            <p>Discord: is_ec</p>
-            {/* <p>E-mail: z</p> */}
-            <a href="https://github.com/Coloby/Personal-Blog">Github - Source code</a>
-            <a href="https://www.skool.com/@leof-dopp-8139">Skool</a>
-          </div>
+        <div className="h-[240px] w-[240px] xs:h-[250px] xs:w-[250px] sm:h-[300px] sm:w-[400px] overflow-hidden rounded-[30px] relative">
+          <Image
+            src="/assets/media/imgs/cool_cat.jpg"
+            width={400}
+            height={400}
+            className=" object-cover text-white fill-white lg:h-[300px] lg:w-[300px] scale-[1.5] ml-6 xl:ml-16 mt-12 absolute top-0"
+            color="white"
+            alt="logo"
+            priority={true}
+            // quality={100}
+            // quality={100}
+            // sizes="(max-width: 31px) 100%"
+          />
         </div>
       </div>
-    </Provider> 
+      <div className="top-4 flex flex-col justify-center items-center mt-20 text-center">
+        <h1>Visit the <span><a href="blog">blog</a></span> or Contact me in the meantime</h1>
+        <div className="flex flex-col prose-p:h-5">
+          <p>Discord: is_ec</p>
+          {/* <p>E-mail: z</p> */}
+          <a href="https://github.com/Coloby/Personal-Blog">Github - Source code</a>
+          <a href="https://www.skool.com/@leof-dopp-8139">Skool</a>
+        </div>
+      </div>
+    </div>
   )
 }

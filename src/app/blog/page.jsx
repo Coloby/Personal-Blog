@@ -9,7 +9,7 @@ const Page = async () => {
       {posts?.map(post => (
         <article className="max-w-[500px] relative min-h-[366px]" key={post.slug} >
           <Link
-            href={`posts_home/${post.slug}`}
+            href={`blog/${post.slug}`}
             key={post?.title}
             className='relative h-full'
           >
