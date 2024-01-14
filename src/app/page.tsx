@@ -1,5 +1,4 @@
 import { Provider } from "jotai"
-import Link from "next/link"
 import Image from "next/image"
 // TODO add <meta name="darkreader-lock"> to metadata to disable dark reader in specific pages
 

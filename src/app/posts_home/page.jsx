@@ -1,5 +1,5 @@
+import { getAllPostsFrontmatter } from '@/lib/mdx/mdxManager'
 import Link from 'next/link'
-import { getAllPostsFrontmatter } from '@/lib/next-mdx-remote'
 
 const Page = async () => {
   const posts = await getAllPostsFrontmatter()
@@ -7,18 +7,14 @@ const Page = async () => {
   return (
     <section className=' flex-wrap flex gap-x-16 gap-y-10 w-md lg:w-[1334px] h-[340px] justify-center'>
       {posts?.map(post => (
-        <article 
-          className="max-w-[500px] relative min-h-[366px]"
-          key={post.slug}
-        >
+        <article className="max-w-[500px] relative min-h-[366px]" key={post.slug} >
           <Link
             href={`posts_home/${post.slug}`}
             key={post?.title}
             className='relative h-full'
           >
-            
             <div className=" w-full flexy">
-              <img className=" object-cover h-[200px]" src={post.thumbnail ? "/assets/media/imgs/"+post.thumbnail : "https://picsum.photos/500/500?random=2"} alt="" />
+              <img className=" object-cover h-[200px] rounded-xs" src={post.thumbnail ? "/assets/media/imgs/"+post.thumbnail : "https://picsum.photos/500/500?random=2"} alt="" />
             </div>
             <h3 className='mt-4 text-xl font-semibold '>{post.title}</h3> {/* flex items-center h-[52px] */}
           </Link>
