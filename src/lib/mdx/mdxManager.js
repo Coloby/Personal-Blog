@@ -26,12 +26,14 @@ export const getReactElemBySlug = async (fileNameWExt) => {
   return { reactElementFromMDX }
 }
 
-export const getFrontmatterBySlug = async (fileNameWExt) => {
+export const getFrontmatterBySlug = async (fileNameWExt, index) => {
   const rawMDX = await getRawMdxBySlug(fileNameWExt)
   const { processedMDX } = await useUnifiedPipeline(rawMDX)
   const frontmatter = processedMDX.data.frontmatter
+  frontmatter.authors = frontmatter.authors.join(", ")
   frontmatter.slug = fileNameWExt;
   frontmatter.readingTime = processedMDX.data.readingTime.text
+  frontmatter.index = index
 
   return { frontmatter }
 }
@@ -39,10 +41,12 @@ export const getFrontmatterBySlug = async (fileNameWExt) => {
 export const getAllPostsFrontmatter = async () => {
   const mdxPosts = fs.readdirSync(contentRootDir)
   let posts = []
-
+  let i = 0
   for (const fileNameWExt of mdxPosts) {
-    const { frontmatter } = await getFrontmatterBySlug(fileNameWExt)
+    i++
+    const { frontmatter } = await getFrontmatterBySlug(fileNameWExt, i)
     posts.push(frontmatter)
+
   }
 
   return posts
