@@ -1,3 +1,7 @@
+html { /* Smooth scrolling won't work anyway based on your OS and/or browser settings. chrome://flags/#smooth-scrolling should be enabled, not default */
+  scroll-behavior: smooth !important;
+}
+
 /* .g {
   background: var(--contents-primary-streak, linear-gradient(92deg, #9059FF 0%, #C859FF 100%));  
 } */

@@ -1,4 +1,4 @@
-import { getAllPostsFrontmatter, getFrontmatterBySlug, getReactElemBySlug } from '@/lib/mdx/mdxManager';
+import { getAllPostsFrontmatter, getFrontmatterBySlug, getReactElemBySlug, getTOCComponentFromSlug } from '@/lib/mdx/mdxManager';
 
 export async function generateStaticParams() { // build static routes for every mdx article https://nextjs.org/docs/app/api-reference/functions/generate-static-params
   const posts = await getAllPostsFrontmatter()
@@ -9,8 +9,9 @@ export async function generateStaticParams() { // build static routes for every 
 }
 
 const Page = async ({ params }) => {
-  let { reactElementFromMDX } = await getReactElemBySlug(params.slug)
-  let { frontmatter } = await getFrontmatterBySlug(params.slug)
+  const { reactElementFromMDX } = await getReactElemBySlug(params.slug)
+  const { frontmatter } = await getFrontmatterBySlug(params.slug)
+  const { TOCComponent } = await getTOCComponentFromSlug(params.slug)
 
   return (
     <section className=' h-fit max-w-full md:max-w-prose prose prose-purple sm:prose-lg sm:prose-code:text-base prose-p:dark:text-[#D9D9D9]  prose-li:dark:text-[#D9D9D9] prose-img:rounded-xs  dark:prose-invert'>
@@ -23,6 +24,7 @@ const Page = async ({ params }) => {
         <span className="flex flex-wrap gap-x-8 gap-y-1 mb-4"><address>{frontmatter.authors}</address><time>{frontmatter.publishDate}</time><span>{frontmatter.readingTime}</span></span>
         <h1 className="">{frontmatter.title}</h1>
         <div className="lead text-primary_text_color">{frontmatter.description}</div>
+        <TOCComponent />
         <div className=" max-w-full md:max-w-prose prose prose-purple sm:prose-lg sm:prose-code:text-base prose-p:dark:text-[#D9D9D9]  prose-li:dark:text-[#D9D9D9] prose-img:rounded-xs  dark:prose-invert ">
           {reactElementFromMDX}
         </div>

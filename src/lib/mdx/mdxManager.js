@@ -2,6 +2,12 @@ import { Parser } from 'html-to-react';
 import { useUnifiedPipeline } from "./unifiedPipeline";
 import fs from 'fs';
 import path from 'path';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/shadcn-ui/accordion"
 
 const contentRootDir = path.join(process.cwd(), 'assets', 'content', "mdx_posts")
 
@@ -46,10 +52,52 @@ export const getAllPostsFrontmatter = async () => {
     i++
     const { frontmatter } = await getFrontmatterBySlug(fileNameWExt, i)
     posts.push(frontmatter)
-
   }
 
   return posts
+}
+
+export const getTOCComponentFromSlug = async (fileNameWExt) => {
+  const rawMDX = await getRawMdxBySlug(fileNameWExt)
+  const { processedMDX } = await useUnifiedPipeline(rawMDX)
+  const TOC = processedMDX.data.toc
+
+  const TOCComponent = () => {
+    
+    return (
+      <nav className="mb-12">
+        <Accordion type="single" collapsible>
+          <AccordionItem value="item-1">
+            <AccordionTrigger>Table of contents</AccordionTrigger>
+            <AccordionContent>
+              <ul className="space-y-2 not-prose !list-disc">
+                {TOC.map((header) => {
+                  const paddingVariants = {
+                    1: 'text-xl',
+                    2: 'text-xl !list-none',
+                    3: 'ml-[25px] sm:ml-[45px] text-lg !list-none',
+                    4: 'ml-[50px] sm:ml-[70px] text-base',
+                  }
+                  let paddingLevel = header.level
+                  console.log(`paddingVariants[paddingLevel]}:`, paddingVariants[paddingLevel])
+                  return (
+                    <li key={header.id} className={paddingVariants[paddingLevel] + " !mb-4"}>
+                      <a href={`#${header.id}`} className="text-blue-500 hover:underline">
+                        {header.text.slice(1)}
+                      </a>
+                    </li>
+                  )
+                })}
+              </ul>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      </nav>
+    );
+  };
+
+  return { TOCComponent }
+
 }
 
 // useEffect(() => {

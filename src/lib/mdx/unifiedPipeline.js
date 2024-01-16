@@ -9,13 +9,18 @@ import remarkParse from 'remark-parse';
 import remarkParseFrontmatter from 'remark-parse-frontmatter';
 import readingTime from "remark-reading-time";
 import remarkRehype from 'remark-rehype';
+import remarkToc from 'remark-toc';
 import { unified } from 'unified';
+import {visit} from 'unist-util-visit'
+import cheerio from 'cheerio';
+
 
 export const useUnifiedPipeline = async ({ rawMDX }) => {
   const unifiedPipeline = unified()
     .use(remarkParse) // MD to AST
       // | remark transformations
         .use(remarkMdx) // adds support to MDX (should always be early in the pipeline)
+        .use(remarkToc, {maxDepth: 4}) // gives TOC only inside the AST
         .use(remarkFrontmatter, ['yaml']) // transforms frontmatter into AST and removes it from rendering 
         .use(remarkParseFrontmatter, // actually give us the frontmatter in "processedMDX.data.frontmatter"
           // { 
@@ -64,8 +69,24 @@ export const useUnifiedPipeline = async ({ rawMDX }) => {
         // })
         .use(rehypePrettyCode)
     .use(rehypeStringify)
+  
+  // translates the AST table of contents from remarkToc into an array of objects
+    const processedMDX = await unifiedPipeline.process(rawMDX);
+    const html = String(processedMDX);
+    const $ = cheerio.load(html);
+    
+    const toc = [];
+    $('h1, h2, h3, h4').each((_, el) => {
+      const $el = $(el);
+      toc.push({
+        id: $el.attr('id'),
+        level: parseInt($el.prop('tagName')[1]),
+        text: $el.text(),
+      });
+    });
 
-  const processedMDX = await unifiedPipeline.process(rawMDX);
+    processedMDX.data.toc = toc
+
   
   return {processedMDX}
 }
