@@ -21,3 +21,9 @@
   bottom: 35px; */
   /* margin-left: -30px; */
 }
+
+/* tailwind typography plugin defaults transitions to 0*/
+  .prose > * {
+    transition-duration: 1000ms !important;
+  }
+

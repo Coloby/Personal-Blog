@@ -11,7 +11,7 @@ import { useEffect, useState } from "react"
 import { useAtom } from "jotai"
 
 import Footer from "@/components/layout/Footer"
-import Header from "@/components/layout/Header"
+import Header from "@/components/layout/header/Header"
 import { themeModeAtom } from "@/stores/AtomStore"
 
 const inter = interFont({ subsets : ["latin"] })
@@ -21,11 +21,13 @@ export default function RootLayout({ children } : { children: React.ReactNode}) 
   const [themeMode, setThemeMode] = useAtom(themeModeAtom)
   
   return (
-    <html lang="en" className={`${themeColor}-theme-color ${themeMode}-theme-mode ${themeMode}`}> 
-      <body className={`${inter.className} ${process.env.NODE_ENV === "development" ? "debug-screens" : ""} bg-body_shade  ss:h-auto text-primary_text_color`}>
-        <Header />
-        <main className="flex h-fit justify-center mt-10 px-[16px] min-h-screen pb-20 ss:min-h-screen relative">{children}</main>
-        <Footer />
+    <html className={`${themeColor}-theme-color ${themeMode}-theme-mode ${themeMode} `} lang="en" > 
+      <body className={`${inter.className} ${process.env.NODE_ENV === "development" ? "debug-screens" : ""}`}>
+        <div className={`bg-body_shade  ss:h-auto text-primary_text_color transition-colors duration-1000 relative`}>
+          <Header />
+          <main className=" flex h-fit justify-center mt-10 px-[16px] min-h-screen pb-20 ss:min-h-screen relative">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   )

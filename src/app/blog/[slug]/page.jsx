@@ -23,7 +23,9 @@ const Page = async ({ params }) => {
         <span className="flex flex-wrap gap-x-8 gap-y-1 mb-4"><address>{frontmatter.authors}</address><time>{frontmatter.publishDate}</time><span>{frontmatter.readingTime}</span></span>
         <h1 className="">{frontmatter.title}</h1>
         <div className="lead text-primary_text_color">{frontmatter.description}</div>
-        <div className=" max-w-full md:max-w-prose prose prose-purple sm:prose-lg sm:prose-code:text-base prose-p:dark:text-[#D9D9D9]  prose-li:dark:text-[#D9D9D9] prose-img:rounded-xs  dark:prose-invert">{reactElementFromMDX}</div>
+        <div className=" max-w-full md:max-w-prose prose prose-purple sm:prose-lg sm:prose-code:text-base prose-p:dark:text-[#D9D9D9]  prose-li:dark:text-[#D9D9D9] prose-img:rounded-xs  dark:prose-invert ">
+          {reactElementFromMDX}
+        </div>
       </article>
     </section>
   )
