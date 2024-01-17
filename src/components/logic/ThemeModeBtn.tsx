@@ -46,7 +46,7 @@ export interface ButtonProps
 
 const ThemeModeBtn = React.forwardRef<HTMLButtonElement, ButtonProps>(({ className, variant, size, asChild = false, ...props }, ref) => {
   const [themeMode, setThemeMode] = useAtom(themeModeAtom)
-  const [themeIcon, setThemeIcon] = React.useState(<MoonIcon className="group-hover:text-gray-100 hover:text-gray-100 w-6 h-6 text-gray-500" />)
+  const [themeIcon, setThemeIcon] = React.useState(<MoonIcon className="group-hover:text-gray-100 hover:text-gray-100 w-[30px] h-[30px] text-primary_text_color" />)
   const Comp = asChild ? Slot : "button"
     return (
       <Comp
@@ -55,7 +55,7 @@ const ThemeModeBtn = React.forwardRef<HTMLButtonElement, ButtonProps>(({ classNa
         onClick={() => {
           setThemeMode(themeMode === "dark" ? "white" : "dark")
           setThemeIcon(themeIcon.type === MoonIcon ?
-            <SunIcon className="group-hover:text-gray-100 hover:text-gray-100 w-[30px] h-[30px] text-gray-500" /> : <MoonIcon className="group-hover:text-gray-100 hover:text-gray-100 w-[30px] h-[30px] text-gray-500" />)
+            <SunIcon className="group-hover:text-gray-100 hover:text-gray-100 w-[30px] h-[30px] text-primary_text_color" /> : <MoonIcon className="group-hover:text-gray-100 hover:text-gray-100 w-[30px] h-[30px] text-primary_text_color" />)
         }}
         {...props}
       >{themeIcon}</Comp>

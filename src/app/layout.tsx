@@ -12,6 +12,7 @@ import { useState } from "react"
 
 import Footer from "@/components/layout/Footer"
 import Header from "@/components/layout/header/Header"
+import ScrollToTopBtn from "@/components/logic/ScrollToTopBtn"
 import { themeModeAtom } from "@/stores/AtomStore"
 
 const inter = interFont({ subsets : ["latin"] })
@@ -26,6 +27,7 @@ export default function RootLayout({ children } : { children: React.ReactNode}) 
         <div className={`bg-body_shade  ss:h-auto text-primary_text_color transition-colors duration-1000 relative `}>
           <Header />
           <main className=" flex h-fit justify-center mt-10 px-[16px] min-h-screen pb-20 ss:min-h-screen relative ">{children}</main>
+          <ScrollToTopBtn />
           <Footer />
         </div>
       </body>

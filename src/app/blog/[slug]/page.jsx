@@ -25,7 +25,7 @@ const Page = async ({ params }) => {
         <h1 className="">{frontmatter.title}</h1>
         <div className="lead text-primary_text_color">{frontmatter.description}</div>
         <TOCComponent />
-        <div className=" max-w-full md:max-w-prose prose prose-purple sm:prose-lg sm:prose-code:text-base prose-p:dark:text-[#D9D9D9]  prose-li:dark:text-[#D9D9D9] prose-img:rounded-xs  dark:prose-invert ">
+        <div className=" max-w-full md:max-w-prose prose prose-a:text-[#9333ea] prose-a:dark:text-[hsl(271,91%,70%)]  sm:prose-lg sm:prose-code:text-base prose-p:dark:text-[#D9D9D9]  prose-li:dark:text-[#D9D9D9] prose-img:rounded-xs  dark:prose-invert ">
           {reactElementFromMDX}
         </div>
       </article>

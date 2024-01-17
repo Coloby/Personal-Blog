@@ -79,10 +79,9 @@ export const getTOCComponentFromSlug = async (fileNameWExt) => {
                     4: 'ml-[50px] sm:ml-[70px] text-base',
                   }
                   let paddingLevel = header.level
-                  console.log(`paddingVariants[paddingLevel]}:`, paddingVariants[paddingLevel])
                   return (
                     <li key={header.id} className={paddingVariants[paddingLevel] + " !mb-4"}>
-                      <a href={`#${header.id}`} className="text-blue-500 hover:underline">
+                      <a href={`#${header.id}`} className=" text-[#9333ea] dark:text-[hsl(271,91%,70%)] hover:underline">
                         {header.text.slice(1)}
                       </a>
                     </li>

@@ -18,8 +18,8 @@ import {
 const Header = () => {
 
   return (
-    <header className=" w-full flexy sticky">
-      <div className="flex items-center justify-between px-4 gap-12 h-[64px] max-w-fit">
+    <header className=" w-full flexy sticky top-0 z-50">
+      <div className="flex items-center justify-between px-4 gap-12 h-[64px] max-w-fit bg-box_shade rounded-lg mt-2">
         <Link href={"/"}>
           <HeaderLogo color="text-primary_text_color" width={40} height={36} />
           {/* <Image
@@ -45,7 +45,7 @@ const Header = () => {
           </div>
           <div className="">
             <Sheet>
-              <SheetTrigger>
+              <SheetTrigger className="flexy">
                 <svg className="sm:hidden h-[40px] w-[36px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
