@@ -19,7 +19,7 @@ const Header = () => {
 
   return (
     <header className=" w-full flexy sticky top-0 z-50">
-      <div className="flex items-center justify-between px-4 gap-12 h-[64px] max-w-fit bg-box_shade rounded-lg mt-2">
+      <div className="flex items-center justify-between px-4 gap-12 h-[64px] max-w-fit bg-box_shade rounded-lg mt-4">
         <Link href={"/"}>
           <HeaderLogo color="text-primary_text_color" width={40} height={36} />
           {/* <Image
@@ -36,7 +36,6 @@ const Header = () => {
           /> */}
         </Link>
         <div className="">
-          {/* <nav className=" space-x-10 md:flex hidden justify-center items-center "> */}
           <HeaderNavLinks />
         </div>
         <div className="flex gap-4">

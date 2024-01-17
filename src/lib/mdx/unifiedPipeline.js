@@ -11,16 +11,16 @@ import readingTime from "remark-reading-time";
 import remarkRehype from 'remark-rehype';
 import remarkToc from 'remark-toc';
 import { unified } from 'unified';
-import {visit} from 'unist-util-visit'
 import cheerio from 'cheerio';
-
+import rehypeSanitize from 'rehype-sanitize'
 
 export const useUnifiedPipeline = async ({ rawMDX }) => {
+  const processUntilHeading = 4
   const unifiedPipeline = unified()
     .use(remarkParse) // MD to AST
       // | remark transformations
         .use(remarkMdx) // adds support to MDX (should always be early in the pipeline)
-        .use(remarkToc, {maxDepth: 4}) // gives TOC only inside the AST
+        .use(remarkToc, {maxDepth: processUntilHeading}) // gives TOC only inside the AST
         .use(remarkFrontmatter, ['yaml']) // transforms frontmatter into AST and removes it from rendering 
         .use(remarkParseFrontmatter, // actually give us the frontmatter in "processedMDX.data.frontmatter"
           // { 
@@ -39,6 +39,7 @@ export const useUnifiedPipeline = async ({ rawMDX }) => {
         .use(readingTime) // processedMDX.data.readingTime
     .use(remarkRehype) // AST to HAST
       // | rehype transformations
+        .use(rehypeSanitize)
         .use(rehypeSlug)
         .use(rehypeAutolinkHeadings, {
           behavior: 'prepend',
@@ -64,19 +65,21 @@ export const useUnifiedPipeline = async ({ rawMDX }) => {
           //   ];
           // }
         })
-        // .use(rehypeAutolinkHeadings, {
-        //   behavior: 'wrap',
-        // })
         .use(rehypePrettyCode)
     .use(rehypeStringify)
   
   // translates the AST table of contents from remarkToc into an array of objects
+    let headerString = "";
+    for (let i = 1; i <= processUntilHeading; i++) {
+      headerString += `h${i}`;
+      if (i < processUntilHeading) { headerString += ", " }
+    }
+
     const processedMDX = await unifiedPipeline.process(rawMDX);
     const html = String(processedMDX);
     const $ = cheerio.load(html);
-    
     const toc = [];
-    $('h1, h2, h3, h4').each((_, el) => {
+    $(headerString).each((_, el) => {
       const $el = $(el);
       toc.push({
         id: $el.attr('id'),

@@ -1,4 +1,5 @@
 import Image from "next/image"
+import SocialBTNs from "@/components/ui/SocialBTNs"
 // TODO add <meta name="darkreader-lock"> to metadata to disable dark reader in specific pages
 
 export const metadata = {
@@ -37,11 +38,13 @@ export default async function Home() {
       </div>
       <div className="top-4 flex flex-col justify-center items-center mt-20 text-center">
         <h1>Visit the <span><a href="blog">blog</a></span> or Contact me in the meantime</h1>
-        <div className="flex flex-col prose-p:h-5">
-          <p>Discord: is_ec</p>
+        <div className="flex prose-p:h-5 gap-16">
           {/* <p>E-mail: z</p> */}
-          <a href="https://github.com/Coloby/Personal-Blog">Github - Source code</a>
-          <a href="https://www.skool.com/@leof-dopp-8139">Skool</a>
+          <div className="flex items-start flex-col gap-3 justify-start text-left">
+            <a className=" text-primary_text_color no-underline">Discord: is_ec</a>
+            <a href="https://www.skool.com/@leof-dopp-8139">Skool</a>
+          </div>
+          <SocialBTNs />
         </div>
       </div>
     </div>

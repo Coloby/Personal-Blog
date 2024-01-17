@@ -7,7 +7,7 @@ const HeaderNavLinks = ({
 }) => {
   return (
     <nav className=" space-x-10 flexy ">
-      <ul className={"sm:gap-4 items-center justify-center flex"}>
+      <ul className={"sm:gap-8 items-center justify-center flex"}>
         <li>
           {home && <Link href="/" className=" hidden sm:block">Home</Link>}
         </li>
