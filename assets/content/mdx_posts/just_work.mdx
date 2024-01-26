@@ -1,22 +1,89 @@
 ---
 title: 'Blog capabilities show off'
-description: Until now, trying to style an article, document, or blog post with Tailwind has been a tedious task that required a keen eye for typography and a lot of complex custom CSS.
-thumbnail: tailwindcssv3.4.jpg
-publishDate: 5 Sep, 2023
+description: After 3 weeks the blog finally works, most of it at least. Here's some dummy text to demonstrate
+thumbnail: killing_the_blog.png
+publishDate: 22 Jan, 2024
 authors:
- - Tailwind community
+ - Ed
 tags: 
+  - test
   - styling
 category: web development
 ---
+import Boxy from '../../components/specifically_for_mdx/Boxy.jsx'
+import YtEmbed from '../../components/specifically_for_mdx/YtEmbed.jsx'
 
-**Before reading**. Ed's notes: I did not write any of this, that's just to demonstrate what the blog has to offer. Check [the people who wrote this article](https://github.com/tailwindlabs/tailwindcss-typography/blob/master/demo/components/MarkdownSample.mdx). To see how I made this work you can view the [source code of this website](https://github.com/taniarascia/taniarascia.com). Unified pipeline + tailwind typography plugin in action:
+{/* // import { useState } from "react";
 
-By default, Tailwind removes all of the default browser styling from paragraphs, headings, lists and more. This ends up being really useful for building application UIs because you spend less time undoing user-agent styles, but when you _really are_ just trying to style some content that came from a rich-text editor in a CMS or a markdown file, it can be surprising and unintuitive.
+// import React from "react"
 
-We get lots of complaints about it actually, with people regularly asking us things like:
+// export const initialCounterState = 4;
 
-> Why is Tailwind removing the default styles on my `h1` elements? How do I disable this? What do you mean I lose all the other base styles too?
+// export const MyPage = () => {
+//   if (typeof window === 'undefined') {
+//       // Server-side rendering: Render nothing or a placeholder
+//       return null;
+//   } else {
+//       // Client-side rendering: Render the actual component
+//       const [counter, setCounter] = useState(initialCounterState);
+//       console.log(`counter:`, counter)
+//       return (
+//         <button onClick={() => setCounter((c) => c + 1)}>
+//           Increment {counter}
+//         </button>
+//       )
+//   }
+// }
+
+
+// <MyPage /> */}
+
+<Boxy >
+  I did not write most of this. That's just to demonstrate the capabilities of the blog. 
+
+  - Check [the people who wrote the tailwindcss part](https://github.com/tailwindlabs/tailwindcss-typography/blob/master/demo/components/MarkdownSample.mdx) of this article.
+  - To see how I made this work you can view the [source code of this website](https://github.com/taniarascia/taniarascia.com). mdx-bundler + unified pipeline + tailwind typography plugin and more in action:
+</Boxy >
+
+{/* ```jsx {1-2} "I did not" */}
+```jsx
+import Boxy from '../../components/ui/Boxy.jsx'
+
+<Boxy >
+  I did not write most of this. That's just to demonstrate the capabilities of the blog. 
+
+  - Check [the people who wrote the tailwindcss part](https://github.com/tailwindlabs/tailwindcss-typography/blob/master/demo/components/MarkdownSample.mdx) of this article.
+  - To see how I made this work you can view the [source code of this website](https://github.com/taniarascia/taniarascia.com). mdx-bundler + unified pipeline + tailwind typography plugin and more in action:
+</Boxy >
+```
+
+youtube embedding:
+
+<YtEmbed url="https://www.youtube.com/embed/dQw4w9WgXcQ" />
+
+```jsx custom react component imported into mdx!
+<Boxy variant="danger" />
+<Boxy variant="warning">
+  Here's some text
+</Boxy >
+```
+
+<Boxy variant="danger" />
+<Boxy variant="warning" >
+  Here's some text
+</Boxy >
+
+<h2 style={{ color: 'red' }}> That's JSX wrote directly {"in " + "MDX"}</h2>
+
+```jsx And that's a code block of jsx
+  <h2 style={{ color: 'red' }}> That's JSX wrote directly {"in " + "MDX"}</h2>
+```
+
+``` Highlighting in code blocks
+  hi
+```
+
+> Why is this needed? who knows
 
 We hear you, but we're not convinced that simply disabling our base styles is what you really want. You don't want to have to remove annoying margins every time you use a `p` element in a piece of your dashboard UI. And I doubt you really want your blog posts to use the user-agent styles either — you want them to look _awesome_, not awful.
 
@@ -44,6 +111,28 @@ For more information about how to use the plugin and the features it includes, [
 
 ---
 
+| Wrestler                | Origin       | Finisher           |
+| ----------------------- | ------------ | ------------------ |
+| Bret "The Hitman" Hart  | Calgary, AB  | Sharpshooter       |
+| Stone Cold Steve Austin | Austin, TX   | Stone Cold Stunner |
+| Randy Savage            | Sarasota, FL | Elbow Drop         |
+| Vader                   | Boulder, CO  | Vader Bomb         |
+| Razor Ramon             | Chuluota, FL | Razor's Edge       |
+
+made from:
+
+```md
+| Wrestler                | Origin       | Finisher           |
+| ----------------------- | ------------ | ------------------ |
+| Bret "The Hitman" Hart  | Calgary, AB  | Sharpshooter       |
+| Stone Cold Steve Austin | Austin, TX   | Stone Cold Stunner |
+| Randy Savage            | Sarasota, FL | Elbow Drop         |
+| Vader                   | Boulder, CO  | Vader Bomb         |
+| Razor Ramon             | Chuluota, FL | Razor's Edge       |
+```
+
+---
+
 ## What to expect from here on out
 
 What follows from here is just a bunch of absolute nonsense I've written to dogfood the plugin itself. It includes every sensible typographic element I could think of, like **bold text**, unordered lists, ordered lists, code blocks, block quotes, _and even italics_.
@@ -59,12 +148,6 @@ Now we're going to try out another header style.
 ### Typography should be easy
 
 So that's a header for you — with any luck if we've done our job correctly that will look pretty reasonable.
-
-Something a wise person once told me about typography is:
-
-> Typography is pretty important if you don't want your stuff to look like trash. Make it good then it won't be bad.
-
-It's probably important that images look okay here by default as well:
 
 <figure>
   <img
@@ -113,10 +196,6 @@ After this sort of list I usually have a closing statement or paragraph, because
 
 ## Code should look okay by default.
 
-I think most people are going to use [highlight.js](https://highlightjs.org/) or [Prism](https://prismjs.com/) or something if they want to style their code blocks but it wouldn't hurt to make them look _okay_ out of the box, even with no syntax highlighting.
-
-Here's what a default `tailwind.config.js` file looks like at the time of writing:
-
 ```js
 module.exports = {
   purge: [],
@@ -127,8 +206,6 @@ module.exports = {
   plugins: [],
 }
 ```
-
-Hopefully that looks good enough to you.
 
 ### What about nested lists?
 
@@ -146,8 +223,6 @@ Nested lists basically always look bad which is why editors like Medium don't ev
    - Again please don't nest lists if you want people to actually read your content.
    - Nobody wants to look at this.
    - I'm upset that we even have to bother styling this.
-
-The most annoying thing about lists in Markdown is that `<li>` elements aren't given a child `<p>` tag unless there are multiple paragraphs in the list item. That means I have to worry about styling that annoying situation too.
 
 - **For example, here's another nested list.**
 
@@ -167,8 +242,6 @@ The most annoying thing about lists in Markdown is that `<li>` elements aren't g
   - Finally here's another list item so it's more like a list.
 
 - A closing list item, but with no nested list, because why not?
-
-And finally a sentence to close off this section.
 
 ## We didn't forget about description lists
 
@@ -197,16 +270,6 @@ Well, that's not exactly true, we first released this plugin back in 2020 and it
 
 I almost forgot to mention links, like [this link to the Tailwind CSS website](https://tailwindcss.com). We almost made them blue but that's so yesterday, so we went with dark gray, feels edgier.
 
-We even included table styles, check it out:
-
-| Wrestler                | Origin       | Finisher           |
-| ----------------------- | ------------ | ------------------ |
-| Bret "The Hitman" Hart  | Calgary, AB  | Sharpshooter       |
-| Stone Cold Steve Austin | Austin, TX   | Stone Cold Stunner |
-| Randy Savage            | Sarasota, FL | Elbow Drop         |
-| Vader                   | Boulder, CO  | Vader Bomb         |
-| Razor Ramon             | Chuluota, FL | Razor's Edge       |
-
 We also need to make sure inline code looks good, like if I wanted to talk about `<span>` elements or tell you the good news about `@tailwindcss/typography`.
 
 ### Sometimes I even use `code` in headings
@@ -228,5 +291,3 @@ We don't style them at all out of the box because `h4` elements are already so s
 Phew, with any luck we have styled the headings above this text and they look pretty good.
 
 Let's add a closing paragraph here so things end with a decently sized block of text. I can't explain why I want things to end that way but I have to assume it's because I think things will look weird or unbalanced if there is a heading too close to the end of the document.
-
-What I've written here is probably long enough, but adding this final sentence can't hurt.

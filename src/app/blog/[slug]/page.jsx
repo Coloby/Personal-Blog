@@ -1,4 +1,5 @@
-import { getAllPostsFrontmatter, getFrontmatterBySlug, getReactElemBySlug, getTOCComponentFromSlug } from '@/lib/mdx/mdxManager';
+import { getAllPostsFrontmatter, getFrontmatterBySlug, getTOCComponentFromSlug } from '@/lib/mdx/mdxManager';
+import { getMdxCompBySlug } from "./../../../lib/mdx/getMdxCompBySlug";
 
 export async function generateStaticParams() { // build static routes for every mdx article https://nextjs.org/docs/app/api-reference/functions/generate-static-params
   const posts = await getAllPostsFrontmatter()
@@ -9,9 +10,9 @@ export async function generateStaticParams() { // build static routes for every 
 }
 
 const Page = async ({ params }) => {
-  const { reactElementFromMDX } = await getReactElemBySlug(params.slug)
   const { frontmatter } = await getFrontmatterBySlug(params.slug)
   const { TOCComponent } = await getTOCComponentFromSlug(params.slug)
+  const Component = await getMdxCompBySlug(params.slug)
 
   return (
     <section className=' h-fit max-w-full md:max-w-prose prose prose-purple sm:prose-lg sm:prose-code:text-base prose-p:dark:text-[#D9D9D9]  prose-li:dark:text-[#D9D9D9] prose-img:rounded-xs  dark:prose-invert'>
@@ -25,8 +26,8 @@ const Page = async ({ params }) => {
         <h1 className="">{frontmatter.title}</h1>
         <div className="lead text-primary_text_color">{frontmatter.description}</div>
         <TOCComponent />
-        <div className=" max-w-full md:max-w-prose prose prose-a:text-[#9333ea] prose-a:dark:text-[hsl(271,91%,70%)]  sm:prose-lg sm:prose-code:text-base prose-p:dark:text-[#D9D9D9]  prose-li:dark:text-[#D9D9D9] prose-img:rounded-xs  dark:prose-invert ">
-          {reactElementFromMDX}
+        <div className="max-w-full md:max-w-prose prose prose-a:text-[#9333ea] prose-a:dark:text-[hsl(271,91%,70%)]  sm:prose-lg sm:prose-code:text-base prose-p:dark:text-[#D9D9D9]  prose-li:dark:text-[#D9D9D9] prose-img:rounded-xs  dark:prose-invert ">
+          <Component />
         </div>
       </article>
     </section>

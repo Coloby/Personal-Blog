@@ -1,5 +1,5 @@
-import Image from "next/image"
 import SocialBTNs from "@/components/ui/SocialBTNs"
+import Image from "next/image"
 // TODO add <meta name="darkreader-lock"> to metadata to disable dark reader in specific pages
 
 export const metadata = {
@@ -22,11 +22,11 @@ export default async function Home() {
         </div>
         <div className="min-h-[210px] mt-4 lg:mt-0 min-w-[210px] max-h-[400px] max-w-[400px] overflow-hidden rounded-[30px] relative">
           <Image
-            src="/assets/media/imgs/cool_cat.jpg"
+            src="/assets/media/imgs/vapo_cat.jpg"
             width={400}
             height={400}
-            className=" object-cover not-prose w-full h-full ml-6 scale-[1.25] ss:scale-[1.5]"
-            // className=" object-cover text-white fill-white lg:h-[300px] lg:w-[300px] scale-[1.5] ml-6 xl:ml-16 mt-12 absolute top-0"
+            className=" object-cover not-prose w-full h-full scale-[1.25] ss:scale-[1.5] transform scale-x-[-1]"
+            // className=" object-cover not-prose w-full h-full ml-6 scale-[1.25] ss:scale-[1.5] transform scale-x-[-1]"
             color="white"
             alt="logo"
             priority={true}
@@ -41,7 +41,7 @@ export default async function Home() {
         <div className="flex prose-p:h-5 gap-16">
           {/* <p>E-mail: z</p> */}
           <div className="flex items-start flex-col gap-3 justify-start text-left">
-            <a className=" text-primary_text_color no-underline">Discord: is_ec</a>
+            <a className=" text-primary_text_color no-underline">Discord: edondigital</a>
             <a href="https://www.skool.com/@leof-dopp-8139">Skool</a>
           </div>
           <SocialBTNs />

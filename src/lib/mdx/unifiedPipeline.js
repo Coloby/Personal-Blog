@@ -1,9 +1,8 @@
+import cheerio from 'cheerio';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import rehypeStringify from "rehype-stringify";
 import remarkFrontmatter from 'remark-frontmatter';
-import remarkGfm from 'remark-gfm';
 import remarkMdx from 'remark-mdx';
 import remarkParse from 'remark-parse';
 import remarkParseFrontmatter from 'remark-parse-frontmatter';
@@ -11,18 +10,16 @@ import readingTime from "remark-reading-time";
 import remarkRehype from 'remark-rehype';
 import remarkToc from 'remark-toc';
 import { unified } from 'unified';
-import cheerio from 'cheerio';
-import rehypeSanitize from 'rehype-sanitize'
 
 export const useUnifiedPipeline = async ({ rawMDX }) => {
   const processUntilHeading = 4
   const unifiedPipeline = unified()
     .use(remarkParse) // MD to AST
       // | remark transformations
-        .use(remarkMdx) // adds support to MDX (should always be early in the pipeline)
-        .use(remarkToc, {maxDepth: processUntilHeading}) // gives TOC only inside the AST
+        .use(remarkMdx) // AST to mdxAST - adds support to MDX (should always be early in the pipeline)
+        .use(remarkToc, {maxDepth: processUntilHeading}) // creates TOC (only inside the AST itself. We get it though our custom code below)
         .use(remarkFrontmatter, ['yaml']) // transforms frontmatter into AST and removes it from rendering 
-        .use(remarkParseFrontmatter, // actually give us the frontmatter in "processedMDX.data.frontmatter"
+        .use(remarkParseFrontmatter, // give us the frontmatter in "processedMDX.data.frontmatter"
           // { 
           //   properties: {
           //     title: { type: "string", required: true },
@@ -35,11 +32,10 @@ export const useUnifiedPipeline = async ({ rawMDX }) => {
         //     console.dir(tree.children[0].value)
         //   }
         // })
-        .use(remarkGfm)
-        .use(readingTime) // processedMDX.data.readingTime
-    .use(remarkRehype) // AST to HAST
+        .use(readingTime) // it's in "processedMDX.data.readingTime"
+    .use(remarkRehype) // AST to HAST. 
       // | rehype transformations
-        .use(rehypeSanitize)
+        // .use(rehypeSanitize)
         .use(rehypeSlug)
         .use(rehypeAutolinkHeadings, {
           behavior: 'prepend',
@@ -65,8 +61,7 @@ export const useUnifiedPipeline = async ({ rawMDX }) => {
           //   ];
           // }
         })
-        .use(rehypePrettyCode)
-    .use(rehypeStringify)
+    .use(rehypeStringify) // HAST to HTML string
   
   // translates the AST table of contents from remarkToc into an array of objects
     let headerString = "";
@@ -79,6 +74,7 @@ export const useUnifiedPipeline = async ({ rawMDX }) => {
     const html = String(processedMDX);
     const $ = cheerio.load(html);
     const toc = [];
+
     $(headerString).each((_, el) => {
       const $el = $(el);
       toc.push({
@@ -89,7 +85,6 @@ export const useUnifiedPipeline = async ({ rawMDX }) => {
     });
 
     processedMDX.data.toc = toc
-
   
   return {processedMDX}
 }

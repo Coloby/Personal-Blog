@@ -11,8 +11,13 @@ I want to upgrade my developer and english skills by creating my website while s
 - Before sharing your article to my blog through MDX you should contact me first.
 
 ## How it *generally* works?
-- MDX to HTML to React elements at build time (SSG)
-  - Files in /assets/content/mdx_posts will be transformed by my custom [unified.js](https://unifiedjs.com) pipeline, from MDX (using remark) to HTML (using rehype) that will be converted as react elements by [html-to-react](https://www.npmjs.com/package/html-to-react).
+- MDX to JS (renderable to HTML for the browser) at build time (SSG)
+  - 
+  - [mdx-bundler](https://github.com/kentcdodds/mdx-bundler).
+    - Transforms files in `/assets/content/mdx_posts` into renderable JS.
+    - makes expressions, HTML, JSX, JS available to use directly in the mdx files.
+  - Anything that bundler-mdx can't do, and a little more, it's handled by a custom [unified.js](https://unifiedjs.com) pipeline.
+  - Components within the dir `/src/components/specifically_for_mdx` will automatically made available for importing them directly into MDX.
   - Every article is rendered at build time thanks to [generateStaticParams](https://nextjs.org/docs/app/api-reference/functions/generate-static-params).
 - Styles
   - The MDX is mostly styled thanks to the "prose" class provided by the plugin [tailwindcss-typography](https://www.npmjs.com/package/@tailwindcss/typography). 

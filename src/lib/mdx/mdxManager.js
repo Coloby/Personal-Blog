@@ -1,4 +1,3 @@
-import { Parser } from 'html-to-react';
 import { useUnifiedPipeline } from "./unifiedPipeline";
 import fs from 'fs';
 import path from 'path';
@@ -18,18 +17,7 @@ export const getRawMdxBySlug = async (fileNameWExt) => {
   try {
     const rawMDX = fs.readFileSync(completeFilePath, { encoding: 'utf8' })
     return { rawMDX }
-  } catch (error) {
-    throw new Error('Resource not found');
-  }
-}
-
-export const getReactElemBySlug = async (fileNameWExt) => {
-  const rawMDX = await getRawMdxBySlug(fileNameWExt)
-  const { processedMDX } = await useUnifiedPipeline(rawMDX)
-  const parser = new Parser();
-  const reactElementFromMDX = parser.parse(processedMDX.value);
-
-  return { reactElementFromMDX }
+  } catch (error) { throw new Error('Resource not found') }
 }
 
 export const getFrontmatterBySlug = async (fileNameWExt, index) => {
@@ -98,18 +86,3 @@ export const getTOCComponentFromSlug = async (fileNameWExt) => {
   return { TOCComponent }
 
 }
-
-// useEffect(() => {
-  //   const headings = document.querySelectorAll('.mdx h1, .mdx h2, .mdx h3');
-
-  //   const headingArr = [];
-  //   headings.forEach((heading) => {
-  //     const id = heading.id;
-  //     const level = +heading.tagName.replace('H', '');
-  //     const text = heading.textContent + '';
-
-  //     headingArr.push({ id, level, text });
-  //   });
-
-  //   setToc(headingArr);
-  // }, [props.slug]);
