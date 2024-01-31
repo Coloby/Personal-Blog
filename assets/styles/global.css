@@ -30,4 +30,3 @@ html { /* Smooth scrolling won't work anyway based on your OS and/or browser set
   .prose > * {
     transition-duration: 1000ms !important;
   }
-

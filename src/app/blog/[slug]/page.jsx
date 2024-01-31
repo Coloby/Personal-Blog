@@ -19,7 +19,7 @@ const Page = async ({ params }) => {
       <article className="">
         <div className="flexy flex-col align-top">
           <div className=" flex items-center justify-center h-[200px] max-w-[340px] w-full overflow-hidden rounded-xs m-0 mb-6 ">
-            <img className="object-cover w-full h-full rounded-xs !m-0" src={frontmatter.thumbnail ? "/assets/media/imgs/"+frontmatter.thumbnail : `https://picsum.photos/500/500?random=${frontmatter.index}`} alt="" />
+            <img className="object-cover w-full h-full rounded-xs !m-0" src={frontmatter.thumbnail ? "/assets/imgs/"+frontmatter.thumbnail : `https://picsum.photos/500/500?random=${frontmatter.index}`} alt="" />
           </div>
         </div>
         <span className="flex flex-wrap gap-x-8 gap-y-1 mb-4"><address>{frontmatter.authors}</address><time>{frontmatter.publishDate}</time><span>{frontmatter.readingTime}</span></span>

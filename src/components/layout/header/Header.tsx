@@ -16,14 +16,14 @@ import {
 
 
 const Header = () => {
-
+  // w-[250px] h-[70px] px-4 bg-gradient-to-r from-fuchsia-950 via-pink-800 to-rose-600 rounded-[84px] shadow border-blue-900 justify-between items-center inline-flex
   return (
     <header className=" w-full flexy sticky top-0 z-50">
-      <div className="flex items-center justify-between px-4 gap-12 h-[64px] max-w-fit bg-box_shade rounded-lg mt-4">
+      <div className=" flex items-center justify-between px-4 gap-12 h-[64px] max-w-fit bg-gradient-to-r from-fuchsia-950/90 via-pink-800/90 to-rose-600/90 rounded-[84px] mt-4">
         <Link href={"/"}>
           <HeaderLogo color="text-primary_text_color" width={40} height={36} />
           {/* <Image
-            src="/assets/media/logos/github.svg"
+            src="/assets/logos/github.svg"
             width={80}
             height={36}
             // priority={true}
@@ -50,13 +50,6 @@ const Header = () => {
                 </svg>
               </SheetTrigger>
               <SheetContent className=" w-[200px] dark-theme-mode not-prose text-primary_text_color">
-                {/* <SheetHeader>
-                  <SheetTitle>Are you absolutely sure?</SheetTitle>
-                  <SheetDescription>
-                    This action cannot be undone. This will permanently delete your account
-                    and remove your data from our servers.
-                  </SheetDescription>
-                </SheetHeader> */}
                 <DrawerNavLinks />
               </SheetContent>
             </Sheet>

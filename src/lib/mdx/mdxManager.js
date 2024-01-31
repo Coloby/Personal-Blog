@@ -51,7 +51,6 @@ export const getTOCComponentFromSlug = async (fileNameWExt) => {
   const TOC = processedMDX.data.toc
 
   const TOCComponent = () => {
-    
     return (
       <nav className="mb-12">
         <Accordion type="single" collapsible>

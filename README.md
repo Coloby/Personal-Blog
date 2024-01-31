@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0b89a47a-8aa0-4678-b1ab-e56bbbf09af7/deploy-status)](https://app.netlify.com/sites/edondigital/deploys)
+
 ## Overview
 
 ### what is this?

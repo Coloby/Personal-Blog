@@ -16,7 +16,7 @@ const Page = async () => {
             >
               {/* 500 x 200 */}
               <div className="flex items-center relative justify-center w-full h-[180px] overflow-hidden rounded-xs">
-                <img className=" object-cover w-full h-full" src={frontmatter.thumbnail ? "/assets/media/imgs/"+frontmatter.thumbnail : `https://picsum.photos/1000/1180?random=${frontmatter.index}`} alt="" />
+                <img className=" object-cover w-full h-full" src={frontmatter.thumbnail ? "/assets/imgs/"+frontmatter.thumbnail : `https://picsum.photos/1000/1180?random=${frontmatter.index}`} alt="" />
                 <div className="w-full absolute bottom-0 flexy bg-body_shade/30 p-1 text-sm">
                   {frontmatter.readingTime}
                 </div>
