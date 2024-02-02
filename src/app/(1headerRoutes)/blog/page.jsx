@@ -1,8 +1,8 @@
-import { getAllPostsFrontmatter } from '@/lib/mdx/mdxManager'
+import { getAllArticlesFrontmatter } from '@/lib/mdx/mdxManager'
 import Link from 'next/link'
 
 const Page = async () => {
-  const posts = await getAllPostsFrontmatter()
+  const posts = await getAllArticlesFrontmatter()
 
   return (
     <section className=' flex-wrap flex gap-x-16 gap-y-12 w-md lg:w-[1334px] justify-center '>
@@ -16,7 +16,7 @@ const Page = async () => {
             >
               {/* 500 x 200 */}
               <div className="flex items-center relative justify-center w-full h-[180px] overflow-hidden rounded-xs">
-                <img className=" object-cover w-full h-full" src={frontmatter.thumbnail ? "/assets/imgs/"+frontmatter.thumbnail : `https://picsum.photos/1000/1180?random=${frontmatter.index}`} alt="" />
+                <img className=" object-cover w-full h-full" src={frontmatter.thumbnail ? "/assets/routes_specific/blog/"+frontmatter.thumbnail : `https://picsum.photos/1000/1180?random=${frontmatter.index}`} alt="" />
                 <div className="w-full absolute bottom-0 flexy bg-body_shade/30 p-1 text-sm">
                   {frontmatter.readingTime}
                 </div>

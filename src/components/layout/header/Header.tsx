@@ -8,9 +8,6 @@ import DrawerNavLinks from "@/components/layout/DrawerNavLinks"
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/components/shadcn-ui/Drawer"
 

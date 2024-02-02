@@ -8,8 +8,9 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
+import {defaultProseSettings} from "./proseSettings"
 
-export async function getMdxCompBySlug(fileWExtension) {
+export async function getMdxComp(dir, fileWExtension) {
   const __filename = fileURLToPath(import.meta.url); // using directly __dirname on react server components yields unexpected behaviour. It should be the current directory were this file is, but it's not in rsc
   const __dirname = dirname(__filename);
   const mdxCompsDirPath = path.resolve(__dirname, '../../components/specifically_for_mdx'); 
@@ -27,7 +28,7 @@ export async function getMdxCompBySlug(fileWExtension) {
 
 
 
-  const mdxFilePath = path.resolve(__dirname, `../../../assets/content/mdx_posts/${fileWExtension}`);
+  const mdxFilePath = path.resolve(__dirname, `../../../assets/content/route_specific_mdx/${dir}/${fileWExtension}`);
   const mdxFileContent = fs.readFileSync(mdxFilePath, 'utf8')
   const mdxSource = mdxFileContent.replace(/^---\s*[\s\S]*?---/, '').trim() // deletes only the first frontmatter section. It stops searching for stuff right after
 
@@ -67,6 +68,22 @@ export async function getMdxCompBySlug(fileWExtension) {
 
     const Component = getMDXComponent(code) // executes the code
     
-    return Component; 
+    function Comp() {
+      return (
+        <div className={`${defaultProseSettings}`}>
+         <Component />
+        </div>
+      )
+    }
+    
+    return (Comp)
+    // return (
+    //   <div className={`${defaultProseSettings}`}>
+    //     <Component />
+    //   </div>
+    // ); 
+    return (
+        Component 
+    ); 
   } catch (error) { console.log(`Error in bundleMDX:`, error) }
 }

@@ -19,7 +19,22 @@ export default async function Home() {
   const wonderRoomPieceLink = "https://www.youtube.com/watch?v=TDqsr3MNTTc"
   const { udpateComps } = GetUpdatesComps(6)
   return (
-    <div className="sm:w-[1300px] max-w-none min-h-screen mt-10 flex flex-col gap-[150px] lg:gap-[200px] prose prose-purple sm:prose-lg sm:prose-code:text-base prose-p:dark:text-[#D9D9D9]  prose-li:dark:text-[#D9D9D9] dark:prose-invert">
+    <div className="sm:w-[1300px] max-w-none min-h-screen flex flex-col gap-[150px] lg:gap-[200px] prose prose-purple sm:prose-lg sm:prose-code:text-base prose-p:dark:text-[#D9D9D9]  prose-li:dark:text-[#D9D9D9] dark:prose-invert">
+      {/* Backgrounds */}
+      <div className="flexy w-full h-full flex-col top-0 absolute items-start left-0 content-start ">
+        <Image
+          src="/assets/backgrounds/vapo_hero.jpg"
+          width={1920}
+          height={1080}
+          className=" object-cover not-prose h-[1200px] left-0 transition-none z-0 w-screen"
+          alt="logo"
+          priority={true}
+        />
+        <div className="bg-gradient-to-t from-[#F91F5B] via-[#1F014B] to-[#1F014B] h-[1200px] w-full"></div>
+        <div className="bg-gradient-to-t from-[#1F014B] via-[#1F014B] to-[#F91F5B] h-[1600px] w-full"></div>
+        <div className="bg-gradient-to-t from-[#F91F5B] via-[#1F014B] to-[#1F014B] h-[1600px] w-full"></div>
+        <div className="bg-gradient-to-t from-[#1F014B] via-[#1F014B] to-[#F91F5B] h-[1600px] w-full"></div>
+      </div>
       {/* Hero */}
       <section className="z-10">
         <div className=" justify-center items-center flex flex-col lg:flex-row mt-12 max-w-none z-10 lg:gap-32">
@@ -45,7 +60,7 @@ export default async function Home() {
           <div className="relative w-full max-w-[334.06px]">
             <div className="max-w-[334.06px] lg:!my-0 w-full h-[284px] lg:py-0 min-w-[210px] ss:max-h-[400px] min-h-[220px]  overflow-hidden rounded-[30px] relative !my-[100px]">
               <Image
-                src="/assets/imgs/white_cat.jpg"
+                src="/assets/routes_specific/home/white_cat.jpg"
                 width={400}
                 height={400}
                 className=" aspect-w-1 aspect-h-1 object-cover not-prose scale-[1.3] w-full h-full mr-8 mt-10 ml-4"
@@ -73,9 +88,9 @@ export default async function Home() {
               </div>
               <div className="w-full h-full pt-4 bg-indigo-950/60 rounded-sm flex-col justify-center items-center inline-flex">
                   <div className="min-h-[60px] h-full w-full flexy !mb-4">
-                    <h3 className=" !my-0 px-4  !text-xl ">Illustrating most stuff <span><Link href={"about_me"} className="text-center text-xl">About me</Link></span> through images</h3>
+                    <h3 className=" !my-0 px-4  !text-xl ">Illustrating most stuff <span><Link href={"about"} className="text-center text-xl">About me</Link></span> through images</h3>
                   </div>
-                  <img className="w-full h-full !my-0 rounded-sm" src="assets/biophotophy.png" />
+                  <img className="w-full h-full !my-0 rounded-sm" src="assets/routes_specific/home/biophotophy.png" />
               </div>
           </div>
           <div className="w-full md:w-[600px] lg:w-full gap-4 inline-flex items-center lg:items-start flex-col lg:flex-row">
@@ -87,13 +102,13 @@ export default async function Home() {
                 <span className="flex flex-wrap gap-x-8 gap-y-1 my-4"><address>Author: {frontmatter.authors}</address><time>{frontmatter.publishDate}</time><span>{frontmatter.readingTime}</span></span>
               </div>
               <div className="flexy flex-col w-full items-center">
-                <img className="not-prose !w-full  lg:rounded-r-[0] max-w-[370px] lg:mr-[-16px] max-h-[208px] !mx-0 ml-[38px] rounded-sm border border-rose-600" src={"/assets/imgs/" + frontmatter.thumbnail} />
+                <img className="not-prose !w-full  lg:rounded-r-[0] max-w-[370px] lg:mr-[-16px] max-h-[208px] !mx-0 ml-[38px] rounded-sm border border-rose-600" src={"/assets/routes_specific/blog/" + frontmatter.thumbnail} />
               </div>
             </div>
             <div className="max-w-[340px] w-full h-full max-h-[286px] pb-4 bg-indigo-950/60 rounded-sm flex-col items-center inline-flex">
               <a href={wonderRoomPieceLink} className="w-full">
                 <Image
-                  src="/assets/nodes_network.jpg"
+                  src="/assets/routes_specific/home/nodes_network.jpg"
                   width={1920}
                   height={1080}
                   className=" object-cover not-prose w-full max-h-[160px] transition-none z-0 rounded-sm"
@@ -120,14 +135,14 @@ export default async function Home() {
               ))}
             </div>
           </div>
-        {/* <Link href={"work_in_progress"} className="!mt-2">See full log</Link> */}
+        {/* <Link href={""} className="!mt-2">See full log</Link> */}
       </section>
       {/* Last sentence */}
       <section className="z-10">
         <div className="top-4 flex px-4 flex-col justify-center items-center mt-20 text-center z-10 bg-indigo-950/60 rounded-sm py-12">
-          <h2 className="lg:!leading-[70px]  !mt-0 text-xl  lg:!text-[50px]"><Link href={"contact_me"}>Contact me</Link> from anywhere and<br />I'll be happy to have a chat!</h2>
+          <h2 className="lg:!leading-[70px]  !mt-0 text-xl  lg:!text-[50px]"><Link href={"contact"}>Contact me</Link> from anywhere and<br />I'll be happy to have a chat!</h2>
           <div className="flexy w-full prose-p:h-5 flex-col xs:flex-row gap-8 xs:gap-10">
-            <div className="flex items-start flex-col gap-3 justify-center text-left">
+            <div className="flex items-start flex-col gap-4 justify-center text-left">
               <div className="flexy gap-4">
                 <SocialBTNs />
                 <a href="https://www.skool.com/@leof-dopp-8139">Skool</a>
@@ -144,6 +159,35 @@ export default async function Home() {
           </div>
           <div className=" max-w-prose mt-4">
             <p>Criticism and feedback is always embraced.</p>
+          </div>
+        </div>
+      </section>
+      {/* Cat under construction */}
+      <section className="mx-4 h-[800px] my-[60px] overflow-hidden relative flexy prose-a:!text-primary_text_color prose-a:!no-underline">
+        <div className="w-full flexy absolute overflow-hidden">
+          <Image
+            src="/assets/dancing_cat.gif"
+            width={800}
+            height={400}
+            className=" object-cover not-prose h-full w-full transition-none z-[6] max-h-[490px] max-w-[400px] mx-[2px]"
+            alt="logo"
+            priority={true}
+          />
+        </div>
+        <div className="relative overflow-y-hidden flexy w-full h-full">
+          <div className="overflow-hidden border-[2px] border-black rounded-sm flex flex-col  max-w-[800px] bg-[#eaf1f7]">
+            <div className="rotate-[-10deg] mt-[300px] w-[120%] ml-[-30px] transform relative z-[6]         bg-gradient-to-br from-yellow-400 to-yellow-800 border border-black border-dashed outline-dashed">
+              <div className="marquee inline-flex items-center gap-x-6 overflow-hidden        whitespace-nowrap text-5xl font-bold leading-relaxed text-gray-50">Building great stuff - Loading the void... - Taking longer than expected - Still not finished - 🚧🚧🚧</div>
+            </div>
+            <div className=" w-[120%] ml-[-20px] transform relative z-[3]         bg-gradient-to-br from-yellow-400 to-yellow-800 border border-black border-dashed outline-dashed">
+              <div className="marquee2 inline-flex items-center gap-x-6 overflow-hidden        whitespace-nowrap text-5xl font-bold leading-relaxed text-gray-50">Work in progress - Under construction - Please wait... - Hey, it's you! 👷‍♀️ - Drink! - <span><Link href="you-won">You won!</Link></span> </div>
+            </div>
+            <div className="rotate-[4deg] w-[120%] ml-[-20px] transform relative z-[41]         bg-gradient-to-br from-yellow-400 to-yellow-800 border border-black border-dashed outline-dashed">
+              <div className="marquee inline-flex items-center gap-x-6 overflow-hidden        whitespace-nowrap text-5xl font-bold leading-relaxed text-gray-50">Please wait - It's going to be great - Suprise coming - 👷‍♂️ - Can it even fly? - Posture check</div>
+            </div>
+            <div className="rotate-[40deg] w-[200%] ml-[-200px] mt-[-50px] transform relative z-[6]         bg-gradient-to-br from-yellow-400 to-yellow-800 border border-black border-dashed outline-dashed">
+              <div className="marquee2 inline-flex items-center gap-x-6 overflow-hidden        whitespace-nowrap text-5xl font-bold leading-relaxed text-gray-50">New stuff is coming out! - 🏗 - Patience is a virtue - Great work takes longer - Are you having fun?</div>
+            </div>
           </div>
         </div>
       </section>

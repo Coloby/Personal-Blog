@@ -16,7 +16,7 @@ I want to upgrade my developer and english skills by creating my website while s
 - MDX to JS (renderable to HTML for the browser) at build time (SSG)
   - 
   - [mdx-bundler](https://github.com/kentcdodds/mdx-bundler).
-    - Transforms files in `/assets/content/mdx_posts` into renderable JS.
+    - Transforms files in `/assets/content/route_specific_mdx/blog/mdx_posts` into renderable JS.
     - makes expressions, HTML, JSX, JS available to use directly in the mdx files.
   - Anything that bundler-mdx can't do, and a little more, it's handled by a custom [unified.js](https://unifiedjs.com) pipeline.
   - Components within the dir `/src/components/specifically_for_mdx` will automatically made available for importing them directly into MDX.

@@ -1,16 +1,16 @@
-import { useUnifiedPipeline } from "./unifiedPipeline";
-import fs from 'fs';
-import path from 'path';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/shadcn-ui/accordion"
+} from "@/components/shadcn-ui/accordion";
+import fs from 'fs';
+import path from 'path';
+import { useUnifiedPipeline } from "./unifiedPipeline";
 
-const contentRootDir = path.join(process.cwd(), 'assets', 'content', "mdx_posts")
 
-export const getRawMdxBySlug = async (fileNameWExt) => {
+export const getRawMdxBySlug = async (dir, fileNameWExt) => {
+  const contentRootDir = path.join(process.cwd(), 'assets', 'content', "route_specific_mdx", dir)
   const fileNameNoExt = fileNameWExt.replace(/\.mdx$/, '')
   const completeFilePath = path.join(contentRootDir, `${fileNameNoExt.replace(/%20/g, ' ')}.mdx`) // .replace adds support for files w spaces
 
@@ -21,7 +21,7 @@ export const getRawMdxBySlug = async (fileNameWExt) => {
 }
 
 export const getFrontmatterBySlug = async (fileNameWExt, index) => {
-  const rawMDX = await getRawMdxBySlug(fileNameWExt)
+  const rawMDX = await getRawMdxBySlug("blog", fileNameWExt)
   const { processedMDX } = await useUnifiedPipeline(rawMDX)
   const frontmatter = processedMDX.data.frontmatter
   frontmatter.authors = frontmatter.authors.join(", ")
@@ -32,7 +32,8 @@ export const getFrontmatterBySlug = async (fileNameWExt, index) => {
   return { frontmatter }
 }
 
-export const getAllPostsFrontmatter = async () => {
+export const getAllArticlesFrontmatter = async () => {
+  const contentRootDir = path.join(process.cwd(), 'assets', 'content', "route_specific_mdx", "blog")
   const mdxPosts = fs.readdirSync(contentRootDir)
   let posts = []
   let i = 0
@@ -46,7 +47,7 @@ export const getAllPostsFrontmatter = async () => {
 }
 
 export const getTOCComponentFromSlug = async (fileNameWExt) => {
-  const rawMDX = await getRawMdxBySlug(fileNameWExt)
+  const rawMDX = await getRawMdxBySlug("blog", fileNameWExt)
   const { processedMDX } = await useUnifiedPipeline(rawMDX)
   const TOC = processedMDX.data.toc
 
