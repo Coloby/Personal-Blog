@@ -17,7 +17,7 @@ import {
 const Header = () => {
   // w-[250px] h-[70px] px-4 bg-gradient-to-r from-fuchsia-950 via-pink-800 to-rose-600 rounded-[84px] shadow border-blue-900 justify-between items-center inline-flex
   return (
-    <Headroom style={{ zIndex: "9999"}} upTolerance="20" downTolerance="10">
+    <Headroom style={{ zIndex: "999"}} upTolerance={10} downTolerance={20}>
     <header className=" w-full flexy sticky top-0">
       
       <div className=" flex items-center justify-between px-4 gap-12 h-[64px] max-w-fit bg-gradient-to-r from-fuchsia-950/90 via-pink-800/90 to-rose-600/90 rounded-[84px] mt-4">

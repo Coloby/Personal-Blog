@@ -15,8 +15,8 @@ const Page = async () => {
               className='relative h-full'
             >
               {/* 500 x 200 */}
-              <div className="flex items-center relative justify-center w-full h-[180px] overflow-hidden rounded-xs">
-                <img className=" object-cover w-full h-full" src={frontmatter.thumbnail ? "/assets/routes_specific/blog/"+frontmatter.thumbnail : `https://picsum.photos/1000/1180?random=${frontmatter.index}`} alt="" />
+              <div className="flex items-center relative justify-center w-full h-[176px] overflow-hidden rounded-xs">
+                <img className=" object-contain xs:object-cover w-full h-full" src={frontmatter.thumbnail ? "/assets/routes_specific/blog/"+frontmatter.thumbnail : `https://picsum.photos/1000/1180?random=${frontmatter.index}`} alt="" />
                 <div className="w-full absolute bottom-0 flexy bg-body_shade/30 p-1 text-sm">
                   {frontmatter.readingTime}
                 </div>

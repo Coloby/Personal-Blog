@@ -28,7 +28,7 @@ export default function RootLayout({ children } : { children: React.ReactNode}) 
       <body className={`${inter.className} ${process.env.NODE_ENV === "development" ? "debug-screens" : ""}`}>
         <div className={`bg-body_shade  ss:h-auto text-primary_text_color transition-colors duration-1000 relative `}>
           <Header />
-          <main className=" flex h-fit justify-center mt-[80px] px-[16px] minh-screen pb-20 ss:min-h-screen !w-full ">{children}</main>
+          <main className=" flex h-fit justify-center mt-[80px] px-[16px] pb-20 min-h-screen !w-full ">{children}</main>
           <ScrollToTopBtn />
           <Footer />
         </div>
