@@ -49,6 +49,7 @@
     "html-to-react": "^1.7.0",
     "mdx-bundler": "^10.0.1",
     "postcss": "^8",
+    "react-headroom": "^3.2.1",
     "react-lite-youtube-embed": "^2.4.0",
     "react-share": "^5.0.3",
     "rehype-autolink-headings": "^7.1.0",

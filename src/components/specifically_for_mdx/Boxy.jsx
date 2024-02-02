@@ -25,10 +25,11 @@ const Demo = async ({ children = "Insert text here", variant = "note" }) => {
   }
 
   const sharedClasses = "text-base sm:text-lg px-[16px] pb-[24px] pt-[26px] !leading-[1.8] prose-p:m-0 !mr-[10px]"
+  const sharedClassesChild = "!my-0 !mr-[12px]"
 
   return (
     <div className="w-full flexy flex justify-center items-center h-fit my-8 relative overflow-visible">
-      <div className=" w-fit h-fit relative">
+      <div className=" w-fit h-fit relative mr-[8px]">
         <div className={`!z-30 relative top-0 left-0 px-[15px] py-[4px] rounded-tl-lg rounded-br-lg bg-[#1f014b] dark:bg-[#1f014b] ${modeObj.textColor} border-[2px] border-[#760D6B] dark:border-[#760D6B] text-lg w-fit`}>
           <div className="z-20 flexy gap-[10px]">
             <span className={`${modeObj.textColor}`}>
@@ -38,13 +39,13 @@ const Demo = async ({ children = "Insert text here", variant = "note" }) => {
           </div>
         </div>
         <div className="relative overflow-visible mt-[-22px] ml-[10px] rounded-xs min-w-[224px] ">
-          <div className={` ${modeObj.textColor} ${sharedClasses}  absolute left-[8px] text-[#b56df8] bottom-[-8px] right-[-18px] top-[8px] !z-[2] bg-[#1f014b] rounded-xs`}>
-            <p className=" !my-0 ">{children}</p>
+          <div className={`${modeObj.textColor} ${sharedClasses}  absolute left-[8px] text-[#b56df8] bottom-[-8px] right-[-18px] top-[8px] !z-[2] bg-[#1f014b] rounded-xs`}>
+            <p className={`${sharedClassesChild}`}>{children}</p>
           </div >
           <div className="z-10 pointer-events-none relative h-full w-full border-[2px] border-[#760d6b] dark:border-[#760d6b] rounded-xs">
             {/* Dummy element to apply size to overlay border */}
               <div className={`${sharedClasses} opacity-0 !z-[1333] bg-[#1f014b] rounded-xs `}>
-                <p className=" !m-0">{children}</p>
+                <p className={`${sharedClassesChild}`}>{children}</p>
               </div >
           </div>
         </div>

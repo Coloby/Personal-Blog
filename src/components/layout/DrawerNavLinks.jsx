@@ -9,14 +9,14 @@ const DrawerNavLinks = ({
   contact = true,
 }) => {
   return (
-    <nav className=" flexy mt-10">
-      <ul className="flex flex-col gap-4  justify-center items-center ">
-        <li>{home && <Link href="/" className="">Home</Link>}</li>
-        <li>{blog && <Link href="/blog" className="">Blog</Link>}</li>
-        <li>{about && <Link href="/about" className="">About</Link>}</li>
-        <li>{contact && <Link href="/contact" className="">Contact</Link>}</li>
-        <li><ThemeModeBtn /></li>
+    <nav className=" flexy mt-10 flex-col">
+      <ul className="flex flex-col gap-6  justify-center items-center py-4 w-full">
+        {/* <li>{home && <Link href="/" className="">Home</Link>}</li> */}
+        <li className="w-full">{blog && <Link href="/blog" className="p-2 w-full h-full text-center border border-[#F91F5B] rounded-xs min-w-[80px] flexy">Blog</Link>}</li>
+        <li className="w-full">{about && <Link href="/about" className="p-2 w-full h-full text-center border border-[#F91F5B] rounded-xs min-w-[80px] flexy">About</Link>}</li>
+        <li className="w-full">{contact && <Link href="/contact" className="p-2 w-full h-full text-center border border-[#F91F5B] rounded-xs min-w-[80px] flexy">Contact</Link>}</li>
       </ul>
+      <div className="mt-10"><ThemeModeBtn /></div>
     </nav>
   )
 }
