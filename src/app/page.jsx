@@ -38,7 +38,7 @@ export default async function Home() {
       {/* Hero */}
       <section className="z-10">
         <div className=" justify-center items-center flex flex-col lg:flex-row mt-12 max-w-none z-10 lg:gap-32">
-          <div className=" w-full not-prose flexy text-center flex-col items-start">
+          <div className=" not-prose flexy text-center flex-col items-start">
             <h2 className="font-bold text-[22px] h-[27px] leading-[27px]">Welcome to</h2>
             <h1 className="h-[106px] leading-[50px] xs:h-[53px] xs:leading-[53px] flex items-center font-extrabold text-[44px] tracking-[3.52px]">Ed's Corner</h1>
             <div className=" font-bold text-lg flexy   items-start">

@@ -16,7 +16,7 @@ const page = async () => {
     <div className="prose prose-h2:text-primary_text_color !w-full !max-w-full flexy flex-col gap-20 h-full">
       {/* Backgrounds */}
       <div className="flexy w-full h-full flex-col top-0 absolute items-start left-0 content-start z-1">
-        <div className="w-full h-full bg-black/75 absolute top-0 z-[3]"></div>
+        <div className="w-full h-full bg-black/80 md:bg-black/90 absolute top-0 z-[3]"></div>
         <Image
           src="/assets/routes_specific/about/blur_w_rain.jpg"
           width={1920}
@@ -47,12 +47,12 @@ const page = async () => {
         </div>
       </div>
       {/* Other */}
-      <div className="max-w-[1242px] w-full justify-end items-center  xl:gap-[300px] mb-52 lg:px-16 flex flex-col xl:flex-row z-10">
+      <div className="max-w-[1242px] w-full justify-start items-center xl:items-start  xl:gap-[300px] mb-52 lg:px-16 flex flex-col xl:flex-row z-10">
         <div className=" w-full max-w-prose flex-col justify-center items-start flex">
           <h2 className="text-[40px]">FAQ</h2>
           <FAQ />
         </div>
-        <div className=" max-w-prose flex-col justify-center items-start flex">
+        <div className="w-full max-w-prose flex-col justify-center items-start flex">
           <h2 className="text-[40px]">Other smaller things</h2>
           <OtherSmallerThings />
         </div>
