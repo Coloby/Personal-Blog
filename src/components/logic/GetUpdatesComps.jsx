@@ -18,6 +18,16 @@ const GetUpdatesComps = (entriesNum) => {
     //   text: "I'm lucky you don't see the code right now because it's reaaally bad :D",
     //   author: "Ed"
     // },
+    // {
+    //   date: "",
+    //   text: ``,
+    //   author: "Ed"
+    // },
+    {
+      date: "07/Feb/2024",
+      text: `I know that I still have not published a single article, but the developer side of me is dominant at the moment. If everything goes "as planned" tomorrow I should publish my first little article!`,
+      author: "Ed"
+    },
     {
       date: "29/Jan/2024",
       text: "It's funny how much time has passed from when I made the first entry and actually published this component. At least you can now see this!",
