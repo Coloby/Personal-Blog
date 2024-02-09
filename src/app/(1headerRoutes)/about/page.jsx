@@ -21,7 +21,7 @@ const page = async () => {
           src="/assets/routes_specific/about/blur_w_rain.jpg"
           width={1920}
           height={1080}
-          className=" object-cover not-prose h-[2500px] left-0 transition-none z-[2] w-screen absolute top-0"
+          className=" object-cover not-prose h-[1080px] left-0 transition-none z-[2] w-screen absolute top-0"
           alt="logo"
           priority={true}
         />

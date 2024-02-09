@@ -84,7 +84,7 @@ export const getTOCComponentFromSlug = async (fileNameWExt) => {
                       ""
                       }
                       <li key={header.id} className={headerVariants[platform][headerLevel] + `not-prose mt-0 !list-none ${headerLevel === 2 ? "!mb-5 !mt-5" : headerLevel === 3 ? "!mb-4 !mt-4" : "!mb-0 !mt-0"}`}>
-                        <a href={`#${header.id}`} className=" text-primary_text_color/80 hover:underline hover:text-primary_text_color">
+                        <a href={`#${header.id}`} className=" text-primary_text_color/90 hover:underline hover:text-primary_text_color">
                           {header.text.slice(1)}
                         </a>
                       </li>
