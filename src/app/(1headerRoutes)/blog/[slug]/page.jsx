@@ -17,7 +17,8 @@ const Page = async ({ params }) => {
   return (
     <section className='flexy !items-start gap-20 h-fit !max-w-full w-full md:max-w-prose prose prose-purple sm:prose-lg sm:prose-code:text-base prose-p:dark:text-[#D9D9D9]  prose-li:dark:text-[#D9D9D9] prose-img:rounded-xs  dark:prose-invert'>
       <div className="absolute right-[45px] top-[120px] max-w-[390px] w-full h-full hidden sl:block pb-[320px]">
-        <div className="sticky top-[90px] h-fit w-full "><TOCComponent platform={"desktop"} /></div>
+        {/* shadow-violet-500 shadow-[0_10px_10px_-10px] */}
+        <div className="sticky top-[90px] h-[750px] overflow-x-hidden overflow-scroll w-full no-scrollbar overscroll-contain "><TOCComponent platform={"desktop"} /></div>
       </div>
       <article className="w-full max-w-prose">
         <div className="w-full">

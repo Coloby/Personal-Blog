@@ -9,7 +9,7 @@ const page = async () => {
     <section className="w-full h-full flex flex-col">
       {/* Background */}
       <div className="absolute h-full !w-[calc(100vw+20px)] z-1 top-0 left-[-20px] overflow-hidden">
-        <div className="top-0 h-[calc(846px+797px)] sm:h-[calc(846px+797px)] sl:h-[calc(846px+188px)] w-full "></div>
+        <div className="top-0 h-[calc(846px+805px)] sm:h-[calc(846px+805px)] sl:h-[calc(846px+196px)] w-full "></div>
         <div className="top-0 h-full w-full bg-[#1F014B] border-t-rose-600 border-t-[10px]"></div>
       </div>
       {/* Hero */}

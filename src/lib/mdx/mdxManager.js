@@ -12,7 +12,7 @@ import { useUnifiedPipeline } from "./unifiedPipeline";
 export const getRawMdxBySlug = async (dir, fileNameWExt) => {
   const contentRootDir = path.join(process.cwd(), 'assets', 'content', "route_specific_mdx", dir)
   const fileNameNoExt = fileNameWExt.replace(/\.mdx$/, '')
-  const completeFilePath = path.join(contentRootDir, `${fileNameNoExt.replace(/%20/g, ' ')}.mdx`) // .replace adds support for files w spaces
+  const completeFilePath = path.join(contentRootDir, `${fileNameNoExt.replace(/%20/g, ' ')}.mdx`) // .replace adds support for files with spaces and &
 
   try {
     const rawMDX = fs.readFileSync(completeFilePath, { encoding: 'utf8' })
@@ -76,19 +76,17 @@ export const getTOCComponentFromSlug = async (fileNameWExt) => {
                   }
                   let headerLevel = header.level
                   return (
-                    // <li key={header.id} className={headerVariants[platform][headerLevel] + `!list-none mb-4 ${headerLevel === 3 || 4 ? "!mt-0" : ""} ${TOC[headerLevel + 1].level === 3 || 4 ? "!mb-0" : ""}`}>
-                    <>
-                      {TOC[headerLevel].level === 2 && i > 0 ?
-                      <div className="!h-[0.5px] !border-[0.5px] w-[90%] border-[#374151] rounded-xs !my-5"></div>
-                      :
-                      ""
+                    <div key={header.id}>
+                      {
+                        headerLevel === 2 && i > 0 ? <div key={`divider-${i}`} className="!h-[0.5px] !border-[0.5px] w-[90%] border-[#374151] rounded-xs !my-5"></div>
+                        : ""
                       }
-                      <li key={header.id} className={headerVariants[platform][headerLevel] + `not-prose mt-0 !list-none ${headerLevel === 2 ? "!mb-5 !mt-5" : headerLevel === 3 ? "!mb-4 !mt-4" : "!mb-0 !mt-0"}`}>
+                      <li  className={headerVariants[platform][headerLevel] + `not-prose mt-0 !list-none ${headerLevel === 2 ? "!mb-5 !mt-5" : headerLevel === 3 ? "!mb-4 !mt-4" : "!mb-2 !mt-2"}`}>
                         <a href={`#${header.id}`} className=" text-primary_text_color/90 hover:underline hover:text-primary_text_color">
                           {header.text.slice(1)}
                         </a>
                       </li>
-                    </>
+                    </div>
                   )
                 })}
               </ul>

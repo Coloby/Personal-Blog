@@ -26,9 +26,7 @@ export async function getMdxComp(dir, fileWExtension) {
     });
   } catch (err) { console.error('Error with mdx components files:', err.message) }
 
-
-
-  const mdxFilePath = path.resolve(__dirname, `../../../assets/content/route_specific_mdx/${dir}/${fileWExtension}`);
+  const mdxFilePath = path.resolve(__dirname, `../../../assets/content/route_specific_mdx/${dir}/${fileWExtension.replace(/%20/g, ' ')}`); // adds support to files with spaces
   const mdxFileContent = fs.readFileSync(mdxFilePath, 'utf8')
   const mdxSource = mdxFileContent.replace(/^---\s*[\s\S]*?---/, '').trim() // deletes only the first frontmatter section. It stops searching for stuff right after
 
@@ -77,13 +75,5 @@ export async function getMdxComp(dir, fileWExtension) {
     }
     
     return (Comp)
-    // return (
-    //   <div className={`${defaultProseSettings}`}>
-    //     <Component />
-    //   </div>
-    // ); 
-    return (
-        Component 
-    ); 
   } catch (error) { console.log(`Error in bundleMDX:`, error) }
 }
