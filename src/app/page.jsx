@@ -159,7 +159,7 @@ export default async function Home() {
                   Username: edondigital
                 </div>
                 <div className="flex gap-8 flex-col sm:flex-row">
-                  <Btn classContainer="!mr-0" href="https://discord.gg/txUV5fqG"><div className="flexy w-full text-center !no-underline !text-primary_text_color">Join the server</div></Btn>
+                  <Btn classContainer="!mr-0" href="https://discord.gg/2WURnSNg"><div className="flexy w-full text-center !no-underline !text-primary_text_color">Join the server</div></Btn>
                   <span className="text-center">(very much a work in progress)</span>
                 </div>
               </a>

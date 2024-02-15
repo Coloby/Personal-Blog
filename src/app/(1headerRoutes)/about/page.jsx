@@ -1,12 +1,5 @@
 import { getMdxComp } from "@/lib/mdx/getMdxComp"
 import Image from "next/image"
-import React from 'react'
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/shadcn-ui/accordion"
 
 const page = async () => {
   const MainBioComp = await getMdxComp("about", "main_bio.mdx")

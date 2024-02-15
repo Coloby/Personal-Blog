@@ -44,18 +44,47 @@ export async function getMdxComp(dir, fileWExtension) {
           rehypeSlug,
           [
             rehypeAutolinkHeadings, {
-              behavior: 'prepend',
-              group: {
-                type: 'element',
-                tagName: 'div',
-                properties: { className: ['heading-w-link'] },
+              behavior: 'wrap',
+              // group: (node) => {
+              //   return({
+              //     type: 'element',
+              //     tagName: 'div',
+              //     properties: { className: ['heading-w-link'] },
+              //     children: <h2>hi</h2>
+              //   })
+              // },
+              headingProperties : {
+                class: 'f-w-link prose-a:no-underline',
               },
-              content: ({ node }) => ({
-                type: 'element',
-                tagName: 'span',
-                properties: { className: ['autolink-icon'] },
-                children: [{ type: 'text', value: '#' }],
-              }),
+              content: (node) => {
+                console.log(`node:`, node)
+                return ({
+                  type: 'element',
+                  tagName: node.tagName,
+                  properties: { className: ['autolink-icon'] },
+                  children: [
+                    { 
+                      // type: 'text', 
+                      // value: node.children[0].value
+                      type: 'text', 
+                      value: node.children[0].value,
+                      // children: [{
+                      //   type: "div",
+                      //   value: 
+                      //   <div>
+                      //     <h2>2</h2>
+                      //     <h2>1</h2>
+                      //   </div>
+                      // }]
+                    }
+                    // ,{
+                    //   type: 'text', 
+                    //   tagName:"div",
+                    //   value: "#",
+                    // }
+                  ],
+                })
+              },
             }
           ]
         ];

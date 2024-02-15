@@ -1,4 +1,3 @@
-import React from 'react'
 
 const Accordion = async ({ 
   children = "insert content",

@@ -5,32 +5,11 @@ html { /* Smooth scrolling won't work anyway based on your OS and/or browser set
 /* .g {
   background: var(--contents-primary-streak, linear-gradient(92deg, #9059FF 0%, #C859FF 100%));  
 } */
-/* .heading-w-link {
-  display: flex;
-  position: relative;
-  align-items: center;
-  justify-items: center;
-  justify-content: center;
-  height: 40px;
-} */
-/* .heading-w-link a {
-  position: absolute;
-  left: -20px;
-  bottom: 35px;
-} */
-.autolink-icon {
-  padding-right: 10px;
-  /* position: absolute;
-  left: -20px;
-  bottom: 35px; */
-  /* margin-left: -30px; */
-}
 
 /* tailwind typography plugin defaults transitions to 0*/
   .prose > * {
     transition-duration: 1000ms !important;
   }
-
 /* To add some margin top when you click an anchor. So that it doesn't get hidden by the header */
   [id] {
     scroll-margin-top: 110px; /* Adjust this value as needed */
@@ -43,4 +22,14 @@ html { /* Smooth scrolling won't work anyway based on your OS and/or browser set
   .no-scrollbar {
     scrollbar-width: none;
     -ms-overflow-style: none;
+  }
+/* Adds 🔗 when you hover on titles */
+  .autolink-icon::after {
+    content: '🔗';
+    opacity: 0;  /* Initially hide the icon */
+    margin-left: 10px;  /* Adjust the spacing as needed */
+    transition: all 200ms ease-in-out !important;
+  }
+  .autolink-icon:hover::after {
+    opacity: 1;  /* Show the icon on hover */
   }
