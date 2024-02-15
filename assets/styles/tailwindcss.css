@@ -23,5 +23,8 @@
   .touch-none {
     touch-action: none;
   }
+  .pointer-events-all {
+    pointer-events: all;
+  }
 }
 

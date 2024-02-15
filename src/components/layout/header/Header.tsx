@@ -17,10 +17,10 @@ import {
 const Header = () => {
   // w-[250px] h-[70px] px-4 bg-gradient-to-r from-fuchsia-950 via-pink-800 to-rose-600 rounded-[84px] shadow border-blue-900 justify-between items-center inline-flex
   return (
-    <Headroom style={{ zIndex: "999"}} upTolerance={10} downTolerance={20}>
-    <header className=" w-full flexy sticky top-0">
-      <div className="border-2 border-rose-600 px-4 gap-12 flexy !h-[72px] max-w-fit mt-4 rounded-tl-[34px] rounded-br-[34px]">
-        <div className=" flex items-center justify-between px-4 gap-12 h-[64px] max-w-fit bg-[#1F014B] rounded-tl-[34px] rounded-br-[34px]">
+    <Headroom style={{ zIndex: "999"}} upTolerance={10} downTolerance={20} className="pointer-events-none">
+    <header className=" w-full flexy sticky top-0 ">
+      <div className=" border-2 border-rose-600 px-4 gap-12 flexy !h-[72px] max-w-fit mt-4 rounded-tl-[34px] rounded-br-[34px]">
+        <div className=" pointer-events-all flex items-center justify-between px-4 gap-12 h-[64px] max-w-fit bg-[#1F014B] rounded-tl-[34px] rounded-br-[34px]">
           <Link href={"/"}>
             <HeaderLogo color="text-primary_text_color" width={40} height={36} />
           </Link>

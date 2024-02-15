@@ -9,6 +9,7 @@ import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import {defaultProseSettings} from "./proseSettings"
+import rehypeSanitize from "rehype-sanitize"
 
 export async function getMdxComp(dir, fileWExtension) {
   const __filename = fileURLToPath(import.meta.url); // using directly __dirname on react server components yields unexpected behaviour. It should be the current directory were this file is, but it's not in rsc
@@ -39,20 +40,12 @@ export async function getMdxComp(dir, fileWExtension) {
           remarkGfm
         ];
         options.rehypePlugins = [...(options?.rehypePlugins ?? []),
-          // rehypeSanitize,
+          rehypeSanitize,
           rehypePrettyCode,
           rehypeSlug,
           [
             rehypeAutolinkHeadings, {
               behavior: 'wrap',
-              // group: (node) => {
-              //   return({
-              //     type: 'element',
-              //     tagName: 'div',
-              //     properties: { className: ['heading-w-link'] },
-              //     children: <h2>hi</h2>
-              //   })
-              // },
               headingProperties : {
                 class: 'f-w-link prose-a:no-underline',
               },
@@ -62,27 +55,10 @@ export async function getMdxComp(dir, fileWExtension) {
                   type: 'element',
                   tagName: node.tagName,
                   properties: { className: ['autolink-icon'] },
-                  children: [
-                    { 
-                      // type: 'text', 
-                      // value: node.children[0].value
-                      type: 'text', 
-                      value: node.children[0].value,
-                      // children: [{
-                      //   type: "div",
-                      //   value: 
-                      //   <div>
-                      //     <h2>2</h2>
-                      //     <h2>1</h2>
-                      //   </div>
-                      // }]
-                    }
-                    // ,{
-                    //   type: 'text', 
-                    //   tagName:"div",
-                    //   value: "#",
-                    // }
-                  ],
+                  children: [{ 
+                    type: 'text', 
+                    value: node.children[0].value,
+                  }],
                 })
               },
             }
