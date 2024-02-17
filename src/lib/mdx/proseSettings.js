@@ -4,7 +4,7 @@ export const defaultProseSettings = `
   prose 
   dark:prose-invert 
   
-  prose-a:text-[#9333ea] 
+  prose-a:!text-[#bb9af7]
   prose-a:dark:text-[hsl(271,91%,70%)]  
   prose-img:rounded-xs  
   prose-p:dark:text-[#D9D9D9]  

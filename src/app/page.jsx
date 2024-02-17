@@ -2,6 +2,7 @@ import Btn from "@/components/logic/Btn"
 import GetUpdatesComps from "@/components/logic/GetUpdatesComps"
 import SocialBTNs from "@/components/ui/SocialBTNs"
 import { getFrontmatterBySlug } from "@/lib/mdx/mdxManager"
+import { defaultProseSettings } from "@/lib/mdx/proseSettings"
 import Image from "next/image"
 import Link from "next/link"
 // TODO add <meta name="darkreader-lock"> metadata to disable dark reader in specific pages
@@ -16,11 +17,12 @@ export const metadata = {
 
 
 export default async function Home() {
-  const { frontmatter } = await getFrontmatterBySlug("just_work.mdx")
+  const { frontmatter } = await getFrontmatterBySlug("Finding You. Identity and Purpose beginner's guide.mdx")
+  console.log(`frontmatter:`, frontmatter)
   const wonderRoomPieceLink = "https://www.youtube.com/watch?v=TDqsr3MNTTc"
   const { udpateComps } = GetUpdatesComps(6)
   return (
-    <div className="sm:w-[1300px] max-w-none min-h-screen flex flex-col gap-[150px] lg:gap-[200px] prose prose-purple sm:prose-lg sm:prose-code:text-base prose-p:dark:text-[#D9D9D9]  prose-li:dark:text-[#D9D9D9] dark:prose-invert">
+    <div className={`sm:w-[1300px] !max-w-none min-h-screen flex flex-col gap-[150px] lg:gap-[200px] prose ${defaultProseSettings}`}>
       {/* Backgrounds */}
       <div className="flexy w-full h-full flex-col top-0 absolute items-start left-0 content-start ">
         <Image
@@ -73,46 +75,46 @@ export default async function Home() {
         </div>
       </section>
       {/* Bento UI (flexbox) */}
-      <section className="z-10 flexy text-base flex-col">
+      <section className="z-10 flexy text-base flex-col h-fit">
         <h2 className="tracking-[2.52px]">Featured</h2>
-        <div className="max-w-[1100px] h-full  pt-4 rounded-sm flex-col justify-start items-center gap-12 lg:gap-6 inline-flex">
-          <div className="w-full justify-center gap-12 lg:gap-6  inline-flex items-center md:items-start flex-col md:flex-row">
+        <div className="max-w-[1100px] w-full  pt-4 rounded-sm flex-col justify-start items-center gap-12 lg:gap-6 flex">
+          <div className="w-full justify-center gap-12 lg:gap-6  flex items-center md:items-start flex-col md:flex-row">
             {/* Current activities */}
-            <div className="max-w-[340px] h-full p-4 bg-indigo-950/60 border border-[#F91F5B]/80 rounded-sm flex-col items-center inline-flex">
-              <h3 className="!mb-4 !text-xl !mt-2 text-center">Some of my<br /><span><Link href={"current_activities"} className="text-center text-xl">Current Activities</Link></span></h3> {/*Current Endeavors or Current Activities*/}
+            <div className="max-w-[340px] h-full p-4 bg-[#1f014b] border border-[#F91F5B]/80 rounded-sm flex-col items-center flex">
+              <h3 className="!mb-4 !text-xl !mt-4 text-center flex flex-col gap-3">Some of my<br /><span className=""><Link href={"current_activities"} className="text-center text-xl "><span>Current Activities</span></Link></span></h3> {/*Current Endeavors or Current Activities*/}
               <ul className=" text-lg !mb-0">
                 <li>Upgrading this website to learn web development further</li>
-                <li>Sharing knowledge on <a href="https://twitter.com/edondigital">Twitter</a>, this website, and with whoever interested</li>
+                <li>Sharing knowledge on <a href="https://twitter.com/edondigital" className="">Twitter</a>, this website, and with whoever interested, (even on ds)</li>
                 <li>Learning how to write better in english</li>
-                <p>Last update: 28/Jan/2024</p>
+                <p>Last update: 17/Feb/2024</p>
               </ul>
               {/* <img className="w-[251px] h-[143px] rounded-sm border border-rose-600" src="https://via.placeholder.com/251x143" /> */}
             </div>
             {/* About */}
-            <div className="w-full h-full pt-4 bg-indigo-950/60 border border-[#F91F5B]/80 rounded-sm flex-col justify-center items-center inline-flex">
-                <div className="min-h-[60px] h-full w-full flexy !mb-4">
-                  <h3 className=" !my-0 px-4  !text-xl ">Illustrating most stuff <span><Link href={"about"} className="text-center text-xl">About</Link></span> me through images</h3>
+            <div className="w-full h-full pt-4 bg-[#1f014b] border border-[#F91F5B]/80 rounded-sm flex-col justify-center items-center flex">
+                <div className="!h-[64px] w-full flexy !my-4">
+                  <h3 className=" !my-0 px-4  !text-xl text-center">Illustrating most stuff <span><Link href={"about"} className="text-center text-xl"><span>About</span></Link></span> me through images</h3>
                 </div>
-                <img className="w-full h-full !my-0 rounded-sm" src="assets/routes_specific/home/biophotophy.png" />
+                <img className="w-full h-full !my-0 rounded-sm object-cover" src="assets/routes_specific/home/biophotophy.png" />
             </div>
           </div>
-          <div className="w-full md:w-[600px] lg:w-full gap-12 lg:gap-6 inline-flex items-center lg:items-start flex-col lg:flex-row">
+          <div className="w-full !min-h-fit md:w-[600px] lg:w-full gap-12 lg:gap-6 flex items-center lg:items-start flex-col lg:flex-row">
             {/* Blog */}
-            <div className="w-full h-full lg:pb-4 lg:max-h-[286px] justify-between items-center flex-col lg:flex-row lg:p-4 lg:pr-0 bg-indigo-950/60 border border-[#F91F5B]/80 rounded-sm gap-6 flex overflow-hidden ">
-              <div className="flex flex-col p-4 lg:p-0 !pb-0 w-full">
-                <h3 className="!text-xl !mt-0 lg:!mt-6">From the <span><Link href={"blog"} className="text-xl">Blog</Link></span></h3>
-                <h4 className="font-semibold text-[20px]">{frontmatter.title}</h4>
-                <p className="!mb-0 text-lg">{frontmatter.description}</p>
-                <span className="flex flex-wrap gap-x-8 gap-y-1 my-4"><address>Author: {frontmatter.authors}</address><time>{frontmatter.publishDate}</time><span>{frontmatter.readingTime}</span></span>
+            <div className="w-full h-fit gap-6 lg:max-h-[320px] justify-between items-center flex-col lg:flex-row lg:p-4 lg:pr-0 bg-[#1f014b] border border-[#F91F5B]/80 rounded-sm  flex ">
+              <div className="flex !h-fit flex-col p-4 lg:p-0 !pb-0 w-full ">
+                <h3 className="!text-xl !mt-4 inline-block">From the <span><Link href={"blog"} className="text-xl"><span>Blog</span></Link></span></h3>
+                <h4 className="font-semibold text-[20px] "><a href={"blog/" + frontmatter.slug} className="!no-underline"><span className="!no-underline !text-primary_text_color">{frontmatter.title}</span></a></h4>
+                <p className="!mb-0 text-lg ">{frontmatter.description}</p>
+                <span className="flex flex-wrap gap-x-8 gap-y-1 my-4 "><address>Author: {frontmatter.authors}</address><time>{frontmatter.publishDate}</time><span>{frontmatter.readingTime}</span></span>
               </div>
-              <div className="flexy flex-col w-full items-center">
-                <img className="not-prose !w-full  lg:rounded-r-[0] max-w-[370px] lg:mr-[-16px] max-h-[208px] !mx-0 ml-[38px] rounded-sm border border-rose-600" src={"/assets/routes_specific/blog/" + frontmatter.thumbnail} />
-              </div>
+              <a className="flexy flex-col w-full items-center" href={"blog/" + frontmatter.slug}>
+                <img className="h-full object-cover not-prose sm:rounded-b-[0] lg:rounded-bl-sm !w-full  lg:rounded-r-[0] max-w-[370px] lg:mr-[-16px] lg:max-h-[208px] !mx-0 ml-[38px] rounded-sm border border-rose-600" src={"/assets/routes_specific/blog/" + frontmatter.thumbnail} />
+              </a>
             </div>
             {/* Wonder room */}
-            <div className="max-w-[340px] gap-12 lg:gap-6 w-full h-full justify-between max-h-[286px] pt-4 bg-indigo-950/60 border border-[#F91F5B]/80 rounded-sm flex-col items-center inline-flex">
+            <div className="max-w-[340px] gap-6 lg:gap-6 w-full h-full justify-between max-h-[320px] pt-4 bg-[#1f014b] border border-[#F91F5B]/80 rounded-sm flex-col items-center flex">
               <div className="flexy flex-col">
-                <h3 className="!mt-0 !text-xl px-4 text-center">A piece of my <span><Link href={"wonder_room"} className="text-xl">Wonder room</Link></span></h3>
+                <h3 className="!mt-4 !text-xl px-4 text-center">A piece of my <span><Link href={"wonder_room"} className="text-xl"><span>Wonder room</span></Link></span></h3>
                 <a href={wonderRoomPieceLink} className="font-semibold !mb-0 text-lg text-center px-4 w-full">What's a digital garden?</a>
               </div>
               <a href={wonderRoomPieceLink} className="w-full">
@@ -120,7 +122,7 @@ export default async function Home() {
                   src="/assets/routes_specific/home/nodes_network.jpg"
                   width={1920}
                   height={1080}
-                  className=" object-cover not-prose w-full max-h-[160px] transition-none z-0 rounded-sm"
+                  className="border-[#F91F5B]/80 border object-cover not-prose w-full max-h-[160px] transition-none z-0 rounded-sm"
                   alt="logo"
                   priority={true}
                 />
@@ -132,7 +134,7 @@ export default async function Home() {
       {/* Updates */}
       <section className="z-10 max-w-none text-primary_text_color w-full flexy flex-col gap-4">
         <h2 className=" text-primary_text_color tracking-[2.52px]">Updates</h2>
-          <div className=" flexy text-lg  w-full h-full max-w-[700px] p-4 bg-neutral-900 bg-opacity-60 rounded-t-[20px] rounded-b-[4px] border-b-4 border-rose-600 flex-col justify-start items-start gap-2 flex">
+          <div className=" flexy text-lg  w-full h-full max-w-[700px] p-4 bg-[#1f014b] no-scrollbar rounded-t-[20px] rounded-b-[4px] border-b-4 border-rose-600 flex-col justify-start items-start gap-2 flex">
             <div className="w-full min-h-full max-h-[600px] max-w-[700px] lg:overscroll-contain overflow-y-auto pr-4 overflow-x-hidden flex-col justify-start items-start flex">
               {udpateComps.map((updateComp, index) => (
                 <div key={index}>
@@ -144,32 +146,32 @@ export default async function Home() {
         {/* <Link href={""} className="!mt-2">See full log</Link> */}
       </section>
       {/* Last sentence */}
-      <section className="z-10">
-        <div className="top-4 flex px-4 flex-col justify-center items-center text-center z-10 bg-indigo-950/60 border border-[#F91F5B]/80 rounded-sm py-12">
-          <h2 className="lg:!leading-[70px]  !mt-0 text-lg  lg:!text-[50px]"><Link href={"contact"}>Contact</Link> me from anywhere and<br />I'll be happy to have a chat!</h2>
+      <section className="z-10 not-prose">
+        <div className="top-4 flex px-4 flex-col justify-center items-center text-center z-10 bg-[#1f014b] border-x border-[#F91F5B]/80 rounded-sm py-12">
+          <h2 className="lg:!leading-[70px] !mt-0 text-xl ss:text-[30px] mb-6 leading-[44px] lg:!text-[50px]"><Link href={"contact"}><span>Contact</span></Link> me from anywhere and<br />I'll be happy to have a chat!</h2>
           <div className="flexy w-full prose-p:h-5 flex-col xs:flex-row gap-8 xs:gap-10">
-            <div className="flex items-center xs:items-start flex-col gap-4 justify-center text-left">
-              <div className="flexy gap-4 flex-col ss:flex-row">
+            <div className="flex items-center xs:items-start flex-col gap-8 justify-center text-left">
+              <div className="flexy gap-8 flex-col ss:flex-row">
                 <SocialBTNs />
-                <a href="https://www.skool.com/@leof-dopp-8139">Skool</a>
+                <a href="https://www.skool.com/@leof-dopp-8139" className="underline text-[#bb9af7]">Skool</a>
               </div>
-              <a className=" flex-col sm:flex-row flex gap-8 items-center text-primary_text_color no-underline">
+              <a className="!text-primary_text_color flex-col sm:flex-row flex gap-8 items-center no-underline">
                 <div className="flexy gap-2">
                   <svg className="!text-[40px]" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02M8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12m6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12"/></svg>
                   Username: edondigital
                 </div>
                 <div className="flex gap-8 flex-col sm:flex-row">
                   <Btn classContainer="!mr-0" href="https://discord.gg/2WURnSNg"><div className="flexy w-full text-center !no-underline !text-primary_text_color">Join the server</div></Btn>
-                  <span className="text-center">(very much a work in progress)</span>
+                  <span className="text-center ">(very much a work in progress)</span>
                 </div>
               </a>
-              <a href="mailto:edondigital@gmail.com" className=" flex gap-2 items-center text-primary_text_color flex-col ss:flex-row ">
+              <a href="mailto:edondigital@gmail.com" className="!text-primary_text_color flex gap-2 items-center flex-col ss:flex-row ">
                 <svg className="!text-[40px]" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0z"/><path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0z"/></g></svg>
                 edondigital@gmail.com
               </a>
             </div>
           </div>
-          <div className=" max-w-prose mt-4">
+          <div className=" max-w-prose mt-8">
             <p>Criticism and feedback is always embraced.</p>
           </div>
         </div>

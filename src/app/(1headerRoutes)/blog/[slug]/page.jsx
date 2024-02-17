@@ -14,9 +14,9 @@ const Page = async ({ params }) => {
   const { frontmatter } = await getFrontmatterBySlug(params.slug)
   const { TOCComponent } = await getTOCComponentFromSlug(params.slug)
   const Component = await getMdxComp("blog", params.slug)
-
+// b56dd5
   return (
-    <section className={`flexy !items-start gap-20 h-fit !max-w-full w-full prose prose-purple ${defaultProseSettings} `}>
+    <section className={`flexy !items-start gap-20 h-fit !max-w-full w-full prose ${defaultProseSettings}`}>
       <div className="absolute right-[45px] top-[120px] max-w-[390px] w-full h-full hidden sl:block pb-[320px]">
         {/* shadow-violet-500 shadow-[0_10px_10px_-10px] custom-shadow*/}
         <div className="sticky top-[90px]  pb-4 overflow-x-hidden  w-full overflow-scroll no-scrollbar overscroll-contain "><TOCComponent platform={"desktop"} /></div>
@@ -29,7 +29,7 @@ const Page = async ({ params }) => {
             </div>
           </div>
           <span className="flex flex-wrap gap-x-8 gap-y-1 mb-4"><address>{frontmatter.authors}</address><time>{frontmatter.publishDate}</time><span>{frontmatter.readingTime}</span></span>
-          <h1 className="">{frontmatter.title}</h1>
+          <h1 className="text-bold-gradient">{frontmatter.title}</h1>
           <div className="lead text-primary_text_color">{frontmatter.description}</div>
           <div className="sl:hidden"><TOCComponent platform={"mobile"} open={false} /></div>
         </div>

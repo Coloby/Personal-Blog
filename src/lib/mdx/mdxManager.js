@@ -79,7 +79,7 @@ export const getTOCComponentFromSlug = async (fileNameWExt) => {
                     return (
                       <div key={header.id}>
                         {
-                          headerLevel === 2 && i > 0 ? <hr key={`divider-${i}`} className="w-[90%] border-[#374151] rounded-xs !my-5" />
+                          headerLevel === 2 && i > 0 ? <hr key={`divider-${i}`} className="w-[90%] rounded-xs !my-5" />
                           : ""
                         }
                         <li  className={headerVariants[platform][headerLevel] + `not-prose mt-0 !list-none ${headerLevel === 2 ? "!mb-5 !mt-5" : headerLevel === 3 ? "!mb-4 !mt-4" : "!mb-2 !mt-2"}`}>

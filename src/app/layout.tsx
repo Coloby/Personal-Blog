@@ -3,9 +3,14 @@
 import "@/styles/global.css"
 import "@/styles/structural/marquee.css"
 import "@/styles/structural/resetStyle.css"
-import "@/styles/structural/themeColors.css"
-import "@/styles/structural/themeModes.css"
 import "@/styles/tailwindcss.css"
+
+import "@/styles/structural/colors/themeColors.css"
+import "@/styles/structural/colors/themeModes.css"
+import "@/styles/structural/colors/textColors.css"
+
+// import "@/styles/structural/lib/rehypePrettyCode.css"
+// import "@/styles/structural/lib/shadcnStuff.css"
 
 import { useAtom } from "jotai"
 import { Inter as interFont } from "next/font/google"
@@ -15,7 +20,6 @@ import Footer from "@/components/layout/Footer"
 import Header from "@/components/layout/header/Header"
 import ScrollToTopBtn from "@/components/logic/ScrollToTopBtn"
 import { themeModeAtom } from "@/stores/AtomStore"
-import Image from "next/image"
 
 const inter = interFont({ subsets : ["latin"] })
 
