@@ -18,7 +18,6 @@ export const metadata = {
 
 export default async function Home() {
   const { frontmatter } = await getFrontmatterBySlug("Finding You. Identity and Purpose beginner's guide.mdx")
-  console.log(`frontmatter:`, frontmatter)
   const wonderRoomPieceLink = "https://www.youtube.com/watch?v=TDqsr3MNTTc"
   const { udpateComps } = GetUpdatesComps(6)
   return (
@@ -81,10 +80,10 @@ export default async function Home() {
           <div className="w-full justify-center gap-12 lg:gap-6  flex items-center md:items-start flex-col md:flex-row">
             {/* Current activities */}
             <div className="max-w-[340px] h-full p-4 bg-[#1f014b] border border-[#F91F5B]/80 rounded-sm flex-col items-center flex">
-              <h3 className="!mb-4 !text-xl !mt-4 text-center flex flex-col gap-3">Some of my<br /><span className=""><Link href={"current_activities"} className="text-center text-xl "><span>Current Activities</span></Link></span></h3> {/*Current Endeavors or Current Activities*/}
+              <h3 className="!mb-4 !text-xl !mt-4 text-center flex flex-col gap-3">Some of the<br /><span className="">stuff I'm up to <Link href={"/now"} className="text-center text-xl "><span>Now</span></Link></span></h3> {/*Current Endeavors or Current Activities*/}
               <ul className=" text-lg !mb-0">
                 <li>Upgrading this website to learn web development further</li>
-                <li>Sharing knowledge on <a href="https://twitter.com/edondigital" className="">Twitter</a>, this website, and with whoever interested, (even on ds)</li>
+                <li>Sharing knowledge on <a href="https://twitter.com/edondigital" className="">Twitter</a>, this website, and with whoever interested, (even on <a href="https://discord.gg/QyeNQPa3tY">ds</a>)</li>
                 <li>Learning how to write better in english</li>
                 <p>Last update: 17/Feb/2024</p>
               </ul>
@@ -161,7 +160,7 @@ export default async function Home() {
                   Username: edondigital
                 </div>
                 <div className="flex gap-8 flex-col sm:flex-row">
-                  <Btn classContainer="!mr-0" href="https://discord.gg/2WURnSNg"><div className="flexy w-full text-center !no-underline !text-primary_text_color">Join the server</div></Btn>
+                  <Btn classContainer="!mr-0" href="https://discord.gg/QyeNQPa3tY"><div className="flexy w-full text-center !no-underline !text-primary_text_color">Join the server</div></Btn>
                   <span className="text-center ">(very much a work in progress)</span>
                 </div>
               </a>

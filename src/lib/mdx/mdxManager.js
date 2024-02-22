@@ -10,7 +10,7 @@ import { useUnifiedPipeline } from "./unifiedPipeline";
 
 
 export const getRawMdxBySlug = async (dir, fileNameWExt) => {
-  const contentRootDir = path.join(process.cwd(), 'assets', 'content', "route_specific_mdx", dir)
+  const contentRootDir = path.join(process.cwd(), 'assets', 'content', "route_specific_mdx", "header_routes", dir)
   const fileNameNoExt = fileNameWExt.replace(/\.mdx$/, '')
   const completeFilePath = path.join(contentRootDir, `${fileNameNoExt.replace(/%20/g, ' ')}.mdx`) // .replace adds support for files with spaces and &
 
@@ -33,7 +33,7 @@ export const getFrontmatterBySlug = async (fileNameWExt, index) => {
 }
 
 export const getAllArticlesFrontmatter = async () => {
-  const contentRootDir = path.join(process.cwd(), 'assets', 'content', "route_specific_mdx", "blog")
+  const contentRootDir = path.join(process.cwd(), 'assets', 'content', "route_specific_mdx", "header_routes", "blog")
   const mdxPosts = fs.readdirSync(contentRootDir)
   let posts = []
   let i = 0
@@ -82,7 +82,7 @@ export const getTOCComponentFromSlug = async (fileNameWExt) => {
                           headerLevel === 2 && i > 0 ? <hr key={`divider-${i}`} className="w-[90%] rounded-xs !my-5" />
                           : ""
                         }
-                        <li  className={headerVariants[platform][headerLevel] + `not-prose mt-0 !list-none ${headerLevel === 2 ? "!mb-5 !mt-5" : headerLevel === 3 ? "!mb-4 !mt-4" : "!mb-2 !mt-2"}`}>
+                        <li className={headerVariants[platform][headerLevel] + `not-prose mt-0 !list-none ${headerLevel === 2 ? "!mb-5 !mt-5" : headerLevel === 3 ? "!mb-4 !mt-4" : "!mb-2 !mt-2"}`}>
                           <a href={`#${header.id}`} className=" text-primary_text_color/90 hover:underline hover:text-primary_text_color">
                             {header.text.slice(1)}
                           </a>

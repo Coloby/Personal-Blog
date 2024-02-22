@@ -13,7 +13,7 @@ export async function generateStaticParams() { // build static routes for every 
 const Page = async ({ params }) => {
   const { frontmatter } = await getFrontmatterBySlug(params.slug)
   const { TOCComponent } = await getTOCComponentFromSlug(params.slug)
-  const Component = await getMdxComp("blog", params.slug)
+  const Component = await getMdxComp("header_routes/blog", params.slug)
 // b56dd5
   return (
     <section className={`flexy !items-start gap-20 h-fit !max-w-full w-full prose ${defaultProseSettings}`}>

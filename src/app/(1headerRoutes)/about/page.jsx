@@ -2,9 +2,9 @@ import { getMdxComp } from "@/lib/mdx/getMdxComp"
 import Image from "next/image"
 
 const page = async () => {
-  const MainBioComp = await getMdxComp("about", "main_bio.mdx")
-  const FAQ = await getMdxComp("about", "faq.mdx")
-  const OtherSmallerThings = await getMdxComp("about", "other_smaller_things.mdx")
+  const MainBioComp = await getMdxComp("header_routes/about", "main_bio.mdx")
+  const FAQ = await getMdxComp("header_routes/about", "faq.mdx")
+  const OtherSmallerThings = await getMdxComp("header_routes/about", "other_smaller_things.mdx")
   return (
     <div className="prose prose-h2:text-primary_text_color !w-full !max-w-full flexy flex-col gap-20 h-full overflow-hidden">
       {/* Backgrounds */}
