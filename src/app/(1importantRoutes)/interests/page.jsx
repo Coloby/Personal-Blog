@@ -3,7 +3,18 @@ import BigBtn from "../../../components/logic/BigBtn"
 import { getMdxComp } from "@/lib/mdx/getMdxComp"
 import Pea from "../../../components/clientComps/Pea"
 
-export async function getInterests() { 
+
+const page = async ({ params }) => {
+  const interests = await getInterests()
+  
+  return (
+    <Pea >
+      {interests}
+    </Pea>
+  )
+}
+
+async function getInterests() { 
   const interests = {
     Programming: (await getMdxComp("important_routes/interests", "programming.mdx"))(),
     ContentCreation: (await getMdxComp("important_routes/interests", "content_creation.mdx"))(),
@@ -14,16 +25,6 @@ export async function getInterests() {
   };
 
   return interests;
-}
-
-const page = async ({ params }) => {
-  const interests = await getInterests()
-  
-  return (
-    <Pea >
-      {interests}
-    </Pea>
-  )
 }
 
 export default page
