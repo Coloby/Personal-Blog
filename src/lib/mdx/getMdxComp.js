@@ -50,7 +50,6 @@ export async function getMdxComp(dir, fileWExtension) {
                 class: 'f-w-link prose-a:no-underline',
               },
               content: (node) => {
-                console.log(`node:`, node)
                 return ({
                   type: 'element',
                   tagName: node.tagName,

@@ -5,7 +5,7 @@
   - $
     - $Wonder room
     - $interests
-    - $current activities
+    - $now
     - $projects
     - $full-updates-log 
 - Footer routes

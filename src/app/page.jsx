@@ -1,6 +1,7 @@
 import Btn from "@/components/logic/Btn"
 import GetUpdatesComps from "@/components/logic/GetUpdatesComps"
 import SocialBTNs from "@/components/ui/SocialBTNs"
+import { getMdxComp } from "@/lib/mdx/getMdxComp"
 import { getFrontmatterBySlug } from "@/lib/mdx/mdxManager"
 import { defaultProseSettings } from "@/lib/mdx/proseSettings"
 import Image from "next/image"
@@ -20,6 +21,7 @@ export default async function Home() {
   const { frontmatter } = await getFrontmatterBySlug("Finding You. Identity and Purpose beginner's guide.mdx")
   const wonderRoomPieceLink = "https://www.youtube.com/watch?v=TDqsr3MNTTc"
   const { udpateComps } = GetUpdatesComps(6)
+  const NowOverviewComp =  await getMdxComp("header_routes/root", `now_overview.mdx`)
   return (
     <div className={`sm:w-[1300px] !max-w-none min-h-screen flex flex-col gap-[150px] lg:gap-[200px] prose ${defaultProseSettings}`}>
       {/* Backgrounds */}
@@ -78,14 +80,11 @@ export default async function Home() {
         <h2 className="tracking-[2.52px]">Featured</h2>
         <div className="max-w-[1100px] w-full  pt-4 rounded-sm flex-col justify-start items-center gap-12 lg:gap-6 flex">
           <div className="w-full justify-center gap-12 lg:gap-6  flex items-center md:items-start flex-col md:flex-row">
-            {/* Current activities */}
+            {/* Now */}
             <div className="max-w-[340px] h-full p-4 bg-[#1f014b] border border-[#F91F5B]/80 rounded-sm flex-col items-center flex">
-              <h3 className="!mb-4 !text-xl !mt-4 text-center flex flex-col gap-3">Some of the<br /><span className="">stuff I'm up to <Link href={"/now"} className="text-center text-xl "><span>Now</span></Link></span></h3> {/*Current Endeavors or Current Activities*/}
+              <h3 className="!mb-4 !text-xl !mt-4 text-center flex flex-col gap-3">Some of the<br /><span className="">stuff I'm up to <Link href={"/now"} className="text-center text-xl "><span>Now</span></Link></span></h3>
               <ul className=" text-lg !mb-0">
-                <li>Upgrading this website to learn web development further</li>
-                <li>Sharing knowledge on <a href="https://twitter.com/edondigital" className="">Twitter</a>, this website, and with whoever interested, (even on <a href="https://discord.gg/QyeNQPa3tY">ds</a>)</li>
-                <li>Learning how to write better in english</li>
-                <p>Last update: 17/Feb/2024</p>
+                <NowOverviewComp />
               </ul>
               {/* <img className="w-[251px] h-[143px] rounded-sm border border-rose-600" src="https://via.placeholder.com/251x143" /> */}
             </div>
