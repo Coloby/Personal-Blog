@@ -56,7 +56,7 @@ export const getTOCComponentFromSlug = async (fileNameWExt) => {
       <nav className="">
         <Accordion type="single" collapsible defaultValue={"item-"+open}>
           <AccordionItem value={`item-${open && true}`}>
-            <AccordionTrigger><div className="text-xl sticky top-0">Table of contents</div></AccordionTrigger>
+            <AccordionTrigger><div className="text-xl sticky top-0 not-prose !mt-0">Table of contents</div></AccordionTrigger>
             <AccordionContent>
               <div className={`${platform === "desktop" ? "max-h-[700px] h-fit overflow-scroll no-scrollbar overscroll-contain" : ""}`}>
                 <ul className="space-y-2 not-prose !list-disc ">

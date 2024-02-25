@@ -1,6 +1,14 @@
+import FontOptionsBtn from "@/components/logic/settings/FontOptionsBtn";
+import TextDecorationsBtn from "@/components/logic/settings/TextDecorationsBtn";
 import { getAllArticlesFrontmatter, getFrontmatterBySlug, getTOCComponentFromSlug } from '@/lib/mdx/mdxManager';
-import { getMdxComp } from "../../../../lib/mdx/getMdxComp";
 import { defaultProseSettings } from "@/lib/mdx/proseSettings";
+import { getMdxComp } from "../../../../lib/mdx/getMdxComp";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/shadcn-ui/accordion"
 
 export async function generateStaticParams() { // build static routes for every mdx article https://nextjs.org/docs/app/api-reference/functions/generate-static-params
   const posts = await getAllArticlesFrontmatter()
@@ -14,10 +22,31 @@ const Page = async ({ params }) => {
   const { frontmatter } = await getFrontmatterBySlug(params.slug)
   const { TOCComponent } = await getTOCComponentFromSlug(params.slug)
   const Component = await getMdxComp("header_routes/blog", params.slug)
-// b56dd5
   return (
-    <section className={`flexy !items-start gap-20 h-fit !max-w-full w-full prose ${defaultProseSettings}`}>
-      <div className="absolute right-[45px] top-[120px] max-w-[390px] w-full h-full hidden sl:block pb-[320px]">
+    <section className={`flexy !items-start gap-20 h-fit pb-8 !max-w-full w-full prose ${defaultProseSettings}`}>
+      {/* TODO zen mode: hides everything apart from the text */}
+      <div className="absolute right-[1470px] top-[160px] max-w-[390px] w-fit h-full flex justify-end !items-start sl:block pb-[320px]">
+        <div className="!sticky top-[120px] left-[-1150px] flex flex-col !items-end !justify-end gap-4 settings-btn">
+          <Accordion type="single" collapsible defaultValue="de">
+            <AccordionItem value="ded">
+              <AccordionTrigger>
+                <div>
+                  <div className="p-2 border-rose-600 border bg-[#1f014b] rounded-xs w-fit">
+                    <svg className=" text-primary_text_color text-[36px]" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"><path d="M20 7h-9m3 10H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></g></svg>
+                  </div>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>
+                <div className="flex flex-col gap-4">
+                  <FontOptionsBtn />
+                  <TextDecorationsBtn />
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+      </div>
+      <div className="absolute right-[45px] top-[120px] max-w-[390px] w-full h-full sl:block pb-[320px] !items-start">
         {/* shadow-violet-500 shadow-[0_10px_10px_-10px] custom-shadow*/}
         <div className="sticky top-[90px]  pb-4 overflow-x-hidden  w-full overflow-scroll no-scrollbar overscroll-contain "><TOCComponent platform={"desktop"} /></div>
       </div>

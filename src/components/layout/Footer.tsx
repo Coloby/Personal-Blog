@@ -3,7 +3,7 @@ import Link from "next/link"
 
 const Footer = () => {
   return (
-    <footer className="px-[16px] flex-col sm:flex-row text-center !items-start h-fit z-20 bg-footer_shade w-full flexy !absolute bottom-[-168px] sm:bottom-[-120px] gap-16 py-8">
+    <footer className="px-[16px] flex-col sm:flex-row text-center !items-start h-fit z-20 bg-[#0d0519] border-t border-t-rose-600 w-full flexy !absolute bottom-[-168px] sm:bottom-[-140px] gap-16 py-8">
       <Link href="/credits" className="w-full sm:w-fit">Credits</Link>
       <div className="flexy !flex-col gap-3 w-full sm:w-fit">
         <p>Open source!</p>

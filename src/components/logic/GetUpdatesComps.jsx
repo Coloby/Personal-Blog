@@ -23,6 +23,11 @@ const GetUpdatesComps = (entriesNum) => {
     //   author: "Ed"
     // },
     {
+      date: "24/Feb/2024",
+      text: `Yes, I published the article. I have many more ideas in mind, but the development of the website is a priority. I made /now and /interests pages just recently :) + reading experience in the blog has been enhanced.`,
+      author: "Ed"
+    },
+    {
       date: "07/Feb/2024",
       text: `I know that I still have not published a single article, but the developer side of me is dominant at the moment. If everything goes "as planned" tomorrow I should publish my first little article!`,
       author: "Ed"

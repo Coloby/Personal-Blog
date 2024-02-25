@@ -1,11 +1,11 @@
 /* adding those cause + 9kb of css even though it's all commented (in dev enviroment. When I build I can't see any differences) */
 /* this file is not linked anywhere and won't be unless strictly needed */
-/* @tailwind base; 
+@tailwind base; 
 @tailwind components;
-@tailwind utilities; */
+@tailwind utilities;
 
 @layer base { /* , shadcn */
-  /* :root {
+  :root {
     --background: 0 0% 100%;
     --foreground: 222.2 47.4% 11.2%;
  
@@ -69,15 +69,15 @@
     --ring: 216 34% 17%;
  
     --radius: 0.5rem;
-  } */
+  }
 }
 
 @layer base { /* , shadcn */
-  /* * {
+  * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
-  } */
+  }
 }

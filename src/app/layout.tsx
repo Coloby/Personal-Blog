@@ -28,7 +28,7 @@ export default function RootLayout({ children } : { children: React.ReactNode}) 
   const [themeMode, setThemeMode] = useAtom(themeModeAtom)
   
   return (
-    <html className={`${themeColor}-theme-color ${themeMode}-theme-mode ${themeMode} overflow-x-hidden `} lang="en" > 
+    <html className={`${themeColor}-theme-color ${themeMode}-theme-mode ${themeMode} overflow-x-hidden bg-[#0d0519] `} lang="en" > 
       <body className={`${inter.className} ${process.env.NODE_ENV === "development" ? "debug-screens" : ""}`}>
         <div className={`bg-body_shade  ss:h-auto text-primary_text_color transition-colors duration-1000 relative `}>
           <Header />
