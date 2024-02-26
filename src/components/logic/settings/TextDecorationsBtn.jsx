@@ -1,39 +1,14 @@
 "use client"
 
 import { Switch } from "@/components/shadcn-ui/ui/switch"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
+import { handleCheck } from "./SettingsAccordionBtn"
 
 const TextDecorationsBtn = () => {
-  const handleCheck = (isActive) => {
-    console.log(`isActive:`, isActive)
-    const links = document.querySelectorAll("article a")
-    const italics = document.querySelectorAll("article em")
-    const bolds = document.querySelectorAll("article strong")
-    if (!isActive) {
-      // links.forEach((link) => {
-      //   link.classList.add("!text-primary_text_color", "prose-a:!text-primary_text_color")
-      // })
-      italics.forEach((italic) => {
-        italic.classList.add("!text-primary_text_color", "prose-em::!text-primary_text_color");
-      });
-      bolds.forEach((bold) => {
-        bold.classList.add("!text-primary_text_color", "prose-strong::!text-primary_text_color");
-      });
-    } else {
-      italics.forEach((italic) => {
-        italic.classList.remove("!text-primary_text_color", "prose-em::!text-primary_text_color");
-      });
-      bolds.forEach((bold) => {
-        bold.classList.remove("!text-primary_text_color", "prose-strong::!text-primary_text_color");
-      });
-    }
-    localStorage.setItem('isActive', isActive);
-  }
+  
 
   useEffect(() => {
-    if (localStorage.getItem('isActive')) {
-      handleCheck(localStorage.getItem('isActive') === 'true')
-    }
+    handleCheck(localStorage.getItem('isActive') === 'true')
   }, [])
 
   return (

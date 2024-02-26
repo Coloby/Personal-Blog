@@ -16,7 +16,7 @@ const page = () => {
       </div>
       <div className="flex items-center justify-center gap-4 flex-col">
         <Image
-          src="/assets/nodes_network.jpg"
+          src="/assets/routes_specific/home/nodes_network.jpg"
           width={1920}
           height={1080}
           className=" object-cover not-prose max-h-[400px] max-w-[400px] transition-none z-0 w-screen"

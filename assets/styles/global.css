@@ -6,6 +6,10 @@ html { /* Smooth scrolling won't work anyway based on your OS and/or browser set
   .prose > * {
     transition-duration: 1000ms !important;
   }
+/* I don't want animations on text */
+  .prose .mdx-comp > * {
+    transition-duration: 0ms !important;
+  }
 /* Adds some margin top when you click an anchor. So that it doesn't get hidden by the header */
   [id] {
     scroll-margin-top: 110px; /* Adjust this value as needed */

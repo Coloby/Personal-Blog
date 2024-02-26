@@ -1,28 +1,16 @@
 "use client"
-import { Input } from "@/components/shadcn-ui/ui/input"
 import { Slider } from "@/components/shadcn-ui/ui/slider"
 import { useEffect, useState } from "react"
+import { handleOnCHange } from "./SettingsAccordionBtn"
 
 
 const FontOptionsBtn = () => {
   const [fontSize, setFontSize] = useState(localStorage.getItem('fontSize') || 18)
-  const handleOnCHange = (fontSize) => {
-    const paragraphs = document.querySelectorAll("article p")
-    const lis = document.querySelectorAll("article li")
-    paragraphs.forEach((paragraph) => {
-      paragraph.style.fontSize = `${fontSize}px`;
-    });
-    lis.forEach((li) => {
-      li.style.fontSize = `${fontSize}px`;
-    });
-    localStorage.setItem('fontSize', fontSize);
-    setFontSize(fontSize)
-  }
+  
   
   useEffect(() => {
-    if (localStorage.getItem('fontSize')) {
-      handleOnCHange(localStorage.getItem('fontSize'))
-    }
+    handleOnCHange(localStorage.getItem('fontSize'))
+    setFontSize(localStorage.getItem('fontSize') || 18)
   },[])
 
   return (
@@ -34,8 +22,11 @@ const FontOptionsBtn = () => {
         </div>
         <div className="w-full h-[20px] ">
           <Slider className="w-full" type="number"
-            defaultValue={[fontSize]} max={40} step={1}
-            onValueChange={(e) => {handleOnCHange(e[0])}}
+            defaultValue={[fontSize]} max={40} min={6} step={1}
+            onValueChange={(e) => {
+              handleOnCHange(e[0])
+              setFontSize(e[0])
+            }}
           />
         </div>
       </div>

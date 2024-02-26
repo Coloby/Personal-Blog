@@ -72,7 +72,7 @@ export async function getMdxComp(dir, fileWExtension) {
     
     function Comp() {
       return (
-        <div className={`${defaultProseSettings}`}>
+        <div className={`${defaultProseSettings} mdx-comp`}>
          <Component />
         </div>
       )
