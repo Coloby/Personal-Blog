@@ -25,9 +25,9 @@ const Page = async ({ params }) => {
           
         </div>
       </div>
-      <div className="absolute right-[45px] top-[120px] max-w-[390px] w-full h-full sl:block pb-[320px] !items-start">
+      <div className="absolute right-[45px] top-[120px] max-w-[390px] w-full h-full hidden sl:block pb-[320px] !items-start">
         {/* shadow-violet-500 shadow-[0_10px_10px_-10px] custom-shadow*/}
-        <div className="sticky top-[90px]  pb-4 overflow-x-hidden  w-full overflow-scroll no-scrollbar overscroll-contain "><TOCComponent platform={"desktop"} /></div>
+        <div className="sticky top-[90px]  pb-4 overflow-x-hidden hidden sl:block  w-full overflow-scroll no-scrollbar overscroll-contain "><TOCComponent platform={"desktop"} /></div>
       </div>
       <article className="w-full max-w-prose">
         <div className="w-full">
