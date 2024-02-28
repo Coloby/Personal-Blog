@@ -5,8 +5,6 @@ import { useEffect } from "react"
 import { handleCheck } from "./SettingsAccordionBtn"
 
 const TextDecorationsBtn = () => {
-  
-
   useEffect(() => {
     handleCheck(localStorage.getItem('isActive') === 'true')
   }, [])
@@ -18,7 +16,7 @@ const TextDecorationsBtn = () => {
         <div className="flexy !justify-between w-full">
           <div className="flexy gap-auto not-prose text-lg">Text decorations</div>
           <span className="flexy">
-            <Switch defaultChecked={localStorage.getItem('isActive') === "true"} onCheckedChange={(e) => handleCheck(e)} />
+            <Switch defaultChecked={localStorage.getItem('isActive') ? localStorage.getItem('isActive') === 'true' : "true"} onCheckedChange={(e) => handleCheck(e)} />
           </span>
         </div>
       </div>

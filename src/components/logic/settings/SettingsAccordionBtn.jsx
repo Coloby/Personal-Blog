@@ -49,8 +49,8 @@ export const handleCheck = (isActive) => {
 
 const SettingsAccordionBtn = () => {
   useEffect(() => {
-    handleCheck(localStorage.getItem('isActive') === 'true')
-    handleOnCHange(localStorage.getItem('fontSize'))
+    handleCheck(localStorage.getItem('isActive') ? localStorage.getItem('isActive') === 'true' : "true")
+    handleOnCHange(localStorage.getItem('fontSize') ? localStorage.getItem('fontSize') : 18)
   }, [])
   
   return (<>

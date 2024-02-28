@@ -7,11 +7,10 @@ import { handleOnCHange } from "./SettingsAccordionBtn"
 const FontOptionsBtn = () => {
   const [fontSize, setFontSize] = useState(localStorage.getItem('fontSize') || 18)
   
-  
   useEffect(() => {
-    handleOnCHange(localStorage.getItem('fontSize'))
-    setFontSize(localStorage.getItem('fontSize') || 18)
-  },[])
+    handleOnCHange(localStorage.getItem('fontSize') ? localStorage.getItem('fontSize') : 18)
+    setFontSize(localStorage.getItem('fontSize') ? localStorage.getItem('fontSize') : 18)
+  }, [])
 
   return (
     <div>
