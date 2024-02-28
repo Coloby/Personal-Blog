@@ -20,11 +20,9 @@ export const handleOnCHange = (fontSize) => {
     li.style.fontSize = `${fontSize}px`;
   });
   localStorage.setItem('fontSize', fontSize);
-  // setFontSize(fontSize)
 }
 
 export const handleCheck = (isActive) => {
-  console.log(`isActive:`, isActive)
   const links = document.querySelectorAll("article a")
   const italics = document.querySelectorAll("article em")
   const bolds = document.querySelectorAll("article strong")

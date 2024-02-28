@@ -8,6 +8,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
+import sectionize from 'remark-sectionize'
 import {defaultProseSettings} from "./proseSettings"
 import rehypeSanitize from "rehype-sanitize"
 
@@ -37,7 +38,8 @@ export async function getMdxComp(dir, fileWExtension) {
       files: mdxCompsObj,
       mdxOptions(options) {
         options.remarkPlugins = [...(options?.remarkPlugins ?? []), 
-          remarkGfm
+          remarkGfm,
+          sectionize,
         ];
         options.rehypePlugins = [...(options?.rehypePlugins ?? []),
           rehypeSanitize,

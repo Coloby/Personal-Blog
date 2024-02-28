@@ -1,16 +1,14 @@
-import { defaultProseSettings } from "@/lib/mdx/proseSettings"
-import BigBtn from "../../../components/logic/BigBtn"
 import { getMdxComp } from "@/lib/mdx/getMdxComp"
-import Pea from "../../../components/clientComps/Pea"
+import C_interests from "@/components/clientComps/C_Interests"
 
 
 const page = async ({ params }) => {
   const interests = await getInterests()
   
   return (
-    <Pea >
+    <C_interests >
       {interests}
-    </Pea>
+    </C_interests>
   )
 }
 

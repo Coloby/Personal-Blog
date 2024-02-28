@@ -1,7 +1,7 @@
 "use client"
 
 import { defaultProseSettings } from "@/lib/mdx/proseSettings"
-import BigBtn from "../../components/logic/BigBtn"
+import BigBtn from "../logic/BigBtn"
 import { useState } from "react"
 import {
   Dialog,

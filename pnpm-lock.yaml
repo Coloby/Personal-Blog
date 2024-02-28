@@ -175,6 +175,9 @@ devDependencies:
   remark-remove-comments:
     specifier: ^1.0.1
     version: 1.0.1
+  remark-sectionize:
+    specifier: ^2.0.0
+    version: 2.0.0
   remark-stringify:
     specifier: ^11.0.0
     version: 11.0.0
@@ -5827,6 +5830,13 @@ packages:
       unist-util-visit: 4.1.2
     dev: true
 
+  /remark-sectionize@2.0.0:
+    resolution: {integrity: sha512-B+sCNNQroXybxX5Gwu9xbkjFIgK6vHMwbgPM/CEzQTP2ODxUiBsQRBjoSC6XR+yPOkgHvXV83HWCNA8IZuvJKg==}
+    dependencies:
+      unist-util-find-after: 4.0.1
+      unist-util-visit: 4.1.2
+    dev: true
+
   /remark-squeeze-paragraphs@4.0.0:
     resolution: {integrity: sha512-8qRqmL9F4nuLPIgl92XUuxI3pFxize+F1H0e/W3llTk0UsjJaj01+RrirkMw7P21RKe4X6goQhYRSvNWX+70Rw==}
     dependencies:
@@ -6524,6 +6534,13 @@ packages:
 
   /unist-builder@2.0.3:
     resolution: {integrity: sha512-f98yt5pnlMWlzP539tPc4grGMsFaQQlP/vM396b00jngsiINumNmsY8rkXjfoi1c6QaM8nQ3vaGDuoKWbe/1Uw==}
+    dev: true
+
+  /unist-util-find-after@4.0.1:
+    resolution: {integrity: sha512-QO/PuPMm2ERxC6vFXEPtmAutOopy5PknD+Oq64gGwxKtk4xwo9Z97t9Av1obPmGU0IyTa6EKYUfTrK2QJS3Ozw==}
+    dependencies:
+      '@types/unist': 2.0.10
+      unist-util-is: 5.2.1
     dev: true
 
   /unist-util-find@1.0.4:
