@@ -171,7 +171,7 @@ export default async function Home() {
       <section className="mt-40 overflow-hidden relative flexy prose-a:!text-primary_text_color prose-a:!no-underline">
         <div className="w-full flexy absolute overflow-hidden">
           <Image
-            src="/assets/dancing_cat.gif"
+            src="/assets/routes_specific/home/dancing_cat.gif"
             width={800}
             height={400}
             className=" object-cover not-prose h-full w-full transition-none z-[6] max-h-[490px] max-w-[400px] mx-[2px]"

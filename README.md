@@ -3,13 +3,13 @@
 ## Overview
 
 ### what is this?
-A blog that's going to be a full personal website in the future. I will add pages about everything valuable to me and people alike.
+A blog that's going to be a full personal website in the near future. I will add pages about everything valuable to me and people alike.
 ### why?
 I want to upgrade my developer and english skills by creating my website while sharing valuable thoughts.
 
 ## Important informations
 - That's not meant to be cloned but I'll eventually share a template.
-- I'm so nooby that I'm not using typescript properly, sorry for this D:
+- I'm not using typescript properly (if at all), sorry for this D:
 - Before sharing your article to my blog through MDX you should contact me first.
 
 ## How it *generally* works?

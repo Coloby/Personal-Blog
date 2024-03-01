@@ -2,10 +2,10 @@
   - Blog
   - About
   - Contact
+  - interests
+  - now
   - $
     - $Wonder room
-    - $interests
-    - $now
     - $projects
     - $full-updates-log 
 - Footer routes
@@ -14,7 +14,7 @@
 - Secret routes
   - ^
     - ^you-won
-    - ^work-in-progress
+  - work-in-progress
 
 <!-- ^ to complete    $ to create  -->
 

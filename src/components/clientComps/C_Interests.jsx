@@ -38,13 +38,9 @@ const page = ({ children }) => {
     <section className={`${defaultProseSettings} prose !max-w-none w-full h-full`}>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent>
-          <DialogHeader>
-            <DialogDescription>
-              <div className="prose-p:text-[20px] prose-h2:mt-0 prose-h2:mb-[30px] prose-h3:mt-[30px]">
-                {children[interest]}
-              </div>
-            </DialogDescription>
-          </DialogHeader>
+          <div className="prose-p:text-[20px] prose-h2:mt-0 prose-h2:mb-[30px] prose-h3:mt-[30px]">
+            {children[interest]}
+          </div>
         </DialogContent>
       </Dialog>
       <div className=" gap-[6%] xl:!h-[calc(100vh-180px)] min-h-[740px] h-full w-full flexy flex-row !items-start">
