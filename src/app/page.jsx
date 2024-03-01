@@ -57,10 +57,10 @@ export default async function Home() {
           <div className="relative w-full max-w-[330px] flex lg:block justify-center">
             <div className="max-w-[330px] lg:!my-0 h-[284px] lg:py-0 ss:!max-h-[400px] min-h-[220px]  overflow-hidden rounded-[30px] relative !mt-[100px]">
               <Image
-                src="/assets/routes_specific/home/white_cat.jpg"
+                src="/assets/routes_specific/home/white_cat.png"
                 width={400}
                 height={400}
-                className=" aspect-w-1 aspect-h-1 object-cover not-prose scale-[1.3] w-full h-full mr-8 mt-10 ml-4"
+                className=" aspect-w-1 aspect-h-1 object-cover not-prose w-full h-full"
                 alt=""
                 priority={true}
               />
@@ -86,7 +86,14 @@ export default async function Home() {
                 <div className="!h-[64px] w-full flexy !my-4">
                   <h3 className=" !my-0 px-4  !text-xl text-center">Illustrating most stuff <span><Link href={"about"} className="text-center text-xl"><span>About</span></Link></span> me through images</h3>
                 </div>
-                <img className="w-full h-full !my-0 rounded-sm object-cover" src="assets/routes_specific/home/biophotophy.png" alt=""/>
+                <Image
+                  src="/assets/routes_specific/home/biophotophy.png"
+                  width={840}
+                  height={550}
+                  className=" w-full h-full !my-0 rounded-sm object-cover"
+                  alt=""
+                  priority={false}
+                />
             </div>
           </div>
           <div className="w-full !min-h-fit md:w-[600px] lg:w-full gap-12 lg:gap-6 flex items-center lg:items-start flex-col lg:flex-row">
@@ -99,7 +106,14 @@ export default async function Home() {
                 <span className="flex flex-wrap gap-x-8 gap-y-1 my-4 items-center "><address className="flex">Author:&nbsp;{authors}</address><time>{frontmatter.publishDate}</time><span>{frontmatter.readingTime}</span></span>
               </div>
               <a className="flexy flex-col w-full items-center" href={"blog/" + frontmatter.slug}>
-                <img className="h-full object-cover not-prose sm:rounded-b-[0] lg:rounded-bl-sm !w-full  lg:rounded-r-[0] max-w-[370px] lg:mr-[-16px] lg:max-h-[208px] !mx-0 ml-[38px] rounded-sm border border-rose-600" src={"/assets/routes_specific/blog/" + frontmatter.thumbnail} alt="" />
+                <Image
+                  src={"/assets/routes_specific/blog/" + frontmatter.thumbnail}
+                  width={840}
+                  height={550}
+                  className=" h-full object-cover not-prose sm:rounded-b-[0] lg:rounded-bl-sm !w-full  lg:rounded-r-[0] max-w-[370px] lg:mr-[-16px] lg:max-h-[208px] !mx-0 ml-[38px] rounded-sm border border-rose-600"
+                  alt=""
+                  priority={false}
+                />
               </a>
             </div>
             {/* Wonder room */}
@@ -115,7 +129,7 @@ export default async function Home() {
                   height={1080}
                   className="border-[#F91F5B]/80 border object-cover not-prose w-full max-h-[160px] transition-none z-0 rounded-sm"
                   alt=""
-                  priority={true}
+                  priority={false}
                 />
               </a>
             </div>
@@ -176,7 +190,7 @@ export default async function Home() {
             height={400}
             className=" object-cover not-prose h-full w-full transition-none z-[6] max-h-[490px] max-w-[400px] mx-[2px]"
             alt=""
-            priority={true}
+            priority={false}
           />
         </div>
         <div className="relative overflow-y-hidden flexy w-full h-full">

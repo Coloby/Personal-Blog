@@ -3,16 +3,16 @@ import "@/styles/structural/marquee.css"
 import "@/styles/structural/resetStyle.css"
 import "@/styles/tailwindcss.css"
 
+import "@/styles/structural/colors/textColors.css"
 import "@/styles/structural/colors/themeColors.css"
 import "@/styles/structural/colors/themeModes.css"
-import "@/styles/structural/colors/textColors.css"
 
 // import "@/styles/structural/lib/rehypePrettyCode.css"
 // import "@/styles/structural/lib/shadcnStuff.css"
 
+import C_Layout from "@/components/clientComps/C_Layout"
 import Footer from "@/components/layout/Footer"
 import Header from "@/components/layout/header/Header"
-import C_Layout from "@/components/clientComps/C_Layout"
 
 export default function RootLayout({ children }) {
   
@@ -58,7 +58,7 @@ export const metadata = {
     siteName: `Ed's corner`,
     images: [
       {
-        url: '/assets/routes_specific/home/white_cat.jpg',
+        url: '/assets/routes_specific/home/white_cat.png',
         width: 800,
         height: 600,
         alt: '',
@@ -72,7 +72,7 @@ export const metadata = {
     description: 'My personal website to share anything useful about myself',
     card: 'summary_large_image',
     images: {
-      url: '/assets/routes_specific/home/white_cat.jpg',
+      url: '/assets/routes_specific/home/white_cat.png',
       alt: '',
     },
     // needs Twitter Developer Account

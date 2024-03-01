@@ -3,6 +3,7 @@ import { getAllArticlesFrontmatter, getFrontmatterBySlug, getTOCComponentFromSlu
 import { defaultProseSettings } from "@/lib/mdx/proseSettings";
 import { getMdxComp } from "../../../../lib/mdx/getMdxComp";
 import GetAuthorsComp from "@/utils/GetAuthorsComp";
+import Image from "next/image";
 
 const Page = async ({ params }) => {
   const { frontmatter } = await getFrontmatterBySlug(params.slug)
@@ -26,7 +27,14 @@ const Page = async ({ params }) => {
         <div className="w-full">
           <div className="flexy flex-col align-top">
             <div className=" flex items-center justify-center h-[176px] max-w-[340px] w-full overflow-hidden rounded-xs m-0 mb-6 ">
-              <img className="object-contain xs:object-cover w-full h-full rounded-xs !m-0" src={frontmatter.thumbnail ? "/assets/routes_specific/blog/"+frontmatter.thumbnail : `https://picsum.photos/500/500?random=${frontmatter.index}`} alt="" />
+              <Image
+                src={frontmatter.thumbnail ? "/assets/routes_specific/blog/"+frontmatter.thumbnail : `https://picsum.photos/500/500?random=${frontmatter.index}`}
+                width={840}
+                height={550}
+                className="object-contain xs:object-cover w-full h-full rounded-xs !m-0"
+                alt=""
+                priority={false}
+              />
             </div>
           </div>
           <span className="flex flex-wrap gap-x-8 gap-y-1 mb-4"><address className="flexy">{authors}</address><time>{frontmatter.publishDate}</time><span>{frontmatter.readingTime}</span></span>

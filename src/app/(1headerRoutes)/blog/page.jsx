@@ -1,6 +1,7 @@
 import { getAllArticlesFrontmatter } from '@/lib/mdx/mdxManager'
 import Link from 'next/link'
 import GetAuthorsComp from "@/utils/GetAuthorsComp"
+import Image from "next/image"
 
 const Page = async () => {
   const posts = await getAllArticlesFrontmatter()
@@ -25,7 +26,14 @@ const Page = async () => {
             >
               {/* 500 x 200 */}
               <div className="flex items-center relative justify-center w-full h-[176px] overflow-hidden rounded-xs">
-                <img className=" object-contain xs:object-cover w-full h-full" src={frontmatter.thumbnail ? "/assets/routes_specific/blog/"+frontmatter.thumbnail : `https://picsum.photos/1000/1180?random=${frontmatter.index}`} alt="" />
+                <Image
+                  src={frontmatter.thumbnail ? "/assets/routes_specific/blog/"+frontmatter.thumbnail : `https://picsum.photos/1000/1180?random=${frontmatter.index}`}
+                  width={400}
+                  height={200}
+                  className=" object-contain xs:object-cover w-full h-full"
+                  alt=""
+                  priority={false}
+                />
                 <div className="w-full absolute bottom-0 flexy bg-body_shade/30 p-1 text-sm">
                   {frontmatter.readingTime}
                 </div>

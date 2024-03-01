@@ -1,5 +1,6 @@
 import Btn from "@/components/logic/Btn"
 import { getMdxComp } from "@/lib/mdx/getMdxComp"
+import Image from "next/image"
 
 const page = async () => {
   const StuffIHate = await getMdxComp("header_routes/contact", "convos_I_hate.mdx")
@@ -22,7 +23,14 @@ const page = async () => {
                 <div className="w-full max-w-[564px] h-full max-h-[564px] sm:border-4 border-rose-600 absolute flexy gap-2.5 ">
                   <div className="w-full max-w-[764px] h-full max-h-[764px] border-4 -rotate-45 border-rose-600 absolute flexy gap-2.5 ">
                     <div className="w-full max-w-[521px] h-full max-h-[521px] border-4 border-rose-600 absolute flexy gap-2.5 sm:overflow-hidden sm:shadow-[0_0px_16px_-4px] !shadow-rose-600">
-                      <img className="w-full w-500px max-w-[772.10px] h-full max-h-[623px] object-left object-cover origin-top-left border border-rose-600" src="assets/routes_specific/contact/cat_ghost_w_phone.png" />
+                      <Image
+                        src="/assets/routes_specific/contact/cat_ghost_w_phone.png"
+                        width={600}
+                        height={600}
+                        className="w-full w-500px max-w-[772.10px] h-full max-h-[623px] object-left object-cover origin-top-left border border-rose-600"
+                        alt=""
+                        priority={true}
+                      />
                     </div>
                   </div>
                 </div>
@@ -134,7 +142,14 @@ const page = async () => {
                   </div>
                 </div>
               </div>
-              <img className="absolute z-1 shadow-sm top-[-250px] opacity-[0.5]  right-[0px] left-0 ml-auto mr-auto  flexy w-[1200px] h-[1200px] origin-top-left " src="assets/routes_specific/contact/grid.png" />
+              <Image
+                src="/assets/routes_specific/contact/grid.png"
+                width={1000}
+                height={1200}
+                className="absolute z-1 shadow-sm top-[-250px] opacity-[0.5]  right-[0px] left-0 ml-auto mr-auto  flexy w-[1200px] h-[1200px] origin-top-left"
+                alt=""
+                priority={false}
+              />
             </div>
           </div>
         </div>
