@@ -1,5 +1,6 @@
 import { getAllArticlesFrontmatter } from '@/lib/mdx/mdxManager'
 import Link from 'next/link'
+import GetAuthorsComp from "@/utils/GetAuthorsComp"
 
 const Page = async () => {
   const posts = await getAllArticlesFrontmatter()
@@ -14,6 +15,7 @@ const Page = async () => {
   return (
     <section className=' flex-wrap flex gap-x-16 gap-y-12 w-md lg:w-[1334px] justify-center '>
       {sortedPosts?.map(frontmatter => {
+        const authors = GetAuthorsComp(frontmatter.authors)
         return (
           <article className="max-w-[300px] relative min-h-[366px]" key={frontmatter.slug} >
             <Link
@@ -32,13 +34,18 @@ const Page = async () => {
             </Link>
               <h4 className=' line-clamp-4 mt-2 text-md max-w-[500px] max-h-[96px] overflow-hidden leading-6'>{frontmatter.description}</h4>
               <div className="mt-4 flex gap-3 items-center ">
-                <span className="flex flex-wrap gap-4 w-full justify-between"><address>{frontmatter.authors}</address><span className=""> {frontmatter.authors.split(", ").length > 1 ? "" : ""} <time>{frontmatter.publishDate}</time></span></span>
+                <span className="flex flex-wrap gap-4 w-full justify-between"><address className="flexy">{authors}</address><span className=""> {} <time>{frontmatter.publishDate}</time></span></span>
               </div>
           </article>
         )
       })}
     </section>
   )
+}
+
+export const metadata = {
+  title : "Blog",
+  description : "My gems of knowledge that needs to be shared in a nice format",
 }
 
 export default Page

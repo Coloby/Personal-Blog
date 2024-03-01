@@ -39,7 +39,7 @@ export async function getMdxComp(dir, fileWExtension) {
       mdxOptions(options) {
         options.remarkPlugins = [...(options?.remarkPlugins ?? []), 
           remarkGfm,
-          sectionize,
+          // sectionize, // for now it is not needed but it's cool to have it :P
         ];
         options.rehypePlugins = [...(options?.rehypePlugins ?? []),
           rehypeSanitize,

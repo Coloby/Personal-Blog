@@ -54,4 +54,9 @@ const page = async () => {
   )
 }
 
+export const metadata = {
+  title : "About",
+  description : "More about myself, FAQ, and other smaller things",
+}
+
 export default page

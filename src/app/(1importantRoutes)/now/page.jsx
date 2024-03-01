@@ -14,4 +14,9 @@ const page = async () => {
   )
 }
 
+export const metadata = {
+  title : "Now - What is Ed up to?",
+  description : "The latest of what I'm doing/thinking",
+}
+
 export default page

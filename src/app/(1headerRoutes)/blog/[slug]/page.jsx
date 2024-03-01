@@ -2,19 +2,13 @@ import SettingsAccordionBtn from "@/components/logic/settings/SettingsAccordionB
 import { getAllArticlesFrontmatter, getFrontmatterBySlug, getTOCComponentFromSlug } from '@/lib/mdx/mdxManager';
 import { defaultProseSettings } from "@/lib/mdx/proseSettings";
 import { getMdxComp } from "../../../../lib/mdx/getMdxComp";
-
-export async function generateStaticParams() { // build static routes for every mdx article https://nextjs.org/docs/app/api-reference/functions/generate-static-params
-  const posts = await getAllArticlesFrontmatter()
- 
-  return posts.map((post) => ({
-    slug: post.slug,
-  }))
-}
+import GetAuthorsComp from "@/utils/GetAuthorsComp";
 
 const Page = async ({ params }) => {
   const { frontmatter } = await getFrontmatterBySlug(params.slug)
   const { TOCComponent } = await getTOCComponentFromSlug(params.slug)
   const Component = await getMdxComp("header_routes/blog", params.slug)
+  const authors = GetAuthorsComp(frontmatter.authors)
   return (
     <section className={`flexy !items-start gap-20 h-fit pb-8 !max-w-full w-full prose ${defaultProseSettings}`}>
       {/* TODO zen mode: hides everything apart from the text */}
@@ -22,7 +16,6 @@ const Page = async ({ params }) => {
         <div className="!sticky top-[120px] left-[-1150px] flex flex-col !items-end !justify-end gap-4 settings-btn">
           <SettingsAccordionBtn /> {/* workaround made bcs the AccordionContent component doesn't mount components when hidden. You can find the attributes to change this behaviour in the comment below, but using it will show the components and using "hidden" will make the animations not work at best */}
           {/* forceMount={true} hidden={isHidden} */}
-          
         </div>
       </div>
       <div className="absolute right-[45px] top-[120px] max-w-[390px] w-full h-full hidden sl:block pb-[320px] !items-start">
@@ -36,7 +29,7 @@ const Page = async ({ params }) => {
               <img className="object-contain xs:object-cover w-full h-full rounded-xs !m-0" src={frontmatter.thumbnail ? "/assets/routes_specific/blog/"+frontmatter.thumbnail : `https://picsum.photos/500/500?random=${frontmatter.index}`} alt="" />
             </div>
           </div>
-          <span className="flex flex-wrap gap-x-8 gap-y-1 mb-4"><address>{frontmatter.authors}</address><time>{frontmatter.publishDate}</time><span>{frontmatter.readingTime}</span></span>
+          <span className="flex flex-wrap gap-x-8 gap-y-1 mb-4"><address className="flexy">{authors}</address><time>{frontmatter.publishDate}</time><span>{frontmatter.readingTime}</span></span>
           <h1 className="text-bold-gradient">{frontmatter.title}</h1>
           <div className="lead text-primary_text_color">{frontmatter.description}</div>
           <div className="sl:hidden"><TOCComponent platform={"mobile"} open={false} /></div>
@@ -52,5 +45,53 @@ const Page = async ({ params }) => {
 
 // strong
 // prose-headings:text-red-900
+
+export async function generateMetadata({params}) {
+  // const title = decodeURIComponent(params.slug).replace(/\.[^/.]+$/, ''); // removes potential file extensions and mutations like %20 instead of spaces
+  const { frontmatter } = await getFrontmatterBySlug(params.slug)
+
+  return {
+    title: "Blog | "+frontmatter.title,
+    description: frontmatter.description,
+    authors: frontmatter.authors, // mostly content creators and writers
+    metadataBase: new URL('https://edondigital.netlify.app/'),
+    alternates: {
+      canonical: `/blog/${params.slug}`,
+    },
+    openGraph: {
+      title: frontmatter.title,
+      description: frontmatter.description,
+      url: 'https://edondigital.netlify.app/',
+      siteName: `Ed's corner`,
+      images: [
+        {
+          url: '/assets/routes_specific/home/white_cat.jpg',
+          width: 800,
+          height: 600,
+          alt: 'My custom alt',
+        },
+      ],
+      locale: 'en_US',
+      type: 'website',
+    },
+    twitter: {
+      title: frontmatter.title,
+      description: frontmatter.description,
+      card: 'summary_large_image',
+      images: {
+        url: '/assets/routes_specific/home/white_cat.jpg',
+        alt: 'Next.js Logo',
+      },
+    }
+  }
+}
+
+export async function generateStaticParams() { // build static routes for every mdx article https://nextjs.org/docs/app/api-reference/functions/generate-static-params
+  const posts = await getAllArticlesFrontmatter()
+ 
+  return posts.map((post) => ({
+    slug: post.slug,
+  }))
+}
 
 export default Page

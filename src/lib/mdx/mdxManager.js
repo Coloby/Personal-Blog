@@ -26,10 +26,11 @@ export const getFrontmatterBySlug = async (fileNameWExt, index) => {
   const rawMDX = await getRawMdxBySlug("blog", fileNameWExt)
   const { processedMDX } = await useUnifiedPipeline(rawMDX)
   const frontmatter = processedMDX.data.frontmatter
-  frontmatter.authors = frontmatter.authors.join(", ")
   frontmatter.slug = fileNameWExt;
   frontmatter.readingTime = processedMDX.data.readingTime.text
   frontmatter.index = index
+  // console.log(`frontmatter.authors:`, frontmatter.authors)
+  // frontmatter.authors = frontmatter
 
   return { frontmatter }
 }

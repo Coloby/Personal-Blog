@@ -1,7 +1,6 @@
 import { getMdxComp } from "@/lib/mdx/getMdxComp"
 import C_interests from "@/components/clientComps/C_Interests"
 
-
 const page = async ({ params }) => {
   const interests = await getInterests()
   
@@ -23,6 +22,11 @@ async function getInterests() {
   };
 
   return interests;
+}
+
+export const metadata = {
+  title : "Interests",
+  description : "More info about my interests and sub-interests (with links to my notes!)",
 }
 
 export default page

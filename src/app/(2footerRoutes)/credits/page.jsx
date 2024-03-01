@@ -30,4 +30,9 @@ const page = () => {
   )
 }
 
+export const metadata = {
+  title : "Credits",
+  description : "Here are people that contributed to this website",
+}
+
 export default page
