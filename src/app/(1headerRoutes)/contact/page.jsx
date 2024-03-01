@@ -146,6 +146,22 @@ const page = async () => {
 export const metadata = {
   title : "Contact",
   description : "Every useful links for you to reach out to me :)",
+  openGraph: {
+    images: [
+      {
+        url: "assets/routes_specific/contact/cat_ghost_w_phone.png",
+        width: 800,
+        height: 600,
+        alt: `Fake ghost with a cat's head holding a phone`,
+      },
+    ],
+  },
+  twitter: {
+    images: {
+      url: "assets/routes_specific/contact/cat_ghost_w_phone.png",
+      alt: `Fake ghost with a cat's head holding a phone`,
+    },
+  }
 }
 
 export default page

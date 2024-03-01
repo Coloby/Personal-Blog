@@ -9,7 +9,7 @@ const page = () => {
           width={1920}
           height={1080}
           className=" object-cover not-prose max-h-[400px] max-w-[400px] transition-none z-0 w-screen"
-          alt="logo"
+          alt=""
           priority={true}
         />
         <a className="z-10 underline" href="https://www.freepik.com/free-vector/retro-gradient-background-linear-style_16738493.htm#position=16">Image by starline - on Freepik</a>
@@ -20,7 +20,7 @@ const page = () => {
           width={1920}
           height={1080}
           className=" object-cover not-prose max-h-[400px] max-w-[400px] transition-none z-0 w-screen"
-          alt="logo"
+          alt=""
           priority={true}
         />
         <p className="z-10">Image by <a className="underline" href="https://pixabay.com/users/geralt-9301/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3592136">Gerd Altmann</a> from <a className="underline" href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3592136">Pixabay</a></p>

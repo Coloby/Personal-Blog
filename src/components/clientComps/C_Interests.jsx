@@ -1,17 +1,13 @@
 "use client"
 
-import { defaultProseSettings } from "@/lib/mdx/proseSettings"
-import BigBtn from "../logic/BigBtn"
-import { useState } from "react"
 import {
   Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
+  DialogContent
 } from "@/components/shadcn-ui/ui/dialog"
+import { defaultProseSettings } from "@/lib/mdx/proseSettings"
 import Image from "next/image"
+import { useState } from "react"
+import BigBtn from "../logic/BigBtn"
 
 const page = ({ children }) => {
   // const [interest, setInterest] = useState(Object.keys(children)[0])
@@ -50,7 +46,7 @@ const page = ({ children }) => {
             width={1123}
             height={640}
             className=" aspect-w-1 aspect-h-1 scale-[0.9] object-cover not-prose w-full h-full border-b-4  border-[#F91F5B]"
-            alt="logo"
+            alt=""
             priority={true}
           />
           {/* <div className="!hidden xl:!block  w-full h-full"></div> */}

@@ -27,6 +27,22 @@ async function getInterests() {
 export const metadata = {
   title : "Interests",
   description : "More info about my interests and sub-interests (with links to my notes!)",
+  openGraph: {
+    images: [
+      {
+        url: "/assets/routes_specific/interests/statue.png",
+        width: 800,
+        height: 600,
+        alt: ``,
+      },
+    ],
+  },
+  twitter: {
+    images: {
+      url: "/assets/routes_specific/interests/statue.png",
+      alt: ``,
+    },
+  }
 }
 
 export default page

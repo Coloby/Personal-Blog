@@ -15,7 +15,7 @@ const page = async () => {
           width={1920}
           height={1080}
           className=" object-cover not-prose h-[1080px] left-0 transition-none z-[2] w-screen absolute top-0"
-          alt="logo"
+          alt=""
           priority={true}
         />
         <div className="bg-[#1F014B] h-full absolute w-full z-[1]"></div>
@@ -34,7 +34,7 @@ const page = async () => {
             width={550}
             height={550}
             className=" aspect-w-1 aspect-h-1 object-cover not-prose w-full h-full"
-            alt="logo"
+            alt=""
             priority={true}
           />
         </div>
@@ -54,9 +54,26 @@ const page = async () => {
   )
 }
 
+
 export const metadata = {
   title : "About",
   description : "More about myself, FAQ, and other smaller things",
+  openGraph: {
+    images: [
+      {
+        url: "/assets/routes_specific/about/cat_into_polaroid.png",
+        width: 800,
+        height: 600,
+        alt: `Man holding a polaroid with a retro-style image: a man with a cat's head`,
+      },
+    ],
+  },
+  twitter: {
+    images: {
+      url: "/assets/routes_specific/about/cat_into_polaroid.png",
+      alt: `Man holding a polaroid with a retro-style image: a man with a cat's head`,
+    },
+  }
 }
 
 export default page

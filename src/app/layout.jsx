@@ -61,7 +61,7 @@ export const metadata = {
         url: '/assets/routes_specific/home/white_cat.jpg',
         width: 800,
         height: 600,
-        alt: 'My custom alt',
+        alt: '',
       },
     ],
     locale: 'en_US',
@@ -73,7 +73,7 @@ export const metadata = {
     card: 'summary_large_image',
     images: {
       url: '/assets/routes_specific/home/white_cat.jpg',
-      alt: 'Next.js Logo',
+      alt: '',
     },
     // needs Twitter Developer Account
       // siteId: '39819038120933981903812093',

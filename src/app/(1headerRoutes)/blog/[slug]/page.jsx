@@ -65,10 +65,10 @@ export async function generateMetadata({params}) {
       siteName: `Ed's corner`,
       images: [
         {
-          url: '/assets/routes_specific/home/white_cat.jpg',
+          url: "/assets/routes_specific/blog/"+frontmatter.thumbnail,
           width: 800,
           height: 600,
-          alt: 'My custom alt',
+          alt: '',
         },
       ],
       locale: 'en_US',
@@ -79,8 +79,8 @@ export async function generateMetadata({params}) {
       description: frontmatter.description,
       card: 'summary_large_image',
       images: {
-        url: '/assets/routes_specific/home/white_cat.jpg',
-        alt: 'Next.js Logo',
+        url: "/assets/routes_specific/blog/"+frontmatter.thumbnail,
+        alt: '',
       },
     }
   }

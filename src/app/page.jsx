@@ -24,7 +24,7 @@ export default async function Home() {
           width={1920}
           height={1080}
           className=" object-cover not-prose h-[1200px] left-0 transition-none z-0 w-screen"
-          alt="logo"
+          alt=""
           priority={true}
         />
         <div className="bg-gradient-to-t from-[#F91F5B] via-[#1F014B] to-[#1F014B] h-[1200px] w-full"></div>
@@ -61,7 +61,7 @@ export default async function Home() {
                 width={400}
                 height={400}
                 className=" aspect-w-1 aspect-h-1 object-cover not-prose scale-[1.3] w-full h-full mr-8 mt-10 ml-4"
-                alt="logo"
+                alt=""
                 priority={true}
               />
             </div>
@@ -114,7 +114,7 @@ export default async function Home() {
                   width={1920}
                   height={1080}
                   className="border-[#F91F5B]/80 border object-cover not-prose w-full max-h-[160px] transition-none z-0 rounded-sm"
-                  alt="logo"
+                  alt=""
                   priority={true}
                 />
               </a>
@@ -175,7 +175,7 @@ export default async function Home() {
             width={800}
             height={400}
             className=" object-cover not-prose h-full w-full transition-none z-[6] max-h-[490px] max-w-[400px] mx-[2px]"
-            alt="logo"
+            alt=""
             priority={true}
           />
         </div>
@@ -202,5 +202,8 @@ export default async function Home() {
 
 export const metadata = {
   title : "Home - Ed's Corner or personal website",
-  description : "My personal website to share anything useful about myself"
+  description : "My personal website to share anything useful about myself",
+  other: {
+    "google-site-verification": "kmGLrA1y23ju7KDoNZNFr2obsQTJhBSakwDmO1C82DI",
+  }
 }
