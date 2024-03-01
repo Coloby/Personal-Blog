@@ -86,7 +86,7 @@ export async function generateMetadata({params}) {
   }
 }
 
-export async function generateStaticParams() { // build static routes for every mdx article https://nextjs.org/docs/app/api-reference/functions/generate-static-params
+export async function generateStaticParams() { // build static routes for every mdx article https://nextjs.org/docs/app/api-reference/functions/generate-static-params. It won't overload the server even when fetching images into articles (for articles outside of this function) https://youtu.be/wTGVHLyV09M?t=2128
   const posts = await getAllArticlesFrontmatter()
  
   return posts.map((post) => ({

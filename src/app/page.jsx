@@ -86,7 +86,7 @@ export default async function Home() {
                 <div className="!h-[64px] w-full flexy !my-4">
                   <h3 className=" !my-0 px-4  !text-xl text-center">Illustrating most stuff <span><Link href={"about"} className="text-center text-xl"><span>About</span></Link></span> me through images</h3>
                 </div>
-                <img className="w-full h-full !my-0 rounded-sm object-cover" src="assets/routes_specific/home/biophotophy.png" />
+                <img className="w-full h-full !my-0 rounded-sm object-cover" src="assets/routes_specific/home/biophotophy.png" alt=""/>
             </div>
           </div>
           <div className="w-full !min-h-fit md:w-[600px] lg:w-full gap-12 lg:gap-6 flex items-center lg:items-start flex-col lg:flex-row">
@@ -99,7 +99,7 @@ export default async function Home() {
                 <span className="flex flex-wrap gap-x-8 gap-y-1 my-4 items-center "><address className="flex">Author:&nbsp;{authors}</address><time>{frontmatter.publishDate}</time><span>{frontmatter.readingTime}</span></span>
               </div>
               <a className="flexy flex-col w-full items-center" href={"blog/" + frontmatter.slug}>
-                <img className="h-full object-cover not-prose sm:rounded-b-[0] lg:rounded-bl-sm !w-full  lg:rounded-r-[0] max-w-[370px] lg:mr-[-16px] lg:max-h-[208px] !mx-0 ml-[38px] rounded-sm border border-rose-600" src={"/assets/routes_specific/blog/" + frontmatter.thumbnail} />
+                <img className="h-full object-cover not-prose sm:rounded-b-[0] lg:rounded-bl-sm !w-full  lg:rounded-r-[0] max-w-[370px] lg:mr-[-16px] lg:max-h-[208px] !mx-0 ml-[38px] rounded-sm border border-rose-600" src={"/assets/routes_specific/blog/" + frontmatter.thumbnail} alt="" />
               </a>
             </div>
             {/* Wonder room */}
@@ -146,7 +146,7 @@ export default async function Home() {
                 <SocialBTNs />
                 <a href="https://www.skool.com/@leof-dopp-8139" className="underline text-[#bb9af7]">Skool</a>
               </div>
-              <a className="!text-primary_text_color flex-col sm:flex-row flex gap-8 items-center no-underline">
+              <div className="!text-primary_text_color flex-col sm:flex-row flex gap-8 items-center no-underline">
                 <div className="flexy gap-2">
                   <svg className="!text-[40px]" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02M8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12m6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12"/></svg>
                   Username: edondigital
@@ -155,7 +155,7 @@ export default async function Home() {
                   <Btn classContainer="!mr-0" href="https://discord.gg/QyeNQPa3tY"><div className="flexy w-full text-center !no-underline !text-primary_text_color">Join the server</div></Btn>
                   <span className="text-center ">(very much a work in progress)</span>
                 </div>
-              </a>
+              </div>
               <a href="mailto:edondigital@gmail.com" className="!text-primary_text_color flex gap-2 items-center flex-col ss:flex-row ">
                 <svg className="!text-[40px]" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0z"/><path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0z"/></g></svg>
                 edondigital@gmail.com
