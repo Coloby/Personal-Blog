@@ -12,8 +12,8 @@ export async function GET() {
   const feed = new RSS({
     title: "Ed's personal website",
     description: "My personal website to share anything useful about myself",
-    site_url: "https://edondigital.netlify.app/",
-    feed_url: "https://edondigital.netlify.app/feed.xml",
+    site_url: `${process.env.BASE_URL}/`,
+    feed_url: `${process.env.BASE_URL}/feed.xml`,
     copyright: `${new Date().getFullYear()} Ed's personal website`,
     language: "en",
     pubDate: new Date(),
@@ -29,13 +29,13 @@ export async function GET() {
       title: post.title,
       description: post.description,
       date: isoDate,
-      url: `https://edondigital.netlify.app/blog/${post.slug.replace(/\s+/g, '%20').toLowerCase()}`,
+      url: `${process.env.BASE_URL}/blog/${post.slug.replace(/\s+/g, '%20').toLowerCase()}`,
     })
   })
 
   return new Response(feed.xml(),{
     headers: {
-      'Content-Type': 'application/atom+xml; charset=utf-8',
+      'Content-Type': 'application/xml; charset=utf-8',
     }
   })
 }

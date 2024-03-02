@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ["/work-in-progress", "/you-won", "/feed.xml"]
     },
-    sitemap: 'https://edondigital.netlify.app/sitemap.xml',
+    sitemap: `${process.env.BASE_URL}/sitemap.xml`,
   }
 }

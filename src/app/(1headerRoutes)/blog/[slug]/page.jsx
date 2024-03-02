@@ -62,14 +62,14 @@ export async function generateMetadata({params}) {
     title: "Blog | "+frontmatter.title,
     description: frontmatter.description,
     authors: frontmatter.authors, // mostly content creators and writers
-    metadataBase: new URL('https://edondigital.netlify.app/'),
+    metadataBase: new URL(`${process.env.BASE_URL}`),
     alternates: {
       canonical: `/blog/${params.slug}`,
     },
     openGraph: {
       title: frontmatter.title,
       description: frontmatter.description,
-      url: 'https://edondigital.netlify.app/',
+      url: `${process.env.BASE_URL}`,
       siteName: `Ed's corner`,
       images: [
         {

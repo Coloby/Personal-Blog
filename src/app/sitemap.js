@@ -9,7 +9,7 @@ export default async function sitemap() {
     const isoDate = dateObject.toISOString();
 
     return {
-      url: "https://edondigital.netlify.app/blog/"+post.slug.replace(/\s+/g, '%20').toLowerCase(),
+      url: `${process.env.BASE_URL}/blog/`+post.slug.replace(/\s+/g, '%20').toLowerCase(),
       lastModified: isoDate, // if wrong, they will ignore this
       changeFrequency: "monthly",
       priority: 0.5
@@ -18,55 +18,55 @@ export default async function sitemap() {
 
   return [
     {
-      url: 'https://edondigital.netlify.app',
+      url: `${process.env.BASE_URL}`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 1,
     },
     {
-      url: 'https://edondigital.netlify.app/now',
+      url: `${process.env.BASE_URL}/now`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
-      url: 'https://edondigital.netlify.app/about',
+      url: `${process.env.BASE_URL}/about`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
-      url: 'https://edondigital.netlify.app/contact',
+      url: `${process.env.BASE_URL}/contact`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
-      url: 'https://edondigital.netlify.app/interests',
+      url: `${process.env.BASE_URL}/interests`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
-      url: 'https://edondigital.netlify.app/credits',
+      url: `${process.env.BASE_URL}/credits`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.4,
     },
     {
-      url: 'https://edondigital.netlify.app/work-in-progress',
+      url: `${process.env.BASE_URL}/work-in-progress`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.1,
     },
     {
-      url: 'https://edondigital.netlify.app/you-won',
+      url: `${process.env.BASE_URL}/you-won`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.1,
     },
     {
-      url: 'https://edondigital.netlify.app/blog',
+      url: `${process.env.BASE_URL}/blog`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.5,

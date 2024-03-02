@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
 export const metadata = {
   generator: 'Next.js',
   applicationName: `Ed's personal website`,
-  authors: [{ name: 'Ed', url: 'edondigital.netlify.app' }], // mostly content creators and writers
+  authors: [{ name: 'Ed', url: `${process.env}` }], // mostly content creators and writers
   creator: 'Ed', // contributors that are not only content creators or writers
   publisher: 'Ed', // who makes the content avaible
   icons: { // https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons#icon
@@ -44,7 +44,7 @@ export const metadata = {
     telephone: false,
   },
   // metadataBase & alternates - essential when you have languages in the route like /en-US
-    metadataBase: new URL('https://edondigital.netlify.app/'),
+    metadataBase: new URL(`${process.env.BASE_URL}`),
     alternates: {
       canonical: '/', // still useful even if the content is the original one but essential if it's a duplicate
     },
@@ -54,7 +54,7 @@ export const metadata = {
       template : "%s" // template: '%s | Acme'    outputs based on specified title but adds | Acme. E.g: Output: <title>About | Acme</title>
     },
     description: 'My personal website to share anything useful about myself',
-    url: 'https://edondigital.netlify.app/',
+    url: `${process.env.BASE_URL}`,
     siteName: `Ed's corner`,
     images: [
       {

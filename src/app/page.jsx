@@ -58,7 +58,7 @@ export default async function Home() {
             <div className="max-w-[330px] lg:!my-0 h-[284px] lg:py-0 ss:!max-h-[400px] min-h-[220px]  overflow-hidden rounded-[30px] relative !mt-[100px]">
               <Image
                 src="/assets/routes_specific/home/white_cat.png"
-                width={400}
+                width={450}
                 height={400}
                 className=" aspect-w-1 aspect-h-1 object-cover not-prose w-full h-full"
                 alt=""
@@ -88,8 +88,8 @@ export default async function Home() {
                 </div>
                 <Image
                   src="/assets/routes_specific/home/biophotophy.png"
-                  width={840}
-                  height={550}
+                  width={850}
+                  height={540}
                   className=" w-full h-full !my-0 rounded-sm object-cover"
                   alt=""
                   priority={false}
@@ -108,8 +108,8 @@ export default async function Home() {
               <a className="flexy flex-col w-full items-center" href={"blog/" + frontmatter.slug}>
                 <Image
                   src={"/assets/routes_specific/blog/" + frontmatter.thumbnail}
-                  width={840}
-                  height={550}
+                  width={360}
+                  height={230}
                   className=" h-full object-cover not-prose sm:rounded-b-[0] lg:rounded-bl-sm !w-full  lg:rounded-r-[0] max-w-[370px] lg:mr-[-16px] lg:max-h-[208px] !mx-0 ml-[38px] rounded-sm border border-rose-600"
                   alt=""
                   priority={false}
@@ -125,8 +125,8 @@ export default async function Home() {
               <a href={wonderRoomPieceLink} className="w-full">
                 <Image
                   src="/assets/routes_specific/home/nodes_network.jpg"
-                  width={1920}
-                  height={1080}
+                  width={350}
+                  height={180}
                   className="border-[#F91F5B]/80 border object-cover not-prose w-full max-h-[160px] transition-none z-0 rounded-sm"
                   alt=""
                   priority={false}
@@ -186,8 +186,8 @@ export default async function Home() {
         <div className="w-full flexy absolute overflow-hidden">
           <Image
             src="/assets/routes_specific/home/dancing_cat.gif"
-            width={800}
-            height={400}
+            width={420}
+            height={510}
             className=" object-cover not-prose h-full w-full transition-none z-[6] max-h-[490px] max-w-[400px] mx-[2px]"
             alt=""
             priority={false}
