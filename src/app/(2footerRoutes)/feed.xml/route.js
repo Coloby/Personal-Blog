@@ -5,7 +5,6 @@ import { getAllArticlesFrontmatter } from '@/lib/mdx/mdxManager'
 // guid
 // categories
 
-
 export async function GET() {
   const posts = await getAllArticlesFrontmatter()
 

@@ -51,9 +51,6 @@ const Page = async ({ params }) => {
   )
 }
 
-// strong
-// prose-headings:text-red-900
-
 export async function generateMetadata({params}) {
   // const title = decodeURIComponent(params.slug).replace(/\.[^/.]+$/, ''); // removes potential file extensions and mutations like %20 instead of spaces
   const { frontmatter } = await getFrontmatterBySlug(params.slug)
@@ -64,7 +61,7 @@ export async function generateMetadata({params}) {
     authors: frontmatter.authors, // mostly content creators and writers
     metadataBase: new URL(`${process.env.BASE_URL}`),
     alternates: {
-      canonical: `/blog/${params.slug}`,
+      canonical: `${process.env.PREFERRED_URL}/blog/${params.slug}`,
     },
     openGraph: {
       title: frontmatter.title,

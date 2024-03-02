@@ -27,7 +27,6 @@ export default function RootLayout({ children }) {
   )
 }
 
-// add <meta name="darkreader-lock"> metadata to disable dark reader in specific pages
 export const metadata = {
   generator: 'Next.js',
   applicationName: `Ed's personal website`,
@@ -46,7 +45,7 @@ export const metadata = {
   // metadataBase & alternates - essential when you have languages in the route like /en-US
     metadataBase: new URL(`${process.env.BASE_URL}`),
     alternates: {
-      canonical: '/', // still useful even if the content is the original one but essential if it's a duplicate
+      canonical: process.env.PREFERRED_URL, // still useful even if the content is the original one but essential if it's a duplicate
     },
   openGraph: {
     title : {
