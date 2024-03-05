@@ -10,6 +10,7 @@ const Page = async ({ params }) => {
   const { TOCComponent } = await getTOCComponentFromSlug(params.slug)
   const Component = await getMdxComp("header_routes/blog", params.slug)
   const authors = GetAuthorsComp(frontmatter.authors)
+
   return (
     <section className={`flexy !items-start gap-20 h-fit pb-8 !max-w-full w-full prose ${defaultProseSettings}`}>
       {/* TODO zen mode: hides everything apart from the text */}

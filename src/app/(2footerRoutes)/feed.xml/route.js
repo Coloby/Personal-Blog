@@ -1,4 +1,4 @@
-// This is the RSS feed
+// This is the RSS feed. Made using route handlers https://nextjs.org/docs/app/api-reference/file-conventions/route
 import RSS from "rss"
 import { getAllArticlesFrontmatter } from '@/lib/mdx/mdxManager'
 
@@ -34,7 +34,7 @@ export async function GET() {
 
   return new Response(feed.xml(),{
     headers: {
-      'Content-Type': 'application/xml; charset=utf-8',
+      'Content-Type': 'application/xml; charset=utf-8', // to signal that this is xml
     }
   })
 }
