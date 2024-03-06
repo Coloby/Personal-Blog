@@ -11,6 +11,7 @@ import remarkGfm from 'remark-gfm';
 import sectionize from 'remark-sectionize'
 import {defaultProseSettings} from "./proseSettings"
 import rehypeSanitize from "rehype-sanitize"
+import AnchorTag from "@/components/specifically_for_mdx/customElements/AnchorTag"
 
 export async function getMdxComp(dir, fileWExtension) {
   const __filename = fileURLToPath(import.meta.url); // using directly __dirname on react server components yields unexpected behaviour. It should be the current directory were this file is, but it's not in rsc
@@ -75,7 +76,9 @@ export async function getMdxComp(dir, fileWExtension) {
     function Comp() {
       return (
         <div className={`${defaultProseSettings} mdx-comp`}>
-         <Component />
+         <Component components={{
+          a : AnchorTag
+         }}/>
         </div>
       )
     }
