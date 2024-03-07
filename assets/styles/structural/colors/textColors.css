@@ -18,6 +18,18 @@ a > span {
   text-decoration: underline;
   font-style: normal;
 }
+a > span > em {
+  color: #f91f5b !important;
+  text-decoration-color: #f91f5b !important;
+  text-decoration: underline;
+  font-style: italic;
+}
+a > span > strong {
+  color: #f91f5b !important;
+  text-decoration-color: #f91f5b !important;
+  text-decoration: underline;
+  font-weight: bold;
+}
 /* a {
   color: #bb9af7;
 } */

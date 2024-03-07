@@ -24,10 +24,15 @@ export async function getMdxComp(dir, fileWExtension) {
 
     mdxComps.forEach((mdxCompFileWExt) => {
         const mdxCompPath = path.join(mdxCompsDirPath, mdxCompFileWExt);
+
+        // checks if it is a directory
+        const stat = fs.statSync(mdxCompPath)
+        if (stat.isDirectory()) return
+
         const mdxCompContent = fs.readFileSync(mdxCompPath, 'utf-8');
         mdxCompsObj[`../../components/specifically_for_mdx/${mdxCompFileWExt}`] = mdxCompContent
     });
-  } catch (err) { console.error('Error with mdx components files:', err.message) }
+  } catch (err) { console.error('Error with mdx components files!:', err.message) }
 
   const mdxFilePath = path.resolve(__dirname, `../../../assets/content/route_specific_mdx/${dir}/${fileWExtension.replace(/%20/g, ' ')}`); // adds support to files with spaces
   const mdxFileContent = fs.readFileSync(mdxFilePath, 'utf8')

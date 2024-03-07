@@ -1,20 +1,27 @@
 "use client"
 
+import DrawerNavLinks from "@/components/layout/DrawerNavLinks"
+import HeaderNavLinks from "@/components/layout/header/HeaderNavLinks"
 import HeaderLogo from "@/components/ui/logos/HeaderLogo"
 import Link from "next/link"
 import { ThemeModeBtn } from "../../logic/ThemeModeBtn"
-import HeaderNavLinks from "@/components/layout/header/HeaderNavLinks"
-import DrawerNavLinks from "@/components/layout/DrawerNavLinks"
 // @ts-ignore
-import Headroom from "react-headroom"
 import {
   Sheet,
   SheetContent,
   SheetTrigger,
 } from "@/components/shadcn-ui/Drawer"
-
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/shadcn-ui/accordion"
+// @ts-ignore
+import Headroom from "react-headroom"
 
 const Header = () => {
+  
   // w-[250px] h-[70px] px-4 bg-gradient-to-r from-fuchsia-950 via-pink-800 to-rose-600 rounded-[84px] shadow border-blue-900 justify-between items-center inline-flex
   return (
     <Headroom style={{ zIndex: "999"}} upTolerance={10} downTolerance={20} className="pointer-events-none">
@@ -31,6 +38,7 @@ const Header = () => {
             <div className="hidden sm:flexy">
               <ThemeModeBtn />
             </div>
+            {/* drawer */}
             <div className="">
               <Sheet>
                 <SheetTrigger className="flexy">
@@ -38,8 +46,30 @@ const Header = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                   </svg>
                 </SheetTrigger>
-                <SheetContent className=" w-[200px] dark-theme-mode not-prose text-primary_text_color">
+                <SheetContent className=" ss:w-[200px] dark-theme-mode not-prose text-primary_text_color">
                   <DrawerNavLinks />
+                  <Accordion type="single" collapsible defaultValue={"item-idk"} className="flex flex-col gap-4">
+                    <AccordionItem value={"-"} className="border border-rose-600 rounded-xs py-2">
+                      <AccordionTrigger className="flexy"><div className="text-center ml-2 !my-0">Me</div></AccordionTrigger>
+                      <AccordionContent>
+                        <div className="mt-2 flex flex-col">
+                          <Link href={"/about"} className="flexy text-base mt-2 py-2 hover:bg-rose-600 w-full"><div>About</div></Link>
+                          <Link href={"/now"} className="flexy text-base mt-2 py-2 hover:bg-rose-600 w-full"><div>Now</div></Link>
+                          <Link href={"/interests"} className="flexy text-base mt-2 py-2 hover:bg-rose-600 w-full"><div>Interests</div></Link>
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value={"-3"} className="border border-rose-600 rounded-xs py-2">
+                      <AccordionTrigger className="flexy"><div className="text-center ml-2 !my-0">Resources</div></AccordionTrigger>
+                      <AccordionContent>
+                        <div className="mt-2 flex flex-col">
+                          <Link href={`https://edongarden.netlify.app`} target="_blank" rel="noopener noreferrer" className="flexy text-base mt-2 py-2 hover:bg-rose-600 w-full"><div>Notes</div></Link>
+                          <Link href={"/downloads"} className="flexy text-base mt-2 py-2 hover:bg-rose-600 w-full"><div>Downloads</div></Link>
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                  <div className="mt-10 flexy"><ThemeModeBtn /></div>
                 </SheetContent>
               </Sheet>
             </div>

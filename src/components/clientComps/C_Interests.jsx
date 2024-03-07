@@ -43,8 +43,8 @@ const page = ({ children }) => {
         <div className={`hidden xl:block absolute top-24 left-[-40px] z-30 ${children[interest] ? "!hidden" : ""}`}>
           <Image
             src="/assets/routes_specific/interests/statue.png"
-            width={1123}
-            height={640}
+            width={820}
+            height={1365}
             className=" aspect-w-1 aspect-h-1 scale-[0.9] object-cover not-prose w-full h-full border-b-4  border-[#F91F5B]"
             alt=""
             priority={true}

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const AnchorTag = ({ href, children }) => {
   const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
-  console.log(`children:`, children.type && children.type.charAt(0))
+  // console.log(`children:`, children.type && children.type.charAt(0))
   
   // Use Next.js Link for internal links, otherwise use a regular anchor tag
   if (children.type && children.type.charAt(0) === 'h') {

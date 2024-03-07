@@ -1,20 +1,28 @@
 - Header routes 
   - Blog
-  - About
+  - $News
   - Contact
-  - interests
-  - now
-  - $
-    - $Wonder room
-    - $projects
-    - $full-updates-log 
+  - $Projects
+  - Me
+    - About
+    - Now
+    - Interests
+    - $Periodic-highlights
+  - Resources
+    - Notes
+    - $Downloads
+    - $Wonder-room
 - Footer routes
-  - credits
-  - - $site-map
+  - Credits
+  - $Site-map
 - Secret routes
-  - ^
-    - ^you-won
-  - work-in-progress
+  - ^You-won
+  - Work-in-progress
+  - $Password-protected
 
-<!-- ^ to complete    $ to create  -->
+<!-- use markmap to see this better -->
+<!-- Legend: 
+  ^ to complete (even though most pages need a design upgrade anyway xO)
+  $ to create
+-->
 

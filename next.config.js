@@ -12,6 +12,14 @@ const nextConfig = {
         destination: '/sitemap.xml',
         permanent: true,
       },{
+        source: '/robot',
+        destination: '/robots.txt',
+        permanent: true,
+      },{
+        source: '/robots',
+        destination: '/robots.txt',
+        permanent: true,
+      },{
         source: '/articles',
         destination: '/blog',
         permanent: true,
