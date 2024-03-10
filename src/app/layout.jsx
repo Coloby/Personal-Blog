@@ -13,15 +13,16 @@ import "@/styles/structural/colors/themeModes.css"
 import C_Layout from "@/components/clientComps/C_Layout"
 import Footer from "@/components/layout/Footer"
 import Header from "@/components/layout/header/Header"
+import { Toaster } from "@/components/shadcn-ui/ui/toaster"
 
 export default function RootLayout({ children }) {
-  
   return (
     <C_Layout>
-      <div className={`bg-body_shade  ss:h-auto text-primary_text_color transition-colors duration-1000 relative `}>
+      <div className={`bg-body_shade  ss:h-auto text-primary_text_color transition-colors duration-1000 relative`}>
         <Header />
         <main className=" flex h-fit justify-center mt-[100px] px-[16px] pb-[320px] min-h-screen !w-full ">{children}</main>
         <Footer />
+        <Toaster />
       </div>
     </C_Layout>
   )

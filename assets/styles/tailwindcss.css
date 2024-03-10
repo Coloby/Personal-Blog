@@ -7,14 +7,29 @@
 } */
 @layer components { /* takes precedence over layer BASE regardless of actual order in-code */
   .formInputElem {
-    @apply rounded-[10px] placeholder-transparent outline-none bg-slate-400/10 px-2 border-b-2 border-[#242424] text-gray-100 placeholder-gray-500 transition-all focus:text-[#F7AB0A] focus:border-[#F7AB0A]/40 hover:border-[#F7AB0A]/20 py-[10px] sm:h-[52px] 
+    @apply min-w-[220px] rounded-xs placeholder-transparent outline-none bg-slate-400/10 px-2 border-b-2 border-[#242424] text-gray-100 placeholder-gray-500 transition-all focus:border-rose-500/40 hover:border-rose-500/20 py-[10px] sm:h-[52px] 
   }
-  .btn {
-    @apply h-[42px] border-t-2 border-r border-l border-primary
-  }
-  .btn2{
-    @apply !border-primary !box-border
-  }  
+  .formLabel { /* source https://www.youtube.com/watch?v=nJzKi6oIvBA*/
+		@apply 
+      top-[-22px]
+      absolute
+      left-1
+      pointer-events-none
+      !text-sm
+      !font-normal
+      transition-all
+      !mt-0
+      
+      peer-placeholder-shown:text-base
+      peer-placeholder-shown:top-[8px]
+      /* peer-placeholder-shown:text-gray-500 */
+      peer-placeholder-shown:left-3
+
+      /* peer-focus:top-[-26px] */
+      /* peer-focus:text-sm */
+      /* peer-focus:text-gray-500 */
+      peer-focus:left-6
+	}
 }
 @layer utilities { /* takes precedence over layer COMPONENTS regardless of actual order in-code */
   .flexy {

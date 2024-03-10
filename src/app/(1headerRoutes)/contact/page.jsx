@@ -1,6 +1,7 @@
 import Btn from "@/components/logic/Btn"
 import { getMdxComp } from "@/lib/mdx/getMdxComp"
 import Image from "next/image"
+import C_Email_form from "@/components/clientComps/C_Email_form"
 
 const page = async () => {
   const StuffIHate = await getMdxComp("header_routes/contact", "convos_I_hate.mdx")
@@ -39,20 +40,7 @@ const page = async () => {
           </div>
           {/* Most popular socials */}
           <div className="w-full max-w-[780px] h-[609px] flex flex-col justify-between">
-            <div className="flexy flex-col sm:gap-4 relative">
-              <div className="relative overflow-visible">
-                <div className="absolute left-[-105px] sm:block hidden top-[-70px] text-rose-600"><svg width="105" height="111" viewBox="0 0 105 111" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d_935_1458)" className="overflow-visible"><path  className="overflow-visible" d="M48.2887 97.9525L78.4811 92.9258L71.5283 63.118" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/><path  className="overflow-visible" d="M78.4824 92.9241L48.7663 73.0992C28.251 59.4125 22.0254 32.7226 34.8606 13.4836L37.1845 10.0001" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></g><defs><filter id="filter0_d_935_1458" x="18.6807" y="0.5" width="69.3018" height="106.953" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB"><feFlood floodOpacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset/><feGaussianBlur stdDeviation="4"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0.976471 0 0 0 0 0.121569 0 0 0 0 0.356863 0 0 0 1 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_935_1458"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_935_1458" result="shape"/></filter></defs></svg></div>
-                <h2 className="text-center flexy sl:gap-4 !flex-col">
-                  <span className="flexy">
-                    <Btn classBorder={"!top-[10px] !right-[-10px]"} href="mailto:edondigital@gmail.com" classContainer={"!mr-0 lg:ml-[10px] lg:mr-[25px] text-xl xs:text-[38px] font-black leading-[71px] tracking-widest"} >
-                      <div className="flexy w-full">Email-me</div>
-                    </Btn>
-                  </span>
-                  <span className="text-xl xs:text-[30px] font-extrabold mt-6 tracking-widest">or Contact me</span>
-                </h2>
-              </div>
-              <h2 className="text-center text-xl xs:text-[30px] font-black tracking-widest">Where I'm most active</h2>
-            </div>
+            <C_Email_form WEB3FORM_ACCESS_KEY={process.env.WEB3FORM_ACCESS_KEY} />
             <div className="flex flex-col gap-16 mt-16 items-center justify-center ml-4 mr-2 sl:mx-16">
               <div className="relative z-20 w-full !mr-4">
                 <div className="w-[62px] rotate-[-6deg] !z-[11] h-[41px] left-[-24px] top-[-27px] absolute "><svg width="65" height="57" viewBox="0 0 65 57" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d_942_1761)"><path d="M36.254 19.6889L36.4471 19.7654L40.023 21.1807L41.8557 17.6641L41.9547 17.4723L45.0317 11.5666C45.2287 11.1895 45.5412 10.862 45.9275 10.628C46.3139 10.3939 46.7555 10.2645 47.1935 10.257C47.6314 10.2494 48.0447 10.3642 48.378 10.5859C48.7113 10.8076 48.9488 11.1257 49.0586 11.4975L54.68 30.5833L22.377 46.3721L10.7642 30.3139C10.535 29.998 10.428 29.6132 10.4576 29.2115C10.4872 28.8098 10.6519 28.4107 10.9296 28.0682C11.2072 27.7257 11.5843 27.4564 12.0097 27.2967C12.4352 27.1371 12.8885 27.0948 13.3082 27.1755L19.5842 28.381L19.7451 28.4121L23.683 29.1672L24.8579 25.4425L24.9048 25.2909L26.9756 18.7523C27.0679 18.461 27.2292 18.1843 27.4478 17.9427C27.6663 17.7011 27.9363 17.5009 28.2377 17.357C28.5391 17.2132 28.8642 17.1293 29.1887 17.1117C29.5131 17.0941 29.8287 17.1432 30.1118 17.2553L36.254 19.6889Z" fill="#EEC802"/></g><defs><filter id="filter0_d_942_1761" x="0.453125" y="0.256836" width="64.2266" height="56.1152" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB"><feFlood floodOpacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset/><feGaussianBlur stdDeviation="5"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0.933333 0 0 0 0 0.784314 0 0 0 0 0.00784314 0 0 0 0.5 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_942_1761"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_942_1761" result="shape"/></filter></defs></svg></div>
@@ -97,12 +85,13 @@ const page = async () => {
                 {/* DS */}
                 <div className=" flex-col ss:flex-row flex gap-4 items-center text-primary_text_color no-underline border-[#5662f6] border-2 p-4 rounded-sm">
                   <svg className="!text-[40px]" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02M8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12m6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12"/></svg>
-                  <div className="flexy flex-col gap-4 !items-start">
+                  <div className="flexy flex-col gap-4 items-start">
                     <div className="flex gap-4 flex-col sm:flex-row">
                       <Btn classContainer="!mr-0" href="https://discord.gg/QyeNQPa3tY"><div className="flexy w-full text-center">Join the server</div></Btn>
-                      <span className="text-center">(very much a work in progress)</span>
                     </div>
-                    Username: edondigital
+                    <div className="text-center">
+                      Username: edondigital
+                    </div>
                   </div>
                 </div>
                 <div className="flex-col justify-center items-center sm:flex-row flex gap-10">

@@ -4,6 +4,7 @@ import SocialBTNs from "@/components/ui/SocialBTNs"
 import { getMdxComp } from "@/lib/mdx/getMdxComp"
 import { getFrontmatterBySlug } from "@/lib/mdx/mdxManager"
 import { defaultProseSettings } from "@/lib/mdx/proseSettings"
+import { scrollbar } from "@/lib/tailwind-scrollbar/settings"
 import GetAuthorsComp from "@/utils/GetAuthorsComp"
 import Image from "next/image"
 import Link from "next/link"
@@ -137,10 +138,10 @@ export default async function Home() {
         </div>
       </section>
       {/* Updates */}
-      <section className="z-10 max-w-none text-primary_text_color w-full flexy flex-col gap-4">
+      <section className={`z-10 max-w-none text-primary_text_color w-full flexy flex-col gap-4`}>
         <h2 className=" text-primary_text_color tracking-[2.52px]">Updates</h2>
           <div className=" flexy text-lg  w-full h-full max-w-[700px] p-4 bg-[#1f014b] no-scrollbar rounded-t-[20px] rounded-b-[4px] border-b-4 border-rose-600 flex-col justify-start items-start gap-2 flex">
-            <div className="w-full min-h-full max-h-[600px] max-w-[700px] lg:overscroll-contain overflow-y-auto pr-4 overflow-x-hidden flex-col justify-start items-start flex">
+            <div className={`${scrollbar} w-full min-h-full max-h-[600px] max-w-[700px] lg:overscroll-contain overflow-y-auto pr-4 overflow-x-hidden flex-col justify-start items-start flex`}>
               {udpateComps.map((updateComp, index) => (
                 <div key={index}>
                   {updateComp}
@@ -170,7 +171,7 @@ export default async function Home() {
                   <span className="text-center ">(very much a work in progress)</span>
                 </div>
               </div>
-              <a href="mailto:edondigital@gmail.com" className="!text-primary_text_color flex gap-2 items-center flex-col ss:flex-row ">
+              <a href={`mailto:${process.env.OWNER_EMAIL}`} className="!text-primary_text_color flex gap-2 items-center flex-col ss:flex-row ">
                 <svg className="!text-[40px]" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0z"/><path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0z"/></g></svg>
                 edondigital@gmail.com
               </a>

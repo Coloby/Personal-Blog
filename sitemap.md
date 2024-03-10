@@ -10,7 +10,7 @@
     - $Periodic-highlights
   - Resources
     - Notes
-    - $Downloads
+    - Downloads
     - $Wonder-room
 - Footer routes
   - Credits

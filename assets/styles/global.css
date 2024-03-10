@@ -53,3 +53,10 @@ html { /* Smooth scrolling won't work anyway based on your OS and/or browser set
     letter-spacing: 1px;
     word-spacing: 4px
   }
+  /* * {
+    outline: none !important;
+    outline-width: 0 !important;
+  }
+  input:focus, textarea:focus, select:focus{
+    outline: none;
+} */
