@@ -1,7 +1,9 @@
 "use client"
-import * as z from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import Btn from "@/components/logic/Btn";
+import {
+  Dialog,
+  DialogContent
+} from "@/components/shadcn-ui/ui/dialog";
 import {
   Form,
   FormControl,
@@ -10,16 +12,14 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/shadcn-ui/ui/form";
-import { Textarea } from "@/components/shadcn-ui/ui/textarea"
-import {
-  Dialog,
-  DialogContent
-} from "@/components/shadcn-ui/ui/dialog"
 import { Input } from "@/components/shadcn-ui/ui/input";
-import { useState } from "react";
-import Btn from "@/components/logic/Btn"
-import { useToast } from "@/components/shadcn-ui/ui/use-toast"
+import { Textarea } from "@/components/shadcn-ui/ui/textarea";
+import { useToast } from "@/components/shadcn-ui/ui/use-toast";
 import { scrollbar } from "@/lib/tailwind-scrollbar/settings";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
 
 const C_Email_form = ({WEB3FORM_ACCESS_KEY}) => {
   const formSchema = z.object({
@@ -61,7 +61,7 @@ const C_Email_form = ({WEB3FORM_ACCESS_KEY}) => {
   const onSubmit = async (_formData, e) => {
     setResult(
       <div className="h-10 w-12 relative">
-        <div className="rounded-md h-12 w-12 border-4 border-t-4 border-rose-600 absolute animate-bounce"></div>
+        <div className="rounded-md h-12 w-12 border-4 border-t-4 border-primary absolute animate-bounce"></div>
       </div>
     );
 
@@ -94,7 +94,10 @@ const C_Email_form = ({WEB3FORM_ACCESS_KEY}) => {
     <>
       <div className="flexy !flex-col sm:gap-4 relative ">
         <div className="relative overflow-visible">
-          <div className="absolute left-[-105px] sm:block hidden top-[-70px] text-rose-600"><svg width="105" height="111" viewBox="0 0 105 111" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d_935_1458)" className="overflow-visible"><path  className="overflow-visible" d="M48.2887 97.9525L78.4811 92.9258L71.5283 63.118" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/><path  className="overflow-visible" d="M78.4824 92.9241L48.7663 73.0992C28.251 59.4125 22.0254 32.7226 34.8606 13.4836L37.1845 10.0001" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></g><defs><filter id="filter0_d_935_1458" x="18.6807" y="0.5" width="69.3018" height="106.953" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB"><feFlood floodOpacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset/><feGaussianBlur stdDeviation="4"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0.976471 0 0 0 0 0.121569 0 0 0 0 0.356863 0 0 0 1 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_935_1458"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_935_1458" result="shape"/></filter></defs></svg></div>
+          {/* arrow */}
+          <div className="absolute left-[-105px] sm:block hidden top-[-70px] text-primary">
+            <svg width="105" height="111" viewBox="0 0 105 111" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d_935_1458)" className="overflow-visible"><path  className="overflow-visible" d="M48.2887 97.9525L78.4811 92.9258L71.5283 63.118" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/><path  className="overflow-visible" d="M78.4824 92.9241L48.7663 73.0992C28.251 59.4125 22.0254 32.7226 34.8606 13.4836L37.1845 10.0001" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></g><defs><filter id="filter0_d_935_1458" x="18.6807" y="0.5" width="69.3018" height="106.953" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB"><feFlood floodOpacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset/><feGaussianBlur stdDeviation="4"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0.976471 0 0 0 0 0.121569 0 0 0 0 0.356863 0 0 0 1 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_935_1458"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_935_1458" result="shape"/></filter></defs></svg>
+          </div>
           <h2 className="text-center flexy sl:gap-4 !flex-col">
             <span className="flexy">
               <Btn 

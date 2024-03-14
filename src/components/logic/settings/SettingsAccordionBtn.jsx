@@ -60,7 +60,7 @@ const SettingsAccordionBtn = () => {
         <AccordionItem value="ded">
           <AccordionTrigger>
             <div>
-              <div className="p-2 border-rose-600 border bg-[#1f014b] rounded-xs w-fit">
+              <div className="p-2 border-primary border bg-secondary rounded-xs w-fit">
                 <svg className=" text-primary_text_color text-[36px]" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"><path d="M20 7h-9m3 10H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></g></svg>
               </div>
             </div>

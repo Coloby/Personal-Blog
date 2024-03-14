@@ -30,13 +30,13 @@ const HeaderNavLinks = ({
             <NavigationMenuItem>
               <NavigationMenuTrigger className="text-base">Me</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <Link href={"/about"} className="w-full flexy !items-start hover:bg-rose-600 !justify-start">
+                <Link href={"/about"} className="w-full flexy !items-start hover:bg-primary !justify-start">
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>About</NavigationMenuLink>
                 </Link>
-                <Link href={"/now"} className="w-full flexy !items-start hover:bg-rose-600 !justify-start">
+                <Link href={"/now"} className="w-full flexy !items-start hover:bg-primary !justify-start">
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>Now</NavigationMenuLink>
                 </Link>
-                <Link href={"/interests"} className="w-full flexy !items-start hover:bg-rose-600 !justify-start">
+                <Link href={"/interests"} className="w-full flexy !items-start hover:bg-primary !justify-start">
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>Interests</NavigationMenuLink>
                 </Link>
               </NavigationMenuContent>
@@ -44,10 +44,10 @@ const HeaderNavLinks = ({
             <NavigationMenuItem>
               <NavigationMenuTrigger className="text-base">Resources</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <Link href={"https://edongarden.netlify.app"} target="_blank" rel="noopener noreferrer" className="w-full flexy !items-start hover:bg-rose-600 !justify-start">
+                <Link href={"https://edongarden.netlify.app"} target="_blank" rel="noopener noreferrer" className="w-full flexy !items-start hover:bg-primary !justify-start">
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>Notes</NavigationMenuLink>
                 </Link>
-                <Link href={"/downloads"} className="w-full flexy !items-start hover:bg-rose-600 !justify-start">
+                <Link href={"/downloads"} className="w-full flexy !items-start hover:bg-primary !justify-start">
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>Downloads</NavigationMenuLink>
                 </Link>
               </NavigationMenuContent>

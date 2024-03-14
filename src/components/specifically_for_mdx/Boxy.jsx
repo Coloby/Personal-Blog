@@ -1,5 +1,4 @@
-import Link from "next/link";
-import * as React from 'react'
+import * as React from 'react';
 
 const Demo = async ({ children = "Insert text here", variant = "note" }) => {
   let modeObj = {}
@@ -30,7 +29,7 @@ const Demo = async ({ children = "Insert text here", variant = "note" }) => {
   return (
     <div className="w-full flexy flex justify-center items-center h-fit my-8 relative overflow-visible">
       <div className=" w-fit h-fit relative mr-[8px]">
-        <div className={`!z-30 relative top-0 left-0 px-[15px] py-[4px] rounded-tl-lg rounded-br-lg bg-[#1f014b] dark:bg-[#1f014b] ${modeObj.textColor} border-[2px] border-[#760D6B] dark:border-[#760D6B] text-lg w-fit`}>
+        <div className={`!z-30 relative top-0 left-0 px-[15px] py-[4px] rounded-tl-lg rounded-br-lg bg-secondary dark:bg-secondary ${modeObj.textColor} border-[2px] border-[#760D6B] dark:border-[#760D6B] text-lg w-fit`}>
           <div className="z-20 flexy gap-[10px]">
             <span className={`${modeObj.textColor}`}>
               {modeObj.svg}
@@ -39,12 +38,12 @@ const Demo = async ({ children = "Insert text here", variant = "note" }) => {
           </div>
         </div>
         <div className="relative overflow-visible mt-[-22px] ml-[10px] rounded-xs min-w-[224px] ">
-          <div className={`${modeObj.textColor} ${sharedClasses}  absolute left-[8px] text-[#b56df8] bottom-[-8px] right-[-18px] top-[8px] !z-[2] bg-[#1f014b] rounded-xs`}>
+          <div className={`${modeObj.textColor} ${sharedClasses}  absolute left-[8px] text-[#b56df8] bottom-[-8px] right-[-18px] top-[8px] !z-[2] bg-secondary rounded-xs`}>
             <p className={`${sharedClassesChild}`}>{children}</p>
           </div >
           <div className="z-10 pointer-events-none relative h-full w-full border-[2px] border-[#760d6b] dark:border-[#760d6b] rounded-xs">
             {/* Dummy element to apply size to overlay border */}
-              <div className={`${sharedClasses} opacity-0 !z-[1333] bg-[#1f014b] rounded-xs `}>
+              <div className={`${sharedClasses} opacity-0 !z-[1333] bg-secondary rounded-xs `}>
                 <p className={`${sharedClassesChild}`}>{children}</p>
               </div >
           </div>

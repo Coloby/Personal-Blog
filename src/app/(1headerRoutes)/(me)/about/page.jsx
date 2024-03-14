@@ -18,7 +18,7 @@ const page = async () => {
           alt=""
           priority={true}
         />
-        <div className="bg-[#1F014B] h-full absolute w-full z-[1]"></div>
+        <div className="bg-secondary h-full absolute w-full z-[1]"></div>
       </div>
       {/* Hero */}
       <div className="w-full justify-center items-center lg:items-start gap-14 xl:gap-20 flex flex-col lg:flex-row z-10">

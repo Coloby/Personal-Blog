@@ -15,7 +15,7 @@ const C_Layout = ({children}) => {
 
 
   return (
-    <html className={`${themeColor}-theme-color ${themeMode}-theme-mode ${themeMode} overflow-x-hidden bg-[#0d0519] ${scrollbar} `} lang="en" > 
+    <html className={`${themeColor}-theme-color ${themeMode}-theme-mode ${themeMode} overflow-x-hidden bg-body_shade ${scrollbar} `} lang="en" > 
       <body className={`${inter.className} ${process.env.NODE_ENV === "development" ? "debug-screens" : ""}`}>
         {children}
         <ScrollToTopBtn />

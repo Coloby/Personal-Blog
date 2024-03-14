@@ -4,11 +4,12 @@ export const defaultProseSettings = `
   prose 
   dark:prose-invert 
   
-  prose-a:!text-[#bb9af7]
-  prose-a:dark:text-[hsl(271,91%,70%)]  
+  prose-a:!text-text_outlink
+  prose-a:dark:!text-text_outlink
   prose-img:rounded-xs  
   prose-p:dark:text-[#D9D9D9]  
   prose-li:dark:text-[#D9D9D9] 
+  prose-blockquote:border-primary
   
   sm:prose-lg 
   sm:prose-code:text-base 

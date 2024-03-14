@@ -19,7 +19,7 @@ export default async function Home() {
   return (
     <div className={`sm:w-[1300px] !max-w-none min-h-screen flex flex-col gap-[150px] lg:gap-[200px] prose ${defaultProseSettings}`}>
       {/* Backgrounds */}
-      <div className="flexy w-full h-full flex-col top-0 absolute items-start left-0 content-start ">
+      <div className="flexy w-full h-full flex-col top-0 absolute items-start left-0 content-start pointer-events-none ">
         <Image
           src="/assets/backgrounds/vapo_hero.jpg"
           width={1920}
@@ -28,10 +28,10 @@ export default async function Home() {
           alt=""
           priority={true}
         />
-        <div className="bg-gradient-to-t from-[#F91F5B] via-[#1F014B] to-[#1F014B] h-[1200px] w-full"></div>
-        <div className="bg-gradient-to-t from-[#1F014B] via-[#1F014B] to-[#F91F5B] h-[1600px] w-full"></div>
-        <div className="bg-gradient-to-t from-[#F91F5B] via-[#1F014B] to-[#1F014B] h-[1600px] w-full"></div>
-        <div className="bg-gradient-to-t from-[#1F014B] via-[#1F014B] to-[#F91F5B] h-[1600px] w-full"></div>
+        <div className="bg-gradient-to-t from-primary via-secondary to-secondary h-[1200px] w-full"></div>
+        <div className="bg-gradient-to-t from-secondary via-secondary to-primary h-[1600px] w-full"></div>
+        <div className="bg-gradient-to-t from-primary via-secondary to-secondary h-[1600px] w-full"></div>
+        <div className="bg-gradient-to-t from-secondary via-secondary to-primary h-[1600px] w-full"></div>
       </div>
       {/* Hero */}
       <section className="z-10">
@@ -75,15 +75,15 @@ export default async function Home() {
         <div className="max-w-[1100px] w-full  pt-4 rounded-sm flex-col justify-start items-center gap-12 lg:gap-6 flex">
           <div className="w-full justify-center gap-12 lg:gap-6  flex items-center md:items-start flex-col md:flex-row">
             {/* Now */}
-            <div className="max-w-[340px] h-full p-4 bg-[#1f014b] border border-[#F91F5B]/80 rounded-sm flex-col items-center flex">
+            <div className="max-w-[340px] h-full p-4 bg-secondary border border-primary/80 rounded-sm flex-col items-center flex">
               <h3 className="!mb-4 !text-xl !mt-4 text-center flex flex-col gap-3">Some of the<br /><span className="">stuff I'm up to <Link href={"/now"} className="text-center text-xl "><span>Now</span></Link></span></h3>
               <ul className=" text-lg !mb-0">
                 <NowOverviewComp />
               </ul>
-              {/* <img className="w-[251px] h-[143px] rounded-sm border border-rose-600" src="https://via.placeholder.com/251x143" /> */}
+              {/* <img className="w-[251px] h-[143px] rounded-sm border border-primary" src="https://via.placeholder.com/251x143" /> */}
             </div>
             {/* About */}
-            <div className="w-full h-full pt-4 bg-[#1f014b] border border-[#F91F5B]/80 rounded-sm flex-col justify-center items-center flex">
+            <div className="w-full h-full pt-4 bg-secondary border border-primary/80 rounded-sm flex-col justify-center items-center flex">
                 <div className="!h-[64px] w-full flexy !my-4">
                   <h3 className=" !my-0 px-4  !text-xl text-center">Illustrating most stuff <span><Link href={"about"} className="text-center text-xl"><span>About</span></Link></span> me through images</h3>
                 </div>
@@ -99,7 +99,7 @@ export default async function Home() {
           </div>
           <div className="w-full !min-h-fit md:w-[600px] lg:w-full gap-12 lg:gap-6 flex items-center lg:items-start flex-col lg:flex-row">
             {/* Blog */}
-            <div className="w-full h-fit gap-6 lg:max-h-[320px] justify-between items-center flex-col lg:flex-row lg:p-4 lg:pr-0 bg-[#1f014b] border border-[#F91F5B]/80 rounded-sm  flex ">
+            <div className="w-full h-fit gap-6 lg:max-h-[320px] justify-between items-center flex-col lg:flex-row lg:p-4 lg:pr-0 bg-secondary border border-primary/80 rounded-sm  flex ">
               <div className="flex !h-fit flex-col p-4 lg:p-0 !pb-0 w-full ">
                 <h3 className="!text-xl !mt-4 inline-block">From the <span><Link href={"blog"} className="text-xl"><span>Blog</span></Link></span></h3>
                 <h4 className="font-semibold text-[20px] "><a href={"blog/" + frontmatter.slug} className="!no-underline"><span className="!no-underline !text-primary_text_color">{frontmatter.title}</span></a></h4>
@@ -111,14 +111,14 @@ export default async function Home() {
                   src={"/assets/routes_specific/blog/" + frontmatter.thumbnail}
                   width={360}
                   height={230}
-                  className=" h-full object-cover not-prose sm:rounded-b-[0] lg:rounded-bl-sm !w-full  lg:rounded-r-[0] max-w-[370px] lg:mr-[-16px] lg:max-h-[208px] !mx-0 ml-[38px] rounded-sm border border-rose-600"
+                  className=" h-full object-cover not-prose sm:rounded-b-[0] lg:rounded-bl-sm !w-full  lg:rounded-r-[0] max-w-[370px] lg:mr-[-16px] lg:max-h-[208px] !mx-0 ml-[38px] rounded-sm border border-primary"
                   alt=""
                   priority={false}
                 />
               </a>
             </div>
             {/* Wonder room */}
-            <div className="max-w-[340px] gap-6 lg:gap-6 w-full h-full justify-between max-h-[320px] pt-4 bg-[#1f014b] border border-[#F91F5B]/80 rounded-sm flex-col items-center flex">
+            <div className="max-w-[340px] gap-6 lg:gap-6 w-full h-full justify-between max-h-[320px] pt-4 bg-secondary border border-primary/80 rounded-sm flex-col items-center flex">
               <div className="flexy flex-col">
                 <h3 className="!mt-4 !text-xl px-4 text-center">A piece of my <span><Link href={"wonder_room"} className="text-xl"><span>Wonder room</span></Link></span></h3>
                 <a href={wonderRoomPieceLink} className="font-semibold !mb-0 text-lg text-center px-4 w-full">What's a digital garden?</a>
@@ -128,7 +128,7 @@ export default async function Home() {
                   src="/assets/routes_specific/home/nodes_network.jpg"
                   width={350}
                   height={180}
-                  className="border-[#F91F5B]/80 border object-cover not-prose w-full max-h-[160px] transition-none z-0 rounded-sm"
+                  className="border-primary/80 border object-cover not-prose w-full max-h-[160px] transition-none z-0 rounded-sm"
                   alt=""
                   priority={false}
                 />
@@ -140,7 +140,7 @@ export default async function Home() {
       {/* Updates */}
       <section className={`z-10 max-w-none text-primary_text_color w-full flexy flex-col gap-4`}>
         <h2 className=" text-primary_text_color tracking-[2.52px]">Updates</h2>
-          <div className=" flexy text-lg  w-full h-full max-w-[700px] p-4 bg-[#1f014b] no-scrollbar rounded-t-[20px] rounded-b-[4px] border-b-4 border-rose-600 flex-col justify-start items-start gap-2 flex">
+          <div className=" flexy text-lg  w-full h-full max-w-[700px] p-4 bg-secondary no-scrollbar rounded-t-[20px] rounded-b-[4px] border-b-4 border-primary flex-col justify-start items-start gap-2 flex">
             <div className={`${scrollbar} w-full min-h-full max-h-[600px] max-w-[700px] lg:overscroll-contain overflow-y-auto pr-4 overflow-x-hidden flex-col justify-start items-start flex`}>
               {udpateComps.map((updateComp, index) => (
                 <div key={index}>
@@ -153,7 +153,7 @@ export default async function Home() {
       </section>
       {/* Last sentence */}
       <section className="z-10 not-prose">
-        <div className="top-4 flex px-4 flex-col justify-center items-center text-center z-10 bg-[#1f014b] border-x border-[#F91F5B]/80 rounded-sm py-12">
+        <div className="top-4 flex px-4 flex-col justify-center items-center text-center z-10 bg-secondary border-x border-primary/80 rounded-sm py-12">
           <h2 className="lg:!leading-[70px] !mt-0 text-xl ss:text-[30px] mb-6 leading-[44px] lg:!text-[50px]"><Link href={"contact"}><span>Contact</span></Link> me from anywhere and<br />I'll be happy to have a chat!</h2>
           <div className="flexy w-full prose-p:h-5 flex-col xs:flex-row gap-8 xs:gap-10">
             <div className="flex items-center xs:items-start flex-col gap-8 justify-center text-left">
@@ -195,7 +195,7 @@ export default async function Home() {
           />
         </div>
         <div className="relative overflow-y-hidden flexy w-full h-full">
-          <div className="overflow-hidden border-[2px] border-[#F91F5B]/80 rounded-sm flex flex-col  max-w-[800px] bg-[#eaf1f7]">
+          <div className="overflow-hidden border-[2px] border-primary/80 rounded-sm flex flex-col  max-w-[800px] bg-[#eaf1f7]">
             <div className="rotate-[-10deg] mt-[300px] w-[120%] ml-[-30px] transform relative z-[6]         bg-gradient-to-br from-yellow-400 to-yellow-800 border border-black border-dashed outline-dashed">
               <div className="marquee inline-flex items-center gap-x-6 overflow-hidden        whitespace-nowrap text-5xl font-bold leading-relaxed text-gray-50">Building great stuff - Loading the void... - Taking longer than expected - Still not finished - 🚧🚧🚧</div>
             </div>

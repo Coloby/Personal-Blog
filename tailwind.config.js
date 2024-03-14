@@ -50,11 +50,10 @@ module.exports = {
           DEFAULT: enableOpacity("--primary"),
           foreground: enableOpacity("--secondary")
         },
-        muted_primary: enableOpacity("--muted_primary"),
+        muted_primary: enableOpacity("--muted-primary"),
         secondary: enableOpacity("--secondary"),
-        skipped: enableOpacity("--skipped"),
-        record: enableOpacity("--record"),
-  
+        marker: enableOpacity("--marker"),
+        
         // shades
         body_shade: enableOpacity("--body-shade"),
         footer_shade: enableOpacity("--footer-shade"),
@@ -62,6 +61,9 @@ module.exports = {
         
         // text
         primary_text_color: enableOpacity("--text-primary"),
+        text_italic: enableOpacity("--text-italic"),
+        text_outlink: enableOpacity("--text-outlink"),
+        text_internal: enableOpacity("--text-internal"),
         text_muted: enableOpacity("--text-muted"),
 
         // shadcn ui

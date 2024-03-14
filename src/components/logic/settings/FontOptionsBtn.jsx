@@ -14,7 +14,7 @@ const FontOptionsBtn = () => {
 
   return (
     <div>
-      <div className="flex-col !justify-start !items-start gap-4 w-[270px] p-4 border-rose-600 border bg-[#1f014b] rounded-xs flexy">
+      <div className="flex-col !justify-start !items-start gap-4 w-[270px] p-4 border-primary border bg-secondary rounded-xs flexy">
         <div className="flexy !justify-start">
           <div className=" text-primary_text_color text-[24px] px-1">🅰</div>
           <div className="flexy text-lg">Font size: {fontSize}</div>

@@ -3,7 +3,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/shadcn-ui/accordion"
+} from "@/components/shadcn-ui/accordion";
 
 const GetUpdatesComps = (entriesNum) => {
 
@@ -59,7 +59,7 @@ const GetUpdatesComps = (entriesNum) => {
     <div className="flex-col justify-start items-start flex">
       <Accordion type="single" collapsible defaultValue={"item-"+index.toString()}>
         <AccordionItem value={"item-"+index.toString()}>
-          <AccordionTrigger><h3 className="text-center !my-0"><span className=" text-xl">From </span><span className="text-rose-600 text-xl font-semibold">{update.author} </span><span className="text-xl font-semibold">- {update.date} </span></h3></AccordionTrigger>
+          <AccordionTrigger><h3 className="text-center !my-0"><span className=" text-xl">From </span><span className="text-primary text-xl font-semibold">{update.author} </span><span className="text-xl font-semibold">- {update.date} </span></h3></AccordionTrigger>
           <AccordionContent><div className="text-lg">{update.text}</div></AccordionContent>
         </AccordionItem>
       </Accordion>

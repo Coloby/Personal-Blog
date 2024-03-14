@@ -1,10 +1,9 @@
 .dark-theme-mode {
   /* contents */
-  --primary: 144, 89, 255;
-  --muted_primary: 95, 54, 178;
-  --secondary: 255, 64, 255;
-  --skipped: 115, 96, 0;
-  --record: 255, 107, 38;
+  --primary: 222, 29, 72;
+  --muted-primary: 95, 54, 178;
+  --secondary: 31, 1, 75;
+  --marker: 182, 204, 251;
 
   /* shades */
   --body-shade: 13, 5, 25; 
@@ -14,21 +13,52 @@
   /* text */
   --text-primary: 255, 255, 255;
   --text-muted: 210, 210, 210;
+  /* --text-bold-l: 1, 1, 1; */
+  /* --text-bold-r: 1, 1, 1; */
+  --text-italic: 247, 154, 242;
+  --text-outlink: 187, 154, 247;
+  --text-internal: 222, 29, 72;
+
+  /* contents */
+  /* --cnt-1: 222, 29, 72;
+  --cnt-muted-1: 95, 54, 178;
+  --cnt-2: 31, 1, 75;
+  --cnt-muted-2: 95, 54, 178;
+  --cnt-marker: 182, 204, 251; */
+
+  /* shades */
+  /* --shd-body: 13, 5, 25; 
+  --shd-footer: 30, 30, 30;
+  --shd-box: 40, 40, 40; */
+
+  /* text */
+  /* --txt-foreground: 255, 255, 255;
+  --txt-background: 255, 255, 255;
+  --txt-muted: 210, 210, 210; */
+  /* --txt-bold-l: 1, 1, 1; */
+  /* --txt-bold-r: 1, 1, 1; */
+  /* --txt-italic: 247, 154, 242;
+  --txt-link-external: 187, 154, 247;
+  --txt-link-internal: 222, 29, 72; */
 }
 .white-theme-mode {
   /* contents */
-  --primary: 1, 1, 1;
-  --muted_primary: 95, 54, 178;
-  --secondary: 255, 64, 255;
-  --skipped: 115, 96, 0;
-  --record: 255, 107, 38;
+  --primary: 255, 44, 163;
+  --muted-primary: 95, 54, 178;
+  --secondary: 255, 255, 255;
+  --marker: 79, 88, 109;
 
   /* shades */
-  --body-shade: 244, 244, 244; 
+  --body-shade: 258, 258, 258; 
   --footer-shade: 222, 222, 222;
   --box-shade: 230, 230, 240;
 
   /* text */
   --text-primary: 1, 1, 1;
   --text-muted: 3, 3, 3;
+  /* --text-bold-l: 1, 1, 1; */
+  /* --text-bold-r: 1, 1, 1; */
+  --text-italic: 118, 10, 113;
+  --text-outlink: 95, 19, 236;
+  --text-internal: 175, 4, 52;
 }

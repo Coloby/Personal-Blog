@@ -5,13 +5,7 @@ strong {
   background-image: linear-gradient(to right, #93c0fd, #f993fd) !important;
   font-weight: 800 !important;
 }
-em {
-  color: #f79af2 !important;
-}
-li::marker {
-  color: hsl(221, 90%, 85%) !important;
-}
-a > em,
+/* a > em, 
 a > span {
   color: #f91f5b !important;
   text-decoration-color: #f91f5b !important;
@@ -29,7 +23,7 @@ a > span > strong {
   text-decoration-color: #f91f5b !important;
   text-decoration: underline;
   font-weight: bold;
-}
+} */
 /* a {
   color: #bb9af7;
 } */

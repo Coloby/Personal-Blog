@@ -2,9 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @layer base {   to use this for styles that applies in the whole document
+@layer base {   /* to use this for styles that applies in the whole document */
+  a > em {
+    @apply !text-text_internal !decoration-text_internal underline font-normal
+  }
+  a > span {
+    @apply !text-text_internal !decoration-text_internal underline font-normal
+  }
+  a > span > em {
+    @apply !text-text_internal !decoration-text_internal underline italic
+  }
+  a > span > strong {
+    @apply !text-text_internal !decoration-text_internal underline font-bold
+  }
 
-} */
+  /* strong {
+    @apply !bg-clip-text !text-transparent !bg-gradient-to-r !from-blue-400 !to-pink-400 font-bold
+  } */
+  em {
+    @apply text-text_italic
+  }
+  li::marker {
+    @apply !text-marker
+  }
+}
 @layer components { /* takes precedence over layer BASE regardless of actual order in-code */
   .formInputElem {
     @apply min-w-[220px] rounded-xs placeholder-transparent outline-none bg-slate-400/10 px-2 border-b-2 border-[#242424] text-gray-100 placeholder-gray-500 transition-all focus:border-rose-500/40 hover:border-rose-500/20 py-[10px] sm:h-[52px] 

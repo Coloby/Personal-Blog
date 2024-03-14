@@ -1,7 +1,7 @@
 .default-theme-color {
   /* contents */
-  --primary: 144, 89, 255;
-  --muted_primary: 95, 54, 178;
+  --primary: 225, 29, 72;
+  --muted-primary: 95, 54, 178;
   --secondary: 255, 64, 255;
   --skipped: 115, 96, 0;
   --record: 255, 107, 38;

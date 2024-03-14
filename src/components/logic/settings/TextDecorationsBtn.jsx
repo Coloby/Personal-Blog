@@ -10,7 +10,7 @@ const TextDecorationsBtn = () => {
   }, [])
 
   return (
-    <div className="flex-col not-prose !justify-start !items-start gap-4 w-[270px] p-4 border-rose-600 border bg-[#1f014b] rounded-xs flexy">
+    <div className="flex-col not-prose !justify-start !items-start gap-4 w-[270px] p-4 border-primary border bg-secondary rounded-xs flexy">
       <div className="flexy !justify-start w-full">
         <div className="text-[24px] px-1 flexy">🎨</div>
         <div className="flexy !justify-between w-full">
