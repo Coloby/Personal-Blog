@@ -8,6 +8,8 @@ import { scrollbar } from "@/lib/tailwind-scrollbar/settings"
 import GetAuthorsComp from "@/utils/GetAuthorsComp"
 import Image from "next/image"
 import Link from "next/link"
+import LiteYouTubeEmbed from 'react-lite-youtube-embed';
+import C_YTEmbed from "@/components/specifically_for_mdx/C_YTEmbed"
 
 export default async function Home() {
   const { frontmatter } = await getFrontmatterBySlug("Finding You. Identity and Purpose beginner's guide.mdx")
@@ -37,6 +39,7 @@ export default async function Home() {
       <section className="z-10">
         <div className=" justify-center items-center flex flex-col lg:flex-row mt-12 max-w-none z-10 lg:gap-32">
           <div className=" not-prose flexy text-center flex-col items-start">
+      <C_YTEmbed />
             <h2 className="font-bold text-[22px] h-[27px] leading-[27px]">Welcome to</h2>
             <h1 className="h-[106px] leading-[50px] xs:h-[53px] xs:leading-[53px] flex items-center font-extrabold text-[44px] tracking-[3.52px]">Ed's Corner</h1>
             <div className=" font-bold text-lg flexy   items-start">

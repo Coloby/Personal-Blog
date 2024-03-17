@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   distDir: 'dist',
+  images: {
+    domains: ['picsum.photos', "images.unsplash.com"],
+  },
   async redirects() {
     return [
       {

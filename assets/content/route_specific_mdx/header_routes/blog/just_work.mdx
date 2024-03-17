@@ -11,32 +11,7 @@ tags:
 category: web development
 ---
 import Boxy from '../../components/specifically_for_mdx/Boxy.jsx'
-import YtEmbed from '../../components/specifically_for_mdx/YtEmbed.jsx'
 
-{/* // import { useState } from "react";
-
-// import React from "react"
-
-// export const initialCounterState = 4;
-
-// export const MyPage = () => {
-//   if (typeof window === 'undefined') {
-//       // Server-side rendering: Render nothing or a placeholder
-//       return null;
-//   } else {
-//       // Client-side rendering: Render the actual component
-//       const [counter, setCounter] = useState(initialCounterState);
-//       console.log(`counter:`, counter)
-//       return (
-//         <button onClick={() => setCounter((c) => c + 1)}>
-//           Increment {counter}
-//         </button>
-//       )
-//   }
-// }
-
-
-// <MyPage /> */}
 
 <Boxy >
   I did not write most of this. That's just to demonstrate the capabilities of the blog. 
@@ -58,13 +33,16 @@ import Boxy from '../../components/ui/Boxy.jsx'
 </Boxy >
 ```
 
-youtube embedding:
+Privacy oriented youtube embedding:
 
-["yt embed"](https://www.youtube.com/embed/dQw4w9WgXcQ)
+<C_YTEmbed url="https://www.youtube.com/watch?v=dQw4w9WgXcQ"/>
 
-<YtEmbed url="https://www.youtube.com/embed/dQw4w9WgXcQ" />
+Tweet embedding: too lazy to make it GDPR compliant, so I don't use it for now :D
+{/* <C_TweetEmbed tweetLink="PaulieScanlon/status/1232982448310497286" /> */}
 
-```jsx custom react component imported into mdx!
+custom react components imported into mdx!
+
+```jsx 
 <Boxy variant="danger" />
 <Boxy variant="warning">
   Here's some text
@@ -153,8 +131,8 @@ Now we're going to try out another header style.
 So that's a header for you — with any luck if we've done our job correctly that will look pretty reasonable.
 
 <figure>
-  <img
-    src="https://images.unsplash.com/photo-1556740758-90de374c12ad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+  <ImageTag
+    src="https://images.unsplash.com/photo-1556740758-90de374c12ad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&q=80"
     alt=""
   />
   <figcaption>
@@ -293,4 +271,4 @@ We don't style them at all out of the box because `h4` elements are already so s
 
 Phew, with any luck we have styled the headings above this text and they look pretty good.
 
-Let's add a closing paragraph here so things end with a decently sized block of text. I can't explain why I want things to end that way but I have to assume it's because I think things will look weird or unbalanced if there is a heading too close to the end of the document.
+Let's add a closing paragraph here so things end with a decently sized block of text. I can't explain why I want things to end that way but I have to assume it's because I think things will look weird or unbalanced if there is a heading too close to the end of the document.import Boxy from '../../components/specifically_for_mdx/Boxy.jsx'

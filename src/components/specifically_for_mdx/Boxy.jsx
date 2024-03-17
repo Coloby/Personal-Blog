@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const Demo = async ({ children = "Insert text here", variant = "note" }) => {
+const Boxy = async ({ children = "Insert text here", variant = "note" }) => {
   let modeObj = {}
   switch (variant) {
     case 'warning':
@@ -14,11 +14,11 @@ const Demo = async ({ children = "Insert text here", variant = "note" }) => {
       modeObj.title = "Danger"
       break;
     case "note":
-      modeObj.textColor = '!text-white';
+      modeObj.textColor = '!text-primary_text_color';
       modeObj.svg = <svg width="20" height="19" viewBox="0 0 20 19" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g clipPath="url(#clip0_359_7151)"><path fill="currentColor" d="M2.00288 18.3452C1.7389 18.3457 1.4855 18.2415 1.29837 18.0553C1.11124 17.8691 1.00568 17.6162 1.00488 17.3522V1.33821C1.00488 0.790215 1.44988 0.345215 1.99788 0.345215H18.0119C18.5599 0.345215 19.0049 0.792215 19.0049 1.34421V13.3452L14.0019 18.3452H2.00288ZM3.00488 16.3452H13.1739L17.0049 12.5162V2.34521H3.00488V16.3452Z" /><path fill="currentColor" d="M6.00488 10.5H14.0049" stroke="currentColor" strokeLinecap="round"/><path fill="currentColor" d="M6.00488 6.5H14.0049" stroke="currentColor" strokeLinecap="round"/></g><defs><clipPath id="clip0_359_7151"><rect width="19" height="18" fill="white" transform="translate(0.504883 0.345215)"/></clipPath></defs></svg>
       modeObj.title = "Author Note"
     default:
-      modeObj.textColor = '!text-white';
+      modeObj.textColor = '!text-primary_text_color';
       modeObj.svg = <svg width="20" height="19" viewBox="0 0 20 19" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g clipPath="url(#clip0_359_7151)"><path fill="currentColor" d="M2.00288 18.3452C1.7389 18.3457 1.4855 18.2415 1.29837 18.0553C1.11124 17.8691 1.00568 17.6162 1.00488 17.3522V1.33821C1.00488 0.790215 1.44988 0.345215 1.99788 0.345215H18.0119C18.5599 0.345215 19.0049 0.792215 19.0049 1.34421V13.3452L14.0019 18.3452H2.00288ZM3.00488 16.3452H13.1739L17.0049 12.5162V2.34521H3.00488V16.3452Z" /><path fill="currentColor" d="M6.00488 10.5H14.0049" stroke="currentColor" strokeLinecap="round"/><path fill="currentColor" d="M6.00488 6.5H14.0049" stroke="currentColor" strokeLinecap="round"/></g><defs><clipPath id="clip0_359_7151"><rect width="19" height="18" fill="white" transform="translate(0.504883 0.345215)"/></clipPath></defs></svg>
       modeObj.title = "Author Note"
   }
@@ -29,7 +29,7 @@ const Demo = async ({ children = "Insert text here", variant = "note" }) => {
   return (
     <div className="w-full flexy flex justify-center items-center h-fit my-8 relative overflow-visible">
       <div className=" w-fit h-fit relative mr-[8px]">
-        <div className={`!z-30 relative top-0 left-0 px-[15px] py-[4px] rounded-tl-lg rounded-br-lg bg-secondary dark:bg-secondary ${modeObj.textColor} border-[2px] border-[#760D6B] dark:border-[#760D6B] text-lg w-fit`}>
+        <div className={`!z-30 relative top-0 left-0 px-[15px] py-[4px] rounded-tl-lg rounded-br-lg bg-secondary dark:bg-secondary ${modeObj.textColor} border-[2px] border-primary dark:border-primary text-lg w-fit`}>
           <div className="z-20 flexy gap-[10px]">
             <span className={`${modeObj.textColor}`}>
               {modeObj.svg}
@@ -38,10 +38,10 @@ const Demo = async ({ children = "Insert text here", variant = "note" }) => {
           </div>
         </div>
         <div className="relative overflow-visible mt-[-22px] ml-[10px] rounded-xs min-w-[224px] ">
-          <div className={`${modeObj.textColor} ${sharedClasses}  absolute left-[8px] text-[#b56df8] bottom-[-8px] right-[-18px] top-[8px] !z-[2] bg-secondary rounded-xs`}>
+          <div className={`${modeObj.textColor} ${sharedClasses}  absolute left-[8px] text-primary_text_color bottom-[-8px] right-[-18px] top-[8px] !z-[2] bg-secondary rounded-xs`}>
             <p className={`${sharedClassesChild}`}>{children}</p>
           </div >
-          <div className="z-10 pointer-events-none relative h-full w-full border-[2px] border-[#760d6b] dark:border-[#760d6b] rounded-xs">
+          <div className="z-10 pointer-events-none relative h-full w-full border-[2px] border-primary dark:border-primary rounded-xs">
             {/* Dummy element to apply size to overlay border */}
               <div className={`${sharedClasses} opacity-0 !z-[1333] bg-secondary rounded-xs `}>
                 <p className={`${sharedClassesChild}`}>{children}</p>
@@ -53,4 +53,4 @@ const Demo = async ({ children = "Insert text here", variant = "note" }) => {
   )
 }
 
-export default Demo
+export default Boxy

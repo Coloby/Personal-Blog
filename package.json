@@ -58,6 +58,7 @@
     "hastscript": "^8.0.0",
     "html-to-react": "^1.7.0",
     "mdx-bundler": "^10.0.1",
+    "mdx-embed": "^1.1.2",
     "postcss": "^8",
     "react-headroom": "^3.2.1",
     "react-lite-youtube-embed": "^2.4.0",
