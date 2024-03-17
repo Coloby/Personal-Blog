@@ -1,4 +1,5 @@
 import SettingsAccordionBtn from "@/components/logic/settings/SettingsAccordionBtn";
+import C_ShareBtns from "@/components/clientComps/C_ShareBtns";
 import { getAllArticlesFrontmatter, getFrontmatterBySlug, getTOCComponentFromSlug } from '@/lib/mdx/mdxManager';
 import { defaultProseSettings } from "@/lib/mdx/proseSettings";
 import { getMdxComp } from "../../../../lib/mdx/getMdxComp";
@@ -13,10 +14,11 @@ const Page = async ({ params }) => {
 
   return (
     <section className={`flexy !items-start gap-20 h-fit pb-8 !max-w-full w-full prose ${defaultProseSettings}`}>
-      {/* TODO zen mode: hides everything apart from the text */}
       <div className="absolute right-[1470px] top-[160px] max-w-[390px] w-fit h-full flex justify-end !items-start sl:block pb-[320px]">
         <div className="!sticky top-[120px] left-[-1150px] flex flex-col !items-end !justify-end gap-4 settings-btn">
+          {/* TODO zen mode: hides everything apart from the text */}
           <SettingsAccordionBtn /> {/* workaround made bcs the AccordionContent component doesn't mount components when hidden. You can find the attributes to change this behaviour in the comment below, but using it will show the components and using "hidden" will make the animations not work at best */}
+          <C_ShareBtns url={`${process.env.BASE_URL}/blog/${params.slug}`} />
           {/* forceMount={true} hidden={isHidden} */}
         </div>
       </div>

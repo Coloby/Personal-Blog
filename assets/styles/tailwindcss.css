@@ -25,6 +25,9 @@
   li::marker {
     @apply !text-marker
   }
+  .share-btns div {
+    @apply !items-center !justify-start
+  }
 }
 @layer components { /* takes precedence over layer BASE regardless of actual order in-code */
   .formInputElem {
