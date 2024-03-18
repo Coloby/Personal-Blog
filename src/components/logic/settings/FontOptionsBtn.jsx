@@ -1,7 +1,7 @@
 "use client"
 import { Slider } from "@/components/shadcn-ui/ui/slider"
 import { useEffect, useState } from "react"
-import { handleOnCHange } from "./SettingsAccordionBtn"
+import { handleOnCHange } from "./SettingsBtn"
 
 
 const FontOptionsBtn = () => {

@@ -19,6 +19,8 @@ import {
 } from "@/components/shadcn-ui/accordion"
 // @ts-ignore
 import Headroom from "react-headroom"
+import SettingsBtn from "@/components/logic/settings/SettingsBtn"
+import C_ShareBtns from "@/components/clientComps/C_ShareBtns"
 
 const Header = () => {
   // w-[250px] h-[70px] px-4 bg-gradient-to-r from-fuchsia-950 via-pink-800 to-primary rounded-[84px] shadow border-blue-900 justify-between items-center inline-flex
@@ -48,6 +50,7 @@ const Header = () => {
                 <SheetContent className=" ss:w-[200px] dark-theme-mode not-prose text-primary_text_color">
                   <DrawerNavLinks />
                   <Accordion type="single" collapsible defaultValue={"item-idk"} className="flex flex-col gap-4">
+                    {/* Me */}
                     <AccordionItem value={"-"} className="border border-primary rounded-xs py-2">
                       <AccordionTrigger className="flexy"><div className="text-center ml-2 !my-0">Me</div></AccordionTrigger>
                       <AccordionContent>
@@ -58,6 +61,7 @@ const Header = () => {
                         </div>
                       </AccordionContent>
                     </AccordionItem>
+                    {/* Resources */}
                     <AccordionItem value={"-3"} className="border border-primary rounded-xs py-2">
                       <AccordionTrigger className="flexy"><div className="text-center ml-2 !my-0">Resources</div></AccordionTrigger>
                       <AccordionContent>
@@ -69,6 +73,10 @@ const Header = () => {
                     </AccordionItem>
                   </Accordion>
                   <div className="mt-10 flexy"><ThemeModeBtn /></div>
+                  <div className="w-full flex mt-20 justify-center items-center gap-4">
+                    <SettingsBtn />
+                    <C_ShareBtns />
+                  </div>
                 </SheetContent>
               </Sheet>
             </div>

@@ -2,13 +2,13 @@
 
 import FontOptionsBtn from "@/components/logic/settings/FontOptionsBtn";
 import TextDecorationsBtn from "@/components/logic/settings/TextDecorationsBtn";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/shadcn-ui/accordion";
 import { useEffect } from "react";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/shadcn-ui/ui/popover"
+
 
 export const handleOnCHange = (fontSize) => {
   const paragraphs = document.querySelectorAll("article p")
@@ -47,7 +47,7 @@ export const handleCheck = (isActive) => {
   localStorage.setItem('isActive', isActive);
 }
 
-const SettingsAccordionBtn = () => {
+const SettingsBtn = () => {
   useEffect(() => {
     handleCheck(localStorage.getItem('isActive') ? localStorage.getItem('isActive') === 'true' : "true")
     handleOnCHange(localStorage.getItem('fontSize') ? localStorage.getItem('fontSize') : 18)
@@ -56,27 +56,25 @@ const SettingsAccordionBtn = () => {
   return (<>
   {/* <div className="absolute left-0"> */}
     {/* <Headroom style={{ zIndex: "999"}} upTolerance={10} downTolerance={20} className=""> */}
-      <Accordion type="single" collapsible defaultValue="de" className="not-prose">
-        <AccordionItem value="ded">
-          <AccordionTrigger>
-            <div>
-              <div className="p-2 border-primary border bg-secondary rounded-xs w-fit">
-                <svg className=" text-primary_text_color text-[36px]" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"><path d="M20 7h-9m3 10H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></g></svg>
-              </div>
+      <Popover className="relative">
+        <PopoverTrigger>
+          <div>
+            <div className="p-2 border-primary border bg-secondary rounded-xs w-fit">
+              <svg className=" text-primary_text_color text-[36px]" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"><path d="M20 7h-9m3 10H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></g></svg>
             </div>
-          </AccordionTrigger>
-          <AccordionContent>
-            <div className="flex flex-col gap-4 mt-4">
-              <FontOptionsBtn />
-              <TextDecorationsBtn />
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+          </div>
+        </PopoverTrigger>
+        <PopoverContent className="!p-0">
+          <div className="flex flex-col gap-4 mt-4 !text-primary_text_color">
+            <FontOptionsBtn />
+            <TextDecorationsBtn />
+          </div>
+        </PopoverContent>
+      </Popover>
     {/* </Headroom> */}
   {/* // </div> */}
   
   </>)
 }
 
-export default SettingsAccordionBtn
+export default SettingsBtn

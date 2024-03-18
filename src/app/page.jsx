@@ -201,7 +201,7 @@ export default async function Home() {
               <div className="marquee inline-flex items-center gap-x-6 overflow-hidden        whitespace-nowrap text-5xl font-bold leading-relaxed text-gray-50">Building great stuff - Loading the void... - Taking longer than expected - Still not finished - 🚧🚧🚧</div>
             </div>
             <div className=" w-[120%] ml-[-20px] transform relative z-[3]         bg-gradient-to-br from-yellow-400 to-yellow-800 border border-black border-dashed outline-dashed">
-              <div className="marquee2 inline-flex items-center gap-x-6 overflow-hidden        whitespace-nowrap text-5xl font-bold leading-relaxed text-gray-50">Work in progress - Under construction - Please wait... - Hey, it's you! 👷‍♀️ - Drink! - <span><Link href="you-won">You won!</Link></span> </div>
+              <div className="marquee2 inline-flex items-center gap-x-6 overflow-hidden        whitespace-nowrap text-5xl font-bold leading-relaxed text-gray-50">Work in progress - Under construction - Please wait... - Hey, it's you! 👷‍♀️ - Drink! - <span><Link href="you-won" className="!text-primary_text_color">You won!</Link></span> </div>
             </div>
             <div className="rotate-[4deg] w-[120%] ml-[-20px] transform relative z-[41]         bg-gradient-to-br from-yellow-400 to-yellow-800 border border-black border-dashed outline-dashed">
               <div className="marquee inline-flex items-center gap-x-6 overflow-hidden        whitespace-nowrap text-5xl font-bold leading-relaxed text-gray-50">Please wait - It's going to be great - Suprise coming - 👷‍♂️ - Can it even fly? - Posture check</div>

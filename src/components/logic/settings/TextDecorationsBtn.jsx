@@ -2,7 +2,7 @@
 
 import { Switch } from "@/components/shadcn-ui/ui/switch"
 import { useEffect } from "react"
-import { handleCheck } from "./SettingsAccordionBtn"
+import { handleCheck } from "./SettingsBtn"
 
 const TextDecorationsBtn = () => {
   useEffect(() => {
