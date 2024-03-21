@@ -23,6 +23,14 @@ const GetUpdatesComps = (entriesNum) => {
     //   author: "Ed"
     // },
     {
+
+    },
+    {
+      date: "18/Mar/2024",
+      text: `More updates and pages are coming, but until then you can explore my second brain clicking on the "notes" tab from the header :) it's growing!!! one of the greatest additions are "Bu models" and "Tech Jobs (IT + Art)"`,
+      author: "Ed"
+    },
+    {
       date: "24/Feb/2024",
       text: `Yes, I published the article. I have many more ideas in mind, but the development of the website is a priority. I made /now and /interests pages just recently :) + reading experience in the blog has been enhanced.`,
       author: "Ed"

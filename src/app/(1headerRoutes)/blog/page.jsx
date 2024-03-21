@@ -14,15 +14,15 @@ const Page = async () => {
   });
 
   return (
-    <section className=' flex-wrap flex gap-x-16 gap-y-12 w-md lg:w-[1334px] justify-center '>
+    <section className=' flex flex-wrap  gap-x-16 gap-y-12 w-md lg:w-[1334px] justify-center not-prose '>
       {sortedPosts?.map(frontmatter => {
         const authors = GetAuthorsComp(frontmatter.authors)
         return (
-          <article className="max-w-[300px] relative min-h-[366px]" key={frontmatter.slug} >
+          <article className="max-w-[334px] bg-secondary p-4 flex items-stretch flex-col min-h-[450px] !max-h-[450px] border border-primary  rounded-xs" key={frontmatter.slug} >
             <Link
               href={`blog/${frontmatter.slug}`}
               key={frontmatter?.title}
-              className='relative h-full'
+              className=''
             >
               {/* 500 x 200 */}
               <div className="flex items-center relative justify-center w-full h-[176px] overflow-hidden rounded-xs">
@@ -38,12 +38,14 @@ const Page = async () => {
                   {frontmatter.readingTime}
                 </div>
               </div>
-              <h3 className='mt-4 text-xl font-semibold '>{frontmatter.title}</h3> {/* flex items-center h-[52px] */}
+              <h3 className='mt-4 text-xl !min-h-[52px] flexy !justify-start font-semibold '>{frontmatter.title}</h3> {/* flex items-center h-[52px] */}
             </Link>
-              <h4 className=' line-clamp-4 mt-2 text-md max-w-[500px] max-h-[96px] overflow-hidden leading-6'>{frontmatter.description}</h4>
-              <div className="mt-4 flex gap-3 items-center ">
+            <div className="flex flex-col h-full justify-between items-stretch self-stretch">
+              <h4 className=' line-clamp-4 mt-2  text-md max-w-[500px] max-h-[96px] overflow-hidden leading-6'>{frontmatter.description}</h4>
+              <div className="mt-4   gap-3 items-center ">
                 <span className="flex flex-wrap gap-4 w-full justify-between"><address className="flexy">{authors}</address><span className=""> {} <time>{frontmatter.publishDate}</time></span></span>
               </div>
+            </div>
           </article>
         )
       })}
