@@ -8,8 +8,8 @@ const Btn = ({ children, classContainer = "", classBorder = "", ...attributes })
       <div className="relative z-10 pointer-events-none !w-full h-full px-[30px] rounded-tl-[30px] rounded-br-[30px] shadow-[0_0px_16px_-4px] shadow-primary border-2 border-primary justify-start items-center gap-10 flex text-primary_text_color">
         {children}
       </div>
-      <div className={`${classBorder} absolute w-full h-full top-[5px] right-[-5px] z-0`}>
-        <div className="w-full h-full absolute bg-secondary rounded-tl-[30px] !z-[5] rounded-br-[30px]" />
+      <div className={`${classBorder} absolute w-full h-full top-[5px] hover:top-0 hover:right-0 right-[-5px] transition-all z-0`}>
+        <div className="w-full h-full absolute bg-secondary hover:bg-secondary/80 rounded-tl-[30px] !z-[5] rounded-br-[30px]" />
       </div>
     </WrapperComponent>
   )

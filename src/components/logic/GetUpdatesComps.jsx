@@ -23,9 +23,6 @@ const GetUpdatesComps = (entriesNum) => {
     //   author: "Ed"
     // },
     {
-
-    },
-    {
       date: "18/Mar/2024",
       text: `More updates and pages are coming, but until then you can explore my second brain clicking on the "notes" tab from the header :) it's growing!!! one of the greatest additions are "Bu models" and "Tech Jobs (IT + Art)"`,
       author: "Ed"

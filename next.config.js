@@ -2,7 +2,18 @@
 const nextConfig = {
   distDir: 'dist',
   images: {
-    domains: ['picsum.photos', "images.unsplash.com"],
+    remotePatterns: [
+      {
+        hostname : 'picsum.photos', 
+        protocol: 'https',
+        port: '',
+      },
+      {
+        hostname : 'images.unsplash.com', 
+        protocol: 'https',
+        port: '',
+      },
+    ]
   },
   async redirects() {
     return [
