@@ -7,13 +7,14 @@ import Image from "next/image";
 import { getMdxComp } from "../../../../lib/mdx/getMdxComp";
 
 const Page = async ({ params }) => {
-  const { frontmatter } = await getFrontmatterBySlug(params.slug)
-  const { TOCComponent } = await getTOCComponentFromSlug(params.slug)
+  const { frontmatter } = await getFrontmatterBySlug("header_routes/blog/", params.slug)
+  const { TOCComponent } = await getTOCComponentFromSlug("header_routes/blog/", params.slug)
   const Component = await getMdxComp("header_routes/blog", params.slug)
   const authors = GetAuthorsComp(frontmatter.authors)
 
   return (
     <section className={`flexy !items-start gap-20 h-fit pb-8 !max-w-full w-full prose ${defaultProseSettings}`}>
+      {/* buttons */}
       <div className="absolute right-[1470px] top-[160px] max-w-[390px] w-fit h-full flex justify-end !items-start sl:block pb-[320px]">
         <div className="!sticky top-[120px] left-[-1150px] flex flex-col !items-end !justify-end gap-4 settings-btn">
           {/* TODO zen mode: hides everything apart from the text */}
@@ -22,11 +23,12 @@ const Page = async ({ params }) => {
           {/* forceMount={true} hidden={isHidden} */}
         </div>
       </div>
+      {/* TOC */}
       <div className="absolute right-[45px] top-[120px] max-w-[390px] w-full h-full hidden sl:block pb-[320px] !items-start">
-        {/* shadow-violet-500 shadow-[0_10px_10px_-10px] custom-shadow*/}
         <div className="sticky top-[90px]  pb-4 overflow-x-hidden hidden sl:block  w-full overflow-scroll no-scrollbar overscroll-contain "><TOCComponent platform={"desktop"} /></div>
       </div>
       <article className="w-full max-w-prose">
+        {/* PreMdxComp */}
         <div className="w-full">
           <div className="flexy flex-col align-top">
             <div className=" flex items-center justify-center h-[176px] max-w-[340px] w-full overflow-hidden rounded-xs m-0 mb-6 ">
@@ -46,6 +48,7 @@ const Page = async ({ params }) => {
           <div className="sl:hidden"><TOCComponent platform={"mobile"} open={false} /></div>
         </div>
         <hr />
+        {/* MdxComp */}
         <div className="">
           <Component />
         </div>
@@ -56,7 +59,7 @@ const Page = async ({ params }) => {
 
 export async function generateMetadata({params}) {
   // const title = decodeURIComponent(params.slug).replace(/\.[^/.]+$/, ''); // removes potential file extensions and mutations like %20 instead of spaces
-  const { frontmatter } = await getFrontmatterBySlug(params.slug)
+  const { frontmatter } = await getFrontmatterBySlug("header_routes/blog/", params.slug)
 
   return {
     title: "Blog | "+frontmatter.title,

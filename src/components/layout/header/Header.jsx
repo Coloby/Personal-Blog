@@ -67,6 +67,7 @@ const Header = () => {
                       <AccordionContent>
                         <div className="mt-2 flex flex-col">
                           <Link href={`https://edongarden.netlify.app`} target="_blank" rel="noopener noreferrer" className="flexy text-base mt-2 py-2 hover:bg-primary w-full"><div>Notes</div></Link>
+                          <Link href={"/wonder-room"} className="flexy text-base mt-2 py-2 hover:bg-primary w-full"><div>Wonder room</div></Link>
                           <Link href={"/downloads"} className="flexy text-base mt-2 py-2 hover:bg-primary w-full"><div>Downloads</div></Link>
                         </div>
                       </AccordionContent>

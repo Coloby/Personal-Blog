@@ -65,7 +65,7 @@ const SettingsBtn = () => {
           </div>
         </PopoverTrigger>
         <PopoverContent className="!p-0">
-          <div className="flex flex-col gap-4 mt-4 !text-primary_text_color">
+          <div className={`flex flex-col gap-4 mt-4 mb-4 !text-primary_text_color`}>
             <FontOptionsBtn />
             <TextDecorationsBtn />
           </div>

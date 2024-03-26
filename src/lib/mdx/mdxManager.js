@@ -12,25 +12,23 @@ import React from "react"
 
 
 export const getRawMdxBySlug = async (dir, fileNameWExt) => {
-  const contentRootDir = path.join(process.cwd(), 'assets', 'content', "route_specific_mdx", "header_routes", dir)
+  const contentRootDir = path.join(process.cwd(), 'assets', 'content', "route_specific_mdx", dir)
   const fileNameNoExt = fileNameWExt.replace(/\.mdx$/, '')
   const completeFilePath = path.join(contentRootDir, `${fileNameNoExt.replace(/%20/g, ' ')}.mdx`) // .replace adds support for files with spaces and &
 
   try {
     const rawMDX = fs.readFileSync(completeFilePath, { encoding: 'utf8' })
     return { rawMDX }
-  } catch (error) { throw new Error('Resource not found') }
+  } catch (error) { throw new Error(`Resource not found for: ${completeFilePath}`) }
 }
 
-export const getFrontmatterBySlug = async (fileNameWExt, index) => {
-  const rawMDX = await getRawMdxBySlug("blog", fileNameWExt)
+export const getFrontmatterBySlug = async (dir, fileNameWExt, index = 0) => {
+  const rawMDX = await getRawMdxBySlug(dir, fileNameWExt)
   const { processedMDX } = await useUnifiedPipeline(rawMDX)
   const frontmatter = processedMDX.data.frontmatter
   frontmatter.slug = fileNameWExt;
   frontmatter.readingTime = processedMDX.data.readingTime.text
   frontmatter.index = index
-  // console.log(`frontmatter.authors:`, frontmatter.authors)
-  // frontmatter.authors = frontmatter
 
   return { frontmatter }
 }
@@ -42,15 +40,15 @@ export const getAllArticlesFrontmatter = async () => {
   let i = 0
   for (const fileNameWExt of mdxPosts) {
     i++
-    const { frontmatter } = await getFrontmatterBySlug(fileNameWExt, i)
+    const { frontmatter } = await getFrontmatterBySlug("header_routes/blog/", fileNameWExt, i)
     posts.push(frontmatter)
   }
 
   return posts
 }
 
-export const getTOCComponentFromSlug = async (fileNameWExt) => {
-  const rawMDX = await getRawMdxBySlug("blog", fileNameWExt)
+export const getTOCComponentFromSlug = async (dir, fileNameWExt) => {
+  const rawMDX = await getRawMdxBySlug(dir, fileNameWExt)
   const { processedMDX } = await useUnifiedPipeline(rawMDX)
   const TOC = processedMDX.data.toc
   const C_TOC = dynamic(() => import('@/components/clientComps/C_TOC'), { ssr: false }); // using the next.js way of for dynamic modules because I was too lazy to put this function elsewhere + it's cool
