@@ -102,7 +102,7 @@ export async function generateStaticParams() { // build static routes for every 
   const posts = await getAllArticlesFrontmatter()
  
   return posts.map((post) => ({
-    slug: post.slug,
+    slug: post.url,
   }))
 }
 
