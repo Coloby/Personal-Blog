@@ -26,7 +26,7 @@ export const getFrontmatterBySlug = async (dir, fileNameWExt, index = 0) => {
   const rawMDX = await getRawMdxBySlug(dir, fileNameWExt)
   const { processedMDX } = await useUnifiedPipeline(rawMDX)
   const frontmatter = processedMDX.data.frontmatter
-  frontmatter.slug = fileNameWExt;
+  frontmatter.url = fileNameWExt.replace(/\.mdx|%20/g, '').replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '').toLowerCase();
   frontmatter.readingTime = processedMDX.data.readingTime.text
   frontmatter.index = index
 
@@ -48,7 +48,7 @@ export const getAllArticlesFrontmatter = async () => {
 }
 
 export const getTOCComponentFromSlug = async (dir, fileNameWExt) => {
-  const rawMDX = await getRawMdxBySlug(dir, fileNameWExt)
+  const rawMDX = await getRawMdxBySlug(dir, fileNameWExt.replace(/\.mdx$/, ''))
   const { processedMDX } = await useUnifiedPipeline(rawMDX)
   const TOC = processedMDX.data.toc
   const C_TOC = dynamic(() => import('@/components/clientComps/C_TOC'), { ssr: false }); // using the next.js way of for dynamic modules because I was too lazy to put this function elsewhere + it's cool

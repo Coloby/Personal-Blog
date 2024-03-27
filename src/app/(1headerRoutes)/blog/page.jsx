@@ -18,13 +18,12 @@ const Page = async () => {
       {sortedPosts?.map(frontmatter => {
         const authors = GetAuthorsComp(frontmatter.authors)
         return (
-          <article className="max-w-[334px] bg-secondary p-4 flex items-stretch flex-col min-h-[450px] !max-h-[450px] border border-primary  rounded-xs" key={frontmatter.slug} >
+          <article className="max-w-[334px] bg-secondary p-4 flex items-stretch flex-col min-h-[450px] !max-h-[450px] border border-primary  rounded-xs" key={frontmatter.url} >
             <Link
-              href={`blog/${frontmatter.slug}`}
+              href={`blog/${frontmatter.url}`} 
               key={frontmatter?.title}
               className=''
             >
-              {/* 500 x 200 */}
               <div className="flex items-center relative justify-center w-full h-[176px] overflow-hidden rounded-xs">
                 <Image
                   src={frontmatter.thumbnail ? "/assets/routes_specific/blog/"+frontmatter.thumbnail : `https://picsum.photos/1000/1180?random=${frontmatter.index}`}
@@ -55,7 +54,7 @@ const Page = async () => {
 
 export const metadata = {
   title : "Blog",
-  description : "My gems of knowledge that needs to be shared in a nice format",
+  description : "My gems of knowledge shared in a nice format",
 }
 
 export default Page

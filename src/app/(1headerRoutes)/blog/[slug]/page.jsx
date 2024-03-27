@@ -7,9 +7,10 @@ import Image from "next/image";
 import { getMdxComp } from "../../../../lib/mdx/getMdxComp";
 
 const Page = async ({ params }) => {
-  const { frontmatter } = await getFrontmatterBySlug("header_routes/blog/", params.slug)
-  const { TOCComponent } = await getTOCComponentFromSlug("header_routes/blog/", params.slug)
-  const Component = await getMdxComp("header_routes/blog", params.slug)
+  const articleFileName = params.slug + ".mdx"
+  const { frontmatter } = await getFrontmatterBySlug("header_routes/blog/", articleFileName)
+  const { TOCComponent } = await getTOCComponentFromSlug("header_routes/blog/", articleFileName)
+  const Component = await getMdxComp("header_routes/blog", articleFileName)
   const authors = GetAuthorsComp(frontmatter.authors)
 
   return (
@@ -59,7 +60,7 @@ const Page = async ({ params }) => {
 
 export async function generateMetadata({params}) {
   // const title = decodeURIComponent(params.slug).replace(/\.[^/.]+$/, ''); // removes potential file extensions and mutations like %20 instead of spaces
-  const { frontmatter } = await getFrontmatterBySlug("header_routes/blog/", params.slug)
+  const { frontmatter } = await getFrontmatterBySlug("header_routes/blog/", params.slug + ".mdx")
 
   return {
     title: "Blog | "+frontmatter.title,

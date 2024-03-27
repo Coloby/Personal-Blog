@@ -28,7 +28,7 @@ export async function GET() {
       title: post.title,
       description: post.description,
       date: isoDate,
-      url: `${process.env.BASE_URL}/blog/${post.slug.replace(/\s+/g, '%20').toLowerCase()}`,
+      url: `${process.env.BASE_URL}/blog/${post.url}`,
     })
   })
 

@@ -11,10 +11,10 @@ import Link from "next/link"
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 
 export default async function Home() {
-  const { frontmatter } = await getFrontmatterBySlug("Finding You. Identity and Purpose beginner's guide.mdx")
   const wonderRoomPieceLink = "https://www.youtube.com/watch?v=TDqsr3MNTTc"
   const { udpateComps } = GetUpdatesComps(6)
   const NowOverviewComp =  await getMdxComp("header_routes/root", `now_overview.mdx`)
+  const { frontmatter } = await getFrontmatterBySlug("header_routes/blog", "finding-you-identity-and-purpose-beginners-guide.mdx")
   const authors = GetAuthorsComp(frontmatter.authors)
 
   return (
@@ -103,11 +103,11 @@ export default async function Home() {
             <div className="w-full h-fit gap-6 lg:max-h-[320px] justify-between items-center flex-col lg:flex-row lg:p-4 lg:pr-0 bg-secondary border border-primary/80 rounded-sm  flex ">
               <div className="flex !h-fit flex-col p-4 lg:p-0 !pb-0 w-full ">
                 <h3 className="!text-xl !mt-4 inline-block">From the <span><Link href={"blog"} className="text-xl"><span>Blog</span></Link></span></h3>
-                <h4 className="font-semibold text-[20px] "><a href={"blog/" + frontmatter.slug} className="!no-underline"><span className="!no-underline !text-primary_text_color">{frontmatter.title}</span></a></h4>
+                <h4 className="font-semibold text-[20px] "><a href={"blog/" + frontmatter.url} className="!no-underline"><span className="!no-underline !text-primary_text_color">{frontmatter.title}</span></a></h4>
                 <p className="!mb-0 text-lg ">{frontmatter.description}</p>
                 <span className="flex flex-wrap gap-x-8 gap-y-1 my-4 items-center "><address className="flex !text-base">Author:&nbsp;{authors}</address><time>{frontmatter.publishDate}</time><span>{frontmatter.readingTime}</span></span>
               </div>
-              <a className="flexy flex-col w-full items-center" href={"blog/" + frontmatter.slug}>
+              <a className="flexy flex-col w-full items-center" href={"blog/" + frontmatter.url}>
                 <Image
                   src={"/assets/routes_specific/blog/" + frontmatter.thumbnail}
                   width={360}

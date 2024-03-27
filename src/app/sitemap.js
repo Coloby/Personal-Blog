@@ -9,7 +9,7 @@ export default async function sitemap() {
     const isoDate = dateObject.toISOString();
 
     return {
-      url: `${process.env.BASE_URL}/blog/`+post.slug.replace(/\s+/g, '%20').toLowerCase(),
+      url: `${process.env.BASE_URL}/blog/`+post.url,
       lastModified: isoDate, // if wrong, they will ignore this
       changeFrequency: "monthly",
       priority: 0.5
