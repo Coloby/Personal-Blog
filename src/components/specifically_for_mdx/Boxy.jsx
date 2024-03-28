@@ -27,7 +27,7 @@ const Boxy = async ({ children = "Insert text here", variant = "note" }) => {
   const sharedClassesChild = "!my-0 !mr-[12px]"
 
   return (
-    <div className="w-full flexy flex justify-center items-center h-fit my-8 relative overflow-visible">
+    <div className="w-full flexy flex justify-center items-center h-fit my-8 mb-10 relative overflow-visible">
       <div className=" w-fit h-fit relative mr-[8px]">
         <div className={`!z-30 relative top-0 left-0 px-[15px] py-[4px] rounded-tl-lg rounded-br-lg bg-secondary dark:bg-secondary ${modeObj.textColor} border-[2px] border-primary dark:border-primary text-lg w-fit`}>
           <div className="z-20 flexy gap-[10px]">

@@ -28,6 +28,40 @@
   .share-btns div {
     @apply !items-center !justify-start
   }
+  /* rehype-pretty-code */
+  [data-rehype-pretty-code-figure] {
+    @apply border border-primary rounded-xs
+  }
+  [data-rehype-pretty-code-title] {
+    @apply px-[28px] py-2 rounded-t-xs dark:bg-secondary bg-[#1f014b] !mt-0 border-b border-primary !text-[#D9D9D9] !text-lg
+  }
+  [data-rehype-pretty-code-caption] {
+    @apply px-[28px] py-2 !mt-0 bg-[#0d0519] !text-[#D9D9D9] rounded-b-xs !text-base
+  }
+  
+  [data-rehype-pretty-code-figure] pre {
+    @apply !px-4 !py-2 !rounded-xs scrollbar-thin scrollbar-track-[#0d0519] scrollbar-thumb-primary dark:!bg-body_shade !bg-[#0d0519]
+  }
+  [data-rehype-pretty-code-figure]:has(figcaption) pre {
+    @apply !rounded-t-[0px]
+  }
+  [data-line] {
+    @apply ml-1 !text-primary_text_color
+  }
+  
+  [data-line] span:last-child { @apply pr-4 }
+  
+  [data-line] mark span { @apply !pr-0 }
+  
+  [data-line][data-highlighted-line] {
+    @apply !ml-[0px]
+  }
+  [data-highlighted-line] {
+    @apply dark:bg-secondary bg-[#1f014b] border-l-4 border-primary !w-fit 
+  }
+  [data-highlighted-chars] {
+    @apply py-[1px] px-2 border border-primary dark:bg-secondary bg-[#1f014b] rounded-xs
+  }
 }
 @layer components { /* takes precedence over layer BASE regardless of actual order in-code */
   .formInputElem {

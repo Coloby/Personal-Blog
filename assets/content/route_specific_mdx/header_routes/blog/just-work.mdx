@@ -20,8 +20,9 @@ import Boxy from '../../components/specifically_for_mdx/Boxy.jsx'
   - To see how I made this work you can view the [source code of this website](https://github.com/taniarascia/taniarascia.com). mdx-bundler + unified pipeline + tailwind typography plugin and more in action:
 </Boxy >
 
-{/* ```jsx {1-2} "I did not" */}
-```jsx
+{/* ```jsx {1-2}  */}
+{/* ```jsx:app.jsx title="Hey guys"  /I did not/3-5 {3-4,5} /That/#customStyle  */}
+```jsx title="just-work.mdx" caption="Caption example" {3-4,9} filename="example.js" showLineNumbers "I did not write most of this" "the people who wrote the tailwindcss part"
 import Boxy from '../../components/ui/Boxy.jsx'
 
 <Boxy >
@@ -56,12 +57,8 @@ custom react components imported into mdx!
 
 <h2 style={{ color: 'red' }}> That's JSX wrote directly {"in " + "MDX"}</h2>
 
-```jsx And that's a code block of jsx
-  <h2 style={{ color: 'red' }}> That's JSX wrote directly {"in " + "MDX"}</h2>
-```
-
-``` Highlighting in code blocks
-  hi
+```jsx
+<h2 style={{ color: 'red' }}> That's JSX wrote directly {"in " + "MDX"}</h2>
 ```
 
 > Why is this needed? who knows

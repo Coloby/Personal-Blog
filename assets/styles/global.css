@@ -65,7 +65,7 @@ html { /* Smooth scrolling won't work anyway based on your OS and/or browser set
     background-position: center center;
     background-size: cover;
     cursor: pointer;
-}
+  }
 
   /* gradient */
   .yt-lite::before {
@@ -134,4 +134,19 @@ html { /* Smooth scrolling won't work anyway based on your OS and/or browser set
   .yt-lite.lyt-activated > .lty-playbtn {
       opacity: 0;
       pointer-events: none;
+  }
+/* rehype-pretty-code numbers */
+  code {
+    counter-reset: line;
+  }
+  code[data-line-numbers] > [data-line]::before {
+    counter-increment: line;
+    content: counter(line);
+   
+    /* Other styling */
+    display: inline-block;
+    width: 1rem;
+    margin-right: 1rem;
+    text-align: right;
+    color: gray;
   }

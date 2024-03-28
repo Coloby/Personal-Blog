@@ -7,7 +7,6 @@ import "@/styles/structural/colors/textColors.css"
 import "@/styles/structural/colors/themeColors.css"
 import "@/styles/structural/colors/themeModes.css"
 
-// import "@/styles/structural/lib/rehypePrettyCode.css"
 // import "@/styles/structural/lib/shadcnStuff.css"
 
 import C_Layout from "@/components/clientComps/C_Layout"
