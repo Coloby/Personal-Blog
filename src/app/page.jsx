@@ -121,7 +121,7 @@ export default async function Home() {
             {/* Wonder room */}
             <div className="max-w-[340px] gap-6 lg:gap-6 w-full h-full justify-between max-h-[320px] pt-4 bg-secondary border border-primary/80 rounded-sm flex-col items-center flex">
               <div className="flexy flex-col">
-                <h3 className="!mt-4 !text-xl px-4 text-center">A piece of my <span><Link href={"wonder_room"} className="text-xl"><span>Wonder room</span></Link></span></h3>
+                <h3 className="!mt-4 !text-xl px-4 text-center">A piece of my <span><Link href={"wonder-room"} className="text-xl"><span>Wonder room</span></Link></span></h3>
                 <a href={wonderRoomPieceLink} className="font-semibold !mb-0 text-lg text-center px-4 w-full">What's a digital garden?</a>
               </div>
               <a href={wonderRoomPieceLink} className="w-full">
