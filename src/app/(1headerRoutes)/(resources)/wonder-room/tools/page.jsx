@@ -3,8 +3,6 @@ import { getFrontmatterBySlug } from "@/lib/mdx/mdxManager"
 
 const page = async () => {
   const ObsidianData = (await getFrontmatterBySlug("header_routes/(resources)/wonder-room/tools/(moreInfoTools)/", "obsidian.mdx")).frontmatter;
-  const e = document.querySelector(".hey")
-  e = "1" + "1"
 
   return (
     <div className="flexy !items-start gap-16 max-w-[1484px] flex-wrap">
