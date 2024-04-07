@@ -27,8 +27,8 @@
 ### MDX to JS generated at build time (SSG) 
 - [mdx-bundler](https://github.com/kentcdodds/mdx-bundler).
   - Makes `getMdxComp` function work. 
-    - Pass a directory and a file to transform it into a renderable component. 
-    - For example: `const Component = await getMdxComp("header_routes/blog", articleFileName)`.
+    - Pass a directory and a mdx file to transform it into a renderable component. 
+    - For example: `const MainBioComp = await getMdxComp("header_routes/(me)/about", "main_bio.mdx")`.
   - Makes expressions, JS, JSX, and HTML, available to use directly in mdx files.
 - Anything that mdx-bundler can't do, and a little more, it's handled by a custom [unified.js](https://unifiedjs.com) pipeline.
 - Importing components in MDX.

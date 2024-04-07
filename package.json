@@ -28,6 +28,7 @@
     "jotai": "^2.6.1",
     "lucide-react": "^0.292.0",
     "next": "14.0.4",
+    "pg": "^8.11.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.0",

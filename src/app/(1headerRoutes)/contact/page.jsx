@@ -56,7 +56,7 @@ const page = async () => {
                 </Btn>
               </div>
               <div className="relative lg:ml-[50px] w-full !mr-4">
-                <Btn classContainer="!mr-0" classBorder={"!top-[10px] !right-[-10px]"} href="https://twitter.com/edondigital">
+                <Btn classContainer="!mr-0" classBorder={"!top-[10px] !right-[-10px]"} href="https://twitter.com/edondigital" target="_blank" rel="noopener noreferrer">
                   <div className="h-20 justify-start items-center gap-10 flex !w-full">
                     <div className="w-[62px] h-[41px] relative"><svg width="46" height="42" viewBox="0 0 46 42" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M41.2906 10.4556C41.3187 10.9113 41.3187 11.3671 41.3187 11.8271C41.3187 25.8394 31.8254 42 14.4662 42V41.9914C9.33805 41.9997 4.31608 40.3494 0 37.2375C0.745711 37.3383 1.495 37.3886 2.24633 37.3906C6.49673 37.3944 10.6249 35.7925 13.9674 32.8423C11.998 32.8005 10.0895 32.0683 8.50868 30.7479C6.92784 29.4276 5.75372 27.5851 5.15047 25.4782C6.5644 25.7845 8.02204 25.722 9.41109 25.2956C5.00838 24.296 1.84077 19.9493 1.84077 14.9011V14.7667C3.15328 15.5881 4.62218 16.0433 6.12388 16.0939C1.97723 12.9797 0.698945 6.78089 3.20288 1.93427C5.57221 5.21043 8.52838 7.88989 11.8794 9.79862C15.2304 11.7073 18.9012 12.8026 22.6535 13.0133C22.2793 11.2038 22.3346 9.31558 22.8137 7.53756C23.2928 5.75954 24.179 4.15403 25.3836 2.8816C29.1847 -1.13342 35.1629 -0.927527 38.7361 3.34133C40.8495 2.87247 42.8763 2.00186 44.7291 0.766981C44.0246 3.22235 42.5503 5.30655 40.5804 6.63186C42.4513 6.38419 44.2783 5.82147 46 4.96262C44.7335 7.09388 43.1387 8.95385 41.2906 10.4556Z" fill="currentColor" fillOpacity="0.35"/><path d="M27.3764 17.7844L44.5008 0H40.4424L25.5738 15.4416L13.6978 0H0L17.9588 23.3507L0 42H4.05835L19.7607 25.6932L32.3022 42H46L27.3753 17.7844H27.3764ZM21.8181 23.5561L19.9983 21.231L5.52046 2.72934H11.7538L23.4371 17.661L25.2565 19.9861L40.4443 39.3947H34.2117L21.8181 23.5571V23.5561Z" fill="currentColor"/></svg></div>
                     <p className={`ss:text-xl font-semibold text-center`}>X / Twitter</p>
@@ -65,7 +65,7 @@ const page = async () => {
                 </Btn>
               </div>
               <div className="relative lg:ml-[100px] w-full !mr-4">
-                <Btn classContainer="!mr-0" classBorder={"!top-[10px] !right-[-10px]"} href="https://github.com/coloby">
+                <Btn classContainer="!mr-0" classBorder={"!top-[10px] !right-[-10px]"} href="https://github.com/coloby" target="_blank" rel="noopener noreferrer">
                   <div className="h-20 justify-start items-center gap-10 flex !w-full">
                     <div className="w-[62px] h-[41px] relative"><svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 20 20"><path fill="currentColor" d="M20 10.25c0 2.234-.636 4.243-1.908 6.027c-1.271 1.784-2.914 3.018-4.928 3.703c-.234.045-.406.014-.514-.093a.539.539 0 0 1-.163-.4V16.67c0-.863-.226-1.495-.677-1.895a8.72 8.72 0 0 0 1.335-.24c.394-.107.802-.28 1.223-.52a3.66 3.66 0 0 0 1.055-.888c.282-.352.512-.819.69-1.402c.178-.583.267-1.252.267-2.008c0-1.077-.343-1.994-1.028-2.75c.32-.81.286-1.717-.105-2.723c-.243-.08-.594-.03-1.054.147a6.94 6.94 0 0 0-1.198.587l-.495.32a9.03 9.03 0 0 0-2.5-.346a9.03 9.03 0 0 0-2.5.347a11.52 11.52 0 0 0-.553-.36c-.23-.143-.593-.314-1.088-.514c-.494-.2-.868-.26-1.12-.18c-.381 1.005-.412 1.912-.09 2.722c-.686.756-1.03 1.673-1.03 2.75c0 .756.09 1.423.268 2.002c.178.578.406 1.045.683 1.401a3.53 3.53 0 0 0 1.048.894c.421.24.83.414 1.224.52c.395.108.84.188 1.335.241c-.347.32-.56.779-.638 1.375a2.539 2.539 0 0 1-.586.2a3.597 3.597 0 0 1-.742.067c-.287 0-.57-.096-.853-.287c-.282-.192-.523-.47-.723-.834a2.133 2.133 0 0 0-.631-.694c-.256-.178-.471-.285-.645-.32l-.26-.04c-.182 0-.308.02-.378.06c-.07.04-.09.09-.065.153a.738.738 0 0 0 .117.187a.961.961 0 0 0 .17.16l.09.066c.192.09.38.259.567.508c.187.249.324.476.41.68l.13.307c.113.338.304.612.574.821c.269.21.56.343.872.4c.312.058.614.09.905.094c.29.004.532-.011.723-.047l.299-.053c0 .338.002.734.007 1.188l.006.72c0 .16-.056.294-.17.4c-.112.108-.286.139-.52.094c-2.014-.685-3.657-1.92-4.928-3.703C.636 14.493 0 12.484 0 10.25c0-1.86.447-3.574 1.341-5.145a10.083 10.083 0 0 1 3.64-3.73A9.6 9.6 0 0 1 10 0a9.6 9.6 0 0 1 5.02 1.375a10.083 10.083 0 0 1 3.639 3.73C19.553 6.675 20 8.391 20 10.25"/></svg></div>
                     <p className={`ss:text-xl font-semibold text-center`}>Github</p>
@@ -90,7 +90,7 @@ const page = async () => {
                   <svg className="!text-[40px]" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02M8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12m6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12"/></svg>
                   <div className="flexy flex-col gap-4 items-start">
                     <div className="flex gap-4 flex-col sm:flex-row">
-                      <Btn classContainer="!mr-0" href="https://discord.gg/QyeNQPa3tY"><div className="flexy w-full text-center">Join the server</div></Btn>
+                      <Btn classContainer="!mr-0" href="https://discord.gg/QyeNQPa3tY" target="_blank" rel="noopener noreferrer"><div className="flexy w-full text-center">Join the server</div></Btn>
                     </div>
                     <div className="text-center">
                       Username: edondigital
@@ -98,14 +98,14 @@ const page = async () => {
                   </div>
                 </div>
                 <div className="flex-col justify-center items-center sm:flex-row flex gap-10">
-                  {/* Skool */}
-                  <a href="https://www.skool.com/@leof-dopp-8139">
-                    <p>Skool</p>
-                  </a>
                   {/* Medium */}
-                  <a className="flexy p-4 gap-2" href="https://medium.com/@edondigital">
+                  <a className="flexy p-4 gap-2" href="https://medium.com/@edondigital" target="_blank" rel="noopener noreferrer">
                     <svg className="!text-[40px]" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="currentColor" d="M9.025 8c0 2.485-2.02 4.5-4.513 4.5A4.506 4.506 0 0 1 0 8c0-2.486 2.02-4.5 4.512-4.5A4.506 4.506 0 0 1 9.025 8m4.95 0c0 2.34-1.01 4.236-2.256 4.236S9.463 10.339 9.463 8c0-2.34 1.01-4.236 2.256-4.236S13.975 5.661 13.975 8M16 8c0 2.096-.355 3.795-.794 3.795c-.438 0-.793-1.7-.793-3.795c0-2.096.355-3.795.794-3.795c.438 0 .793 1.699.793 3.795"/></svg>
                     <p>Medium</p>
+                  </a>
+                  {/* Skool */}
+                  <a href="https://www.skool.com/@leof-dopp-8139" target="_blank" rel="noopener noreferrer">
+                    <p>Skool</p>
                   </a>
                 </div>
               </div>
