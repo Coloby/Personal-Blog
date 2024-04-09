@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3010 ",
+    "idk": "markmap sitemap.md --output assets/generated/output.html --offline --no-open --no-toolbar",
+    "dev": "next dev -p 3010 && markmap sitemap.md -o output.html ",
     "build": "next build",
     "start": "next start",
     "lint": "eslint --fix src/** --config .eslintrc-fix.json",
@@ -59,6 +60,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "hastscript": "^8.0.0",
     "html-to-react": "^1.7.0",
+    "markmap-cli": "^0.16.2",
     "markmap-lib": "^0.16.1",
     "markmap-render": "^0.16.0",
     "markmap-toolbar": "^0.16.0",

@@ -2,15 +2,14 @@ import { Transformer } from 'markmap-lib';
 import { fillTemplate } from 'markmap-render';
 import fs from 'fs';
 import path from 'path';
-import C_ModeComp from "@/components/clientComps/C_ModeComp"
 import { defaultProseSettings } from "@/lib/mdx/proseSettings";
 import SettingsBtn from "@/components/logic/settings/SettingsBtn";
 import Btn from "@/components/logic/Btn";
 
-const page = () => {
+const page = async () => {
   const filePath = path.join(process.cwd(), 'sitemap.md');
   const markdownContent = fs.readFileSync(filePath, 'utf8');
-
+  
   // makes enviroment variables work
   function replacePlaceholders(string) {
     return string.replace(/process\.env\.(\w+)/g, (matchingString, envVariable) => {

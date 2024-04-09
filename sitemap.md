@@ -1,7 +1,9 @@
 ---
 markmap:
   colorFreezeLevel: 3
+  initialExpandLevel: 4
 ---
+
 # Map
 - (Header routes) 
   - [Blog](/blog)

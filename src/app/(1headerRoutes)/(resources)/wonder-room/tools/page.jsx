@@ -20,14 +20,14 @@ const page = async () => {
         description={ObsidianData.description}
         tags={ObsidianData.tags}
       />
-      <SoftwareCard 
+      {/* <SoftwareCard 
         websiteHref={"https://obsidian.md/"} 
         moreInfoHref={"/wonder-room/tools/obsidian"}
         imgClasses={"scale[1.3]"}
         title={ObsidianData.title}
         description={ObsidianData.description}
         tags={ObsidianData.tags}
-      />
+      /> */}
     </div>
   )
 }
