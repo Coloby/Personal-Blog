@@ -12,14 +12,15 @@ import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import { fileURLToPath } from 'url';
 import { defaultProseSettings } from "./proseSettings";
+import remark_env from "@/lib/mdx/customPlugins/remark_env"
 
-export async function getMdxComp(dir, fileWExtension) {
+export async function getMdxComp(dir, fileWExtension, explicitFilePath) {
   const __filename = fileURLToPath(import.meta.url); // using directly __dirname on react server components yields unexpected behaviour. It should be the current directory were this file is, but it's not in rsc
   const __dirname = dirname(__filename);
+  
+  // gets components to import directly into mdx
   const mdxCompsDirPath = path.resolve(__dirname, '../../components/specifically_for_mdx'); 
   let mdxCompsObj = {};
-
-  // gets components to import directly into mdx
   try {
     const mdxComps = fs.readdirSync(mdxCompsDirPath);
 
@@ -35,7 +36,10 @@ export async function getMdxComp(dir, fileWExtension) {
     });
   } catch (err) { console.error('Error with mdx components files!:', err.message) }
 
-  const mdxFilePath = path.resolve(__dirname, `../../../assets/content/route_specific_mdx/${dir}/${fileWExtension.replace(/%20/g, ' ')}`); // adds support to files with spaces
+  // processes the mdx file and gives raw text
+  const mdxFilePath = explicitFilePath ? path.resolve(__dirname, `../../../${explicitFilePath}`)
+    : path.resolve(__dirname, `../../../assets/content/route_specific_mdx/${dir}/${fileWExtension.replace(/%20/g, ' ')}`); // adds support to files with spaces
+  console.log(`mdxFilePath:`, mdxFilePath)
   const mdxFileContent = fs.readFileSync(mdxFilePath, 'utf8')
   const mdxSource = mdxFileContent.replace(/^---\s*[\s\S]*?---/, '').trim() // deletes only the first frontmatter section. It stops searching for stuff right after
 
@@ -45,6 +49,7 @@ export async function getMdxComp(dir, fileWExtension) {
       files: mdxCompsObj,
       mdxOptions(options) {
         options.remarkPlugins = [...(options?.remarkPlugins ?? []), 
+          remark_env,
           remarkGfm,
           // sectionize, // for now it is not needed but it's cool to have it :P
         ];

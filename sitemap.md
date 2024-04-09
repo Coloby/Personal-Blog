@@ -2,41 +2,46 @@
 markmap:
   colorFreezeLevel: 3
 ---
-
-- Header routes 
-  - Blog
+# Map
+- (Header routes) 
+  - [Blog](/blog)
   - $News
-  - Contact
+  - [Contact](/contact)
   - $Projects
-  - Me
-    - About
-    - Now
-    - Interests
+  - (Me)
+    - [About](/about)
+    - [Now](/now)
+    - [Interests](/interests)
     - $Periodic-highlights
-  - Resources
-    - Notes
-    - Downloads
-    - $Wonder-room
+  - (Resources)
+    - [Notes](/process.env.NOTES_WEBSITE_URL)
+    - [Downloads](/downloads)
+    - [Wonder-room](/Wonder-room)
       - $Tools
       - $Mentors
       - $Content
         - $Books
         - $Articles
         - $Music
-- Footer routes
-  - Credits
-  - $Site-map
+- (Footer routes)
+  - [Credits](/credits)
+  - [Sitemap](/sitemap)
+  - [Sitemap text view](/sitemap/text-view)
+  - [Sitemap.xml](/sitemap.xml)
+  - [Feed.xml](/feed.xml)
   - $Privacy
     - $Privacy Policy
     - $Cookies Policy
     - $My data
-- Secret routes
+- (Secret routes)
   - ^You-won
   - Work-in-progress
   - $Password-protected
 
-<!-- use markmap to see this better -->
-<!-- Legend: 
-  ^ to complete (even though most pages need a design upgrade anyway xO)
-  $ to create
--->
+{/*  
+  <!-- use markmap to see this better -->
+  <!-- Legend: 
+    ^ to complete (even though most pages need a design upgrade anyway xO)
+    $ to create
+  -->
+*/}

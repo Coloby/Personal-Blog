@@ -44,7 +44,7 @@ const HeaderNavLinks = ({
             <NavigationMenuItem>
               <NavigationMenuTrigger className="text-base">Resources</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <Link href={"https://edongarden.netlify.app"} target="_blank" rel="noopener noreferrer" className="w-full flexy !items-start hover:bg-primary !justify-start">
+                <Link href={`${[process.env.NOTES_WEBSITE_URL]}`} target="_blank" rel="noopener noreferrer" className="w-full flexy !items-start hover:bg-primary !justify-start">
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>Notes</NavigationMenuLink>
                 </Link>
                 <Link href={"/wonder-room"} className="w-full flexy !items-start hover:bg-primary !justify-start">
