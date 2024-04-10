@@ -28,17 +28,20 @@ markmap:
 - (Footer routes)
   - [Credits](/credits)
   - [Sitemap](/sitemap)
-  - [Sitemap text view](/sitemap/text-view)
+    - [Text-view](/sitemap/text-view)
   - [Sitemap.xml](/sitemap.xml)
   - [Feed.xml](/feed.xml)
   - $Privacy
     - $Privacy Policy
     - $Cookies Policy
     - $My data
-- (Secret routes)
+
+{/*  
+<!-- - (Secret routes)
   - ^You-won
   - Work-in-progress
-  - $Password-protected
+  - $Password-protected -->
+*/}
 
 {/*  
   <!-- use markmap to see this better -->

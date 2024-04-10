@@ -22,7 +22,7 @@ import Headroom from "react-headroom"
 import SettingsBtn from "@/components/logic/settings/SettingsBtn"
 import C_ShareBtns from "@/components/clientComps/C_ShareBtns"
 
-const Header = () => {
+const Header = ({ env, }) => {
   // w-[250px] h-[70px] px-4 bg-gradient-to-r from-fuchsia-950 via-pink-800 to-primary rounded-[84px] shadow border-blue-900 justify-between items-center inline-flex
   return (
     <Headroom style={{ zIndex: "999"}} upTolerance={10} downTolerance={20} className="pointer-events-none">
@@ -66,7 +66,7 @@ const Header = () => {
                       <AccordionTrigger className="flexy"><div className="text-center ml-2 !my-0">Resources</div></AccordionTrigger>
                       <AccordionContent>
                         <div className="mt-2 flex flex-col">
-                          <Link href={process.env.NOTES_WEBSITE_URL} target="_blank" rel="noopener noreferrer" className="flexy text-base mt-2 py-2 hover:bg-primary w-full"><div>Notes</div></Link>
+                          <Link href={env.NOTES_WEBSITE_URL} target="_blank" rel="noopener noreferrer" className="flexy text-base mt-2 py-2 hover:bg-primary w-full"><div>Notes</div></Link>
                           <Link href={"/wonder-room"} className="flexy text-base mt-2 py-2 hover:bg-primary w-full"><div>Wonder room</div></Link>
                           <Link href={"/downloads"} className="flexy text-base mt-2 py-2 hover:bg-primary w-full"><div>Downloads</div></Link>
                         </div>

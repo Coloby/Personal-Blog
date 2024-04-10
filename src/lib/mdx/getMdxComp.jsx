@@ -39,7 +39,6 @@ export async function getMdxComp(dir, fileWExtension, explicitFilePath) {
   // processes the mdx file and gives raw text
   const mdxFilePath = explicitFilePath ? path.resolve(__dirname, `../../../${explicitFilePath}`)
     : path.resolve(__dirname, `../../../assets/content/route_specific_mdx/${dir}/${fileWExtension.replace(/%20/g, ' ')}`); // adds support to files with spaces
-  console.log(`mdxFilePath:`, mdxFilePath)
   const mdxFileContent = fs.readFileSync(mdxFilePath, 'utf8')
   const mdxSource = mdxFileContent.replace(/^---\s*[\s\S]*?---/, '').trim() // deletes only the first frontmatter section. It stops searching for stuff right after
 
