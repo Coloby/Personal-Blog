@@ -3,7 +3,10 @@ import Link from "next/link"
 const Footer = () => {
   return (
     <footer className="px-[16px] flex-col sm:flex-row text-center !items-start h-fit z-20 bg-body_shade border-t border-t-primary w-full flexy !absolute bottom-[-300px] sm:bottom-[-140px] gap-16 py-8">
-      <Link href="/credits" className="w-full sm:w-fit">Credits</Link>
+      <div className="flex flex-col gap-4 w-full sm:w-fit">
+        <Link href="/sitemap" className="w-full sm:w-fit">Sitemap</Link>
+        <Link href="/credits" className="w-full sm:w-fit">Credits</Link>
+      </div>
       <a href="https://github.com/Coloby/Personal-Blog" className="flex items-center !flex-col gap-3 w-full sm:w-fit h-[81px]">
         <p>Open source!</p>
         <div className=" !text-primary_text_color">

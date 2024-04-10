@@ -5,7 +5,9 @@ import path from 'path';
 import { defaultProseSettings } from "@/lib/mdx/proseSettings";
 import SettingsBtn from "@/components/logic/settings/SettingsBtn";
 import Btn from "@/components/logic/Btn";
+import C_Markmap from "@/components/clientComps/C_Markmap"
 
+// TODO don't let this code make useless 3rd-party requests. It only needs d3.min.js and index.js. Katex is not needed
 const page = async () => {
   const filePath = path.join(process.cwd(), 'sitemap.md');
   const markdownContent = fs.readFileSync(filePath, 'utf8');
@@ -56,6 +58,7 @@ const page = async () => {
       <div className="!absolute top-16 left-0 !max-w-none">
         <div dangerouslySetInnerHTML={{ __html: html }} />
       </div>
+      <C_Markmap />
     </div>
   );
 }

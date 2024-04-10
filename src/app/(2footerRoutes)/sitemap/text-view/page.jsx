@@ -1,9 +1,3 @@
-
-import { Transformer } from 'markmap-lib';
-import { fillTemplate } from 'markmap-render';
-import fs from 'fs';
-import path from 'path';
-import C_ModeComp from "@/components/clientComps/C_ModeComp"
 import { defaultProseSettings } from "@/lib/mdx/proseSettings";
 import SettingsBtn from "@/components/logic/settings/SettingsBtn";
 import Btn from "@/components/logic/Btn";
