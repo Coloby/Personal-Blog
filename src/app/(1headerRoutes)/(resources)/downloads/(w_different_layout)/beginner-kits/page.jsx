@@ -1,5 +1,5 @@
 import DownloadCard from "@/components/ui/DownloadCard"
-import { basePath } from "../../page"
+import { basePath } from "@/constants/routes_specific/downloads/downloads.js"
 
 const page = () => {
 

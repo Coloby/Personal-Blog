@@ -1,7 +1,5 @@
 import DownloadCategory from "@/components/ui/DownloadCategory"
 
-export const basePath = "/assets/routes_specific/downloads"
-
 const page = () => {
 
   return (
