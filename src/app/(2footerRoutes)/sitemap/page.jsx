@@ -43,7 +43,7 @@ const page = async () => {
 
   return (
     <div className={`prose ${defaultProseSettings}`}>
-      <div className={`flex flex-col gap-6 absolute left-6 sm:left-12 top-[120px] sm:top-[150px] not-prose z-10`}>
+      <div className={`flex flex-col gap-6 absolute right-6 sm:right-12 top-[120px] sm:top-[150px] not-prose z-10`}>
         <SettingsBtn defaultVal={false}>
           <div className="flex flex-col gap-2 border bg-secondary border-primary rounded-xs px-4 py-2 max-w-[270px]">
             <div className="flex flex-col gap-2">
@@ -52,7 +52,7 @@ const page = async () => {
               <p>$ = to create</p>
             </div>
           </div>
-          <Btn href="sitemap/text-view" classContainer="!w-fit !text-center">Switch view</Btn>
+          <Btn href="/sitemap/text-view" classContainer="!w-fit !text-center">Switch view</Btn>
         </SettingsBtn>
       </div>
       <div className="!absolute top-16 left-0 !max-w-none">

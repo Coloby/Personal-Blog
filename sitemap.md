@@ -16,9 +16,9 @@ markmap:
     - [Interests](/interests)
     - $Periodic-highlights
   - (Resources)
-    - [Notes](/process.env.NOTES_WEBSITE_URL)
+    - [Notes](process.env.NEXT_PUBLIC_NOTES_WEBSITE_URL)
     - [Downloads](/downloads)
-    - [Wonder-room](/Wonder-room)
+    - [Wonder-room](/wonder-room)
       - $Tools
       - $Mentors
       - $Content
