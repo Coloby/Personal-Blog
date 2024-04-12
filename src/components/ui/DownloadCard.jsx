@@ -38,7 +38,7 @@ const DownloadCard = ({title, href, info, imgs}) => {
       }
       <div className="py-[18px] flexy font-semibold text-xl max-w-[180px] text-center">{title}</div>
       <div className="flex w-full">
-        <Link href={href} target="_blank" rel="noopener noreferrer" download  className={`h-[32px] w-full text-lg border-2 border-primary rounded-tl-lg bg-secondary flexy ${imgs ? "" : "!rounded-br-lg"}`}>Download</Link>
+        <a href={href} target="_blank" rel="noopener noreferrer" download  className={`h-[32px] w-full text-lg border-2 border-primary rounded-tl-lg bg-secondary flexy ${imgs ? "" : "!rounded-br-lg"}`}>Download</a>
         {imgs? (
           <Dialog>
             <DialogTrigger className=" w-full">

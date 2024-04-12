@@ -18,9 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <C_Layout>
       <div className={`bg-body_shade  ss:h-auto text-primary_text_color transition-colors duration-1000 relative`}>
-        <Header env={{
-          NOTES_WEBSITE_URL : process.env.NOTES_WEBSITE_URL
-        }}/>
+        <Header />
         <main className=" flex h-fit justify-center mt-[100px] px-[16px] pb-[320px] min-h-screen !w-full ">{children}</main>
         <Footer />
         <Toaster />
