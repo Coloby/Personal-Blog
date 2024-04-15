@@ -19,7 +19,7 @@
 
 ## Important informations
 - This project is a work in progress. 
-  - To know more, see the [github project](https://github.com/users/Coloby/projects/2), the `sitemap.md` file, or [contact me](https://edondigital.vercel.app/contact).
+  - To know more, see the `sitemap.md` file, the [github project](https://github.com/users/Coloby/projects/2), or [contact me](https://edondigital.vercel.app/contact).
   - I will prioritize development over design, for now.
 - I'm not using typescript properly (if at all), sorry for this D:
 
@@ -32,7 +32,7 @@
   - Makes expressions, JS, JSX, and HTML, available to use directly in mdx files.
 - Anything that mdx-bundler can't do, and a little more, it's handled by a custom [unified.js](https://unifiedjs.com) pipeline.
 - Importing components in MDX.
-  - Components within `/src/components/specifically_for_mdx` will automatically made available for importing them directly into MDX.
+  - Components within `src/components/specifically_for_mdx` will automatically made available for importing them directly into MDX.
   - Components that need client-side logic should be added on `src/lib/mdx/getMdxComp.jsx` into the components object.
 - Mdx file names - should not contain symbols and spaces need to be substituted with "-". For example:
     - Title on the frontmatter: Finding You. Identity and Purpose beginner's guide.

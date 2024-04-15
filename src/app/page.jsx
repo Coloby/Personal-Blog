@@ -8,7 +8,6 @@ import { scrollbar } from "@/lib/tailwind-scrollbar/settings"
 import GetAuthorsComp from "@/utils/GetAuthorsComp"
 import Image from "next/image"
 import Link from "next/link"
-import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import { Client } from 'pg';
 
 export default async function Home() {
@@ -17,7 +16,6 @@ export default async function Home() {
   const NowOverviewComp =  await getMdxComp("header_routes/root", `now_overview.mdx`)
   const { frontmatter } = await getFrontmatterBySlug("header_routes/blog", "finding-you-identity-and-purpose-beginners-guide.mdx")
   const authors = GetAuthorsComp(frontmatter.authors)
-  const { Client } = require('pg');
 
   const client = new Client({
     connectionString: process.env.DATABASE_URI,
@@ -210,6 +208,7 @@ export default async function Home() {
             height={510}
             className=" object-cover not-prose h-full w-full transition-none z-[6] max-h-[490px] max-w-[400px] mx-[2px]"
             alt=""
+            unoptimized
             priority={false}
           />
         </div>

@@ -2,16 +2,6 @@ import C_interests from "@/components/clientComps/C_Interests"
 import { getMdxComp } from "@/lib/mdx/getMdxComp"
 
 const page = async ({ params }) => {
-  const interests = await getInterests()
-  
-  return (
-    <C_interests >
-      {interests}
-    </C_interests>
-  )
-}
-
-async function getInterests() { 
   const interests = {
     Programming: (await getMdxComp("header_routes/(me)/interests", "programming.mdx"))(),
     ContentCreation: (await getMdxComp("header_routes/(me)/interests", "content_creation.mdx"))(),
@@ -20,8 +10,12 @@ async function getInterests() {
     Business: (await getMdxComp("header_routes/(me)/interests", "business.mdx"))(),
     ComputerScience: (await getMdxComp("header_routes/(me)/interests", "computer_science.mdx"))(),
   };
-
-  return interests;
+  
+  return (
+    <C_interests >
+      {interests}
+    </C_interests>
+  )
 }
 
 export const metadata = {

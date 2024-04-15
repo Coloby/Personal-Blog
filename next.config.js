@@ -22,10 +22,6 @@ const nextConfig = {
         destination: '/feed.xml',
         permanent: true,
       },{
-        source: '/sitemap',
-        destination: '/sitemap.xml',
-        permanent: true,
-      },{
         source: '/robot',
         destination: '/robots.txt',
         permanent: true,

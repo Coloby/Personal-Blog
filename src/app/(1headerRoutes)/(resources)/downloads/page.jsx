@@ -1,8 +1,4 @@
-import Link from "next/link"
-import DownloadCard from "@/components/ui/DownloadCard"
 import DownloadCategory from "@/components/ui/DownloadCategory"
-
-export const basePath = "assets/routes_specific/downloads"
 
 const page = () => {
 
