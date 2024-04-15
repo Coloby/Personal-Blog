@@ -189,6 +189,7 @@ export default async function Home() {
             height={510}
             className=" object-cover not-prose h-full w-full transition-none z-[6] max-h-[490px] max-w-[400px] mx-[2px]"
             alt=""
+            unoptimized
             priority={false}
           />
         </div>
