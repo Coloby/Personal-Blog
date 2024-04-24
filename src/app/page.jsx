@@ -8,7 +8,6 @@ import { scrollbar } from "@/lib/tailwind-scrollbar/settings"
 import GetAuthorsComp from "@/utils/GetAuthorsComp"
 import Image from "next/image"
 import Link from "next/link"
-import { Client } from 'pg';
 
 export default async function Home() {
   const wonderRoomPieceLink = "https://www.youtube.com/watch?v=TDqsr3MNTTc"
@@ -17,25 +16,6 @@ export default async function Home() {
   const { frontmatter } = await getFrontmatterBySlug("header_routes/blog", "finding-you-identity-and-purpose-beginners-guide.mdx")
   const authors = GetAuthorsComp(frontmatter.authors)
 
-  const client = new Client({
-    connectionString: process.env.DATABASE_URI,
-  });
-
-  client.connect();
-
-  async function fetchRow() {
-    try {
-      const res = await client.query('SELECT string FROM my_table WHERE id = $1', [2]);
-      console.log(res.rows[0]);
-    } catch (err) {
-      console.error(err.stack);
-    } finally {
-      await client.end();
-    }
-  }
-  
-  fetchRow();
-  
   return (
     <div className={`sm:w-[1300px] !max-w-none min-h-screen flex flex-col gap-[150px] lg:gap-[200px] prose ${defaultProseSettings}`}>
       {/* Backgrounds */}

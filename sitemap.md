@@ -1,8 +1,10 @@
-<!-- use markmap vs code extension (or copy paste to [this website](https://markmap.js.org/repl)) to see this as a graph -->
-<!-- Legend: 
-  ^ to complete (even though most pages need a design upgrade anyway xO)
-  $ to create
--->
+{/*  
+  <!-- use markmap vs code extension (or copy paste to [this website](https://markmap.js.org/repl)) to see this as a graph -->
+  <!-- Legend: 
+    ^ to complete (even though most pages need a design upgrade anyway xO)
+    $ to create
+  -->
+*/}
 
 ---
 markmap:
