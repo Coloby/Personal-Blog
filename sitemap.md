@@ -48,14 +48,3 @@ markmap:
   - Work-in-progress
   - $Password-protected -->
 */}
-
-<<<<<<< HEAD
-=======
-{/*  
-  <!-- use markmap to see this better -->
-  <!-- Legend: 
-    ^ to complete (even though most pages need a design upgrade anyway xO)
-    $ to create
-  -->
-*/}
->>>>>>> main

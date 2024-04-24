@@ -23,6 +23,11 @@ const GetUpdatesComps = (entriesNum) => {
     //   author: "Ed"
     // },
     {
+      date: "24/Apr/2024",
+      text: `I've been sick for at least 3 days but now I'm fine!. No idea about how I'm going to recover the work lost (been slacking even before the sickness), or how I'll find the courage to tackle the GDPR problem BUT, I know it's going to be fun anyway :)`,
+      author: "Ed"
+    },
+    {
       date: "18/Mar/2024",
       text: `More updates and pages are coming, but until then you can explore my second brain clicking on the "notes" tab from the header :) it's growing!!! one of the greatest additions are "Bu models" and "Tech Jobs (IT + Art)"`,
       author: "Ed"
