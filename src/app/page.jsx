@@ -46,7 +46,7 @@ export default async function Home() {
                 {/* <Btn text={"Interests"} href="interests" classContainer={"h-12 w-[150px]"}>
                   <div className="flexy w-full">Interests</div>
                 </Btn> */}
-                <Btn text={"Blog"} href="blog" classContainer={"h-12 w-[150px]"}>
+                <Btn text={"Blog"} href="blog" classContainer={"!h-12 w-[150px]"}>
                   <div className="flexy w-full">Blog</div>
                 </Btn>
             </div>

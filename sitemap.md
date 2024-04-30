@@ -27,7 +27,8 @@ markmap:
     - [Notes](process.env.NEXT_PUBLIC_NOTES_WEBSITE_URL)
     - [Downloads](/downloads)
     - [Wonder-room](/wonder-room)
-      - $Tools
+      - ^[Tools](/wonder-room/tools)
+      - ^[Ideas](/wonder-room/ideas)
       - $Mentors
       - $Content
         - $Books

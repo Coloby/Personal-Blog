@@ -14,7 +14,7 @@ const Page = async () => {
   });
 
   return (
-    <section className=' flex flex-wrap  gap-x-16 gap-y-12 w-md lg:w-[1334px] justify-center not-prose '>
+    <section className=' flex flex-wrap  gap-x-16 gap-y-12 w-md lg:w-[1334px] justify-center not-prose h-fit'>
       {sortedPosts?.map(frontmatter => {
         const authors = GetAuthorsComp(frontmatter.authors)
         return (

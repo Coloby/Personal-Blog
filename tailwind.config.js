@@ -23,13 +23,33 @@ module.exports = {
 	],
   theme: {
     screens: {
-      "ss": "320px", // super small
-      "xs": "360px", // extra small
-      "sm": "640px",
-      'md': '768px',
-      'lg': '1024px',
-      'xl': '1280px',
-      'sl': '1536px' // super large
+      // ss and xs are additional, everything else is deafult but the values (renamed 2xl to sl)
+      // source: https://gs.statcounter.com/screen-resolution-stats/desktop/worldwide
+      "ss": "320px",  // "smallest" phone   - super small
+      "xs": "360px",  // average phone      - extra small
+      "sm": "640px",  // unknown
+      'md': '768px',  // smallest tablet
+      'lg': '1024px', // unknown
+      'xl': '1280px', // smallest laptop
+      'sl': '1536px'  // medium size laptop - super large
+      
+      // "ss": "320px",  // "smallest" phone
+      // "xs": "360px",  // average phone
+      // "sm": '768px',  // smallest tablet
+      // 'md': '1280px', // largest tablet/smallest laptop
+      // 'lg': '1536px', // medium size laptop
+      // "xl": "1920px", // 
+      // 'sl': '' // - super large
+
+      // COMPLETE RANGE     "-" means we usually take into account it
+      // "280px",  // "smallest" phone
+      // -"320px",  // "smallest" phone
+      // -"360px",  // average phone   
+      // "414px",  // largest phone
+      // -'768px',  // smallest tablet
+      // -'1280px', // largest tablet/smallest laptop
+      // -'1536px', // medium size laptop
+      // -"1920px", // 
     },
     borderRadius: {
       // sm: "calc(var(--radius) - 4px)",

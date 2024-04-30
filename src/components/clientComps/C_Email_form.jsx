@@ -103,7 +103,7 @@ const C_Email_form = ({WEB3FORM_ACCESS_KEY}) => {
               <Btn 
                 classBorder={"!top-[10px] !right-[-10px]"} 
                 onClick={() => setIsOpen(true)}
-                classContainer={"!mr-0 lg:ml-[10px] lg:mr-[25px] text-xl xs:text-[38px] font-black leading-[71px] tracking-widest"} 
+                classContainer={"!mr-0 h-[75px] lg:ml-[10px] lg:mr-[25px] text-xl xs:text-[38px] font-black leading-[71px] tracking-widest"} 
               >
                 <div className="flexy w-full">E-mail me</div>
               </Btn>

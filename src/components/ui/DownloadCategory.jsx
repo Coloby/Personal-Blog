@@ -5,7 +5,7 @@ const DownloadCategory = ({href, icon}) => {
   const title = lastSegment.charAt(0).toUpperCase() + lastSegment.slice(1).split("-").join(" ")
 
   return (
-    <Link href={href} className="p-4 gap-2 flexy flex-col border-2 rounded-xs border-primary min-w-[232px]">
+    <Link href={href} className="p-4 gap-2 flexy flex-col border-2 rounded-xs border-primary min-w-[232px] !h-fit">
       <h2 className="text-xl">{title}</h2>
       <div className="text-[36px]">{icon}</div>
     </Link>
