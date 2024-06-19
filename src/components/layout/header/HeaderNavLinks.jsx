@@ -6,7 +6,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle
-} from "@/components/shadcn-ui/ui/navigation-menu"
+} from "@/components/primitives/shadcn-ui/navigation-menu"
 import Link from "next/link"
 
 const HeaderNavLinks = ({

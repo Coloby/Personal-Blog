@@ -1,5 +1,5 @@
 import C_Email_form from "@/components/clientComps/C_Email_form"
-import Btn from "@/components/logic/Btn"
+import Btn from "@/components/primitives/logic/Btn"
 import { getMdxComp } from "@/lib/mdx/getMdxComp"
 import Image from "next/image"
 

@@ -1,5 +1,5 @@
 "use client"
-import { Slider } from "@/components/shadcn-ui/ui/slider"
+import { Slider } from "@/components/primitives/shadcn-ui/slider"
 import { useEffect, useState } from "react"
 import { handleOnCHange } from "./SettingsBtn"
 

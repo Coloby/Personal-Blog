@@ -1,9 +1,9 @@
 "use client"
-import Btn from "@/components/logic/Btn";
+import Btn from "@/components/primitives/logic/Btn";
 import {
   Dialog,
   DialogContent
-} from "@/components/shadcn-ui/ui/dialog";
+} from "@/components/primitives/shadcn-ui/dialog";
 import {
   Form,
   FormControl,
@@ -11,10 +11,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/shadcn-ui/ui/form";
-import { Input } from "@/components/shadcn-ui/ui/input";
-import { Textarea } from "@/components/shadcn-ui/ui/textarea";
-import { useToast } from "@/components/shadcn-ui/ui/use-toast";
+} from "@/components/primitives/shadcn-ui/form";
+import { Input } from "@/components/primitives/shadcn-ui/input";
+import { Textarea } from "@/components/primitives/shadcn-ui/textarea";
+import { useToast } from "@/components/primitives/shadcn-ui/use-toast";
 import { scrollbar } from "@/lib/tailwind-scrollbar/settings";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";

@@ -2,12 +2,12 @@
 
 import FontOptionsBtn from "@/components/logic/settings/FontOptionsBtn";
 import TextDecorationsBtn from "@/components/logic/settings/TextDecorationsBtn";
-import { useEffect } from "react";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/shadcn-ui/ui/popover"
+} from "@/components/primitives/shadcn-ui/popover";
+import { useEffect } from "react";
 
 
 export const handleOnCHange = (fontSize) => {

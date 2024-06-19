@@ -1,21 +1,20 @@
-import Link from "next/link"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/shadcn-ui/ui/popover"
-import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-} from "@/components/shadcn-ui/ui/dialog"
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/shadcn-ui/ui/carousel"
+} from "@/components/primitives/shadcn-ui/carousel"
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/primitives/shadcn-ui/dialog"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/primitives/shadcn-ui/popover"
 import { defaultProseSettings } from "@/lib/mdx/proseSettings"
 import Image from "next/image"
 

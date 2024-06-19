@@ -1,11 +1,11 @@
+import C_Markmap from "@/components/clientComps/C_Markmap";
+import SettingsBtn from "@/components/logic/settings/SettingsBtn";
+import Btn from "@/components/primitives/logic/Btn";
+import { defaultProseSettings } from "@/lib/mdx/proseSettings";
+import fs from 'fs';
 import { Transformer } from 'markmap-lib';
 import { fillTemplate } from 'markmap-render';
-import fs from 'fs';
 import path from 'path';
-import { defaultProseSettings } from "@/lib/mdx/proseSettings";
-import SettingsBtn from "@/components/logic/settings/SettingsBtn";
-import Btn from "@/components/logic/Btn";
-import C_Markmap from "@/components/clientComps/C_Markmap"
 
 // TODO don't let this code make useless 3rd-party requests. It only needs d3.min.js and index.js. Katex is not needed
 const page = async () => {

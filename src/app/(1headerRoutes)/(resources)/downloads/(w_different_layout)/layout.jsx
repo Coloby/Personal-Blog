@@ -1,6 +1,4 @@
-import RootLayout from "@/app/layout"
-import Btn from "@/components/logic/Btn"
-import Link from "next/link"
+import Btn from "@/components/primitives/logic/Btn"
 
 const layout = ({ children }) => {
   

@@ -1,6 +1,6 @@
 "use client"
 
-import { Switch } from "@/components/shadcn-ui/ui/switch"
+import { Switch } from "@/components/primitives/shadcn-ui/switch"
 import { useEffect } from "react"
 import { handleCheck } from "./SettingsBtn"
 

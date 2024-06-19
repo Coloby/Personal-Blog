@@ -1,22 +1,22 @@
-import Image from "next/image"
-import Link from "next/link"
-import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-} from "@/components/shadcn-ui/ui/dialog"
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/shadcn-ui/ui/carousel"
-import React from "react"
+} from "@/components/primitives/shadcn-ui/carousel"
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/primitives/shadcn-ui/dialog"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/primitives/shadcn-ui/popover"
 import { defaultProseSettings } from "@/lib/mdx/proseSettings"
-import Stars from "/src/features/cards/components/Stars"
-import { Popover, PopoverTrigger, PopoverContent } from "@/components/shadcn-ui/ui/popover"
 import { scrollbar } from "@/lib/tailwind-scrollbar/settings"
+import Image from "next/image"
+import Link from "next/link"
+import React from "react"
+import Stars from "/src/features/cards/components/Stars"
 
 const DetailedCard = ({ title, iconPath, description, websiteUrl, websiteLabel, moreInfoUrl, imgClasses, imgs, tags, score}) => {
 

@@ -3,7 +3,7 @@
 import {
   Dialog,
   DialogContent
-} from "@/components/shadcn-ui/ui/dialog"
+} from "@/components/primitives/shadcn-ui/dialog"
 import { defaultProseSettings } from "@/lib/mdx/proseSettings"
 import Image from "next/image"
 import { useState } from "react"

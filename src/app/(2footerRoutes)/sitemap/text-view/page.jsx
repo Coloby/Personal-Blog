@@ -1,6 +1,6 @@
 import { defaultProseSettings } from "@/lib/mdx/proseSettings";
 import SettingsBtn from "@/components/logic/settings/SettingsBtn";
-import Btn from "@/components/logic/Btn";
+import Btn from "@/components/primitives/logic/Btn";
 import { getMdxComp } from "@/lib/mdx/getMdxComp";
 
 const page = async () => {

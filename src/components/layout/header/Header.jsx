@@ -4,23 +4,23 @@ import DrawerNavLinks from "@/components/layout/DrawerNavLinks"
 import HeaderNavLinks from "@/components/layout/header/HeaderNavLinks"
 import HeaderLogo from "@/components/ui/logos/HeaderLogo"
 import Link from "next/link"
-import { ThemeModeBtn } from "../../logic/ThemeModeBtn"
+import { ThemeModeBtn } from "../../logic/settings/ThemeModeBtn"
 // @ts-ignore
 import {
   Sheet,
   SheetContent,
   SheetTrigger,
-} from "@/components/shadcn-ui/Drawer"
+} from "@/components/primitives/shadcn-ui/Drawer"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/shadcn-ui/accordion"
+} from "@/components/primitives/shadcn-ui/accordion"
 // @ts-ignore
-import Headroom from "react-headroom"
-import SettingsBtn from "@/components/logic/settings/SettingsBtn"
 import C_ShareBtns from "@/components/clientComps/C_ShareBtns"
+import SettingsBtn from "@/components/logic/settings/SettingsBtn"
+import Headroom from "react-headroom"
 
 const Header = () => {
   // w-[250px] h-[70px] px-4 bg-gradient-to-r from-fuchsia-950 via-pink-800 to-primary rounded-[84px] shadow border-blue-900 justify-between items-center inline-flex

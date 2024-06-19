@@ -1,5 +1,4 @@
 import Link from "next/link"
-import { ThemeModeBtn } from "../logic/ThemeModeBtn"
 
 const DrawerNavLinks = ({
   home = false,

@@ -1,5 +1,5 @@
-import Btn from "@/components/logic/Btn"
 import GetUpdatesComps from "@/components/logic/GetUpdatesComps"
+import Btn from "@/components/primitives/logic/Btn"
 import SocialBTNs from "@/components/ui/SocialBTNs"
 import { getMdxComp } from "@/lib/mdx/getMdxComp"
 import { getFrontmatterBySlug } from "@/lib/mdx/mdxManager"

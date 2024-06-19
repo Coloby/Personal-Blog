@@ -3,12 +3,12 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/shadcn-ui/accordion";
+} from "@/components/primitives/shadcn-ui/accordion";
 import fs from 'fs';
-import path from 'path';
-import { useUnifiedPipeline } from "./unifiedPipeline";
 import dynamic from "next/dynamic";
-import React from "react"
+import path from 'path';
+import React from "react";
+import { useUnifiedPipeline } from "./unifiedPipeline";
 
 
 export const getRawMdxBySlug = async (dir, fileNameWExt) => {

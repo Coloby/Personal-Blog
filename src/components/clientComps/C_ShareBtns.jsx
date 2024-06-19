@@ -4,27 +4,20 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/shadcn-ui/ui/popover"
-import { 
-  TwitterShareButton, 
-  TwitterIcon,
-
-  EmailShareButton, 
+} from "@/components/primitives/shadcn-ui/popover";
+import {
   EmailIcon,
-
-  LinkedinShareButton, 
-  LinkedinIcon,
-
-  FacebookShareButton, 
+  EmailShareButton,
   FacebookIcon,
-  FacebookShareCount,
-
-  RedditShareButton, 
+  FacebookShareButton,
+  LinkedinIcon,
+  LinkedinShareButton,
   RedditIcon,
-  RedditShareCount,
-
-  WhatsappShareButton,
+  RedditShareButton,
+  TwitterIcon,
+  TwitterShareButton,
   WhatsappIcon,
+  WhatsappShareButton
 } from 'react-share';
 
 const C_ShareBtns = ({ url }) => {

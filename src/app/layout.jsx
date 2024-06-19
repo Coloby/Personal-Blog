@@ -12,7 +12,7 @@ import "@/styles/structural/colors/themeModes.css"
 import C_Layout from "@/components/clientComps/C_Layout"
 import Footer from "@/components/layout/Footer"
 import Header from "@/components/layout/header/Header"
-import { Toaster } from "@/components/shadcn-ui/ui/toaster"
+import { Toaster } from "@/components/primitives/shadcn-ui/toaster"
 
 export default function RootLayout({ children }) {
   return (

@@ -1,6 +1,6 @@
 "use client"
 
-import Btn from "@/components/logic/Btn";
+import Btn from "@/components/primitives/logic/Btn";
 import { useState } from "react";
 
 const C_ModeComp = () => {

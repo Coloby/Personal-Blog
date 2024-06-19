@@ -3,7 +3,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/shadcn-ui/accordion";
+} from "@/components/primitives/shadcn-ui/accordion";
 
 const GetUpdatesComps = (entriesNum) => {
 
