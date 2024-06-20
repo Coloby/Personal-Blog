@@ -1,4 +1,4 @@
-import DownloadCategory from "@/components/ui/DownloadCategory"
+import DownloadCategory from "@/components/ui/DownloadCategory.jsx"
 
 const page = () => {
 

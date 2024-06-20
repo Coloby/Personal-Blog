@@ -1,4 +1,4 @@
-import DetailedCard from "@/components/ui/DetailedCard";
+import DetailedCard from "@/features/cards/components/DetailedCard.jsx";
 
 const page = () => {
 

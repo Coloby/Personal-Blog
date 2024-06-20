@@ -1,5 +1,5 @@
-import DetailedCard from "@/components/ui/DetailedCard";
-import React from "react"
+import DetailedCard from "@/features/cards/components/DetailedCard.jsx";
+import React from "react";
 
 const page = () => {
 

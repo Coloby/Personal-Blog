@@ -18,7 +18,10 @@ import Link from "next/link"
 import React from "react"
 import Stars from "/src/features/cards/components/Stars"
 
-const DetailedCard = ({ title, iconPath, description, websiteUrl, websiteLabel, moreInfoUrl, imgClasses, imgs, tags, score}) => {
+const DetailedCard = ({ frontmatter, iconPath, websiteUrl, websiteLabel, moreInfoUrl, imgClasses, imgs, score,   title, description, tags}) => {
+  const Tags = tags || frontmatter?.tags
+  const Title = title || frontmatter.title
+  const Description = description || frontmatter.description
 
   const categories = {
     Platform: ["Android", "iOS", "Mac", "Windows", "Linux", "Browser", "Multi platform"],
@@ -27,7 +30,7 @@ const DetailedCard = ({ title, iconPath, description, websiteUrl, websiteLabel, 
   };
   const sortedTags = {};
 
-  tags && tags.forEach(tag => {
+  Tags && Tags.forEach(tag => {
     for (const category in categories) {
       if (categories.hasOwnProperty(category)) {
         if (categories[category].includes(tag)) {
@@ -40,7 +43,7 @@ const DetailedCard = ({ title, iconPath, description, websiteUrl, websiteLabel, 
   })
 
   return (
-    <article className={`flex flex-col sm:items-end gap-8 sm:justify-end ${tags ? "pb-[88px] sm:pb-[56px]" : "pb-[88px] sm:pb-[56px]"}  pt-[28px] sm:w-[638px]`}>
+    <article className={`flex flex-col sm:items-end gap-8 sm:justify-end ${Tags ? "pb-[88px] sm:pb-[56px]" : "pb-[88px] sm:pb-[56px]"}  pt-[28px] sm:w-[638px]`}>
       <div className={`w-[100vw] relative flex flex-col items-center ml-[-16px] min-h-[186px] sm:border-2 border-l-0 border-r-0 border-primary bg-body_shade px-4 py-9
         sm:justify-end  sm:w-[637px] sm:h-[240px] sm:inline sm:border-l-2 sm:border-r-2 sm:rounded-tl-lg sm:rounded-br-lg`}>
         <div>
@@ -60,14 +63,14 @@ const DetailedCard = ({ title, iconPath, description, websiteUrl, websiteLabel, 
                   </div>
                 ) : null}
                 <div className="flex flex-col gap-[6px]">
-                  <h2 className="!text-[20px]">{title}</h2>
+                  <h2 className="!text-[20px]">{Title}</h2>
                   <Stars score={score} />
                 </div>
               </div>
             </div>
           {/* description */}
           <div className="flexy sm:justify-start w-full">
-            <p className={`mt-[55px] !leading-[26px] !max-w-[400px] w-full sm:w-[324px] sm:h-[96px] text-lg ${defaultProseSettings} prose-p:!inline prose-a:!inline sm:max-h-[112px] !leading-normal`}>{description}</p>
+            <p className={`mt-[55px] !leading-[26px] !max-w-[400px] w-full sm:w-[324px] sm:h-[96px] text-lg ${defaultProseSettings} prose-p:!inline prose-a:!inline sm:max-h-[112px]`}>{Description}</p>
           </div>
         </div>
         <div className="sm:w-[280px] sm:h-[240px] h-[288px] w-full max-w-[390px] mt-6 sm:mt-0 sm:absolute right-[-2px] top-[-2px]">
@@ -81,8 +84,8 @@ const DetailedCard = ({ title, iconPath, description, websiteUrl, websiteLabel, 
                         <CarouselItem key={img + index} className="h-full w-full !items-start flexy ">
                           <Image
                             src={img.imgSrc}
-                            width={380}
-                            height={330}
+                            width={680}
+                            height={630}
                             className={`${imgClasses} sm:hover:scale-[1.4] border-2 border-primary transition-all w-full sm:h-[240px] h-[288px] object-cover   rounded-tl-lg rounded-br-lg`}
                             alt=""
                             priority={false}
@@ -121,8 +124,10 @@ const DetailedCard = ({ title, iconPath, description, websiteUrl, websiteLabel, 
                           </CarouselItem>
                       ))}
                     </CarouselContent>
-                    <CarouselPrevious className="absolute !top-[270px] sm:!top-14 left-0 border-2 border-primary rounded-tl-lg rounded-br-lg bg-secondary text-primary_text_color"/>
-                    <CarouselNext className=" absolute !top-[270px] sm:!top-14 right-0 border-2 border-primary rounded-tl-lg rounded-br-lg bg-secondary text-primary_text_color"/>
+                    <div className={`${!imgs[1] && "!hidden"} absolute top-10 right-10 border-2 border-primary rounded-tl-lg rounded-br-lg bg-secondary text-primary_text_color flexy w-[80px] h-[40px]`}>
+                      <CarouselPrevious className="!-translate-y-0 !border-0 !static !w-[40px] h-[40px]"/>
+                      <CarouselNext className="!-translate-y-0 !border-0 !static !w-[40px] h-[40px] "/>
+                    </div>
                   </Carousel>
                 </DialogContent>
               </Dialog>
@@ -141,13 +146,13 @@ const DetailedCard = ({ title, iconPath, description, websiteUrl, websiteLabel, 
               </div>
             </div>
             <div className="absolute border-b-2 border-primary w-full h-[2px] top-[19px] sm:hidden z-[1]"></div>
-          {/* tags */}
-            <div className={`${!tags && "hidden"} flex sm:absolute sm:w-[638px] sm:bottom-[-38px] sm:left-[-18px] w-full justify-between items-center border-t-0 border-2 sm:border-x-2 sm:border-t-2 border-x-0 border-primary sm:rounded-tl-lg sm:rounded-br-lg bg-body_shade max-h-[40px]`}>
-              {tags ? (
+          {/* Tags */}
+            <div className={`${!Tags && "hidden"} flex sm:absolute sm:w-[638px] sm:bottom-[-38px] sm:left-[-18px] w-full justify-between items-center border-t-0 border-2 sm:border-x-2 sm:border-t-2 border-x-0 border-primary sm:rounded-tl-lg sm:rounded-br-lg bg-body_shade max-h-[40px]`}>
+              {Tags ? (
                 <div className="w-full overflow-hidden relative !z-20"> 
                 {/*  inset-shadow */}
-                  <div className="flex w-fit max-h-10 pl-4 items-center relative gap-2 sm:py-[2px] !z-10">
-                    {tags.map((tag, index) => {
+                  <div className="flex w-fit max-h-10 pl-4 items-center relative gap-4 sm:py-[2px] !z-10">
+                    {Tags.map((tag, index) => {
                       return (
                         <React.Fragment key={tag + index}>
                           <p className="max-h-5 w-fit text-sm !min-w-fit  whitespace-nowrap relative !z-10">{tag}</p>
@@ -171,7 +176,7 @@ const DetailedCard = ({ title, iconPath, description, websiteUrl, websiteLabel, 
                           <h2 className="text-lg">{category}</h2>
                           <ul className="flex items-center gap-2">
                             {sortedTags[category].map((tag) => {
-                              return <li key={tag + category} className="text-sm border w-fit rounded-sm flexy border-primary px-2 h-[30px]">{tag}</li>
+                              return <li key={tag + category} className="text-sm border w-fit rounded-sm flexy border-primary px-2 h-[30px]">{Tags}</li>
                             })}
                           </ul>
                         </div>
