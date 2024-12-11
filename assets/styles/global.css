@@ -153,3 +153,8 @@ html { /* Smooth scrolling won't work anyway based on your OS and/or browser set
     text-align: right;
     color: gray;
   }
+/* solves bug where 10px of margin + overflow hidden were added whenever you'd click on the Select component from shadcn*/
+html body[data-scroll-locked] {
+  margin-right: 0 !important;
+  overflow: visible !important;
+}

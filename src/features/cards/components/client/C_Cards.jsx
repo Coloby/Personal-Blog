@@ -9,7 +9,10 @@ import { useEffect, useState } from "react";
 
 const C_Cards = ({children, cardConfigurations, categoryTags}) => {
   const [_, setCurrentCategoryTagsAtom] = useAtom(currentCategoryTagsAtom)
-  setCurrentCategoryTagsAtom(categoryTags)
+  useEffect(() => { // currentCategoryTagsAtom is used in the layout, the parent of this component. Using useEffect prevent us from having an infinite loop
+    setCurrentCategoryTagsAtom(categoryTags)
+  }, [])
+  
   const [CardsConfigs, setCardConfigs] = useState(cardConfigurations)
   const recommendedOrder = cardConfigurations
   const searchParams = useSearchParams()

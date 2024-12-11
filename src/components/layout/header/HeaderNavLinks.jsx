@@ -27,17 +27,17 @@ const HeaderNavLinks = ({
             <NavigationMenuItem>
               <NavigationMenuTrigger className="text-base">Me</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <NavigationMenuLink href={"/about"} className={"!w-[196px] !rounded-[0px] flexy !items-start hover:bg-primary !justify-start" + navigationMenuTriggerStyle()}>About</NavigationMenuLink>
-                <NavigationMenuLink href={"/now"} className={"!w-[196px] !rounded-[0px] flexy !items-start hover:bg-primary !justify-start" + navigationMenuTriggerStyle()}>Now</NavigationMenuLink>
-                <NavigationMenuLink href={"/interests"} className={"!w-[196px] !rounded-[0px] flexy !items-start hover:bg-primary !justify-start" + navigationMenuTriggerStyle()}>Interests</NavigationMenuLink>
+                <NavigationMenuLink href={"/about"} className={"!w-[196px] text-center !rounded-[0px] flexy hover:bg-primary !justify-start" + navigationMenuTriggerStyle()}>About</NavigationMenuLink>
+                <NavigationMenuLink href={"/now"} className={"!w-[196px] text-center !rounded-[0px] flexy hover:bg-primary !justify-start" + navigationMenuTriggerStyle()}>Now</NavigationMenuLink>
+                <NavigationMenuLink href={"/interests"} className={"!w-[196px] text-center !rounded-[0px] flexy hover:bg-primary !justify-start" + navigationMenuTriggerStyle()}>Interests</NavigationMenuLink>
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuTrigger className="text-base">Resources</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <NavigationMenuLink href={process.env.NEXT_PUBLIC_NOTES_WEBSITE_URL} target="_blank" rel="noopener noreferrer" className={"!w-[196px] !rounded-[0px] flexy !items-start hover:bg-primary !justify-start" + navigationMenuTriggerStyle()}>Notes</NavigationMenuLink>
-                <NavigationMenuLink href={"/wonder-room"} className={"!w-[196px] !rounded-[0px] flexy !items-start hover:bg-primary !justify-start" + navigationMenuTriggerStyle()}>Wonder room</NavigationMenuLink>
-                <NavigationMenuLink href={"/downloads"} className={"!w-[196px] !rounded-[0px] flexy !items-start hover:bg-primary !justify-start" + navigationMenuTriggerStyle()}>Downloads</NavigationMenuLink>
+                <NavigationMenuLink href={process.env.NEXT_PUBLIC_NOTES_WEBSITE_URL} target="_blank" rel="noopener noreferrer" className={"!w-[196px] text-center !rounded-[0px] flexy hover:bg-primary !justify-start" + navigationMenuTriggerStyle()}>Notes</NavigationMenuLink>
+                <NavigationMenuLink href={"/wonder-room"} className={"!w-[196px] text-center !rounded-[0px] flexy hover:bg-primary !justify-start" + navigationMenuTriggerStyle()}>Wonder room</NavigationMenuLink>
+                <NavigationMenuLink href={"/downloads"} className={"!w-[196px] text-center !rounded-[0px] flexy hover:bg-primary !justify-start" + navigationMenuTriggerStyle()}>Downloads</NavigationMenuLink>
               </NavigationMenuContent>
             </NavigationMenuItem>
           </NavigationMenuList>

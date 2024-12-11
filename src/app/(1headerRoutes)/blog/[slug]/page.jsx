@@ -6,7 +6,8 @@ import GetAuthorsComp from "@/utils/GetAuthorsComp";
 import Image from "next/image";
 import { getMdxComp } from "../../../../lib/mdx/getMdxComp";
 
-const Page = async ({ params }) => {
+const Page = async props => {
+  const params = await props.params;
   const articleFileName = params.slug + ".mdx"
   const { frontmatter } = await getFrontmatterBySlug("header_routes/blog/", articleFileName)
   const { TOCComponent } = await getTOCComponentFromSlug("header_routes/blog/", articleFileName)
@@ -58,7 +59,8 @@ const Page = async ({ params }) => {
   )
 }
 
-export async function generateMetadata({params}) {
+export async function generateMetadata(props) {
+  const params = await props.params;
   // const title = decodeURIComponent(params.slug).replace(/\.[^/.]+$/, ''); // removes potential file extensions and mutations like %20 instead of spaces
   const { frontmatter } = await getFrontmatterBySlug("header_routes/blog/", params.slug + ".mdx")
 

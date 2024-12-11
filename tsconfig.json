@@ -37,7 +37,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "dist/types/**/*.ts"
-, "src/app/page.jsx", "src/app/(mainHeaderRoutes)/blog/[slug]/page.jsx", "src/app/(mainHeaderRoutes)/blog/page.jsx", "src/lib/mdx/mdxManager.js", "src/components/primitives/shadcn-ui/accordion.tsx", "src/app/sitemap.js", "src/app/robots.ts", "src/components/layout/header/Header.jsx"  ],
+, "src/app/page.jsx", "src/app/(mainHeaderRoutes)/blog/[slug]/page.jsx", "src/app/(mainHeaderRoutes)/blog/page.jsx", "src/lib/mdx/mdxManager.js", "src/components/primitives/shadcn-ui/accordion.tsx", "src/app/sitemap.js", "src/app/robots.ts", "src/components/layout/header/Header.jsx", "src/components/layout/Footer.jsx"  ],
   "exclude": [
     "node_modules",
     "src/lib/*",
