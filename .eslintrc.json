@@ -38,11 +38,13 @@
   ],
   "plugins": [
     "react", 
+    "react-compiler",
     "@typescript-eslint",
     "only-warn"
 
   ],
   "rules": {
+    "react-compiler/react-compiler": "error",
     // . disabled
     "react/jsx-filename-extension": "off",
     "import/namespace":"off",
