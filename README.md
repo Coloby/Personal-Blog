@@ -19,7 +19,7 @@
 
 ## Important informations
 - This project is a work in progress. 
-  - To know more, see the [sitemap](https://edondigital.vercel.app/sitemap), the [github project](https://github.com/users/Coloby/projects/2), or [contact me](https://edondigital.vercel.app/contact).
+  - To know more, see the [sitemap](https://edondigital.vercel.app/sitemap-graph), the [github project](https://github.com/users/Coloby/projects/2), or [contact me](https://edondigital.vercel.app/contact).
   - I will prioritize development over design, for now.
 - I'm not using typescript properly (if at all), sorry for this D:
 

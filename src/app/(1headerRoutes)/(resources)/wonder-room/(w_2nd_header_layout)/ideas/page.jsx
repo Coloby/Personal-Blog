@@ -31,4 +31,9 @@ const page = () => {
   )
 }
 
+export const metadata = {
+  title : "Ideas",
+  description : "Ed's suggested ideas",
+}
+
 export default page

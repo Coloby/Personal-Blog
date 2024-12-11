@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="px-[16px] flex-col sm:flex-row text-center !items-start h-fit z-20 bg-body_shade border-t border-t-primary w-full flexy !absolute bottom-[-592px] sm:bottom-[-149px] gap-16 py-8">
       <div className="flex flex-col gap-3 sm:gap-1 w-full sm:w-fit">
-        <Link href="/sitemap" className="w-full min-h-[40px] flexy sm:!items-start sm:w-fit">Sitemap</Link>
+        <Link href="/sitemap-graph" className="w-full min-h-[40px] flexy sm:!items-start sm:w-fit">Sitemap</Link>
         <Link href="/credits" className="w-full min-h-[40px] flexy sm:!items-start sm:w-fit">Credits</Link>
       </div>
       <a href="https://github.com/Coloby/Personal-Blog" className="flex items-center !flex-col gap-3 w-full sm:w-fit h-[81px]">

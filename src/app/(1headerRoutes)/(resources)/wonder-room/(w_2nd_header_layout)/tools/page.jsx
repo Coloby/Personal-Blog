@@ -69,4 +69,9 @@ const page = async () => {
   )
 }
 
+export const metadata = {
+  title : "Tools",
+  description : "Tools suggested from Ed",
+}
+
 export default page

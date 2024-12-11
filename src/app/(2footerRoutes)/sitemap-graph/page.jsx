@@ -52,13 +52,13 @@ const page = async () => {
               <p>$ = to create</p>
             </div>
           </div>
-          <Btn href="/sitemap/text-view" classContainer="!w-fit !text-center">Switch view</Btn>
+          <Btn href="/sitemap-graph/text-view" classContainer="!w-fit !text-center">Switch view</Btn>
         </SettingsBtn>
       </div>
       <div className="!absolute top-16 left-0 !max-w-none">
         <div dangerouslySetInnerHTML={{ __html: html }} />
       </div>
-      <C_Markmap />
+    <C_Markmap />
     </div>
   );
 }

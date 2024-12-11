@@ -17,7 +17,7 @@ const page = async () => {
               <p>$ = to create</p>
             </div>
           </div>
-          <Btn href="/sitemap" classContainer="!w-fit !text-center">Switch view</Btn>
+          <Btn href="/sitemap-graph" classContainer="!w-fit !text-center">Switch view</Btn>
         </SettingsBtn>
       </div>
       <div className="prose-h1:!text-[48px] prose-h1:!mt-0 prose-li:!my-0 prose-ul:!my-2">

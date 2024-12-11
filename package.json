@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3010",
+    "dev": "next dev --turbopack -p 3010",
+    "dev2": "NODE_OPTIONS='--inspect' next dev --turbopack -p 3010",
     "build": "next build",
     "start": "next start",
     "lint": "eslint --fix src/** --config .eslintrc-fix.json",
@@ -30,10 +31,10 @@
     "fuse.js": "^7.0.0",
     "jotai": "^2.8.0",
     "lucide-react": "^0.292.0",
-    "next": "14.2.1",
+    "next": "15.1.0",
     "pg": "^8.11.5",
     "react": "^19.0.0",
-    "react-dom": "^18.2.0",
+    "react-dom": "^19.0.0",
     "react-hook-form": "^7.51.3",
     "sharp": "0.33.1",
     "tailwind-merge": "^2.2.2",
@@ -45,18 +46,18 @@
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/mdx": "^3.0.1",
     "@mdx-js/runtime": "^1.6.22",
-    "@next/eslint-plugin-next": "^13.5.6",
+    "@next/eslint-plugin-next": "^15.1.0",
     "@tailwindcss/typography": "^0.5.12",
     "@types/node": "^20.12.7",
-    "@types/react": "^18.2.78",
-    "@types/react-dom": "^18.2.25",
+    "@types/react": "^19.0.1",
+    "@types/react-dom": "^19.0.2",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "autoprefixer": "^10.4.19",
     "cheerio": "1.0.0-rc.12",
     "dotenv": "^16.4.5",
     "esbuild": "^0.19.12",
     "eslint": "^8.57.0",
-    "eslint-config-next": "14.0.2",
+    "eslint-config-next": "15.1.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-only-warn": "^1.1.0",
     "eslint-plugin-react": "^7.34.1",
@@ -95,5 +96,11 @@
     "typescript": "^5.4.5",
     "unified": "^11.0.4",
     "unist-util-visit": "^5.0.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "@types/react": "19.0.1",
+      "@types/react-dom": "19.0.2"
+    }
   }
 }

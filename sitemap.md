@@ -19,8 +19,8 @@ markmap:
     - [Notes](process.env.NEXT_PUBLIC_NOTES_WEBSITE_URL)
     - [Downloads](/downloads)
     - [Wonder-room](/wonder-room)
-      - ^[Tools](/wonder-room/tools)
-      - ^[Ideas](/wonder-room/ideas)
+      - [Tools](/wonder-room/tools)
+      - [Ideas](/wonder-room/ideas)
       - $Mentors
       - $Content
         - $Books
@@ -28,8 +28,8 @@ markmap:
         - $Music
 - (Footer routes)
   - [Credits](/credits)
-  - [Sitemap](/sitemap)
-    - [Text-view](/sitemap/text-view)
+  - [Sitemap](/sitemap-graph)
+    - [Text-view](/sitemap-graph/text-view)
   - [Sitemap.xml](/sitemap.xml)
   - [Feed.xml](/feed.xml)
   - $Privacy
