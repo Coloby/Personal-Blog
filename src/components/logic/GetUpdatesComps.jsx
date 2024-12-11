@@ -22,6 +22,12 @@ const GetUpdatesComps = (entriesNum) => {
     //   text: ``,
     //   author: "Ed"
     // },
+
+    {
+      date: "11/12/2024 (December)",
+      text: `Not dead, falled into multiple rabbit holes and got sidetracked BUT here I am again :P Many updates on this website in-coming!`,
+      author: "Ed"
+    },
     {
       date: "24/Apr/2024",
       text: `I've been sick for at least 3 days but now I'm fine!. No idea about how I'm going to recover the work lost (been slacking even before the sickness), or how I'll find the courage to tackle the GDPR problem BUT, I know it's going to be fun anyway :)`,

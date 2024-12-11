@@ -90,6 +90,7 @@ const page = ({ children }) => {
           <h2>
             About my interests
           </h2>
+          <p>Visit <a target="_blank" rel="noopener noreferrer" href="https://edongarden.netlify.app/PublicNotes/vault-map">my notes</a> to get a more complete and recent overview about what I know and I'm interested in</p>
           <p>The dates you see are based on 24/Feb/2024</p>
           <p>The hyarchy of my interests is highly mutable</p>
           <p>Related topics are sorted based on importancy</p>
