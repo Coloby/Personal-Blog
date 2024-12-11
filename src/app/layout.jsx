@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
     <C_Layout>
       <div className={`bg-body_shade  ss:h-auto text-primary_text_color transition-colors duration-1000 relative`}>
         <Header />
-        <main className=" flex !h-fit justify-center mt-[100px] px-[16px] pb-[300px] min-h-screen !w-full ">{children}</main>
+        <main className=" !h-fit mt-[100px] px-[16px] pb-[300px] min-h-screen  flex  justify-center !w-full">{children}</main>
         <Footer />
         <Toaster />
       </div>

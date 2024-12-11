@@ -7,15 +7,15 @@ import Link from "next/link"
 import { ThemeModeBtn } from "../../logic/settings/ThemeModeBtn"
 // @ts-ignore
 import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
+    Sheet,
+    SheetContent,
+    SheetTrigger,
 } from "@/components/primitives/shadcn-ui/Drawer"
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
 } from "@/components/primitives/shadcn-ui/accordion"
 // @ts-ignore
 import C_ShareBtns from "@/components/clientComps/C_ShareBtns"
@@ -36,14 +36,14 @@ const Header = () => {
             <HeaderNavLinks />
           </div>
           <div className="flex gap-4">
-            <div className="hidden sm:flexy">
+            <div className="hidden md:flexy">
               <ThemeModeBtn />
             </div>
             {/* drawer */}
             <div className="">
               <Sheet>
                 <SheetTrigger className="flexy">
-                  <svg className="sm:hidden h-[40px] w-[36px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" >
+                  <svg className="md:hidden h-[40px] w-[36px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" >
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                   </svg>
                 </SheetTrigger>

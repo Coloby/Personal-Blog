@@ -18,41 +18,26 @@ const HeaderNavLinks = ({
 }) => {
   return (
     <nav className=" space-x-10 flexy">
-      <ul className={"sm:gap-6 items-center justify-center flex w-fit"}>
-        {/* <li>{home && <Link href="/" className=" hidden sm:block">Home</Link>}</li> */}
+      <ul className={"md:gap-6 items-center justify-center flex w-fit"}>
         <li className="min-w-[70px] flexy">{blog && <Link href="/blog" className="text-center">Blog</Link>}</li>
-        {/* <li className="sm:min-w-[70px] flexy">{about && <Link href="/about" className="text-center hidden sm:block">About</Link>}</li> */}
-        <li className="sm:min-w-[70px] flexy">{contact && <Link href="/contact" className="text-center hidden sm:block">Contact</Link>}</li>
-        {/* <li className="sm:min-w-[70px] flexy">{notes && <Link href="https://edongarden.netlify.app/" target="_blank" rel="noopener noreferrer" className="text-center hidden sm:block">Notes</Link>}</li> */}
-        <li className="sm:min-w-[70px] flexy">
-        <NavigationMenu className="hidden sm:block">
+        <li className="md:min-w-[70px] flexy">{contact && <Link href="/contact" className="text-center hidden md:block">Contact</Link>}</li>
+        <li className="md:min-w-[70px] flexy">
+        <NavigationMenu className="hidden md:block">
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuTrigger className="text-base">Me</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <Link href={"/about"} className="w-full flexy !items-start hover:bg-primary !justify-start">
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>About</NavigationMenuLink>
-                </Link>
-                <Link href={"/now"} className="w-full flexy !items-start hover:bg-primary !justify-start">
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>Now</NavigationMenuLink>
-                </Link>
-                <Link href={"/interests"} className="w-full flexy !items-start hover:bg-primary !justify-start">
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>Interests</NavigationMenuLink>
-                </Link>
+                <NavigationMenuLink href={"/about"} className={"!w-[196px] !rounded-[0px] flexy !items-start hover:bg-primary !justify-start" + navigationMenuTriggerStyle()}>About</NavigationMenuLink>
+                <NavigationMenuLink href={"/now"} className={"!w-[196px] !rounded-[0px] flexy !items-start hover:bg-primary !justify-start" + navigationMenuTriggerStyle()}>Now</NavigationMenuLink>
+                <NavigationMenuLink href={"/interests"} className={"!w-[196px] !rounded-[0px] flexy !items-start hover:bg-primary !justify-start" + navigationMenuTriggerStyle()}>Interests</NavigationMenuLink>
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuTrigger className="text-base">Resources</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <Link href={process.env.NEXT_PUBLIC_NOTES_WEBSITE_URL} target="_blank" rel="noopener noreferrer" className="w-full flexy !items-start hover:bg-primary !justify-start">
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>Notes</NavigationMenuLink>
-                </Link>
-                <Link href={"/wonder-room"} className="w-full flexy !items-start hover:bg-primary !justify-start">
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>Wonder room</NavigationMenuLink>
-                </Link>
-                <Link href={"/downloads"} className="w-full flexy !items-start hover:bg-primary !justify-start">
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>Downloads</NavigationMenuLink>
-                </Link>
+                <NavigationMenuLink href={process.env.NEXT_PUBLIC_NOTES_WEBSITE_URL} target="_blank" rel="noopener noreferrer" className={"!w-[196px] !rounded-[0px] flexy !items-start hover:bg-primary !justify-start" + navigationMenuTriggerStyle()}>Notes</NavigationMenuLink>
+                <NavigationMenuLink href={"/wonder-room"} className={"!w-[196px] !rounded-[0px] flexy !items-start hover:bg-primary !justify-start" + navigationMenuTriggerStyle()}>Wonder room</NavigationMenuLink>
+                <NavigationMenuLink href={"/downloads"} className={"!w-[196px] !rounded-[0px] flexy !items-start hover:bg-primary !justify-start" + navigationMenuTriggerStyle()}>Downloads</NavigationMenuLink>
               </NavigationMenuContent>
             </NavigationMenuItem>
           </NavigationMenuList>

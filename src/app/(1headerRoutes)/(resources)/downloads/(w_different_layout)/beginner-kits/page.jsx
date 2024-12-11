@@ -1,5 +1,5 @@
 import { basePath } from "@/constants/routes_specific/downloads/downloads.js"
-import DownloadCard from "@/features/cards/components/DownloadCard.jsx"
+import DownloadCard from "@/features/cards/components/card/DownloadCard"
 
 const page = () => {
 
