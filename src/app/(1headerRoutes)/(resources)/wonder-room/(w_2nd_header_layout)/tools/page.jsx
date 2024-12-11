@@ -1,15 +1,7 @@
 import C_Cards from "@/features/cards/components/client/C_Cards";
 import { getFrontmatterBySlug } from "@/lib/mdx/mdxManager";
 
-// data flow decision: we'll give every item every time (server side), and then the client will filter/sort them (client-side). Not the other way around, for unneeded complexity (not enough cards/data to care about bandwidth luckily)
-export const toolsTags = { // TODO why can't I sync this with the one on the store?
-  Licenses: ["Free", "Paid", "Open source", "Closed source"],
-  Features: ["+Offline", "Lightweight", "Self-hostable", "Privacy focused"],
-  Platforms: ["Android", "iOS", "Mac", "Windows", "Linux", "Browser", "Multi platform"],
-};
-
 const page = async () => {
-  // ! to avoid problems, don't give the same title to multiple cards
   let cardConfigurations = [
     {
       title: "Obsidian",

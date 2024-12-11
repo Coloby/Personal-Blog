@@ -27,7 +27,6 @@ const DetailedCard = ({ config }) => {
   const [currentCategoryTags, _] = useAtom(currentCategoryTagsAtom)
   const currentCategoryTag = getCategoryTagsAtom(currentCategoryTags || "tools").init
   const FlattenedTags = Tags.flatMap(tag => Object.values(tag)).flat();
-  console.log(`Tags:`, Tags)
   
   return (
     <article className={`flex flex-col sm:items-end gap-8 sm:justify-end ${Tags ? "pb-[88px] sm:pb-[56px]" : "pb-[88px] sm:pb-[56px]"}  pt-[28px] hd:pt-0 sm:w-[638px] hd:w-[718px]`}>

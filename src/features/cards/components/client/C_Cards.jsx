@@ -53,7 +53,7 @@ const C_Cards = ({children, cardConfigurations, categoryTags}) => {
     return finalOutput
   }
 
-  const mergeFilters = () => { // to show, the card needs to be in both tagFilterCards & searchFilterCards unless... (if statements)
+  const mergeFilters = () => { 
     let filteredCards = tagFilterCards()
     let searchedCards = searchFilterCards()
     let commonCards
@@ -72,9 +72,6 @@ const C_Cards = ({children, cardConfigurations, categoryTags}) => {
     const CardsContainer = document.querySelectorAll(".cards-wrapper2 article")
     
     CardsContainer.forEach((cardOnClient, i) => {
-      // if (searchedCards[0] || filteredCards[0]) {
-        // if (!commonCards[0]) return cardOnClient.classList.add('hidden')
-      // }
       if (!commonCards[0]) return cardOnClient.classList.add('hidden')
         
       const visibleCardTitle = cardOnClient.querySelector('.card-title').textContent;

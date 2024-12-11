@@ -5,7 +5,6 @@ import { useState } from "react";
 
 const C_ModeComp = () => {
   const [mode, setMode] = useState("graph")
-  console.log(`mode:`, mode)
   
   return (
     <div>

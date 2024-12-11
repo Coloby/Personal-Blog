@@ -29,28 +29,6 @@ const FiltersBtn = () => {
     const newFilter = e.target.innerText
     let currentFilters = searchParams.get("filters") || "";
 
-    // const removeFilter = (filterToRemove) => {
-    //   const updatedFilters = [...(currentFilters.split(",")).filter(filter => filter !== filterToRemove)];
-    //   const updatedParams = new URLSearchParams(searchParams);
-
-    //   updatedParams.set("filters", updatedFilters.join(","));
-    //   router.replace(`${pathname}?${updatedParams.toString()}`);
-    // }
-
-    // const applyFiltersLogic = (filters, newFilter) => {
-    //   if (filters.includes("Paid") && filters.includes("Free")) {
-    //     if (newFilter === "Paid") {
-    //       const indexToDelete = filters.indexOf("Free");
-    //       filters.splice(indexToDelete, 1)
-    //     } else {
-    //       const indexToDelete = filters.indexOf("Paid");
-    //       filters.splice(indexToDelete, 1)
-    //     }
-    //   } else if (filters.include("Multi platform")) {
-        
-    //   }
-    // }
-
     const updateFilters = (updatedFilters) => {
       updatedFilters[0] === "" && updatedFilters.shift() // .split() creates array [""] if the array given is empty...
       setActiveFilters(updatedFilters.length || 0)
