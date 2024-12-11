@@ -1,4 +1,5 @@
 import C_Cards from "@/features/cards/components/client/C_Cards";
+import { Suspense } from "react";
 
 const page = () => {
   const ideaConfigs = [
@@ -23,7 +24,9 @@ const page = () => {
 
   return (
     <div>
-      {<C_Cards cardConfigurations={ideaConfigs} categoryTags="ideas"/>}
+      <Suspense>
+        {<C_Cards cardConfigurations={ideaConfigs} categoryTags="ideas"/>}
+      </Suspense>
     </div>
   )
 }

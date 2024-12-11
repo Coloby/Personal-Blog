@@ -1,5 +1,6 @@
 import C_Cards from "@/features/cards/components/client/C_Cards";
 import { getFrontmatterBySlug } from "@/lib/mdx/mdxManager";
+import { Suspense } from "react";
 
 const page = async () => {
   let cardConfigurations = [
@@ -61,7 +62,9 @@ const page = async () => {
   
   return (
     <div id="cards-wrapper-container">
-      <C_Cards cardConfigurations={cardConfigurations} categoryTags="tools" />
+      <Suspense>
+        <C_Cards cardConfigurations={cardConfigurations} categoryTags="tools" />
+      </Suspense>
     </div>
   )
 }

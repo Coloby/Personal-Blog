@@ -4,7 +4,7 @@ const page = () => {
 
   return (
     <div>
-      <DetailedCard 
+      {/* <DetailedCard 
         title="Digital Garden"
         description={<p><div>Share your notes (completed or not) plublicly. Attract people alike, get feedback, and learn in public! </div><a href="https://www.youtube.com/watch?v=TDqsr3MNTTc">video</a></p>}
         // tags={["lol"]}
@@ -17,7 +17,7 @@ const page = () => {
           }
         ]}
         score={3.5}
-      />
+      /> */}
     </div>
   )
 }

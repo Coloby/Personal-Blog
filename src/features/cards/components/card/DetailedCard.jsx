@@ -26,7 +26,7 @@ const DetailedCard = ({ config }) => {
   const { score, iconPath, websiteUrl, websiteLabel, title, moreInfoUrl, imgs, Tags, description, imgClasses = "scale[1.3]"} = config ?? {}
   const [currentCategoryTags, _] = useAtom(currentCategoryTagsAtom)
   const currentCategoryTag = getCategoryTagsAtom(currentCategoryTags || "tools").init
-  const FlattenedTags = Tags.flatMap(tag => Object.values(tag)).flat();
+  const FlattenedTags = Tags?.flatMap(tag => Object.values(tag)).flat();
   
   return (
     <article className={`flex flex-col sm:items-end gap-8 sm:justify-end ${Tags ? "pb-[88px] sm:pb-[56px]" : "pb-[88px] sm:pb-[56px]"}  pt-[28px] hd:pt-0 sm:w-[638px] hd:w-[718px]`}>
