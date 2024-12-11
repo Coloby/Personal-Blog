@@ -36,7 +36,7 @@ const Selector = () => {
         value={defaultSortValue || "Recommended"} 
       >
         <SelectTrigger className="md:!w-[210px] !min-w-[72px] !border-none !outline-none !ring-0 flexy !text-base">
-          <div className={`md:hidden ${currentSort !== "Recommended" && " !text-primary"}`}>Sort</div>
+          <div className={`md:hidden ${currentSort && currentSort !== "Recommended" && " !text-primary"}`}>Sort</div>
           <div className="hidden md:flex">
             <div>Sort: {_sortSetting}</div>
             {/* <SelectValue className="!border-none" 
