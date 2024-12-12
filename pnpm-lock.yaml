@@ -96,6 +96,12 @@ importers:
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.16)
+      trim:
+        specifier: ^0.0.3
+        version: 0.0.3
+      webpack:
+        specifier: ^5.94.0
+        version: 5.97.1(esbuild@0.19.12)
       zod:
         specifier: ^3.24.1
         version: 3.24.1
@@ -105,7 +111,7 @@ importers:
         version: 3.1.0(acorn@8.14.0)(esbuild@0.19.12)
       '@mdx-js/loader':
         specifier: ^3.1.0
-        version: 3.1.0(acorn@8.14.0)(webpack@5.91.0(esbuild@0.19.12))
+        version: 3.1.0(acorn@8.14.0)(webpack@5.97.1(esbuild@0.19.12))
       '@mdx-js/mdx':
         specifier: ^3.1.0
         version: 3.1.0(acorn@8.14.0)
@@ -1742,12 +1748,6 @@ packages:
     deprecated: This is probably built in to whatever tool you're using. If you still need it... idk
     peerDependencies:
       acorn: ^6.0.0
-
-  acorn-import-assertions@1.9.0:
-    resolution: {integrity: sha512-cmMwop9x+8KFhxvKrKfPYmN6/pKTYYHBqLa0DfvVZcKMJWNyWLnaqND7dx/qn66R7ewM1UX5XMaDVP5wlVTaVA==}
-    deprecated: package has been renamed to acorn-import-attributes
-    peerDependencies:
-      acorn: ^8
 
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -4347,6 +4347,10 @@ packages:
     resolution: {integrity: sha512-YzQV+TZg4AxpKxaTHK3c3D+kRDCGVEE7LemdlQZoQXn0iennk10RsIoY6ikzAqJTc9Xjl9C1/waHom/J86ziAQ==}
     deprecated: Use String.prototype.trim() instead
 
+  trim@0.0.3:
+    resolution: {integrity: sha512-h82ywcYhHK7veeelXrCScdH7HkWfbIT1D/CgYO+nmDarz3SGNssVBMws6jU16Ga60AJCRAvPV6w6RLuNerQqjg==}
+    deprecated: Use String.prototype.trim() instead
+
   trough@1.0.5:
     resolution: {integrity: sha512-rvuRbTarPXmMb79SmzEp8aqXNKcK+y0XaB298IXueQ8I2PsrATcPBCSPyK/dDNa2iWOhKlfNnOjdAOTBU/nkFA==}
 
@@ -4567,8 +4571,8 @@ packages:
     resolution: {integrity: sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==}
     engines: {node: '>=10.13.0'}
 
-  webpack@5.91.0:
-    resolution: {integrity: sha512-rzVwlLeBWHJbmgTC/8TvAcu5vpJNII+MelQpylD4jNERPwpBJOE2lEcko1zJX3QJeLjTTAnQxn/OJ8bjDzVQaw==}
+  webpack@5.97.1:
+    resolution: {integrity: sha512-EksG6gFY3L1eFMROS/7Wzgrii5mBAFe4rIr3r2BTfo7bcc+DWwFZ4OJ/miOuHJO/A85HwyI4eQ0F6IKXesO7Fg==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     peerDependencies:
@@ -5214,7 +5218,6 @@ snapshots:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.8
       '@jridgewell/trace-mapping': 0.3.25
-    optional: true
 
   '@jridgewell/sourcemap-codec@1.5.0': {}
 
@@ -5235,12 +5238,12 @@ snapshots:
       - acorn
       - supports-color
 
-  '@mdx-js/loader@3.1.0(acorn@8.14.0)(webpack@5.91.0(esbuild@0.19.12))':
+  '@mdx-js/loader@3.1.0(acorn@8.14.0)(webpack@5.97.1(esbuild@0.19.12))':
     dependencies:
       '@mdx-js/mdx': 3.1.0(acorn@8.14.0)
       source-map: 0.7.4
     optionalDependencies:
-      webpack: 5.91.0(esbuild@0.19.12)
+      webpack: 5.97.1(esbuild@0.19.12)
     transitivePeerDependencies:
       - acorn
       - supports-color
@@ -5966,13 +5969,11 @@ snapshots:
     dependencies:
       '@types/eslint': 9.6.1
       '@types/estree': 1.0.6
-    optional: true
 
   '@types/eslint@9.6.1':
     dependencies:
       '@types/estree': 1.0.6
       '@types/json-schema': 7.0.15
-    optional: true
 
   '@types/estree-jsx@1.0.5':
     dependencies:
@@ -6146,26 +6147,20 @@ snapshots:
     dependencies:
       '@webassemblyjs/helper-numbers': 1.13.2
       '@webassemblyjs/helper-wasm-bytecode': 1.13.2
-    optional: true
 
-  '@webassemblyjs/floating-point-hex-parser@1.13.2':
-    optional: true
+  '@webassemblyjs/floating-point-hex-parser@1.13.2': {}
 
-  '@webassemblyjs/helper-api-error@1.13.2':
-    optional: true
+  '@webassemblyjs/helper-api-error@1.13.2': {}
 
-  '@webassemblyjs/helper-buffer@1.14.1':
-    optional: true
+  '@webassemblyjs/helper-buffer@1.14.1': {}
 
   '@webassemblyjs/helper-numbers@1.13.2':
     dependencies:
       '@webassemblyjs/floating-point-hex-parser': 1.13.2
       '@webassemblyjs/helper-api-error': 1.13.2
       '@xtuc/long': 4.2.2
-    optional: true
 
-  '@webassemblyjs/helper-wasm-bytecode@1.13.2':
-    optional: true
+  '@webassemblyjs/helper-wasm-bytecode@1.13.2': {}
 
   '@webassemblyjs/helper-wasm-section@1.14.1':
     dependencies:
@@ -6173,20 +6168,16 @@ snapshots:
       '@webassemblyjs/helper-buffer': 1.14.1
       '@webassemblyjs/helper-wasm-bytecode': 1.13.2
       '@webassemblyjs/wasm-gen': 1.14.1
-    optional: true
 
   '@webassemblyjs/ieee754@1.13.2':
     dependencies:
       '@xtuc/ieee754': 1.2.0
-    optional: true
 
   '@webassemblyjs/leb128@1.13.2':
     dependencies:
       '@xtuc/long': 4.2.2
-    optional: true
 
-  '@webassemblyjs/utf8@1.13.2':
-    optional: true
+  '@webassemblyjs/utf8@1.13.2': {}
 
   '@webassemblyjs/wasm-edit@1.14.1':
     dependencies:
@@ -6198,7 +6189,6 @@ snapshots:
       '@webassemblyjs/wasm-opt': 1.14.1
       '@webassemblyjs/wasm-parser': 1.14.1
       '@webassemblyjs/wast-printer': 1.14.1
-    optional: true
 
   '@webassemblyjs/wasm-gen@1.14.1':
     dependencies:
@@ -6207,7 +6197,6 @@ snapshots:
       '@webassemblyjs/ieee754': 1.13.2
       '@webassemblyjs/leb128': 1.13.2
       '@webassemblyjs/utf8': 1.13.2
-    optional: true
 
   '@webassemblyjs/wasm-opt@1.14.1':
     dependencies:
@@ -6215,7 +6204,6 @@ snapshots:
       '@webassemblyjs/helper-buffer': 1.14.1
       '@webassemblyjs/wasm-gen': 1.14.1
       '@webassemblyjs/wasm-parser': 1.14.1
-    optional: true
 
   '@webassemblyjs/wasm-parser@1.14.1':
     dependencies:
@@ -6225,28 +6213,19 @@ snapshots:
       '@webassemblyjs/ieee754': 1.13.2
       '@webassemblyjs/leb128': 1.13.2
       '@webassemblyjs/utf8': 1.13.2
-    optional: true
 
   '@webassemblyjs/wast-printer@1.14.1':
     dependencies:
       '@webassemblyjs/ast': 1.14.1
       '@xtuc/long': 4.2.2
-    optional: true
 
-  '@xtuc/ieee754@1.2.0':
-    optional: true
+  '@xtuc/ieee754@1.2.0': {}
 
-  '@xtuc/long@4.2.2':
-    optional: true
+  '@xtuc/long@4.2.2': {}
 
   acorn-dynamic-import@4.0.0(acorn@6.4.2):
     dependencies:
       acorn: 6.4.2
-
-  acorn-import-assertions@1.9.0(acorn@8.14.0):
-    dependencies:
-      acorn: 8.14.0
-    optional: true
 
   acorn-jsx@5.3.2(acorn@6.4.2):
     dependencies:
@@ -6263,7 +6242,6 @@ snapshots:
   ajv-keywords@3.5.2(ajv@6.12.6):
     dependencies:
       ajv: 6.12.6
-    optional: true
 
   ajv@6.12.6:
     dependencies:
@@ -6450,8 +6428,7 @@ snapshots:
       minimist: 1.2.8
       regexpu-core: 4.8.0
 
-  buffer-from@1.1.2:
-    optional: true
+  buffer-from@1.1.2: {}
 
   busboy@1.6.0:
     dependencies:
@@ -6540,8 +6517,7 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
-  chrome-trace-event@1.0.4:
-    optional: true
+  chrome-trace-event@1.0.4: {}
 
   class-variance-authority@0.7.1:
     dependencies:
@@ -6583,8 +6559,7 @@ snapshots:
 
   comma-separated-tokens@2.0.3: {}
 
-  commander@2.20.3:
-    optional: true
+  commander@2.20.3: {}
 
   commander@4.1.1: {}
 
@@ -6980,8 +6955,7 @@ snapshots:
       iterator.prototype: 1.1.3
       safe-array-concat: 1.1.2
 
-  es-module-lexer@1.5.4:
-    optional: true
+  es-module-lexer@1.5.4: {}
 
   es-object-atoms@1.0.0:
     dependencies:
@@ -7314,8 +7288,7 @@ snapshots:
 
   esutils@2.0.3: {}
 
-  events@3.3.0:
-    optional: true
+  events@3.3.0: {}
 
   extend-shallow@2.0.1:
     dependencies:
@@ -7437,8 +7410,7 @@ snapshots:
     dependencies:
       is-glob: 4.0.3
 
-  glob-to-regexp@0.4.1:
-    optional: true
+  glob-to-regexp@0.4.1: {}
 
   glob@10.4.5:
     dependencies:
@@ -7904,7 +7876,6 @@ snapshots:
       '@types/node': 22.10.2
       merge-stream: 2.0.0
       supports-color: 8.1.1
-    optional: true
 
   jiti@1.21.6: {}
 
@@ -7930,8 +7901,7 @@ snapshots:
 
   json-buffer@3.0.1: {}
 
-  json-parse-even-better-errors@2.3.1:
-    optional: true
+  json-parse-even-better-errors@2.3.1: {}
 
   json-schema-traverse@0.4.1: {}
 
@@ -7981,8 +7951,7 @@ snapshots:
 
   lines-and-columns@1.2.4: {}
 
-  loader-runner@4.3.0:
-    optional: true
+  loader-runner@4.3.0: {}
 
   locate-path@6.0.0:
     dependencies:
@@ -8296,8 +8265,7 @@ snapshots:
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
 
-  merge-stream@2.0.0:
-    optional: true
+  merge-stream@2.0.0: {}
 
   merge2@1.4.1: {}
 
@@ -8581,8 +8549,7 @@ snapshots:
 
   mime-db@1.25.0: {}
 
-  mime-db@1.52.0:
-    optional: true
+  mime-db@1.52.0: {}
 
   mime-types@2.1.13:
     dependencies:
@@ -8591,7 +8558,6 @@ snapshots:
   mime-types@2.1.35:
     dependencies:
       mime-db: 1.52.0
-    optional: true
 
   minimatch@3.1.2:
     dependencies:
@@ -8621,8 +8587,7 @@ snapshots:
 
   natural-compare@1.4.0: {}
 
-  neo-async@2.6.2:
-    optional: true
+  neo-async@2.6.2: {}
 
   next@15.1.0(@babel/core@7.26.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
@@ -8902,7 +8867,6 @@ snapshots:
   randombytes@2.1.0:
     dependencies:
       safe-buffer: 5.2.1
-    optional: true
 
   react-dom@19.0.0(react@19.0.0):
     dependencies:
@@ -9273,8 +9237,7 @@ snapshots:
       has-symbols: 1.1.0
       isarray: 2.0.5
 
-  safe-buffer@5.2.1:
-    optional: true
+  safe-buffer@5.2.1: {}
 
   safe-regex-test@1.0.3:
     dependencies:
@@ -9291,7 +9254,6 @@ snapshots:
       '@types/json-schema': 7.0.15
       ajv: 6.12.6
       ajv-keywords: 3.5.2(ajv@6.12.6)
-    optional: true
 
   section-matter@1.0.0:
     dependencies:
@@ -9307,7 +9269,6 @@ snapshots:
   serialize-javascript@6.0.2:
     dependencies:
       randombytes: 2.1.0
-    optional: true
 
   set-function-length@1.2.2:
     dependencies:
@@ -9434,12 +9395,10 @@ snapshots:
     dependencies:
       buffer-from: 1.1.2
       source-map: 0.6.1
-    optional: true
 
   source-map@0.5.7: {}
 
-  source-map@0.6.1:
-    optional: true
+  source-map@0.6.1: {}
 
   source-map@0.7.4: {}
 
@@ -9579,7 +9538,6 @@ snapshots:
   supports-color@8.1.1:
     dependencies:
       has-flag: 4.0.0
-    optional: true
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
@@ -9626,17 +9584,16 @@ snapshots:
 
   tapable@2.2.1: {}
 
-  terser-webpack-plugin@5.3.10(esbuild@0.19.12)(webpack@5.91.0(esbuild@0.19.12)):
+  terser-webpack-plugin@5.3.10(esbuild@0.19.12)(webpack@5.97.1(esbuild@0.19.12)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.2
       terser: 5.37.0
-      webpack: 5.91.0(esbuild@0.19.12)
+      webpack: 5.97.1(esbuild@0.19.12)
     optionalDependencies:
       esbuild: 0.19.12
-    optional: true
 
   terser@5.37.0:
     dependencies:
@@ -9644,7 +9601,6 @@ snapshots:
       acorn: 8.14.0
       commander: 2.20.3
       source-map-support: 0.5.21
-    optional: true
 
   thenify-all@1.6.0:
     dependencies:
@@ -9665,6 +9621,8 @@ snapshots:
   trim-trailing-lines@1.1.4: {}
 
   trim@0.0.1: {}
+
+  trim@0.0.3: {}
 
   trough@1.0.5: {}
 
@@ -9932,16 +9890,14 @@ snapshots:
     dependencies:
       glob-to-regexp: 0.4.1
       graceful-fs: 4.2.11
-    optional: true
 
   web-namespaces@1.1.4: {}
 
   web-namespaces@2.0.1: {}
 
-  webpack-sources@3.2.3:
-    optional: true
+  webpack-sources@3.2.3: {}
 
-  webpack@5.91.0(esbuild@0.19.12):
+  webpack@5.97.1(esbuild@0.19.12):
     dependencies:
       '@types/eslint-scope': 3.7.7
       '@types/estree': 1.0.6
@@ -9949,7 +9905,6 @@ snapshots:
       '@webassemblyjs/wasm-edit': 1.14.1
       '@webassemblyjs/wasm-parser': 1.14.1
       acorn: 8.14.0
-      acorn-import-assertions: 1.9.0(acorn@8.14.0)
       browserslist: 4.24.2
       chrome-trace-event: 1.0.4
       enhanced-resolve: 5.17.1
@@ -9964,14 +9919,13 @@ snapshots:
       neo-async: 2.6.2
       schema-utils: 3.3.0
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.10(esbuild@0.19.12)(webpack@5.91.0(esbuild@0.19.12))
+      terser-webpack-plugin: 5.3.10(esbuild@0.19.12)(webpack@5.97.1(esbuild@0.19.12))
       watchpack: 2.4.2
       webpack-sources: 3.2.3
     transitivePeerDependencies:
       - '@swc/core'
       - esbuild
       - uglify-js
-    optional: true
 
   which-boxed-primitive@1.1.0:
     dependencies:
