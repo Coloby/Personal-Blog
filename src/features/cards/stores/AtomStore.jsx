@@ -5,8 +5,8 @@ import { atomFamily } from 'jotai/utils'
 export const sortSettingAtom = atom("Recommended")
 export const ToolsTagsAtom = atom({
   Licenses: ["Free", "Paid", "Open source", "Closed source"],
-  Features: ["+Offline", "Lightweight", "Self-hostable", "Privacy focused", "High customizability"],
-  Platforms: ["Android", "iOS", "Mac", "Windows", "Linux", "Browser", "Multi platform"],
+  Features: ["+Offline", "Lightweight", "Privacy focused", "High customizability"],
+  Platforms: ["Android", "iOS", "Mac", "Windows", "Linux", "Self-hosted", "Multi platform"],
 })
 export const IdeasTags = atom({
   Concept : ["Sharing", "Learning"]

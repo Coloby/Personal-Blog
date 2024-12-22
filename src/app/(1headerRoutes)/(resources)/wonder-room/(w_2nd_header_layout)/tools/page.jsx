@@ -5,53 +5,11 @@ import { Suspense } from "react";
 const page = async () => {
   let cardConfigurations = [
     {
-      title: "Obsidian",
-      websiteUrl: "https://obsidian.md/",
-      score: 4.4,
-      extraImgs: [
-        {
-          title: "",
-          imgSrc: "/assets/routes_specific/wonder-room/tools/obsidian/2.png"
-        },{
-          title: "",
-          imgSrc: "/assets/routes_specific/wonder-room/tools/obsidian/3.png"
-        }
-      ],
-    },{
-      title: "Syncthing",
-      websiteUrl: "https://syncthing.net/",
-      score: 4
-    },{
       title: "Brave",
       websiteUrl: "https://brave.com/",
       score: 3.5
-    },{
-      title: "Activity Watch",
-      websiteUrl: "https://activitywatch.net/",
-      score: 4.2,
-      extraImgs: [
-        {
-          title: "",
-          imgSrc: "/assets/routes_specific/wonder-room/tools/activity_watch/2.png"
-        },{
-          title: "",
-          imgSrc: "/assets/routes_specific/wonder-room/tools/activity_watch/3.png"
-        },
-      ],
-    },{
-      title: "Super Productivity",
-      websiteUrl: "https://super-productivity.com/",
-      score: 3.2,
-      extraImgs: [
-        {
-          title: "",
-          imgSrc: "/assets/routes_specific/wonder-room/tools/super_productivity/2.png"
-        },{
-          title: "",
-          imgSrc: "/assets/routes_specific/wonder-room/tools/super_productivity/3.png"
-        },
-      ],
-    },{
+    },
+    {
       title: "Notion",
       websiteUrl: "https://www.notion.com/",
       score: 3.9,
@@ -64,7 +22,54 @@ const page = async () => {
           imgSrc: "/assets/routes_specific/wonder-room/tools/notion/3.png"
         },
       ],
-    }
+    },
+    {
+      title: "Obsidian",
+      websiteUrl: "https://obsidian.md/",
+      score: 4.4,
+      extraImgs: [
+        {
+          title: "",
+          imgSrc: "/assets/routes_specific/wonder-room/tools/obsidian/2.png"
+        },{
+          title: "",
+          imgSrc: "/assets/routes_specific/wonder-room/tools/obsidian/3.png"
+        }
+      ],
+    },
+    {
+      title: "Syncthing",
+      websiteUrl: "https://syncthing.net/",
+      score: 4
+    },
+    {
+      title: "Super Productivity",
+      websiteUrl: "https://super-productivity.com/",
+      score: 3.2,
+      extraImgs: [
+        {
+          title: "",
+          imgSrc: "/assets/routes_specific/wonder-room/tools/super_productivity/2.png"
+        },{
+          title: "",
+          imgSrc: "/assets/routes_specific/wonder-room/tools/super_productivity/3.png"
+        },
+      ],
+    },
+    {
+      title: "Activity Watch",
+      websiteUrl: "https://activitywatch.net/",
+      score: 4.2,
+      extraImgs: [
+        {
+          title: "",
+          imgSrc: "/assets/routes_specific/wonder-room/tools/activity_watch/2.png"
+        },{
+          title: "",
+          imgSrc: "/assets/routes_specific/wonder-room/tools/activity_watch/3.png"
+        },
+      ],
+    },
   ];
 
   const updateCardConfigurations = async () => {
@@ -83,7 +88,7 @@ const page = async () => {
         ]
 
         const url = `/wonder-room/tools/${title.toLowerCase().replace(" ", "-")}`
-        console.log(`url:`, url)
+
         const urlIsFunctioning = async (url) => {
           let res = await fetch(`${process.env.BASE_URL}${url}`)
           if (!res.ok && process.env.NODE_ENV === "development") res = await fetch(`${process.env.LOCALHOST_URL}${url}`)

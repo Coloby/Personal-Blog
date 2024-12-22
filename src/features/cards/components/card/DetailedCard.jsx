@@ -11,6 +11,7 @@ import {
   Dialog,
   DialogContent,
   DialogTrigger,
+  DialogTitle
 } from "@/components/primitives/shadcn-ui/dialog"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/primitives/shadcn-ui/popover"
 import { defaultProseSettings } from "@/lib/mdx/proseSettings"
@@ -91,6 +92,7 @@ const DetailedCard = ({ config }) => {
                   </div>
                 </Carousel>
                 <DialogContent className="!w-full !h-fit !pb-12 !max-w-[99%] !max-h-[98%] ">
+                  <DialogTitle className="sr-only">Carousel of images for the software: {title}</DialogTitle>
                   <Carousel>
                     <CarouselContent>
                       {imgs.map((img, index) => (
@@ -156,17 +158,17 @@ const DetailedCard = ({ config }) => {
                     <svg width="15" height="20" viewBox="0 0 15 20" className="!w-[40px]" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.25 3.17104V3.1714L14.25 16.5005L14.25 16.5008C14.2507 16.9803 14.1167 17.45 13.8637 17.8555C13.6109 18.2608 13.2496 18.5855 12.8219 18.7921C12.3061 19.0376 11.7324 19.1321 11.1661 19.0649C10.6002 18.9978 10.0641 18.7718 9.61885 18.4125L1.61576 11.7512C1.34451 11.5136 1.12678 11.22 0.977379 10.8901C0.827569 10.5593 0.75 10.1998 0.75 9.83594C0.75 9.47212 0.827569 9.11261 0.977379 8.7818C1.12678 8.4519 1.34451 8.1583 1.61576 7.9207L9.61747 1.26044C9.61794 1.26006 9.61841 1.25968 9.61889 1.2593C10.0641 0.90003 10.6002 0.674101 11.1661 0.606968C11.7324 0.539787 12.3062 0.634298 12.822 0.879848C13.2497 1.08645 13.6109 1.41104 13.8637 1.81637C14.1167 2.22193 14.2507 2.69161 14.25 3.17104ZM11.1996 16.3598L11.61 16.7032V16.168L11.61 3.66214V3.13553L11.202 3.46843L3.63469 9.64223L3.40025 9.8335L3.6323 10.0277L11.1996 16.3598Z" fill="white" stroke="#1F014B" strokeWidth="0.5"/></svg>
                   </div>
                 </PopoverTrigger>
-                <PopoverContent className={` ${scrollbar} no-scrollbar flex items-start j bg-body_shade absolute !left-[-284px] overflow-y-scroll top-[-5px] sm:top-[-6px] max-h-[400px] !w-[284px] text-primary_text_color border-2 border-primary !rounded-tr-[0] !rounded-bl-[0] !rounded-tl-[0]`}>
+                <PopoverContent className={` ${scrollbar} flex items-start j bg-body_shade absolute !left-[-284px] overflow-y-hidden top-[-5px] sm:top-[-6px] max-h-[400px] !w-[284px] text-primary_text_color border-2 border-primary !rounded-tr-[0] !rounded-bl-[0] !rounded-tl-[0]`}>
                   <div className="flex flex-col gap-5">
                     {currentCategoryTag && Object.keys(currentCategoryTag).map((category, index) => {
                       return (
                         <div key={`${category} + ${index}category`} className="flex flex-col gap-1">
                           <h2 className="text-lg">{category}</h2>
-                          <ul className="flex items-center gap-2">
+                          <ul className="flex items-center gap-2 !flex-wrap">
                             {currentCategoryTag[category].map((catTag, tagIndex) => (
                               FlattenedTags.map((tag) => {
                                 if (catTag === tag) {
-                                  return <li key={`${category}-${catTag}`} className="text-sm border w-fit rounded-sm flexy border-primary px-2 h-[30px]">{catTag}</li>
+                                  return <li key={`${category}-${catTag}`} className=" text-sm border w-fit rounded-sm flexy border-primary px-2 h-[30px]">{catTag}</li>
                                 }
                               })
                             ))}

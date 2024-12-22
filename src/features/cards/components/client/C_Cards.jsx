@@ -21,8 +21,8 @@ const C_Cards = ({children, cardConfigurations, categoryTags}) => {
   let currentTagFilters = searchParams?.get("filters")?.split(',') || []
   
   const sortCards = () => {
-    if (currentSort === "Vote") return ([...cardConfigurations].sort((a, b) => a.score - b.score))
-    else if (currentSort === "Recommended") return recommendedOrder
+    if (currentSort === "Vote") return ([...cardConfigurations].sort((a, b) => b.score - a.score))
+    else if (currentSort === "Recommended") return ([...cardConfigurations].sort((a, b) => b.score - a.score)) // I'll eventually know what to add there :D
     else if (currentSort === "Popularity") return recommendedOrder
   }
 
