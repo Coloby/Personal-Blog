@@ -43,6 +43,20 @@ const page = async () => {
       score: 4
     },
     {
+      title: "Inoreader",
+      websiteUrl: "https://www.inoreader.com/",
+      score: 4.2,
+      extraImgs: [
+        {
+          title: "",
+          imgSrc: "/assets/routes_specific/wonder-room/tools/inoreader/2.png"
+        },{
+          title: "",
+          imgSrc: "/assets/routes_specific/wonder-room/tools/inoreader/3.png"
+        }
+      ],
+    },
+    {
       title: "Super Productivity",
       websiteUrl: "https://super-productivity.com/",
       score: 3.2,

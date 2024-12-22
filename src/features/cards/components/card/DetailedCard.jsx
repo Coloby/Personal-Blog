@@ -44,7 +44,7 @@ const DetailedCard = ({ config }) => {
                       width={68}
                       height={68}
                       priority={false}
-                      className={`w-full h-full object-fit   rounded-tl-lg rounded-br-lg`}
+                      className={`w-full h-full object-fit   rounded-lg`}
                       alt=""
                     />
                   </div>
