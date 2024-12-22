@@ -39,12 +39,12 @@ const Boxy = async ({ children = "Insert text here", variant = "note" }) => {
         </div>
         <div className="relative overflow-visible mt-[-22px] ml-[10px] rounded-xs min-w-[224px] ">
           <div className={`${modeObj.textColor} ${sharedClasses}  absolute left-[8px] text-primary_text_color bottom-[-8px] right-[-18px] top-[8px] !z-[2] bg-secondary rounded-xs`}>
-            <p className={`${sharedClassesChild}`}>{children}</p>
+            <div className={`${sharedClassesChild}`}>{children}</div>
           </div >
           <div className="z-10 pointer-events-none relative h-full w-full border-[2px] border-primary dark:border-primary rounded-xs">
             {/* Dummy element to apply size to overlay border */}
               <div className={`${sharedClasses} opacity-0 !z-[1333] bg-secondary rounded-xs `}>
-                <p className={`${sharedClassesChild}`}>{children}</p>
+                <div className={`${sharedClassesChild}`}>{children}</div>
               </div >
           </div>
         </div>

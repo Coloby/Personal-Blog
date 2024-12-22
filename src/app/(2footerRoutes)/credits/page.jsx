@@ -25,6 +25,17 @@ const page = () => {
         />
         <p className="z-10">Image by <a className="underline" href="https://pixabay.com/users/geralt-9301/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3592136">Gerd Altmann</a> from <a className="underline" href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3592136">Pixabay</a></p>
       </div>
+      <div className="flex items-center justify-center gap-4 flex-col">
+        <Image
+          src="/assets/routes_specific/wonder-room/tools/syncthing/1.png"
+          width={1920}
+          height={1080}
+          className=" object-cover not-prose max-h-[400px] max-w-[400px] transition-none z-0 w-screen"
+          alt=""
+          priority={false}
+        />
+        <p className="z-10">Image by <a className="underline" href="https://github.com/calmh">Jakob Borg</a> from <a className="underline" href="https://github.com/syncthing/website/blob/main/static/img/screenshot-dark.png">Github</a></p>
+      </div>
 
     </div>
   )

@@ -72,6 +72,7 @@ const DetailedCard = ({ config }) => {
                             src={img.imgSrc}
                             width={680}
                             height={630}
+                            quality={60}
                             className={`${imgClasses} sm:hover:scale-[1.4] border-2 border-primary transition-all w-full hd:h-[268px] sm:h-[240px] h-[288px] object-cover   rounded-tl-lg rounded-br-lg`}
                             alt=""
                             priority={false}
@@ -101,6 +102,7 @@ const DetailedCard = ({ config }) => {
                                 src={img.imgSrc}
                                 width={1920}
                                 height={1080}
+                                quality={100}
                                 className={`${img.imgClasses} transition-all w-full h-full max-h-[880px] max-w-[1500px] object-cover   rounded-tl-[22px] rounded-br-[22px]`}
                                 alt=""
                                 priority={false}
