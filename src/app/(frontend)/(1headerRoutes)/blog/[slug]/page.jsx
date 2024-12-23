@@ -4,7 +4,7 @@ import { getAllArticlesFrontmatter, getFrontmatterBySlug, getTOCComponentFromSlu
 import { defaultProseSettings } from "@/lib/mdx/proseSettings";
 import GetAuthorsComp from "@/utils/GetAuthorsComp";
 import Image from "next/image";
-import { getMdxComp } from "../../../../lib/mdx/getMdxComp";
+import { getMdxComp } from "../../../../../lib/mdx/getMdxComp";
 
 const Page = async props => {
   const params = await props.params;
