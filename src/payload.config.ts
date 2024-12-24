@@ -8,8 +8,9 @@ import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 import { s3Storage } from "@payloadcms/storage-s3"
 
-import { Users } from './collections/Users'
-import { Media } from './collections/Media'
+import { Users } from './payload/collections/Users'
+import { Media } from './payload/collections/Media'
+import { tools } from './payload/collections/wonder-room/tools'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -21,7 +22,11 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media],
+  collections: [
+    Users, 
+    Media,
+    tools
+  ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

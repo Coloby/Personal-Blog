@@ -1,8 +1,25 @@
 import C_Cards from "@/features/cards/components/client/C_Cards";
 import { getFrontmatterBySlug } from "@/lib/mdx/mdxManager";
 import { Suspense } from "react";
+import configPromise from '@payload-config'
+import { getPayload } from 'payload'
 
 const page = async () => {
+  const payload = await getPayload({ config : configPromise })
+  let x = await payload.find({
+    collection: 'tools',
+    depth: 1,
+    limit: 12,
+    overrideAccess: false,
+    // select: {
+    //   title: true,
+    //   slug: true,
+    //   categories: true,
+    //   meta: true,
+    // },
+  })
+  console.log(`x:`, x)
+
   let cardConfigurations = [
     {
       title: "Brave",
