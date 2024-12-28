@@ -13,6 +13,7 @@ import { Media } from './payload/collections/Media'
 import { posts } from "./payload/collections/posts/posts"
 import { tools } from './payload/collections/resources/wonder-room/tools'
 import { Users } from './payload/collections/Users'
+import { downloads } from "./payload/collections/resources/wonder-room/downloads"
 
 import { authors } from "./payload/collections/posts/authors"
 
@@ -39,6 +40,7 @@ export default buildConfig({
     tools,
     posts,
     authors,
+    downloads,
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',

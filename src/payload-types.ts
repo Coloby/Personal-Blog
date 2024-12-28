@@ -16,6 +16,7 @@ export interface Config {
     tools: Tool;
     posts: Post;
     authors: Author;
+    downloads: Download;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -27,6 +28,7 @@ export interface Config {
     tools: ToolsSelect<false> | ToolsSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     authors: AuthorsSelect<false> | AuthorsSelect<true>;
+    downloads: DownloadsSelect<false> | DownloadsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -155,6 +157,7 @@ export interface Post {
   metadata: {
     'post-title': string;
     'post-image': number | Media;
+    'post-image-caption'?: string | null;
     categories?: ('self-improvement' | 'tech')[] | null;
   };
   seo?: {
@@ -185,6 +188,40 @@ export interface Author {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "downloads".
+ */
+export interface Download {
+  id: number;
+  title: string;
+  'download url': string;
+  downloads_score: number;
+  'download-thumbnail'?: (number | null) | Media;
+  'downloads-carousel-images'?:
+    | {
+        image?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -209,6 +246,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'authors';
         value: number | Author;
+      } | null)
+    | ({
+        relationTo: 'downloads';
+        value: number | Download;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -327,6 +368,7 @@ export interface PostsSelect<T extends boolean = true> {
     | {
         'post-title'?: T;
         'post-image'?: T;
+        'post-image-caption'?: T;
         categories?: T;
       };
   seo?:
@@ -350,6 +392,25 @@ export interface AuthorsSelect<T extends boolean = true> {
   author?: T;
   'website link'?: T;
   'author image'?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "downloads_select".
+ */
+export interface DownloadsSelect<T extends boolean = true> {
+  title?: T;
+  'download url'?: T;
+  downloads_score?: T;
+  'download-thumbnail'?: T;
+  'downloads-carousel-images'?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
+  content?: T;
   updatedAt?: T;
   createdAt?: T;
 }

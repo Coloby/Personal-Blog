@@ -88,18 +88,28 @@ export const posts: CollectionConfig = {
           name: "metadata",
           label: "Metadata",
           fields: [
-            {  
-              name: "post-title",
-              label: "Title",
-              type: "text",
-              required: true,
+            {
+              type: "row",
+              fields: [
+                {  
+                  name: "post-title",
+                  label: "Title",
+                  type: "text",
+                  required: true,
+                },
+                {
+                  name: "post-image",
+                  label: "Image",
+                  type: "upload",
+                  relationTo: "media",
+                  required: true,
+                },
+              ]
             },
             {
-              name: "post-image",
-              label: "Image",
-              type: "upload",
-              relationTo: "media",
-              required: true,
+              name: "post-image-caption",
+              label: "Image caption",
+              type: "text"
             },
             {
               name: "categories",
