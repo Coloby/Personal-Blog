@@ -1,16 +1,21 @@
 // storage-adapter-import-placeholder
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
+import { seoPlugin } from '@payloadcms/plugin-seo'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { s3Storage } from "@payloadcms/storage-s3"
 import path from 'path'
 import { buildConfig } from 'payload'
-import { fileURLToPath } from 'url'
 import sharp from 'sharp'
-import { s3Storage } from "@payloadcms/storage-s3"
+import { fileURLToPath } from 'url'
 
-import { Users } from './payload/collections/Users'
 import { Media } from './payload/collections/Media'
-import { tools } from './payload/collections/wonder-room/tools'
+import { posts } from "./payload/collections/posts/posts"
+import { tools } from './payload/collections/resources/wonder-room/tools'
+import { Users } from './payload/collections/Users'
+
+import { authors } from "./payload/collections/posts/authors"
+import { downloads } from "./payload/collections/resources/downloads"
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -21,11 +26,21 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    autoLogin : process.env.ENABLE_AUTOLOGIN === 'true' && process.env.NODE_ENV === "development"
+      ? {
+          email: process.env.AUTOLOGIN_EMAIL,
+          password: process.env.AUTOLOGIN_PASSWORD,
+          // prefillOnly: true,
+        }
+      : false,
   },
   collections: [
     Users, 
     Media,
-    tools
+    tools,
+    posts,
+    authors,
+    downloads
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
@@ -57,6 +72,15 @@ export default buildConfig({
         endpoint: process.env.S3_ENDPOINT,
       },
     }),
-    // storage-adapter-placeholder
+    seoPlugin({ // Adds a meta field group to every SEO-enabled collection or global, gives fields to let marketers write SEO related content, etc: https://payloadcms.com/docs/plugins/seo#core-features
+      collections: [ // SEO-enabled collections
+        // 'pages',
+      ],
+      // uploadsCollection: 'media/seo', // collection used to inject media-related seo tags for the collections mentioned above
+      generateTitle: ({ doc }) => doc?.title || doc.metadata["post-title"] || "my title",
+      generateDescription: ({ doc }) => doc?.excerpt ? doc.excerpt : "myDescription",
+      generateImage: ({ doc }) => doc.metadata["post-image"]
+      // generateURL: ({doc}) => doc?.url ? formatSlug(doc.url, "-") : doc.url || "https..."
+    })
   ],
 })
