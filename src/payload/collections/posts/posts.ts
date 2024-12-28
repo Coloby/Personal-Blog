@@ -22,7 +22,6 @@ export const posts: CollectionConfig = {
       url: ({ data, req }) => {
         const path = generatePreviewPath({
           slug: typeof data?.slug === 'string' ? data.slug : '',
-          // @ts-ignore
           collection: 'posts',
           req,
         })
@@ -32,7 +31,6 @@ export const posts: CollectionConfig = {
     preview: (data, { req }) =>
       generatePreviewPath({
         slug: typeof data?.slug === 'string' ? data.slug : '',
-        // @ts-ignore
         collection: 'posts',
         req,
       }),
@@ -177,7 +175,6 @@ export const posts: CollectionConfig = {
         position: 'sidebar',
       },
       hasMany: true,
-      // @ts-ignore
       relationTo: 'authors',
       required: true
     },

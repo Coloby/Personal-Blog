@@ -1,4 +1,4 @@
-const { withPayload } = require("@payloadcms/next/withPayload");
+import { withPayload } from '@payloadcms/next/withPayload'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   distDir: 'dist',
@@ -51,4 +51,4 @@ const nextConfig = {
   },
 }
 
-module.exports = withPayload(nextConfig)
+export default withPayload(nextConfig)

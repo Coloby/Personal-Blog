@@ -1,11 +1,11 @@
-import "@/styles/global.css"
-import "@/styles/structural/marquee.css"
-import "@/styles/structural/resetStyle.css"
-import "@/styles/tailwindcss.css"
+import "./../../../assets/styles/global.css"
+import "./../../../assets/styles/structural/marquee.css"
+import "./../../../assets/styles/structural/resetStyle.css"
+import "./../../../assets/styles/tailwindcss.css"
 
-import "@/styles/structural/colors/textColors.css"
-import "@/styles/structural/colors/themeColors.css"
-import "@/styles/structural/colors/themeModes.css"
+import "./../../../assets/styles/structural/colors/textColors.css"
+import "./../../../assets/styles/structural/colors/themeColors.css"
+import "./../../../assets/styles/structural/colors/themeModes.css"
 
 // import "@/styles/structural/lib/shadcnStuff.css"
 

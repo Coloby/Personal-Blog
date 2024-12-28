@@ -5,7 +5,6 @@ import HeaderNavLinks from "@/components/layout/header/HeaderNavLinks"
 import HeaderLogo from "@/components/ui/logos/HeaderLogo"
 import Link from "next/link"
 import { ThemeModeBtn } from "../../logic/settings/ThemeModeBtn"
-// @ts-ignore
 import {
     Sheet,
     SheetContent,
@@ -17,7 +16,6 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/primitives/shadcn-ui/accordion"
-// @ts-ignore
 import C_ShareBtns from "@/components/clientComps/C_ShareBtns"
 import SettingsBtn from "@/components/logic/settings/SettingsBtn"
 import Headroom from "react-headroom"

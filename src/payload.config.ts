@@ -15,7 +15,6 @@ import { tools } from './payload/collections/resources/wonder-room/tools'
 import { Users } from './payload/collections/Users'
 
 import { authors } from "./payload/collections/posts/authors"
-import { downloads } from "./payload/collections/resources/downloads"
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -40,7 +39,6 @@ export default buildConfig({
     tools,
     posts,
     authors,
-    downloads
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
@@ -61,12 +59,15 @@ export default buildConfig({
           prefix: 'media',
         }
       },
-      bucket: process.env.S3_BUCKET as string,
+      // @ts-ignore
+      bucket: process.env.S3_BUCKET,
       config: {
         forcePathStyle: true, // fixes problems if you use supabase
         credentials: {
-          accessKeyId: process.env.S3_ACCESS_KEY_ID as string,
-          secretAccessKey: process.env.S3_SECRET_ACCESS_KEY as string,
+          // @ts-ignore
+          accessKeyId: process.env.S3_ACCESS_KEY_ID,
+          // @ts-ignore
+          secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
         },
         region: process.env.S3_REGION,
         endpoint: process.env.S3_ENDPOINT,

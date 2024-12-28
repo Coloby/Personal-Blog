@@ -14,7 +14,6 @@ export const IdeasTags = atom({
 
 export const currentCategoryTagsAtom = atom("")
 
-// @ts-ignore
 export const getCategoryTagsAtom = atomFamily((currentCat) => {
   switch (currentCat) {
     case 'tools':

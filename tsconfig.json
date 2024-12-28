@@ -1,31 +1,35 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
+    "esModuleInterop": true,
+    "target": "ES2022",
     "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
+      "DOM",
+      "DOM.Iterable",
+      "ES2022"
     ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
     "noEmit": true,
-    "esModuleInterop": true,
+    "incremental": true,
+    "jsx": "preserve",
     "module": "esnext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
+    "sourceMap": true,
     "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
     "plugins": [
       {
         "name": "next"
       }
     ],
+    "baseUrl": ".",
     "paths": {
+      "@payload-config": [ "./src/payload.config.ts" ],
+      "react": [ "./node_modules/@types/react" ],
       "@/*": [ "./src/*" ],
-      "@/styles/*": [ "./assets/styles/*" ],
-      "@payload-config": [ "./src/payload.config.ts" ]
     }
   },
   "include": [
@@ -45,8 +49,6 @@
     "src/components/layout/Footer.jsx"
   ],
   "exclude": [
-    "node_modules",
-    "src/lib/*",
-    "src/components/layout/*"
+    "node_modules"
   ]
 }

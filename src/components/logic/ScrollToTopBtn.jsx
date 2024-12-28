@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-// @ts-ignore
 
 function ScrollToTopBtn() {
  const [isVisible, setIsVisible] = useState(false);

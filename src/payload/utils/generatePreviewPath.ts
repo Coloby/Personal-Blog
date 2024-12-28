@@ -1,8 +1,8 @@
 import { PayloadRequest, CollectionSlug } from 'payload'
 
 const collectionPrefixMap: Partial<Record<CollectionSlug, string>> = {
-  // @ts-ignore
   posts: '/posts', 
+  // @ts-ignore
   pages: '',
 }
 
