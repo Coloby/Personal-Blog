@@ -7,6 +7,7 @@ settings:
 overrides:
   '@types/react': 19.0.1
   '@types/react-dom': 19.0.2
+  pg: 8.11.3
 
 importers:
 
@@ -100,8 +101,8 @@ importers:
         specifier: ^3.11.0
         version: 3.11.0(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)
       pg:
-        specifier: ^8.11.3
-        version: 8.13.1
+        specifier: 8.11.3
+        version: 8.11.3
       react:
         specifier: ^19.0.0
         version: 19.0.0
@@ -3511,7 +3512,7 @@ packages:
       knex: '*'
       kysely: '*'
       mysql2: '>=2'
-      pg: '>=8'
+      pg: 8.11.3
       postgres: '>=3'
       prisma: '*'
       react: '>=18'
@@ -5206,7 +5207,7 @@ packages:
   pg-pool@3.7.0:
     resolution: {integrity: sha512-ZOBQForurqh4zZWjrgSwwAtzJ7QiRX0ovFkZr2klsen3Nm0aoh33Ls0fzfv3imeH/nw/O27cjdz5kzYJfeGp/g==}
     peerDependencies:
-      pg: '>=8.0'
+      pg: 8.11.3
 
   pg-protocol@1.7.0:
     resolution: {integrity: sha512-hTK/mE36i8fDDhgDFjy6xNOG+LCorxLG3WO17tku+ij6sVHXh1jQUJ8hYAnRhNla4QVD2H8er/FOjc/+EgC6yQ==}
@@ -5221,15 +5222,6 @@ packages:
 
   pg@8.11.3:
     resolution: {integrity: sha512-+9iuvG8QfaaUrrph+kpF24cXkH1YOOUeArRNYIxq1viYHZagBxrTno7cecY1Fa44tJeZvaoG+Djpkc3JwehN5g==}
-    engines: {node: '>= 8.0.0'}
-    peerDependencies:
-      pg-native: '>=3.0.1'
-    peerDependenciesMeta:
-      pg-native:
-        optional: true
-
-  pg@8.13.1:
-    resolution: {integrity: sha512-OUir1A0rPNZlX//c7ksiu7crsGZTKSOXJPgtNiHGIlC9H0lO+NC6ZDYksSgBYY/thSWhnSRBv8w1lieNNGATNQ==}
     engines: {node: '>= 8.0.0'}
     peerDependencies:
       pg-native: '>=3.0.1'
@@ -12800,10 +12792,6 @@ snapshots:
     dependencies:
       pg: 8.11.3
 
-  pg-pool@3.7.0(pg@8.13.1):
-    dependencies:
-      pg: 8.13.1
-
   pg-protocol@1.7.0: {}
 
   pg-types@2.2.0:
@@ -12830,16 +12818,6 @@ snapshots:
       packet-reader: 1.0.0
       pg-connection-string: 2.7.0
       pg-pool: 3.7.0(pg@8.11.3)
-      pg-protocol: 1.7.0
-      pg-types: 2.2.0
-      pgpass: 1.0.5
-    optionalDependencies:
-      pg-cloudflare: 1.1.1
-
-  pg@8.13.1:
-    dependencies:
-      pg-connection-string: 2.7.0
-      pg-pool: 3.7.0(pg@8.13.1)
       pg-protocol: 1.7.0
       pg-types: 2.2.0
       pgpass: 1.0.5
