@@ -1,24 +1,22 @@
 import C_Cards from "@/features/cards/components/client/C_Cards";
 import { getFrontmatterBySlug } from "@/lib/mdx/mdxManager";
+import configPromise from '@payload-config';
+import { getPayload } from 'payload';
 import { Suspense } from "react";
-import configPromise from '@payload-config'
-import { getPayload } from 'payload'
+import { getBaseUrl } from "@/utils/baseUrl";
 
 const page = async () => {
   const payload = await getPayload({ config : configPromise })
-  let x = await payload.find({
+  let toolsCollection = await payload.find({
     collection: 'tools',
     depth: 1,
     limit: 12,
     overrideAccess: false,
-    // select: {
-    //   title: true,
-    //   slug: true,
-    //   categories: true,
-    //   meta: true,
-    // },
+    select: {
+      slug: false,
+      createdAt: false
+    },
   })
-  console.log(`x:`, x)
 
   let cardConfigurations = [
     {
@@ -33,10 +31,10 @@ const page = async () => {
       extraImgs: [
         {
           title: "",
-          imgSrc: "/assets/routes_specific/wonder-room/tools/notion/2.png"
+          url: "/assets/routes_specific/wonder-room/tools/notion/2.png"
         },{
           title: "",
-          imgSrc: "/assets/routes_specific/wonder-room/tools/notion/3.png"
+          url: "/assets/routes_specific/wonder-room/tools/notion/3.png"
         },
       ],
     },
@@ -47,10 +45,10 @@ const page = async () => {
       extraImgs: [
         {
           title: "",
-          imgSrc: "/assets/routes_specific/wonder-room/tools/obsidian/2.png"
+          url: "/assets/routes_specific/wonder-room/tools/obsidian/2.png"
         },{
           title: "",
-          imgSrc: "/assets/routes_specific/wonder-room/tools/obsidian/3.png"
+          url: "/assets/routes_specific/wonder-room/tools/obsidian/3.png"
         }
       ],
     },
@@ -66,10 +64,10 @@ const page = async () => {
       extraImgs: [
         {
           title: "",
-          imgSrc: "/assets/routes_specific/wonder-room/tools/inoreader/2.png"
+          url: "/assets/routes_specific/wonder-room/tools/inoreader/2.png"
         },{
           title: "",
-          imgSrc: "/assets/routes_specific/wonder-room/tools/inoreader/3.png"
+          url: "/assets/routes_specific/wonder-room/tools/inoreader/3.png"
         }
       ],
     },
@@ -80,10 +78,10 @@ const page = async () => {
       extraImgs: [
         {
           title: "",
-          imgSrc: "/assets/routes_specific/wonder-room/tools/super_productivity/2.png"
+          url: "/assets/routes_specific/wonder-room/tools/super_productivity/2.png"
         },{
           title: "",
-          imgSrc: "/assets/routes_specific/wonder-room/tools/super_productivity/3.png"
+          url: "/assets/routes_specific/wonder-room/tools/super_productivity/3.png"
         },
       ],
     },
@@ -94,10 +92,10 @@ const page = async () => {
       extraImgs: [
         {
           title: "",
-          imgSrc: "/assets/routes_specific/wonder-room/tools/activity_watch/2.png"
+          url: "/assets/routes_specific/wonder-room/tools/activity_watch/2.png"
         },{
           title: "",
-          imgSrc: "/assets/routes_specific/wonder-room/tools/activity_watch/3.png"
+          url: "/assets/routes_specific/wonder-room/tools/activity_watch/3.png"
         },
       ],
     },
@@ -113,7 +111,7 @@ const page = async () => {
         const imgs = [
           {
             title: "",
-            imgSrc: frontmatter.thumbnail
+            url: frontmatter.thumbnail
           },
           ...(Array.isArray(cardConfigurations[i].extraImgs) ? cardConfigurations[i].extraImgs : [])
         ]
@@ -121,19 +119,18 @@ const page = async () => {
         const url = `/wonder-room/tools/${title.toLowerCase().replace(" ", "-")}`
 
         const urlIsFunctioning = async (url) => {
-          let res = await fetch(`${process.env.BASE_URL}${url}`)
-          if (!res.ok && process.env.NODE_ENV === "development") res = await fetch(`${process.env.LOCALHOST_URL}${url}`)
+          let res = await fetch(`${getBaseUrl()}${url}`)
           return res.ok
         }
         const moreInfoUrl = await urlIsFunctioning(url) && url || ""
 
         cardConfigurations[i] = {
           ...cardConfigurations[i],
-          iconPath,
+          icon : iconPath,
           url: `/wonder-room/tools/${title.toLowerCase()}`,
           moreInfoUrl: moreInfoUrl,
           imgs: [...imgs],
-          Tags: frontmatter.tags,
+          tags: frontmatter.tags,
           description: frontmatter.description,
         };
       } catch (error) {console.error(`Error fetching frontmatter for "${title}" card index "${i}":`, error)}
@@ -141,7 +138,11 @@ const page = async () => {
   }
 
   await updateCardConfigurations();
-  
+  toolsCollection.docs.forEach((post, i) => {
+    post.imgs.forEach((img) => img.image.url = `${getBaseUrl()}${img.image.url}`)
+    cardConfigurations.push(post)
+  })
+
   return (
     <div id="cards-wrapper-container">
       <Suspense>

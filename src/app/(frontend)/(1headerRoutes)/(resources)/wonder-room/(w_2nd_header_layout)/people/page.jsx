@@ -1,4 +1,3 @@
-import DetailedCard from "@/features/cards/components/card/DetailedCard.jsx";
 
 const page = () => {
 
@@ -13,7 +12,7 @@ const page = () => {
         imgs={[
           {
             title: "Network of nodes",
-            imgSrc: "/assets/routes_specific/home/nodes_network.jpg",
+            url: "/assets/routes_specific/home/nodes_network.jpg",
           }
         ]}
         score={3.5}

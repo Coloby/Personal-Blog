@@ -110,25 +110,21 @@ export interface Tool {
   id: number;
   title: string;
   description: string;
-  websiteUrl?: string | null;
   score: number;
-  tags?: {
-    License?: ('Free' | 'Freemium' | 'Paid' | 'Open source' | 'Closed source')[] | null;
-    Features?: ('+Offline' | 'Lightweight' | 'Privacy focused' | 'High customizability')[] | null;
-    Platforms?:
-      | ('Android' | 'iOS' | 'Mac' | 'Windows' | 'Linux' | 'Self-hosted' | 'Multi platform' | 'Web app')[]
-      | null;
+  websiteUrl?: string | null;
+  moreInfoUrl?: string | null;
+  tags: {
+    License: ('Free' | 'Freemium' | 'Paid' | 'Open source' | 'Closed source')[];
+    Features: ('+Offline' | 'Lightweight' | 'Privacy focused' | 'High customizability')[];
+    Platforms: ('Android' | 'iOS' | 'Mac' | 'Windows' | 'Linux' | 'Self-hosted' | 'Multi platform' | 'Web app')[];
   };
   icon: number | Media;
-  thumbnail: number | Media;
-  'carousel-images'?:
-    | {
-        image?: (number | null) | Media;
-        id?: string | null;
-      }[]
-    | null;
+  imgs: {
+    image?: (number | null) | Media;
+    id?: string | null;
+  }[];
   slug?: string | null;
-  'publish date': string;
+  publishDate?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -334,8 +330,9 @@ export interface MediaSelect<T extends boolean = true> {
 export interface ToolsSelect<T extends boolean = true> {
   title?: T;
   description?: T;
-  websiteUrl?: T;
   score?: T;
+  websiteUrl?: T;
+  moreInfoUrl?: T;
   tags?:
     | T
     | {
@@ -344,15 +341,14 @@ export interface ToolsSelect<T extends boolean = true> {
         Platforms?: T;
       };
   icon?: T;
-  thumbnail?: T;
-  'carousel-images'?:
+  imgs?:
     | T
     | {
         image?: T;
         id?: T;
       };
   slug?: T;
-  'publish date'?: T;
+  publishDate?: T;
   updatedAt?: T;
   createdAt?: T;
 }

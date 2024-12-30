@@ -10,8 +10,8 @@ import {
 import {
   Dialog,
   DialogContent,
-  DialogTrigger,
-  DialogTitle
+  DialogTitle,
+  DialogTrigger
 } from "@/components/primitives/shadcn-ui/dialog"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/primitives/shadcn-ui/popover"
 import { defaultProseSettings } from "@/lib/mdx/proseSettings"
@@ -20,32 +20,37 @@ import Image from "next/image"
 import Link from "next/link"
 import React from "react"
 import Stars from "./Stars"
-import { currentCategoryTagsAtom, getCategoryTagsAtom } from "@/features/cards/stores/AtomStore";
 import { useAtom } from "jotai"
+import { currentCategoryTagsAtom, getCategoryTagsAtom } from "@/features/cards/stores/AtomStore";
 
 const DetailedCard = ({ config }) => {
-  const { score, iconPath, websiteUrl, websiteLabel, title, moreInfoUrl, imgs, Tags, description, imgClasses = "scale[1.3]"} = config ?? {}
   const [currentCategoryTags, _] = useAtom(currentCategoryTagsAtom)
+  const { score, icon, websiteUrl, websiteLabel, title, moreInfoUrl, imgs, tags, description, imgClasses = "scale[1.3]"} = config ?? {}
   const currentCategoryTag = getCategoryTagsAtom(currentCategoryTags || "tools").init
-  const FlattenedTags = Tags?.flatMap(tag => Object.values(tag)).flat();
+
+  const isTagsFromCMS = tags.License !== undefined
+  const FlattenedTags = isTagsFromCMS ? [...Object.values(tags)].flat() : tags?.flatMap(tag => Object.values(tag)).flat(); // this happens because on local `tags` is an array of arrays, but payload gives an object of arrays...
+
+  const isImgsFromCMS = imgs[0].image !== undefined
+  isImgsFromCMS && imgs.forEach((img, i) => imgs[i] = img.image)
   
   return (
-    <article className={`flex flex-col sm:items-end gap-8 sm:justify-end ${Tags ? "pb-[88px] sm:pb-[56px]" : "pb-[88px] sm:pb-[56px]"}  pt-[28px] hd:pt-0 sm:w-[638px] hd:w-[718px]`}>
+    <article className={`flex flex-col sm:items-end gap-8 sm:justify-end ${tags ? "pb-[88px] sm:pb-[56px]" : "pb-[88px] sm:pb-[56px]"}  pt-[28px] hd:pt-0 sm:w-[638px] hd:w-[718px]`}>
       <div className={`w-[100vw] sm:w-[638px] hd:w-full relative flex flex-col items-center ml-[-16px] min-h-[186px] sm:border-2 border-l-0 border-r-0 border-primary bg-body_shade px-4 py-9
         sm:justify-end hd:mt-[26px]  sm:h-[240px] hd:h-[242px] sm:inline sm:border-l-2 sm:border-r-2 sm:rounded-tl-lg sm:rounded-br-lg`}>
         <div className="flex flex-col gap-24">
           {/* title box */}
             <div className="w-full sm:!w-[324px] flexy h-[100px]  absolute right-0 left-0 m-auto top-[-28px] hd:top-[-28px] sm:right-auto sm:left-4  border-2 border-primary border-x-0 sm:border-x-2 sm:rounded-tl-lg sm:rounded-br-lg bg-body_shade text-xl font-semibold p-4">
               <div className="w-[288px] gap-4 items-center flex ">
-                {iconPath ? (
+                {icon || icon.url ? (
                   <div className="w-[68px] h-[68px]">
                     <Image
-                      src={iconPath}
+                      src={icon.url || icon}
                       width={68}
                       height={68}
                       priority={false}
                       className={`w-full h-full object-fit   rounded-lg`}
-                      alt=""
+                      alt={icon.alt || ""}
                     />
                   </div>
                 ) : null}
@@ -70,12 +75,12 @@ const DetailedCard = ({ config }) => {
                       {imgs.map((img, index) => (
                         <CarouselItem key={`${img} + ${index}carousel`} className="h-full w-full !items-start flexy ">
                           <Image
-                            src={img.imgSrc}
+                            src={img.url}
                             width={680}
                             height={630}
                             quality={60}
                             className={`${imgClasses} sm:hover:scale-[1.4] border-2 border-primary transition-all w-full hd:h-[268px] sm:h-[240px] h-[288px] object-cover   rounded-tl-lg rounded-br-lg`}
-                            alt=""
+                            alt={img.alt || ""}
                             priority={false}
                           />
                         </CarouselItem>
@@ -101,12 +106,12 @@ const DetailedCard = ({ config }) => {
                               <div className="text-xl text-primary_text_color text-center">{img.title}</div>
                               <div className="w-full h-full">
                               <Image
-                                src={img.imgSrc}
+                                src={img.url}
                                 width={1920}
                                 height={1080}
                                 quality={100}
                                 className={`${img.imgClasses} transition-all w-full h-full max-h-[880px] max-w-[1500px] object-cover   rounded-tl-[22px] rounded-br-[22px]`}
-                                alt=""
+                                alt={img.alt || ""}
                                 priority={false}
                               />
                               </div>
@@ -136,8 +141,8 @@ const DetailedCard = ({ config }) => {
               </div>
             </div>
             <div className="absolute border-b-2 border-primary w-full h-[2px] top-[19px] sm:hidden z-[1]"></div>
-          {/* Tags */}
-            <div className={`${!Tags && "hidden"} sm:w-[638px] hd:w-[720px] flex sm:absolute sm:bottom-[-38px] sm:left-[-18px] w-full justify-between items-center border-t-0 border-2 sm:border-x-2 sm:border-t-2 border-x-0 border-primary sm:rounded-tl-lg sm:rounded-br-lg bg-body_shade max-h-[40px]`}>
+          {/* tags */}
+            <div className={`${!tags && "hidden"} sm:w-[638px] hd:w-[720px] flex sm:absolute sm:bottom-[-38px] sm:left-[-18px] w-full justify-between items-center border-t-0 border-2 sm:border-x-2 sm:border-t-2 border-x-0 border-primary sm:rounded-tl-lg sm:rounded-br-lg bg-body_shade max-h-[40px]`}>
               {FlattenedTags ? (
                 <div className="w-full overflow-hidden relative !z-20"> 
                   {/*  inset-shadow */}

@@ -10,7 +10,7 @@ const page = () => {
       imgs: [
         {
           title: "Network of nodes",
-          imgSrc: "/assets/routes_specific/home/nodes_network.jpg",
+          url: "/assets/routes_specific/home/nodes_network.jpg",
         }
       ],
       websiteUrl: "https://www.youtube.com/watch?v=TDqsr3MNTTc",

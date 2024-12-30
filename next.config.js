@@ -1,5 +1,12 @@
 import { withPayload } from '@payloadcms/next/withPayload'
 /** @type {import('next').NextConfig} */
+
+const splittedLocalhost = process.env.LOCALHOST_URL.split(':')
+const localhostPort = splittedLocalhost[splittedLocalhost.length - 1]
+
+const splittedBaseUrl = process.env.BASE_URL.split("//")
+const onlyBaseUrl = splittedBaseUrl[splittedBaseUrl.length - 1]
+
 const nextConfig = {
   distDir: 'dist',
   images: {
@@ -14,6 +21,18 @@ const nextConfig = {
         protocol: 'https',
         port: '',
       },
+      {
+        hostname : 'localhost', 
+        protocol: 'http',
+        pathname: "/api/media/file/**",
+        port: localhostPort,
+      },
+      {
+        hostname : onlyBaseUrl, 
+        protocol: 'https',
+        pathname: "/api/media/file/**",
+        port: "",
+      }
     ]
   },
   async redirects() {

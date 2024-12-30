@@ -52,7 +52,7 @@ const DownloadCard = ({title, href, info, imgs}) => {
                         <div className="text-xl text-primary_text_color text-center px-6">{img.title}</div>
                         <div className="w-full h-full">
                         <Image
-                          src={baseUrl + img.imgSrc}
+                          src={baseUrl + img.url}
                           width={1920}
                           height={1080}
                           className={`${img.imgClasses} transition-all w-full h-full max-h-[880px] max-w-[1500px] object-cover   rounded-tl-lg rounded-br-lg`}
