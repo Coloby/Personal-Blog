@@ -52,6 +52,7 @@ export async function getMdxComp(dir, fileWExtension, explicitFilePath, CMS) {
     }
 
     const rawMdxWNoFrontmatter = rawMdx.replace(/^---\s*[\s\S]*?---/, '').trim() 
+    console.log(`rawMdxWNoFrontmatter:`, rawMdxWNoFrontmatter)
 
   try {
     const {code, frontmatter} = await bundleMDX({ // mdx to JS
