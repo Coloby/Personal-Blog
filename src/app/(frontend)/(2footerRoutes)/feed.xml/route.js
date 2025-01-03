@@ -1,6 +1,6 @@
 // This is the RSS feed. Made using route handlers https://nextjs.org/docs/app/api-reference/file-conventions/route
-import RSS from "rss"
 import { getAllArticlesFrontmatter } from '@/lib/mdx/mdxManager'
+import RSS from "rss"
 
 // guid
 // categories
@@ -19,7 +19,7 @@ export async function GET() {
   })
 
   posts.map((post) => {
-    const dateString = post.publishDate
+    const dateString = post.publishedAt
     const [day, month, year] = dateString.split('/');
     const dateObject = new Date(year, month - 1, day); // JavaScript counts months from 0, so subtract 1 from the month
     const isoDate = dateObject.toISOString();

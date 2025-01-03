@@ -1,13 +1,13 @@
-import { anyone } from "@/payload/auth/anyone"
 import { authenticated } from "@/payload/auth/authenticated"
-import { formatSlug } from "@/payload/utils/formatSlug"
+import { authenticatedOrPublished } from "@/payload/auth/authenticatedOrPublished"
+import { formatTitleToSlug } from "@/payload/utils/formatTitleToSlug"
 import type { CollectionConfig } from 'payload'
 
 export const tools: CollectionConfig = {
   slug: 'tools',
   access: {
     create: authenticated,
-    read: anyone,
+    read: authenticatedOrPublished,
     update: authenticated,
     delete: authenticated,
   },
@@ -104,22 +104,23 @@ export const tools: CollectionConfig = {
     },
     // Sidebar...
     {
+      name: 'publishedAt',
+      label: 'publish date',
+      type: 'date',
+      admin: {
+        position: 'sidebar',
+      },
+    },
+    {
       name: 'slug',
       label: 'Slug',
       type: 'text',
       admin: {
         position: 'sidebar',
+        readOnly: true,
       },
       hooks: {
-        beforeValidate: [formatSlug('title', "_")],
-      },
-    },
-    {
-      name: 'publishDate',
-      label: 'publish date',
-      type: 'date',
-      admin: {
-        position: 'sidebar',
+        beforeChange: [formatTitleToSlug('title')]
       },
     },
   ],

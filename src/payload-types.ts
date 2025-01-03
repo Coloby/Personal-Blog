@@ -17,11 +17,16 @@ export interface Config {
     posts: Post;
     authors: Author;
     downloads: Download;
+    pages: Page;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
-  collectionsJoins: {};
+  collectionsJoins: {
+    authors: {
+      relatedPosts: 'posts';
+    };
+  };
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
@@ -29,6 +34,7 @@ export interface Config {
     posts: PostsSelect<false> | PostsSelect<true>;
     authors: AuthorsSelect<false> | AuthorsSelect<true>;
     downloads: DownloadsSelect<false> | DownloadsSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -71,6 +77,8 @@ export interface UserAuthOperations {
  */
 export interface User {
   id: number;
+  name?: string | null;
+  notes?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -123,8 +131,8 @@ export interface Tool {
     image?: (number | null) | Media;
     id?: string | null;
   }[];
+  publishedAt?: string | null;
   slug?: string | null;
-  publishDate?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -151,9 +159,9 @@ export interface Post {
     [k: string]: unknown;
   };
   metadata: {
-    'post-title': string;
-    'post-image': number | Media;
-    'post-image-caption'?: string | null;
+    postTitle: string;
+    postImage: number | Media;
+    postImageCaption?: string | null;
     categories?: ('self-improvement' | 'tech')[] | null;
   };
   seo?: {
@@ -165,7 +173,16 @@ export interface Post {
     image?: (number | null) | Media;
   };
   publishedAt?: string | null;
-  authors: (number | Author)[];
+  postAuthors: (number | Author)[];
+  slug?: string | null;
+  populatedAuthors?:
+    | {
+        name?: string | null;
+        url?: string | null;
+        authorImage?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -176,9 +193,13 @@ export interface Post {
  */
 export interface Author {
   id: number;
-  author: string;
-  'website link'?: string | null;
-  'author image'?: (number | null) | Media;
+  name: string;
+  url?: string | null;
+  authorImage?: (number | null) | Media;
+  relatedPosts?: {
+    docs?: (number | Post)[] | null;
+    hasNextPage?: boolean | null;
+  } | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -218,6 +239,26 @@ export interface Download {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
+export interface Page {
+  id: number;
+  title: string;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -246,6 +287,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'downloads';
         value: number | Download;
+      } | null)
+    | ({
+        relationTo: 'pages';
+        value: number | Page;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -294,6 +339,8 @@ export interface PayloadMigration {
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
+  name?: T;
+  notes?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -347,8 +394,8 @@ export interface ToolsSelect<T extends boolean = true> {
         image?: T;
         id?: T;
       };
+  publishedAt?: T;
   slug?: T;
-  publishDate?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -362,9 +409,9 @@ export interface PostsSelect<T extends boolean = true> {
   metadata?:
     | T
     | {
-        'post-title'?: T;
-        'post-image'?: T;
-        'post-image-caption'?: T;
+        postTitle?: T;
+        postImage?: T;
+        postImageCaption?: T;
         categories?: T;
       };
   seo?:
@@ -375,7 +422,16 @@ export interface PostsSelect<T extends boolean = true> {
         image?: T;
       };
   publishedAt?: T;
-  authors?: T;
+  postAuthors?: T;
+  slug?: T;
+  populatedAuthors?:
+    | T
+    | {
+        name?: T;
+        url?: T;
+        authorImage?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -385,9 +441,10 @@ export interface PostsSelect<T extends boolean = true> {
  * via the `definition` "authors_select".
  */
 export interface AuthorsSelect<T extends boolean = true> {
-  author?: T;
-  'website link'?: T;
-  'author image'?: T;
+  name?: T;
+  url?: T;
+  authorImage?: T;
+  relatedPosts?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -409,6 +466,24 @@ export interface DownloadsSelect<T extends boolean = true> {
   content?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  title?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

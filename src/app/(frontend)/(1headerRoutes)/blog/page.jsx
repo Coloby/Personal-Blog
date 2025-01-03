@@ -1,22 +1,58 @@
-import { getAllArticlesFrontmatter } from '@/lib/mdx/mdxManager'
-import Link from 'next/link'
-import GetAuthorsComp from "@/utils/GetAuthorsComp"
-import Image from "next/image"
+import { getAllArticlesFrontmatter } from '@/lib/mdx/mdxManager';
+import { getMDFromLexical } from "@/payload/features/lexical/getMDFromLexical";
+import { formatToSlug } from "@/utils/formatToSlug";
+import configPromise from '@payload-config';
+import Image from "next/image";
+import Link from 'next/link';
+import { getPayload } from 'payload';
 
 const Page = async () => {
   const posts = await getAllArticlesFrontmatter()
+  const payload = await getPayload({ config : configPromise })
+  getMDFromLexical(8, "posts")
+  let postsCollection = await payload.find({
+    collection: 'posts',
+    overrideAccess: false,
+    limit: 1000,
+    pagination: false,
+    draft: false,
+    where: {
+      _status: {
+        equals: 'published',
+      },
+    },
+    select: {
+      slug: false,
+      authors: {
+        select: {
+          name: true,
+          url: true,
+          authorImage: {
+            url: true
+          },
+        }
+      }
+    },
+  })
+  postsCollection.docs.forEach((postFromCMS, i) => {
+    postFromCMS.url = formatToSlug(JSON.stringify(postFromCMS.metadata.postTitle), "-")
+    posts.push(postFromCMS)
+  })
+  console.log(`postsCollection:`, postsCollection)
+  console.log(`posts:`, posts)
 
-  // Sort the posts by publishDate in descending order
-  const sortedPosts = posts.sort((a, b) => {
-    const dateA = new Date(a.publishDate.split('/').reverse().join('-'))
-    const dateB = new Date(b.publishDate.split('/').reverse().join('-'));
-    return dateB - dateA;
+  const sortedPosts = posts.sort((a, b) => { 
+    const dateA = new Date(a.publishedAt.split('/').reverse().join('-'))
+    const dateB = new Date(b.publishedAt.split('/').reverse().join('-'));
+    return dateB - dateA; // descending order
   });
 
   return (
     <section className=' flex flex-wrap  gap-x-16 gap-y-12 w-md lg:w-[1334px] justify-center not-prose h-fit'>
       {sortedPosts?.map(frontmatter => {
-        const authors = GetAuthorsComp(frontmatter.authors)
+        // const authors = GetAuthorsComp({
+        //   authorName : frontmatter.id ? postAuthors.author : frontmatter.authors
+        // })
         return (
           <article className="max-w-[334px] bg-secondary p-4 flex items-stretch flex-col min-h-[450px] !max-h-[450px] border border-primary  rounded-xs" key={frontmatter.url} >
             <Link
@@ -42,7 +78,7 @@ const Page = async () => {
             <div className="flex flex-col h-full justify-between items-stretch self-stretch">
               <h4 className=' line-clamp-4 mt-2  text-md max-w-[500px] max-h-[96px] overflow-hidden leading-6'>{frontmatter.description}</h4>
               <div className="mt-4   gap-3 items-center ">
-                <span className="flex flex-wrap gap-4 w-full justify-between"><address className="flexy">{authors}</address><span className=""> {} <time>{frontmatter.publishDate}</time></span></span>
+                {/* <span className="flex flex-wrap gap-4 w-full justify-between"><address className="flexy">{authors}</address><span className=""> {} <time>{frontmatter.publishedAt}</time></span></span> */}
               </div>
             </div>
           </article>

@@ -104,7 +104,7 @@ export default async function Home() {
                 <h3 className="!text-xl !mt-4 inline-block">From the <span><Link href={"blog"} className="text-xl"><span>Blog</span></Link></span></h3>
                 <h4 className="font-semibold text-[20px] "><a href={"blog/" + frontmatter.url} className="!no-underline"><span className="!no-underline !text-primary_text_color">{frontmatter.title}</span></a></h4>
                 <p className="!mb-0 text-lg ">{frontmatter.description}</p>
-                <span className="flex flex-wrap gap-x-8 gap-y-1 my-4 items-center "><address className="flex !text-base">Author:&nbsp;{authors}</address><time>{frontmatter.publishDate}</time><span>{frontmatter.readingTime}</span></span>
+                <span className="flex flex-wrap gap-x-8 gap-y-1 my-4 items-center "><address className="flex !text-base">Author:&nbsp;{authors}</address><time>{frontmatter.publishedAt}</time><span>{frontmatter.readingTime}</span></span>
               </div>
               <a className="flexy flex-col w-full items-center" href={"blog/" + frontmatter.url}>
                 <Image

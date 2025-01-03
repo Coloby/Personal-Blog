@@ -1,3 +1,6 @@
+import { authenticated } from "@/payload/auth/authenticated"
+import { authenticatedOrPublished } from "@/payload/auth/authenticatedOrPublished"
+import { formatTitleToSlug } from "@/payload/utils/formatTitleToSlug"
 import { generatePreviewPath } from '@/payload/utils/generatePreviewPath'
 import {
   MetaDescriptionField,
@@ -16,6 +19,12 @@ import type { CollectionConfig } from 'payload'
 
 export const posts: CollectionConfig = {
   slug: 'posts',
+  access: {
+    create: authenticated,
+    read: authenticatedOrPublished,
+    update: authenticated,
+    delete: authenticated,
+  },
   admin: {
     defaultColumns: ['title', "authors", 'updatedAt', "createdAt"],
     livePreview: {
@@ -44,6 +53,9 @@ export const posts: CollectionConfig = {
     },
     maxPerDoc: 20,
   },
+  hooks: {
+    // afterRead: [populateAuthors],
+  },
   fields: [
     {
       name: "title",
@@ -54,7 +66,7 @@ export const posts: CollectionConfig = {
       },
       hooks: { // collection [hooks](https://payloadcms.com/docs/hooks/collections#beforeoperation)
         beforeChange: [
-          async ({ data, originalDoc }) => data?.metadata["post-title"] // movearound to not show a title field on top of the tabs
+          async ({ data, originalDoc }) => data?.metadata["postTitle"] // movearound to not show a title field on top of the tabs
         ]
       }
     },
@@ -92,13 +104,13 @@ export const posts: CollectionConfig = {
               type: "row",
               fields: [
                 {  
-                  name: "post-title",
+                  name: "postTitle",
                   label: "Title",
                   type: "text",
                   required: true,
                 },
                 {
-                  name: "post-image",
+                  name: "postImage",
                   label: "Image",
                   type: "upload",
                   relationTo: "media",
@@ -107,7 +119,7 @@ export const posts: CollectionConfig = {
               ]
             },
             {
-              name: "post-image-caption",
+              name: "postImageCaption",
               label: "Image caption",
               type: "text"
             },
@@ -160,6 +172,7 @@ export const posts: CollectionConfig = {
         },
       ],
     },
+    // sidebar
     {
       name: 'publishedAt',
       type: 'date',
@@ -179,14 +192,57 @@ export const posts: CollectionConfig = {
       },
     },
     {
-      name: 'authors',
-      type: 'relationship',
+      name: 'postAuthors',
+      type: "relationship",
+      relationTo: "authors",
+      hasMany: true,
       admin: {
+        position: "sidebar"
+      },
+      required: true
+    },
+    {
+      name: 'slug',
+      label: 'Slug',
+      type: 'text',
+      admin: {
+        readOnly: true,
         position: 'sidebar',
       },
-      hasMany: true,
-      relationTo: 'authors',
-      required: true
+      hooks: {
+        beforeChange: [formatTitleToSlug('postTitle')]
+      },
+    },
+    // invisible
+    {
+      name: 'populatedAuthors',
+      type: 'array',
+      access: {
+        update: () => false,
+      },
+      admin: {
+        disabled: true,
+        readOnly: true,
+      },
+      fields: [
+        {
+          name: "name",
+          type: "text"
+        },
+        {
+          name: "url",
+          type: "text"
+        },
+        {
+          name: "authorImage",
+          type: "upload",
+          relationTo: "media",
+        },
+        {
+          name: 'id',
+          type: 'text',
+        },
+      ],
     },
   ],
 }

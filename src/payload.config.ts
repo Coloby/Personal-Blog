@@ -14,13 +14,13 @@ import { posts } from "./payload/collections/posts/posts"
 import { tools } from './payload/collections/resources/wonder-room/tools'
 import { Users } from './payload/collections/Users'
 import { downloads } from "./payload/collections/resources/wonder-room/downloads"
-
 import { authors } from "./payload/collections/posts/authors"
+import { pages } from "./payload/collections/pages"
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
-export default buildConfig({
+const payloadConfig = buildConfig({
   admin: {
     user: Users.slug,
     importMap: {
@@ -41,6 +41,7 @@ export default buildConfig({
     posts,
     authors,
     downloads,
+    pages
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
@@ -87,3 +88,5 @@ export default buildConfig({
     })
   ],
 })
+
+export default payloadConfig

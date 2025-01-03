@@ -5,13 +5,49 @@ import { defaultProseSettings } from "@/lib/mdx/proseSettings";
 import GetAuthorsComp from "@/utils/GetAuthorsComp";
 import Image from "next/image";
 import { getMdxComp } from "../../../../../lib/mdx/getMdxComp";
+import configPromise from '@payload-config';
+import { getPayload } from 'payload';
 
 const Page = async props => {
-  const params = await props.params;
-  const articleFileName = params.slug + ".mdx"
-  const { frontmatter } = await getFrontmatterBySlug("header_routes/blog/", articleFileName)
-  const { TOCComponent } = await getTOCComponentFromSlug("header_routes/blog/", articleFileName)
-  const Component = await getMdxComp("header_routes/blog", articleFileName)
+  const payload = await getPayload({ config : configPromise })
+  const findDocumentBySlug = async (collectionSlug, slug) => await payload.find({
+    collection: collectionSlug,
+    where: {
+      slug: {
+        equals: slug
+      }
+    },
+    // select: {
+      // id: true,
+      // title: true,
+    // }
+  });
+
+  let document
+  try {
+    document = await findDocumentBySlug("posts", await props.params.slug);
+    console.log(`document:`, document)
+  } catch (error) { console.error("Error fetching from blog/[slug]/page.jsx: ", error.message) }
+  console.log(`document:`, document)
+
+  let params = await props.params;
+  // !
+  params.slug = "finding-you-identity-and-purpose-beginners-guide"
+  // !
+  const postSlug = params.slug
+  const postFileName = postSlug + ".mdx"
+
+  const isPostFromCMS = document.docs[0].id && true || false
+  let Component
+  if (isPostFromCMS) Component = await getMdxComp(false, false, false, {
+    isMdxFromCMS : true, 
+    mdxId : document.docs[0].id, 
+    collection : "posts"
+  })
+  else Component = await getMdxComp("header_routes/blog", postFileName)
+
+  const { frontmatter } = await getFrontmatterBySlug("header_routes/blog/", postFileName)
+  const { TOCComponent } = await getTOCComponentFromSlug("header_routes/blog/", postFileName)
   const authors = GetAuthorsComp(frontmatter.authors)
 
   return (
@@ -21,7 +57,7 @@ const Page = async props => {
         <div className="!sticky top-[120px] left-[-1150px] flex flex-col !items-end !justify-end gap-4 settings-btn">
           {/* TODO zen mode: hides everything apart from the text */}
           <SettingsBtn /> {/* workaround made bcs the AccordionContent component doesn't mount components when hidden. You can find the attributes to change this behaviour in the comment below, but using it will show the components and using "hidden" will make the animations not work at best */}
-          <C_ShareBtns url={`${process.env.BASE_URL}/blog/${params.slug}`} />
+          <C_ShareBtns url={`${process.env.BASE_URL}/blog/${postSlug}`} />
           {/* forceMount={true} hidden={isHidden} */}
         </div>
       </div>
@@ -44,7 +80,7 @@ const Page = async props => {
               />
             </div>
           </div>
-          <span className="flex flex-wrap gap-x-8 gap-y-1 mb-4"><address className="flexy">{authors}</address><time>{frontmatter.publishDate}</time><span>{frontmatter.readingTime}</span></span>
+          <span className="flex flex-wrap gap-x-8 gap-y-1 mb-4"><address className="flexy">{authors}</address><time>{frontmatter.publishedAt}</time><span>{frontmatter.readingTime}</span></span>
           <h1 className="text-bold-gradient">{frontmatter.title}</h1>
           <div className="lead text-primary_text_color">{frontmatter.description}</div>
           <div className="sl:hidden"><TOCComponent platform={"mobile"} open={false} /></div>
@@ -61,8 +97,10 @@ const Page = async props => {
 
 export async function generateMetadata(props) {
   const params = await props.params;
-  // const title = decodeURIComponent(params.slug).replace(/\.[^/.]+$/, ''); // removes potential file extensions and mutations like %20 instead of spaces
-  const { frontmatter } = await getFrontmatterBySlug("header_routes/blog/", params.slug + ".mdx")
+  //! const postSlug = params.slug
+  const postSlug = "finding-you-identity-and-purpose-beginners-guide"
+  // const title = decodeURIComponent(postSlug).replace(/\.[^/.]+$/, ''); // removes potential file extensions and mutations like %20 instead of spaces
+  const { frontmatter } = await getFrontmatterBySlug("header_routes/blog/", postSlug + ".mdx")
 
   return {
     title: "Blog | "+frontmatter.title,
@@ -70,7 +108,7 @@ export async function generateMetadata(props) {
     authors: frontmatter.authors, // mostly content creators and writers
     metadataBase: new URL(`${process.env.BASE_URL}`),
     alternates: {
-      canonical: `${process.env.PREFERRED_URL}/blog/${params.slug}`,
+      canonical: `${process.env.PREFERRED_URL}/blog/${postSlug}`,
     },
     openGraph: {
       title: frontmatter.title,

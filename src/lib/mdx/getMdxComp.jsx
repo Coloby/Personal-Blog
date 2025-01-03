@@ -2,6 +2,8 @@ import C_TweetEmbed from "@/components/specifically_for_mdx/C_TweetEmbed";
 import C_YTEmbed from "@/components/specifically_for_mdx/C_YTEmbed";
 import AnchorTag from "@/components/specifically_for_mdx/customElements/AnchorTag";
 import ImageTag from "@/components/specifically_for_mdx/customElements/ImageTag";
+import remark_env from "@/lib/mdx/customPlugins/remark_env";
+import { getMDFromLexical } from "@/payload/features/lexical/getMDFromLexical";
 import fs from "fs";
 import { bundleMDX } from 'mdx-bundler';
 import { getMDXComponent } from 'mdx-bundler/client';
@@ -12,19 +14,23 @@ import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import { fileURLToPath } from 'url';
 import { defaultProseSettings } from "./proseSettings";
-import remark_env from "@/lib/mdx/customPlugins/remark_env"
 
-export async function getMdxComp(dir, fileWExtension, explicitFilePath) {
+export async function getMdxComp(dir, fileWExtension, explicitFilePath, CMS) {
+  console.log(`CMS:`, CMS)
+  if (CMS.isMdxFromCMS === undefined) CMS.isMdxFromCMS = false
+  console.log(`collection:`, CMS.collection)
+  console.log(`mdxId:`, CMS.mdxId)
+  console.log(`isMdxFromCMS:`, CMS.isMdxFromCMS)
   const __filename = fileURLToPath(import.meta.url); // using directly __dirname on react server components yields unexpected behaviour. It should be the current directory were this file is, but it's not in rsc
   const __dirname = dirname(__filename);
   
-  // gets components to import directly into mdx
-  const mdxCompsDirPath = path.resolve(__dirname, '../../components/specifically_for_mdx'); 
-  let mdxCompsObj = {};
-  try {
-    const mdxComps = fs.readdirSync(mdxCompsDirPath);
+  // gets custom components to import directly into mdx
+    const mdxCompsDirPath = path.resolve(__dirname, '../../components/specifically_for_mdx'); 
+    let mdxCustomComps = {};
+    try {
+      const mdxComps = fs.readdirSync(mdxCompsDirPath);
 
-    mdxComps.forEach((mdxCompFileWExt) => {
+      mdxComps.forEach((mdxCompFileWExt) => {
         const mdxCompPath = path.join(mdxCompsDirPath, mdxCompFileWExt);
 
         // checks if it is a directory
@@ -32,20 +38,25 @@ export async function getMdxComp(dir, fileWExtension, explicitFilePath) {
         if (stat.isDirectory()) return
 
         const mdxCompContent = fs.readFileSync(mdxCompPath, 'utf-8');
-        mdxCompsObj[`../../components/specifically_for_mdx/${mdxCompFileWExt}`] = mdxCompContent
-    });
-  } catch (err) { console.error('Error with mdx components files!:', err.message) }
+        mdxCustomComps[`../../components/specifically_for_mdx/${mdxCompFileWExt}`] = mdxCompContent
+      });
+    } catch (err) { console.error('Error with mdx components files!:', err.message) }
 
-  // processes the mdx file and gives raw text
-  const mdxFilePath = explicitFilePath ? path.resolve(__dirname, `../../../${explicitFilePath}`)
-    : path.resolve(__dirname, `../../../assets/content/route_specific_mdx/${dir}/${fileWExtension.replace(/%20/g, ' ')}`); // adds support to files with spaces
-  const mdxFileContent = fs.readFileSync(mdxFilePath, 'utf8')
-  const mdxSource = mdxFileContent.replace(/^---\s*[\s\S]*?---/, '').trim() // deletes only the first frontmatter section. It stops searching for stuff right after
+  // removes frontmatter from the mdx getting only the raw text
+    let rawMdx
+    if (CMS.isMdxFromCMS) rawMdx = await getMDFromLexical(CMS.mdxId, CMS.collection)
+    else {
+      const mdxFilePath = explicitFilePath ? path.resolve(__dirname, `../../../${explicitFilePath}`)
+        : path.resolve(__dirname, `../../../assets/content/route_specific_mdx/${dir}/${fileWExtension.replace(/%20/g, ' ')}`); // adds support to files with spaces
+      rawMdx = fs.readFileSync(mdxFilePath, 'utf8')
+    }
+
+    const rawMdxWNoFrontmatter = rawMdx.replace(/^---\s*[\s\S]*?---/, '').trim() 
 
   try {
     const {code, frontmatter} = await bundleMDX({ // mdx to JS
-      source: mdxSource,
-      files: mdxCompsObj,
+      source: rawMdxWNoFrontmatter,
+      files: mdxCustomComps,
       mdxOptions(options) {
         options.remarkPlugins = [...(options?.remarkPlugins ?? []), 
           remark_env,

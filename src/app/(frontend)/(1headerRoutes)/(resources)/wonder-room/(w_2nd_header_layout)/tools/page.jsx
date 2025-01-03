@@ -12,6 +12,14 @@ const page = async () => {
     depth: 1,
     limit: 12,
     overrideAccess: false,
+    limit: 1000,
+    pagination: false,
+    draft: false,
+    where: {
+      _status: {
+        equals: 'published',
+      },
+    },
     select: {
       slug: false,
       createdAt: false
@@ -138,9 +146,9 @@ const page = async () => {
   }
 
   await updateCardConfigurations();
-  toolsCollection.docs.forEach((post, i) => {
-    post.imgs.forEach((img) => img.image.url = `${getBaseUrl()}${img.image.url}`)
-    cardConfigurations.push(post)
+  toolsCollection.docs.forEach((tool, i) => {
+    tool.imgs.forEach((img) => img.image.url = `${getBaseUrl()}${img.image.url}`)
+    cardConfigurations.push(tool)
   })
 
   return (
