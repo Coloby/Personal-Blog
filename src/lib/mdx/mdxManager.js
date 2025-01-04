@@ -1,18 +1,17 @@
+import C_TOC from "@/components/clientComps/C_TOC";
 import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
 } from "@/components/primitives/shadcn-ui/accordion";
+import { getMDFromLexical } from "@/payload/features/lexical/getMDFromLexical";
 import fs from 'fs';
-import dynamic from "next/dynamic";
 import path from 'path';
 import React from "react";
 import { useUnifiedPipeline } from "./unifiedPipeline";
-import C_TOC from "@/components/clientComps/C_TOC"
 
-
-export const getRawMdxBySlug = async (dir, fileNameWExt) => {
+export const getRawMdxByFilePath = async (dir, fileNameWExt) => {
   const contentRootDir = path.join(process.cwd(), 'assets', 'content', "route_specific_mdx", dir)
   const fileNameNoExt = fileNameWExt.replace(/\.mdx$/, '')
   const completeFilePath = path.join(contentRootDir, `${fileNameNoExt.replace(/%20/g, ' ')}.mdx`) // .replace adds support for files with spaces and &
@@ -23,12 +22,17 @@ export const getRawMdxBySlug = async (dir, fileNameWExt) => {
   } catch (error) { throw new Error(`Resource not found for: ${completeFilePath}`) }
 }
 
-export const getFrontmatterBySlug = async (dir, fileNameWExt, index = 0) => {
-  const rawMDX = await getRawMdxBySlug(dir, fileNameWExt)
-  const { processedMDX } = await useUnifiedPipeline(rawMDX)
+export const getFrontmatterBySlug = async (CMS, dir, fileNameWExt, index = 0) => {
+  const isSlugFromCMS = CMS?.mdxId && true || false
+  const rawMDX = isSlugFromCMS ? await getMDFromLexical(CMS.mdxId, CMS.collection) 
+    : await getRawMdxByFilePath(dir, fileNameWExt)
+  const { processedMDX } = await useUnifiedPipeline(isSlugFromCMS ? {rawMDX} : rawMDX)
   const frontmatter = processedMDX.data.frontmatter
-  frontmatter.url = fileNameWExt.replace(/\.mdx|%20/g, '').replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '').toLowerCase();
   frontmatter.readingTime = processedMDX.data.readingTime.text
+
+  if (isSlugFromCMS) return { frontmatter }
+
+  frontmatter.url = fileNameWExt.replace(/\.mdx|%20/g, '').replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '').toLowerCase();
   frontmatter.index = index
 
   return { frontmatter }
@@ -41,16 +45,18 @@ export const getAllArticlesFrontmatter = async () => {
   let i = 0
   for (const fileNameWExt of mdxPosts) {
     i++
-    const { frontmatter } = await getFrontmatterBySlug("header_routes/blog/", fileNameWExt, i)
+    const { frontmatter } = await getFrontmatterBySlug(false, "header_routes/blog/", fileNameWExt, i)
     posts.push(frontmatter)
   }
 
   return posts
 }
 
-export const getTOCComponentFromSlug = async (dir, fileNameWExt) => {
-  const rawMDX = await getRawMdxBySlug(dir, fileNameWExt.replace(/\.mdx$/, ''))
-  const { processedMDX } = await useUnifiedPipeline(rawMDX)
+export const getTOCCompBySlug = async (CMS, dir, fileNameWExt) => {
+  const isSlugFromCMS = CMS?.mdxId && true || false
+  const rawMDX = isSlugFromCMS ? await getMDFromLexical(CMS.mdxId, CMS.collection)
+    : await getRawMdxByFilePath(dir, fileNameWExt.replace(/\.mdx$/, ''))
+  const { processedMDX } = await useUnifiedPipeline(isSlugFromCMS ? {rawMDX} : rawMDX)
   const TOC = processedMDX.data.toc
 
   const TOCComponent = ({ platform = "mobile", open = true }) => {
@@ -104,6 +110,6 @@ export const getTOCComponentFromSlug = async (dir, fileNameWExt) => {
     );
   };
 
-  return { TOCComponent }
-
+  const readingTime = processedMDX.data.readingTime.text
+  return { TOCComponent, readingTime }
 }

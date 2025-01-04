@@ -135,6 +135,7 @@ export interface Tool {
   slug?: string | null;
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -161,6 +162,7 @@ export interface Post {
   metadata: {
     postTitle: string;
     postImage: number | Media;
+    description: string;
     postImageCaption?: string | null;
     categories?: ('self-improvement' | 'tech')[] | null;
   };
@@ -398,6 +400,7 @@ export interface ToolsSelect<T extends boolean = true> {
   slug?: T;
   updatedAt?: T;
   createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -411,6 +414,7 @@ export interface PostsSelect<T extends boolean = true> {
     | {
         postTitle?: T;
         postImage?: T;
+        description?: T;
         postImageCaption?: T;
         categories?: T;
       };

@@ -39,7 +39,6 @@ export const getMDFromLexical = async (id: number, collection : CollectionSlug) 
   await headlessEditor.getEditorState().read(async () => {
     try {
       markdown = $convertToMarkdownString(sanitizedEditorConfig?.features?.markdownTransformers)
-      console.log(`markdown:`, markdown)
     } catch (error) { console.error('Error during conversion:', error) }
   })
 

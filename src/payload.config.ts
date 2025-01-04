@@ -10,12 +10,12 @@ import sharp from 'sharp'
 import { fileURLToPath } from 'url'
 
 import { Media } from './payload/collections/Media'
+import { pages } from "./payload/collections/pages"
+import { authors } from "./payload/collections/posts/authors"
 import { posts } from "./payload/collections/posts/posts"
+import { downloads } from "./payload/collections/resources/wonder-room/downloads"
 import { tools } from './payload/collections/resources/wonder-room/tools'
 import { Users } from './payload/collections/Users'
-import { downloads } from "./payload/collections/resources/wonder-room/downloads"
-import { authors } from "./payload/collections/posts/authors"
-import { pages } from "./payload/collections/pages"
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -50,7 +50,7 @@ const payloadConfig = buildConfig({
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URI || '',
+      connectionString: process.env.NODE_ENV === "development" ? process.env.DEV_DATABASE_URI : process.env.PROD_DATABASE_URI,
     },
   }),
   sharp,

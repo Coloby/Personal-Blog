@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const page = async () => {
   const Component = await getMdxComp("header_routes/(resources)/wonder-room/tools/(moreInfoTools)/", "activity_watch.mdx")
-  const { frontmatter } = await getFrontmatterBySlug("header_routes/(resources)/wonder-room/tools/(moreInfoTools)/", "activity_watch.mdx")
+  const { frontmatter } = await getFrontmatterBySlug(false, "header_routes/(resources)/wonder-room/tools/(moreInfoTools)/", "activity_watch.mdx")
   const authors = GetAuthorsComp(frontmatter.authors)
 
   return (

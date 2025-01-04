@@ -115,7 +115,7 @@ const page = async () => {
       const iconPath = `/assets/routes_specific/wonder-room/tools/${title.toLowerCase().replace(" ", "_")}/icon.svg`;
       
       try {
-        const frontmatter = (await getFrontmatterBySlug("header_routes/(resources)/wonder-room/tools/(moreInfoTools)/", title.toLowerCase().replace(" ", "_"))).frontmatter
+        const frontmatter = (await getFrontmatterBySlug(false, "header_routes/(resources)/wonder-room/tools/(moreInfoTools)/", title.toLowerCase().replace(" ", "_"))).frontmatter
         const imgs = [
           {
             title: "",

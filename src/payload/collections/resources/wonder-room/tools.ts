@@ -11,6 +11,14 @@ export const tools: CollectionConfig = {
     update: authenticated,
     delete: authenticated,
   },
+  versions: {
+    drafts: {
+      autosave: {
+        interval: 100, // We set this interval for optimal live preview
+      },
+    },
+    maxPerDoc: 10,
+  },
   fields: [
     {
       name: 'title',
@@ -109,6 +117,9 @@ export const tools: CollectionConfig = {
       type: 'date',
       admin: {
         position: 'sidebar',
+        date: {
+          displayFormat: "DD-MM-YYYY", // only changes how dates are displayed in the admin panel, not queries or DB
+        }
       },
     },
     {

@@ -118,6 +118,11 @@ export const posts: CollectionConfig = {
                 },
               ]
             },
+            {  
+              name: "description",
+              type: "text",
+              required: true,
+            },
             {
               name: "postImageCaption",
               label: "Image caption",
@@ -179,6 +184,7 @@ export const posts: CollectionConfig = {
       admin: {
         date: {
           pickerAppearance: 'dayAndTime',
+          displayFormat: "DD-MM-YYYY",
         },
         position: 'sidebar',
       },

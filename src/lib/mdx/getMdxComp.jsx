@@ -16,11 +16,7 @@ import { fileURLToPath } from 'url';
 import { defaultProseSettings } from "./proseSettings";
 
 export async function getMdxComp(dir, fileWExtension, explicitFilePath, CMS) {
-  console.log(`CMS:`, CMS)
-  if (CMS.isMdxFromCMS === undefined) CMS.isMdxFromCMS = false
-  console.log(`collection:`, CMS.collection)
-  console.log(`mdxId:`, CMS.mdxId)
-  console.log(`isMdxFromCMS:`, CMS.isMdxFromCMS)
+  const isSlugFromCMS = CMS?.mdxId && true || false
   const __filename = fileURLToPath(import.meta.url); // using directly __dirname on react server components yields unexpected behaviour. It should be the current directory were this file is, but it's not in rsc
   const __dirname = dirname(__filename);
   
@@ -44,7 +40,7 @@ export async function getMdxComp(dir, fileWExtension, explicitFilePath, CMS) {
 
   // removes frontmatter from the mdx getting only the raw text
     let rawMdx
-    if (CMS.isMdxFromCMS) rawMdx = await getMDFromLexical(CMS.mdxId, CMS.collection)
+    if (isSlugFromCMS) rawMdx = await getMDFromLexical(CMS.mdxId, CMS.collection)
     else {
       const mdxFilePath = explicitFilePath ? path.resolve(__dirname, `../../../${explicitFilePath}`)
         : path.resolve(__dirname, `../../../assets/content/route_specific_mdx/${dir}/${fileWExtension.replace(/%20/g, ' ')}`); // adds support to files with spaces
@@ -52,7 +48,6 @@ export async function getMdxComp(dir, fileWExtension, explicitFilePath, CMS) {
     }
 
     const rawMdxWNoFrontmatter = rawMdx.replace(/^---\s*[\s\S]*?---/, '').trim() 
-    console.log(`rawMdxWNoFrontmatter:`, rawMdxWNoFrontmatter)
 
   try {
     const {code, frontmatter} = await bundleMDX({ // mdx to JS

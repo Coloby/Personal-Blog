@@ -13,7 +13,7 @@ export default async function Home() {
   const wonderRoomPieceLink = "https://www.youtube.com/watch?v=TDqsr3MNTTc"
   const { udpateComps } = GetUpdatesComps(6)
   const NowOverviewComp =  await getMdxComp("header_routes/root", `now_overview.mdx`)
-  const { frontmatter } = await getFrontmatterBySlug("header_routes/blog", "finding-you-identity-and-purpose-beginners-guide.mdx")
+  const { frontmatter } = await getFrontmatterBySlug(false, "header_routes/blog", "finding-you-identity-and-purpose-beginners-guide.mdx")
   const authors = GetAuthorsComp(frontmatter.authors)
 
   return (

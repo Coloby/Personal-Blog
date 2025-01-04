@@ -28,11 +28,17 @@ const nextConfig = {
         port: localhostPort,
       },
       {
+        hostname : "localhost", 
+        protocol: 'http',
+        pathname: "/assets/**",
+        port: localhostPort,
+      },
+      {
         hostname : onlyBaseUrl, 
         protocol: 'https',
         pathname: "/api/media/file/**",
         port: "",
-      }
+      },
     ]
   },
   async redirects() {
