@@ -1,14 +1,12 @@
-import { getAllArticlesFrontmatter } from '@/lib/mdx/mdxManager';
-import { getMDFromLexical } from "@/payload/features/lexical/getMDFromLexical";
+import { getAllArticlesFrontmatter, getFrontmatterBySlug } from '@/lib/mdx/mdxManager';
+import configPromise from '@/payload/payload.config';
+import { getBaseUrl } from "@/utils/baseUrl";
 import { formatToSlug } from "@/utils/formatToSlug";
-import configPromise from '@payload-config';
+import GetAuthorsComp from "@/utils/GetAuthorsComp";
+import { reverseDateString } from "@/utils/reverseDateString";
 import Image from "next/image";
 import Link from 'next/link';
 import { getPayload } from 'payload';
-import { getBaseUrl } from "@/utils/baseUrl";
-import GetAuthorsComp from "@/utils/GetAuthorsComp";
-import { reverseDateString } from "@/utils/reverseDateString";
-import { getFrontmatterBySlug } from "@/lib/mdx/mdxManager"
 
 const Page = async () => {
   const posts = await getAllArticlesFrontmatter()

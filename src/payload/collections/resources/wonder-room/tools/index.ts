@@ -42,7 +42,8 @@ export const tools: CollectionConfig = {
           type: 'number',
           required: true,
           admin: {width: "10%"},
-          min: 0
+          min: 0,
+          max: 5
         },
         {
           name: 'websiteUrl',

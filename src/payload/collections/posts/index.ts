@@ -27,7 +27,7 @@ export const posts: CollectionConfig = {
   },
   admin: {
     group: "Content",
-    defaultColumns: ['title', "authors", 'updatedAt', "createdAt"],
+    defaultColumns: ['title', "postAuthors", "publishedAt", 'updatedAt', "createdAt", "_status"],
     livePreview: {
       url: ({ data, req }) => {
         const path = generatePreviewPath({
@@ -46,7 +46,7 @@ export const posts: CollectionConfig = {
       }),
     useAsTitle: 'title',
   },
-  versions: {
+  versions: { // creates _status :)
     drafts: {
       autosave: {
         interval: 100, // for optimal live preview
@@ -108,6 +108,7 @@ export const posts: CollectionConfig = {
                   name: "postTitle",
                   label: "Title",
                   type: "text",
+                  minLength: 2, // to get inspiration for validation: C_Email_form.jsx
                   required: true,
                 },
                 {
@@ -122,6 +123,7 @@ export const posts: CollectionConfig = {
             {  
               name: "description",
               type: "text",
+              minLength: 8,
               required: true,
             },
             {
@@ -184,7 +186,7 @@ export const posts: CollectionConfig = {
       type: 'date',
       admin: {
         date: {
-          pickerAppearance: 'dayAndTime',
+          pickerAppearance: 'dayOnly',
           displayFormat: "DD-MM-YYYY",
         },
         position: 'sidebar',

@@ -10,9 +10,6 @@ import fs from 'fs';
 import path from 'path';
 import React from "react";
 import { useUnifiedPipeline } from "./unifiedPipeline";
-import configPromise from '@payload-config';
-import { getPayload } from 'payload';
-import { formatToSlug } from "@/utils/formatToSlug";
 
 export const getRawMdxByFilePath = async (dir, fileNameWExt) => {
   const contentRootDir = path.join(process.cwd(), 'assets', 'content', "route_specific_mdx", dir)

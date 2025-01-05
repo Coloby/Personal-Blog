@@ -1,4 +1,4 @@
-import { default as configPromise, default as payloadConfig } from "@payload-config"
+import { default as configPromise, default as payloadConfig } from "@/payload/payload.config"
 import { defaultEditorConfig, defaultEditorFeatures, getEnabledNodes, sanitizeServerEditorConfig } from '@payloadcms/richtext-lexical'
 import type { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
 import { createHeadlessEditor } from '@payloadcms/richtext-lexical/lexical/headless'

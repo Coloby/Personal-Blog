@@ -49,6 +49,8 @@ export const downloads: CollectionConfig = {
           label: "score",
           type: "number",
           required: true,
+          min: 0,
+          max: 5,
           admin: {
             width: 5
           },

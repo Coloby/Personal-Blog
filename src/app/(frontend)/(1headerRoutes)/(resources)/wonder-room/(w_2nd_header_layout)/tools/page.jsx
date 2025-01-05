@@ -1,9 +1,9 @@
 import C_Cards from "@/features/cards/components/client/C_Cards";
 import { getFrontmatterBySlug } from "@/lib/mdx/mdxManager";
-import configPromise from '@payload-config';
+import configPromise from '@/payload/payload.config';
+import { getBaseUrl } from "@/utils/baseUrl";
 import { getPayload } from 'payload';
 import { Suspense } from "react";
-import { getBaseUrl } from "@/utils/baseUrl";
 
 const page = async () => {
   const payload = await getPayload({ config : configPromise })

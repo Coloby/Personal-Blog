@@ -11,7 +11,7 @@ export const authors: CollectionConfig = {
     delete: authenticated,
   },
   admin: {
-    defaultColumns: ['name'],
+    defaultColumns: ['name', "authorImage"],
     useAsTitle: 'name',
   },
   defaultPopulate: {

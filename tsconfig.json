@@ -27,7 +27,7 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@payload-config": [ "./src/payload.config.ts" ],
+      "@payload-config": [ "src/payload/payload.config.ts" ],
       "react": [ "./node_modules/@types/react" ],
       "@/*": [ "./src/*" ],
     }
