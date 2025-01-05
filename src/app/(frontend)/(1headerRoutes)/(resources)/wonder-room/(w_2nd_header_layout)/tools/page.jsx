@@ -150,11 +150,12 @@ const page = async () => {
     tool.imgs.forEach((img) => img.image.url = `${getBaseUrl()}${img.image.url}`)
     cardConfigurations.push(tool)
   })
-
+  
+  const baseUrl = getBaseUrl()
   return (
     <div id="cards-wrapper-container">
       <Suspense>
-        <C_Cards cardConfigurations={cardConfigurations} categoryTags="tools" />
+        <C_Cards cardConfigurations={cardConfigurations} categoryTags="tools" baseUrl={baseUrl}/>
       </Suspense>
     </div>
   )

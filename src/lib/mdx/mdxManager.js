@@ -10,6 +10,9 @@ import fs from 'fs';
 import path from 'path';
 import React from "react";
 import { useUnifiedPipeline } from "./unifiedPipeline";
+import configPromise from '@payload-config';
+import { getPayload } from 'payload';
+import { formatToSlug } from "@/utils/formatToSlug";
 
 export const getRawMdxByFilePath = async (dir, fileNameWExt) => {
   const contentRootDir = path.join(process.cwd(), 'assets', 'content', "route_specific_mdx", dir)
@@ -42,12 +45,28 @@ export const getAllArticlesFrontmatter = async () => {
   const contentRootDir = path.join(process.cwd(), 'assets', 'content', "route_specific_mdx", "header_routes", "blog")
   const mdxPosts = fs.readdirSync(contentRootDir)
   let posts = []
-  let i = 0
-  for (const fileNameWExt of mdxPosts) {
-    i++
-    const { frontmatter } = await getFrontmatterBySlug(false, "header_routes/blog/", fileNameWExt, i)
-    posts.push(frontmatter)
-  }
+  
+  // Takes care of local posts
+    let i = 0
+    for (const fileNameWExt of mdxPosts) {
+      i++
+      const { frontmatter } = await getFrontmatterBySlug(false, "header_routes/blog/", fileNameWExt, i)
+      posts.push(frontmatter)
+    }
+  // Takes care of CMS posts
+    // const payload = await getPayload({ config : configPromise })
+    // const postsFromCMS = await payload.find({
+    //   collection: "posts",
+    //   where: {
+    //     _status: {
+    //       equals: 'published',
+    //     },
+    //   },
+    // });
+    // postsFromCMS.docs.forEach((postFromCMS, i) => {
+    //   postFromCMS.url = formatToSlug(JSON.stringify(postFromCMS.metadata.postTitle), "-")
+    //   posts.push(postFromCMS)
+    // })
 
   return posts
 }

@@ -17,6 +17,7 @@ export default async function sitemap() {
   })
 
   return [
+    ...sitemapPosts,
     {
       url: `${process.env.BASE_URL}`,
       // lastModified: new Date(),
@@ -68,6 +69,5 @@ export default async function sitemap() {
       changeFrequency: 'monthly',
       priority: 0.4,
     },
-    ...sitemapPosts,
   ]
 }

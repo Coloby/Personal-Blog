@@ -11,6 +11,10 @@ export const tools: CollectionConfig = {
     update: authenticated,
     delete: authenticated,
   },
+  admin: {
+    group: "Content",
+    defaultColumns: ['title', "authors", 'updatedAt', "createdAt"],
+  },
   versions: {
     drafts: {
       autosave: {
@@ -37,7 +41,8 @@ export const tools: CollectionConfig = {
           name: 'score',
           type: 'number',
           required: true,
-          admin: {width: "10%"}
+          admin: {width: "10%"},
+          min: 0
         },
         {
           name: 'websiteUrl',
@@ -84,7 +89,7 @@ export const tools: CollectionConfig = {
         {
           name: 'icon',
           type: 'upload',
-          relationTo: "media",
+          relationTo: "media_tools",
           required: true,
           admin: { width: "50%" }
         },
@@ -104,7 +109,7 @@ export const tools: CollectionConfig = {
               name: "image",
               label: "",
               type: "upload",
-              relationTo: "media",
+              relationTo: "media_tools",
             }
           ]
         },

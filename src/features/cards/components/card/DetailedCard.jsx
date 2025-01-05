@@ -23,7 +23,7 @@ import Stars from "./Stars"
 import { useAtom } from "jotai"
 import { currentCategoryTagsAtom, getCategoryTagsAtom } from "@/features/cards/stores/AtomStore";
 
-const DetailedCard = ({ config }) => {
+const DetailedCard = ({ config, baseUrl }) => {
   const [currentCategoryTags, _] = useAtom(currentCategoryTagsAtom)
   const { score, icon, websiteUrl, websiteLabel, title, moreInfoUrl, imgs, tags, description, imgClasses = "scale[1.3]"} = config ?? {}
   const currentCategoryTag = getCategoryTagsAtom(currentCategoryTags || "tools").init
@@ -33,6 +33,7 @@ const DetailedCard = ({ config }) => {
 
   const isImgsFromCMS = imgs[0].image !== undefined
   isImgsFromCMS && imgs.forEach((img, i) => imgs[i] = img.image)
+
   
   return (
     <article className={`flex flex-col sm:items-end gap-8 sm:justify-end ${tags ? "pb-[88px] sm:pb-[56px]" : "pb-[88px] sm:pb-[56px]"}  pt-[28px] hd:pt-0 sm:w-[638px] hd:w-[718px]`}>
@@ -45,7 +46,7 @@ const DetailedCard = ({ config }) => {
                 {icon || icon.url ? (
                   <div className="w-[68px] h-[68px]">
                     <Image
-                      src={icon.url || icon}
+                      src={icon.url ? `${baseUrl}${icon.url}` : `${baseUrl}${icon}`}
                       width={68}
                       height={68}
                       priority={false}

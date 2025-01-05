@@ -8,14 +8,8 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import sharp from 'sharp'
 import { fileURLToPath } from 'url'
-
-import { Media } from './payload/collections/Media'
-import { pages } from "./payload/collections/pages"
-import { authors } from "./payload/collections/posts/authors"
-import { posts } from "./payload/collections/posts/posts"
-import { downloads } from "./payload/collections/resources/wonder-room/downloads"
-import { tools } from './payload/collections/resources/wonder-room/tools'
-import { Users } from './payload/collections/Users'
+import { payloadCollections } from "@/payload/data/payloadCollections"
+import { Users } from '@/payload/collections/Users'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -34,15 +28,7 @@ const payloadConfig = buildConfig({
         }
       : false,
   },
-  collections: [
-    Users, 
-    Media,
-    tools,
-    posts,
-    authors,
-    downloads,
-    pages
-  ],
+  collections: payloadCollections,
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
@@ -54,6 +40,7 @@ const payloadConfig = buildConfig({
     },
   }),
   sharp,
+  telemetry : false,
   plugins: [
     payloadCloudPlugin(),
     s3Storage({

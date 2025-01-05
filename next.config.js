@@ -24,7 +24,7 @@ const nextConfig = {
       {
         hostname : 'localhost', 
         protocol: 'http',
-        pathname: "/api/media/file/**",
+        pathname: "/api/**",
         port: localhostPort,
       },
       {
@@ -36,7 +36,7 @@ const nextConfig = {
       {
         hostname : onlyBaseUrl, 
         protocol: 'https',
-        pathname: "/api/media/file/**",
+        pathname: "/api/**",
         port: "",
       },
     ]

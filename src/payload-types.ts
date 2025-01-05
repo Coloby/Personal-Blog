@@ -12,12 +12,16 @@ export interface Config {
   };
   collections: {
     users: User;
-    media: Media;
+    authors: Author;
+    pages: Page;
     tools: Tool;
     posts: Post;
-    authors: Author;
     downloads: Download;
-    pages: Page;
+    media: Media;
+    media_posts: MediaPost;
+    media_tools: MediaTool;
+    media_downloads: MediaDownload;
+    media_authors: MediaAuthor;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -29,12 +33,16 @@ export interface Config {
   };
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
-    media: MediaSelect<false> | MediaSelect<true>;
+    authors: AuthorsSelect<false> | AuthorsSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
     tools: ToolsSelect<false> | ToolsSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
-    authors: AuthorsSelect<false> | AuthorsSelect<true>;
     downloads: DownloadsSelect<false> | DownloadsSelect<true>;
-    pages: PagesSelect<false> | PagesSelect<true>;
+    media: MediaSelect<false> | MediaSelect<true>;
+    media_posts: MediaPostsSelect<false> | MediaPostsSelect<true>;
+    media_tools: MediaToolsSelect<false> | MediaToolsSelect<true>;
+    media_downloads: MediaDownloadsSelect<false> | MediaDownloadsSelect<true>;
+    media_authors: MediaAuthorsSelect<false> | MediaAuthorsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -92,6 +100,22 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "authors".
+ */
+export interface Author {
+  id: number;
+  name: string;
+  url?: string | null;
+  authorImage?: (number | null) | Media;
+  relatedPosts?: {
+    docs?: (number | Post)[] | null;
+    hasNextPage?: boolean | null;
+  } | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media".
  */
 export interface Media {
@@ -109,33 +133,6 @@ export interface Media {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "tools".
- */
-export interface Tool {
-  id: number;
-  title: string;
-  description: string;
-  score: number;
-  websiteUrl?: string | null;
-  moreInfoUrl?: string | null;
-  tags: {
-    License: ('Free' | 'Freemium' | 'Paid' | 'Open source' | 'Closed source')[];
-    Features: ('+Offline' | 'Lightweight' | 'Privacy focused' | 'High customizability')[];
-    Platforms: ('Android' | 'iOS' | 'Mac' | 'Windows' | 'Linux' | 'Self-hosted' | 'Multi platform' | 'Web app')[];
-  };
-  icon: number | Media;
-  imgs: {
-    image?: (number | null) | Media;
-    id?: string | null;
-  }[];
-  publishedAt?: string | null;
-  slug?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -161,7 +158,7 @@ export interface Post {
   };
   metadata: {
     postTitle: string;
-    postImage: number | Media;
+    postImage: number | MediaPost;
     description: string;
     postImageCaption?: string | null;
     categories?: ('self-improvement' | 'tech')[] | null;
@@ -172,7 +169,7 @@ export interface Post {
     /**
      * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
      */
-    image?: (number | null) | Media;
+    image?: (number | null) | MediaPost;
   };
   publishedAt?: string | null;
   postAuthors: (number | Author)[];
@@ -181,7 +178,7 @@ export interface Post {
     | {
         name?: string | null;
         url?: string | null;
-        authorImage?: (number | null) | Media;
+        authorImage?: (number | null) | MediaAuthor;
         id?: string | null;
       }[]
     | null;
@@ -191,53 +188,41 @@ export interface Post {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "authors".
+ * via the `definition` "media_posts".
  */
-export interface Author {
+export interface MediaPost {
   id: number;
-  name: string;
-  url?: string | null;
-  authorImage?: (number | null) | Media;
-  relatedPosts?: {
-    docs?: (number | Post)[] | null;
-    hasNextPage?: boolean | null;
-  } | null;
+  alt: string;
   updatedAt: string;
   createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "downloads".
+ * via the `definition` "media_authors".
  */
-export interface Download {
+export interface MediaAuthor {
   id: number;
-  title: string;
-  'download url': string;
-  downloads_score: number;
-  'download-thumbnail'?: (number | null) | Media;
-  'downloads-carousel-images'?:
-    | {
-        image?: (number | null) | Media;
-        id?: string | null;
-      }[]
-    | null;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
+  alt: string;
   updatedAt: string;
   createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -261,6 +246,105 @@ export interface Page {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tools".
+ */
+export interface Tool {
+  id: number;
+  title: string;
+  description: string;
+  score: number;
+  websiteUrl?: string | null;
+  moreInfoUrl?: string | null;
+  tags: {
+    License: ('Free' | 'Freemium' | 'Paid' | 'Open source' | 'Closed source')[];
+    Features: ('+Offline' | 'Lightweight' | 'Privacy focused' | 'High customizability')[];
+    Platforms: ('Android' | 'iOS' | 'Mac' | 'Windows' | 'Linux' | 'Self-hosted' | 'Multi platform' | 'Web app')[];
+  };
+  icon: number | MediaTool;
+  imgs: {
+    image?: (number | null) | MediaTool;
+    id?: string | null;
+  }[];
+  publishedAt?: string | null;
+  slug?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media_tools".
+ */
+export interface MediaTool {
+  id: number;
+  alt: string;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "downloads".
+ */
+export interface Download {
+  id: number;
+  title: string;
+  'download url': string;
+  downloads_score: number;
+  'download-thumbnail'?: (number | null) | MediaDownload;
+  'downloads-carousel-images'?:
+    | {
+        image?: (number | null) | MediaDownload;
+        id?: string | null;
+      }[]
+    | null;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media_downloads".
+ */
+export interface MediaDownload {
+  id: number;
+  alt: string;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -271,8 +355,12 @@ export interface PayloadLockedDocument {
         value: number | User;
       } | null)
     | ({
-        relationTo: 'media';
-        value: number | Media;
+        relationTo: 'authors';
+        value: number | Author;
+      } | null)
+    | ({
+        relationTo: 'pages';
+        value: number | Page;
       } | null)
     | ({
         relationTo: 'tools';
@@ -283,16 +371,28 @@ export interface PayloadLockedDocument {
         value: number | Post;
       } | null)
     | ({
-        relationTo: 'authors';
-        value: number | Author;
-      } | null)
-    | ({
         relationTo: 'downloads';
         value: number | Download;
       } | null)
     | ({
-        relationTo: 'pages';
-        value: number | Page;
+        relationTo: 'media';
+        value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'media_posts';
+        value: number | MediaPost;
+      } | null)
+    | ({
+        relationTo: 'media_tools';
+        value: number | MediaTool;
+      } | null)
+    | ({
+        relationTo: 'media_downloads';
+        value: number | MediaDownload;
+      } | null)
+    | ({
+        relationTo: 'media_authors';
+        value: number | MediaAuthor;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -355,22 +455,33 @@ export interface UsersSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media_select".
+ * via the `definition` "authors_select".
  */
-export interface MediaSelect<T extends boolean = true> {
-  alt?: T;
-  prefix?: T;
+export interface AuthorsSelect<T extends boolean = true> {
+  name?: T;
+  url?: T;
+  authorImage?: T;
+  relatedPosts?: T;
   updatedAt?: T;
   createdAt?: T;
-  url?: T;
-  thumbnailURL?: T;
-  filename?: T;
-  mimeType?: T;
-  filesize?: T;
-  width?: T;
-  height?: T;
-  focalX?: T;
-  focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  title?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -442,18 +553,6 @@ export interface PostsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "authors_select".
- */
-export interface AuthorsSelect<T extends boolean = true> {
-  name?: T;
-  url?: T;
-  authorImage?: T;
-  relatedPosts?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "downloads_select".
  */
 export interface DownloadsSelect<T extends boolean = true> {
@@ -473,21 +572,94 @@ export interface DownloadsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "pages_select".
+ * via the `definition` "media_select".
  */
-export interface PagesSelect<T extends boolean = true> {
-  title?: T;
-  meta?:
-    | T
-    | {
-        title?: T;
-        image?: T;
-        description?: T;
-      };
-  publishedAt?: T;
+export interface MediaSelect<T extends boolean = true> {
+  alt?: T;
+  prefix?: T;
   updatedAt?: T;
   createdAt?: T;
-  _status?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media_posts_select".
+ */
+export interface MediaPostsSelect<T extends boolean = true> {
+  alt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media_tools_select".
+ */
+export interface MediaToolsSelect<T extends boolean = true> {
+  alt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media_downloads_select".
+ */
+export interface MediaDownloadsSelect<T extends boolean = true> {
+  alt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media_authors_select".
+ */
+export interface MediaAuthorsSelect<T extends boolean = true> {
+  alt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

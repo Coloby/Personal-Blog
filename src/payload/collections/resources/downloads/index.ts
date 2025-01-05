@@ -10,6 +10,13 @@ import {
 
 export const downloads: CollectionConfig = {
   slug: 'downloads',
+  access: {
+    read: () => true,
+  },
+  admin: {
+    group: "Content",
+    defaultColumns: ['alt'],
+  },
   fields: [
     {
       type: "row",
@@ -55,7 +62,7 @@ export const downloads: CollectionConfig = {
           name: "download-thumbnail",
           label: "thumbnail",
           type: "upload",
-          relationTo: "media"
+          relationTo: "media_downloads"
         },
         {
           label: "Carousel-images",
@@ -69,7 +76,7 @@ export const downloads: CollectionConfig = {
                 {
                   name: "image",
                   type: "upload",
-                  relationTo: "media",
+                  relationTo: "media_downloads",
                 }
               ]
             },

@@ -26,6 +26,7 @@ export const posts: CollectionConfig = {
     delete: authenticated,
   },
   admin: {
+    group: "Content",
     defaultColumns: ['title', "authors", 'updatedAt', "createdAt"],
     livePreview: {
       url: ({ data, req }) => {
@@ -113,7 +114,7 @@ export const posts: CollectionConfig = {
                   name: "postImage",
                   label: "Image",
                   type: "upload",
-                  relationTo: "media",
+                  relationTo: "media_posts",
                   required: true,
                 },
               ]
@@ -167,7 +168,7 @@ export const posts: CollectionConfig = {
             }),
             MetaImageField({
               hasGenerateFn: true,
-              relationTo: 'media',
+              relationTo: 'media_posts',
             }),
             PreviewField({
               titlePath: 'seo.title',
@@ -242,7 +243,7 @@ export const posts: CollectionConfig = {
         {
           name: "authorImage",
           type: "upload",
-          relationTo: "media",
+          relationTo: "media_authors",
         },
         {
           name: 'id',
