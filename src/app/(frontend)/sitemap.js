@@ -3,8 +3,9 @@ import { getAllArticlesFrontmatter } from '@/lib/mdx/mdxManager';
 export default async function sitemap() {
   const posts = await getAllArticlesFrontmatter()
   const sitemapPosts = posts.map((post) => {
+    console.log(`post:`, post)
     const dateString = post.updatedAt
-    const [day, month, year] = dateString.split('/');
+    const [day, month, year] = dateString.split('-');
     const dateObject = new Date(year, month - 1, day); // JavaScript counts months from 0, so subtract 1 from the month
     const isoDate = dateObject.toISOString();
 
@@ -17,7 +18,7 @@ export default async function sitemap() {
   })
 
   return [
-    ...sitemapPosts,
+    // ...sitemapPosts,
     {
       url: `${process.env.BASE_URL}`,
       // lastModified: new Date(),
