@@ -1,19 +1,21 @@
-import { authenticated } from "@/payload/auth/authenticated"
-import { authenticatedOrPublished } from "@/payload/auth/authenticatedOrPublished"
+import { isContentManager } from "@/payload/auth/butAlsoAdmin/isContentManager"
+import { isSelfContentManager } from "@/payload/auth/butAlsoAdmin/isSelf/isSelfContentManager"
+import { isSelfContentManagerOrPublished } from "@/payload/auth/butAlsoAdmin/isSelf/OR/isSelfContentManagerOrPublished"
+import { isAdmin } from "@/payload/auth/isAdmin"
 import { formatTitleToSlug } from "@/payload/utils/formatTitleToSlug"
 import type { CollectionConfig } from 'payload'
 
 export const tools: CollectionConfig = {
   slug: 'tools',
   access: {
-    create: authenticated,
-    read: authenticatedOrPublished,
-    update: authenticated,
-    delete: authenticated,
+    create: isContentManager,
+    read: isSelfContentManagerOrPublished,
+    update: isSelfContentManager,
+    delete: isAdmin,
   },
   admin: {
     group: "Content",
-    defaultColumns: ['title', "authors", 'updatedAt', "createdAt"],
+    defaultColumns: ['title', "contentManager", 'score', "_status", "publishDate", "websiteUrl", "moreInfoUrl"],
   },
   versions: {
     drafts: {
@@ -24,11 +26,6 @@ export const tools: CollectionConfig = {
     maxPerDoc: 10,
   },
   fields: [
-    {
-      name: 'title',
-      type: 'text',
-      required: true,
-    },
     {
       name: 'description',
       type: 'text',
@@ -87,13 +84,7 @@ export const tools: CollectionConfig = {
     // {
     //   type: "row",
     //   fields: [
-        {
-          name: 'icon',
-          type: 'upload',
-          relationTo: "media_tools",
-          required: true,
-          admin: { width: "50%" }
-        },
+        
     //   ]
     // },
     {
@@ -118,15 +109,56 @@ export const tools: CollectionConfig = {
     },
     // Sidebar...
     {
+      name: 'title',
+      type: 'text',
+      required: true,
+      admin: {
+        position: "sidebar"
+      }
+    },
+    {
+      name: 'contentManager',
+      label: "Content Manager",
+      type: "relationship",
+      relationTo: "users",
+      filterOptions: {
+        roles : {
+          equals : "contentManager"
+        }
+      },
+      admin: {
+        position: "sidebar"
+      },
+      required: true
+    },
+    {
       name: 'publishedAt',
       label: 'publish date',
       type: 'date',
       admin: {
         position: 'sidebar',
         date: {
-          displayFormat: "DD-MM-YYYY", // only changes how dates are displayed in the admin panel, not queries or DB
+          displayFormat: "DD-MM-YYYY",
         }
       },
+      hooks: {
+        beforeChange: [
+          ({ siblingData, value }) => {
+            if (siblingData._status === 'published' && !value) return new Date()
+            return 
+          },
+        ],
+      },
+    },
+    {
+      name: 'icon',
+      type: 'upload',
+      relationTo: "media_tools",
+      required: true,
+      admin: { 
+        width: "50%",
+        position: "sidebar",
+      }
     },
     {
       name: 'slug',

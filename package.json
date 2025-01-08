@@ -8,6 +8,12 @@
     "dev2": "NODE_OPTIONS='--inspect' next dev --turbopack -p 3010",
     "build": "next build",
     "start": "next start",
+
+    "reinstallDev" : "rm -rf node_modules && rm -rf dist && pnpm install && pnpm run dev",
+    "reinstallBuild" : "rm -rf node_modules && rm -rf dist && pnpm install && pnpm run build && pnpm run start",
+    
+    "generateTypes": "payload generate:types",
+    
     "lint": "eslint --fix src/** --config .eslintrc-fix.json",
     "check-lint": "next lint"
   },

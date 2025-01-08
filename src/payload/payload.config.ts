@@ -15,33 +15,40 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 const payloadConfig = buildConfig({
+  collections: payloadCollections,
+  editor: lexicalEditor(),
+  sharp,
+  telemetry : false,
+  secret: process.env.PAYLOAD_SECRET || '',
   admin: {
     user: Users.slug,
     importMap: {
       baseDir: path.resolve(dirname),
     },
-    autoLogin : process.env.ENABLE_AUTOLOGIN === 'true' && process.env.NODE_ENV === "development"
-      ? {
-          email: process.env.AUTOLOGIN_EMAIL,
-          password: process.env.AUTOLOGIN_PASSWORD,
-          // prefillOnly: true,
-        }
-      : false,
+    // autoLogin : process.env.ENABLE_AUTOLOGIN === 'true' && process.env.NODE_ENV === "development"
+    //   ? {
+    //       email: process.env.AUTOLOGIN_EMAIL,
+    //       password: process.env.AUTOLOGIN_PASSWORD,
+    //       // prefillOnly: true,
+    //     }
+    //   : false,
   },
-  collections: payloadCollections,
-  editor: lexicalEditor(),
-  secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
+  // for security reasons
+    upload: {
+      limits: {
+        fileSize: 6000000000, // 6GB, written in bytes
+      },
+    },
+    defaultMaxTextLength: 8000,
   db: postgresAdapter({
     pool: {
       connectionString: process.env.NODE_ENV === "development" ? process.env.DEV_DATABASE_URI : process.env.PROD_DATABASE_URI,
       // connectionString: process.env.PROD_DATABASE_URI,
     },
   }),
-  sharp,
-  telemetry : false,
   plugins: [
     payloadCloudPlugin(),
     s3Storage({

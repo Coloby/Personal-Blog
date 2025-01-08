@@ -1,24 +1,21 @@
 import type { CollectionConfig } from 'payload'
-
-
+import { isPublished } from "@/payload/auth/butAlsoAdmin/isPublished"
 import {
   MetaDescriptionField,
   MetaImageField,
   MetaTitleField,
-  OverviewField,
-  PreviewField,
+  PreviewField
 } from '@payloadcms/plugin-seo/fields'
-import { authenticated } from "../auth/authenticated"
-import { authenticatedOrPublished } from "../auth/authenticatedOrPublished"
 import { generatePreviewPath } from "../utils/generatePreviewPath"
+import { isAdmin } from "../auth/isAdmin"
 
 export const pages: CollectionConfig = {
   slug: 'pages',
   access: {
-    create: authenticated,
-    delete: authenticated,
-    read: authenticatedOrPublished,
-    update: authenticated,
+    create: isAdmin,
+    delete: isAdmin,
+    read: isPublished,
+    update: isAdmin,
   },
   // This config controls what's populated by default when a page is referenced
   // https://payloadcms.com/docs/queries/select#defaultpopulate-collection-config-property
@@ -95,9 +92,9 @@ export const pages: CollectionConfig = {
             MetaTitleField({
               hasGenerateFn: true,
             }),
-            MetaImageField({
-              relationTo: 'media',
-            }),
+            // MetaImageField({
+            //   relationTo: 'media',
+            // }),
 
             MetaDescriptionField({}),
             PreviewField({

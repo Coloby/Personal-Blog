@@ -86,7 +86,9 @@ export interface UserAuthOperations {
 export interface User {
   id: number;
   name?: string | null;
+  roles?: ('admin' | 'author' | 'contentManager' | 'owner')[] | null;
   notes?: string | null;
+  adminNotes?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -106,7 +108,7 @@ export interface Author {
   id: number;
   name: string;
   url?: string | null;
-  authorImage?: (number | null) | Media;
+  authorImage?: (number | null) | MediaAuthor;
   relatedPosts?: {
     docs?: (number | Post)[] | null;
     hasNextPage?: boolean | null;
@@ -116,12 +118,11 @@ export interface Author {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media".
+ * via the `definition` "media_authors".
  */
-export interface Media {
+export interface MediaAuthor {
   id: number;
   alt: string;
-  prefix?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -207,25 +208,6 @@ export interface MediaPost {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media_authors".
- */
-export interface MediaAuthor {
-  id: number;
-  alt: string;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "pages".
  */
 export interface Page {
@@ -233,10 +215,6 @@ export interface Page {
   title: string;
   meta?: {
     title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | Media;
     description?: string | null;
   };
   publishedAt?: string | null;
@@ -250,7 +228,6 @@ export interface Page {
  */
 export interface Tool {
   id: number;
-  title: string;
   description: string;
   score: number;
   websiteUrl?: string | null;
@@ -260,12 +237,14 @@ export interface Tool {
     Features: ('+Offline' | 'Lightweight' | 'Privacy focused' | 'High customizability')[];
     Platforms: ('Android' | 'iOS' | 'Mac' | 'Windows' | 'Linux' | 'Self-hosted' | 'Multi platform' | 'Web app')[];
   };
-  icon: number | MediaTool;
   imgs: {
     image?: (number | null) | MediaTool;
     id?: string | null;
   }[];
+  title: string;
+  contentManager: number | User;
   publishedAt?: string | null;
+  icon: number | MediaTool;
   slug?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -299,6 +278,7 @@ export interface Download {
   title: string;
   'download url': string;
   downloads_score: number;
+  description?: string | null;
   'download-thumbnail'?: (number | null) | MediaDownload;
   'downloads-carousel-images'?:
     | {
@@ -306,6 +286,7 @@ export interface Download {
         id?: string | null;
       }[]
     | null;
+  contentManager: number | User;
   content: {
     root: {
       type: string;
@@ -331,6 +312,26 @@ export interface Download {
 export interface MediaDownload {
   id: number;
   alt: string;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media".
+ */
+export interface Media {
+  id: number;
+  alt: string;
+  prefix?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -442,7 +443,9 @@ export interface PayloadMigration {
  */
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
+  roles?: T;
   notes?: T;
+  adminNotes?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -475,7 +478,6 @@ export interface PagesSelect<T extends boolean = true> {
     | T
     | {
         title?: T;
-        image?: T;
         description?: T;
       };
   publishedAt?: T;
@@ -488,7 +490,6 @@ export interface PagesSelect<T extends boolean = true> {
  * via the `definition` "tools_select".
  */
 export interface ToolsSelect<T extends boolean = true> {
-  title?: T;
   description?: T;
   score?: T;
   websiteUrl?: T;
@@ -500,14 +501,16 @@ export interface ToolsSelect<T extends boolean = true> {
         Features?: T;
         Platforms?: T;
       };
-  icon?: T;
   imgs?:
     | T
     | {
         image?: T;
         id?: T;
       };
+  title?: T;
+  contentManager?: T;
   publishedAt?: T;
+  icon?: T;
   slug?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -559,6 +562,7 @@ export interface DownloadsSelect<T extends boolean = true> {
   title?: T;
   'download url'?: T;
   downloads_score?: T;
+  description?: T;
   'download-thumbnail'?: T;
   'downloads-carousel-images'?:
     | T
@@ -566,6 +570,7 @@ export interface DownloadsSelect<T extends boolean = true> {
         image?: T;
         id?: T;
       };
+  contentManager?: T;
   content?: T;
   updatedAt?: T;
   createdAt?: T;

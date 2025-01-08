@@ -1,21 +1,27 @@
-import type { CollectionConfig } from 'payload'
+import { isContentManager } from "@/payload/auth/butAlsoAdmin/isContentManager"
+import { isSelfContentManager } from "@/payload/auth/butAlsoAdmin/isSelf/isSelfContentManager"
+import { isSelfContentManagerOrPublished } from "@/payload/auth/butAlsoAdmin/isSelf/OR/isSelfContentManagerOrPublished"
+import { isAdmin } from "@/payload/auth/isAdmin"
 import {
-  BlocksFeature,
   FixedToolbarFeature,
   HeadingFeature,
   HorizontalRuleFeature,
   InlineToolbarFeature,
-  lexicalEditor,
+  lexicalEditor
 } from '@payloadcms/richtext-lexical'
+import type { CollectionConfig } from 'payload'
 
 export const downloads: CollectionConfig = {
   slug: 'downloads',
   access: {
-    read: () => true,
+    create: isContentManager,
+    read: isSelfContentManagerOrPublished,
+    update: isSelfContentManager,
+    delete: isAdmin,
   },
   admin: {
     group: "Content",
-    defaultColumns: ['alt'],
+    defaultColumns: ['title', 'contentManager', 'score', 'downloadUrl', 'updatedAt', 'createdAt',],
   },
   fields: [
     {
@@ -25,9 +31,9 @@ export const downloads: CollectionConfig = {
           name: 'title',
           type: 'text',
           required: true,
-          // admin: {
-          //   width: 38
-          // }
+          admin: {
+            position: "sidebar"
+          }
         },
         {
           name: 'download url',
@@ -46,7 +52,7 @@ export const downloads: CollectionConfig = {
         },
         {
           name: 'downloads_score',
-          label: "score",
+          label: "Score",
           type: "number",
           required: true,
           min: 0,
@@ -58,39 +64,58 @@ export const downloads: CollectionConfig = {
       ]
     },
     {
-      type: "row",
+      name: 'description',
+      type: 'text',
+      // required: true,
+    },
+    {
+      name: "download-thumbnail",
+      label: "Thumbnail",
+      type: "upload",
+      relationTo: "media_downloads"
+    },
+    {
+      label: "Carousel images",
+      type:"collapsible",
       fields: [
         {
-          name: "download-thumbnail",
-          label: "thumbnail",
-          type: "upload",
-          relationTo: "media_downloads"
-        },
-        {
-          label: "Carousel-images",
-          type:"collapsible",
+          name: "downloads-carousel-images",
+          label: "Images",
+          type: "array",
           fields: [
             {
-              name: "downloads-carousel-images",
-              label: "Images",
-              type: "array",
-              fields: [
-                {
-                  name: "image",
-                  type: "upload",
-                  relationTo: "media_downloads",
-                }
-              ]
-            },
+              name: "image",
+              type: "upload",
+              relationTo: "media_downloads",
+            }
           ]
         },
       ]
+    },
+    // sidebar
+    {
+      name: 'contentManager',
+      label: "Content Manager",
+      type: "relationship",
+      relationTo: "users",
+      filterOptions: {
+        roles : {
+          equals : "contentManager"
+        }
+      },
+      admin: {
+        position: "sidebar"
+      },
+      required: true
     },
     {
       name: 'content',
       label: false,
       type: 'richText',
       required: true,
+      admin: {
+        position: "sidebar"
+      },
       editor: lexicalEditor({
         features: ({ rootFeatures }) => {
           return [

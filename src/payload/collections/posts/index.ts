@@ -1,7 +1,10 @@
-import { authenticated } from "@/payload/auth/authenticated"
-import { authenticatedOrPublished } from "@/payload/auth/authenticatedOrPublished"
+import { isAuthor } from "@/payload/auth/butAlsoAdmin/isAuthor"
+import { isSelfAuthor } from "@/payload/auth/butAlsoAdmin/isSelf/isSelfAuthor"
+import { isAdmin } from "@/payload/auth/isAdmin"
 import { formatTitleToSlug } from "@/payload/utils/formatTitleToSlug"
 import { generatePreviewPath } from '@/payload/utils/generatePreviewPath'
+
+import { isSelfAuthorOrPublished } from "@/payload/auth/butAlsoAdmin/isSelf/OR/isSelfAuthorOrPublished"
 import {
   MetaDescriptionField,
   MetaImageField,
@@ -20,10 +23,10 @@ import type { CollectionConfig } from 'payload'
 export const posts: CollectionConfig = {
   slug: 'posts',
   access: {
-    create: authenticated,
-    read: authenticatedOrPublished,
-    update: authenticated,
-    delete: authenticated,
+    create: isAuthor,
+    read: isSelfAuthorOrPublished,
+    update: isSelfAuthor,
+    delete: isAdmin,
   },
   admin: {
     group: "Content",
@@ -116,6 +119,7 @@ export const posts: CollectionConfig = {
                   label: "Image",
                   type: "upload",
                   relationTo: "media_posts",
+                  // relationTo: ['media_posts', 'media'],
                   required: true,
                 },
               ]
@@ -187,7 +191,7 @@ export const posts: CollectionConfig = {
       admin: {
         date: {
           pickerAppearance: 'dayOnly',
-          displayFormat: "DD-MM-YYYY",
+          displayFormat: "dd-MM-yyyy",
         },
         position: 'sidebar',
       },
@@ -195,7 +199,7 @@ export const posts: CollectionConfig = {
         beforeChange: [
           ({ siblingData, value }) => {
             if (siblingData._status === 'published' && !value) return new Date()
-            return value
+            return 
           },
         ],
       },
@@ -226,9 +230,6 @@ export const posts: CollectionConfig = {
     {
       name: 'populatedAuthors',
       type: 'array',
-      access: {
-        update: () => false,
-      },
       admin: {
         disabled: true,
         readOnly: true,

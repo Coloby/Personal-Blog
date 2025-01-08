@@ -1,17 +1,16 @@
-import { anyone } from "@/payload/auth/anyone"
-import { authenticated } from "@/payload/auth/authenticated"
+import { isAdmin } from "@/payload/auth/isAdmin"
 import type { CollectionConfig } from 'payload'
 
 export const authors: CollectionConfig = {
   slug: 'authors',
   access: {
-    create: authenticated,
-    read: anyone,
-    update: authenticated,
-    delete: authenticated,
+    create: isAdmin,
+    read: isAdmin,
+    update: isAdmin,
+    delete: isAdmin,
   },
   admin: {
-    defaultColumns: ['name', "authorImage"],
+    defaultColumns: ['name', "url", "relatedPosts", "updatedAt", "createdAt"],
     useAsTitle: 'name',
   },
   defaultPopulate: {
@@ -32,7 +31,7 @@ export const authors: CollectionConfig = {
     {
       name: "authorImage",
       type: "upload",
-      relationTo: "media",
+      relationTo: "media_authors",
     },
     {
       name: 'relatedPosts',
