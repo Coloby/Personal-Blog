@@ -76,7 +76,7 @@ const DetailedCard = ({ config, baseUrl }) => {
                       {imgs.map((img, index) => (
                         <CarouselItem key={`${img} + ${index}carousel`} className="h-full w-full !items-start flexy ">
                           <Image
-                            src={img.url}
+                            src={img}
                             width={680}
                             height={630}
                             quality={60}

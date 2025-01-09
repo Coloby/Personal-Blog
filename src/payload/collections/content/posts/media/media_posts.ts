@@ -7,7 +7,20 @@ import type { CollectionConfig } from 'payload'
 
 export const media_posts: CollectionConfig = {
   slug: 'media_posts',
-  upload: true,
+  upload: {
+    adminThumbnail: "t",
+    imageSizes: [
+      {
+        name: 't',
+        fit: 'cover',
+        height: 150,
+        width: 150,
+        generateImageName: ({ originalName, height, sizeName, extension, width }) => {
+          return `${sizeName}-${originalName}-${height}-${width}.${extension}`
+        },
+      },
+    ],
+  },
   access: {
     create: isAuthor,
     read: anyone,

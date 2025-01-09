@@ -7,7 +7,28 @@ import type { CollectionConfig } from 'payload'
 
 export const media_downloads: CollectionConfig = {
   slug: 'media_downloads',
-  upload: true,
+  upload: {
+    adminThumbnail: "t",
+    imageSizes: [
+      {
+        name: 't',
+        fit: 'cover',
+        height: 150,
+        width: 150,
+        generateImageName: ({ originalName, height, sizeName, extension, width }) => {
+          return `${sizeName}-${originalName}-${height}-${width}.${extension}`
+        },
+      },
+      {
+        name: 'tCard',
+        height: 680,
+        width: 630,
+        generateImageName: ({ originalName, height, sizeName, extension, width }) => {
+          return `${sizeName}-${originalName}-${height}-${width}.${extension}`
+        },
+      },
+    ],
+  },
   access: {
     create: isContentManager,
     read: anyone,

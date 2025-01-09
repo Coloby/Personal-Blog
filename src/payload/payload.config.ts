@@ -8,8 +8,9 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import sharp from 'sharp'
 import { fileURLToPath } from 'url'
-import { payloadCollections } from "@/payload/constants/payloadCollections"
+import { payloadCollections } from "@/payload/constants/payloadConfig/payloadCollections"
 import { Users } from '@/payload/collections/Users'
+import { payloadMediaCollections } from "./constants/payloadConfig/payloadMediaCollections"
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -51,24 +52,21 @@ const payloadConfig = buildConfig({
   }),
   plugins: [
     payloadCloudPlugin(),
-    s3Storage({
-      collections: {
-        media: {
-          prefix: 'media',
-        }
-      },
+    s3Storage({ // When enabled, this package will automatically set disableLocalStorage to true for each collection.
       // @ts-ignore
-      bucket: process.env.S3_BUCKET,
+      collections: payloadMediaCollections,
+      // @ts-ignore
+      bucket: process.env.NODE_ENV === "development" ? process.env.DEV_S3_BUCKET : process.env.PROD_S3_BUCKET,
       config: {
         forcePathStyle: true, // fixes problems if you use supabase
         credentials: {
           // @ts-ignore
-          accessKeyId: process.env.S3_ACCESS_KEY_ID,
+          accessKeyId: process.env.NODE_ENV === "development" ? process.env.DEV_S3_ACCESS_KEY_ID : process.env.PROD_S3_ACCESS_KEY_ID,
           // @ts-ignore
-          secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+          secretAccessKey: process.env.NODE_ENV === "development" ? process.env.DEV_S3_SECRET_ACCESS_KEY : process.env.PROD_S3_SECRET_ACCESS_KEY,
         },
-        region: process.env.S3_REGION,
-        endpoint: process.env.S3_ENDPOINT,
+        region: process.env.NODE_ENV === "development" ? process.env.DEV_S3_REGION : process.env.PROD_S3_REGION,
+        endpoint: process.env.NODE_ENV === "development" ? process.env.DEV_S3_ENDPOINT : process.env.PROD_S3_ENDPOINT,
       },
     }),
     seoPlugin({ // Adds a meta field group to every SEO-enabled collection or global, gives fields to let marketers write SEO related content, etc: https://payloadcms.com/docs/plugins/seo#core-features

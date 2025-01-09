@@ -138,7 +138,7 @@ export const tools: CollectionConfig = {
       admin: {
         position: 'sidebar',
         date: {
-          displayFormat: "DD-MM-YYYY",
+          displayFormat: "dd-mm-yyyy",
         }
       },
       hooks: {
