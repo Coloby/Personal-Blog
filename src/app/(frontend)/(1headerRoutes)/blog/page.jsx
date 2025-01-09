@@ -1,8 +1,8 @@
-import { getAllArticlesFrontmatter, getFrontmatterBySlug } from '@/lib/mdx/mdxManager';
+import GetAuthorsComp from "@/features/mdx/GetAuthorsComp";
+import { getAllArticlesFrontmatter, getFrontmatterBySlug } from '@/features/mdx/mdxManager';
 import configPromise from '@/payload/payload.config';
 import { getBaseUrl } from "@/utils/baseUrl";
 import { formatToSlug } from "@/utils/formatToSlug";
-import GetAuthorsComp from "@/utils/GetAuthorsComp";
 import { reverseDateString } from "@/utils/reverseDateString";
 import Image from "next/image";
 import Link from 'next/link';
@@ -13,7 +13,6 @@ const Page = async () => {
   const payload = await getPayload({ config : configPromise })
   let postsCollection = await payload.find({
     collection: 'posts',
-    overrideAccess: false,
     limit: 1000,
     pagination: false,
     draft: false,

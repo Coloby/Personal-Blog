@@ -15,7 +15,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/primitives/shadcn-ui/popover"
-import { defaultProseSettings } from "@/lib/mdx/proseSettings"
+import { defaultProseSettings } from "@/features/mdx/proseSettings"
 import Image from "next/image"
 
 const DownloadCard = ({title, href, info, imgs}) => {

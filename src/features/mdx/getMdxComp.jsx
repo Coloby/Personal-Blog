@@ -1,8 +1,8 @@
-import C_TweetEmbed from "@/components/specifically_for_mdx/C_TweetEmbed";
-import C_YTEmbed from "@/components/specifically_for_mdx/C_YTEmbed";
-import AnchorTag from "@/components/specifically_for_mdx/customElements/AnchorTag";
-import ImageTag from "@/components/specifically_for_mdx/customElements/ImageTag";
-import remark_env from "@/lib/mdx/customPlugins/remark_env";
+import C_TweetEmbed from "@/features/mdx/components/customCompsForEditor/C_TweetEmbed";
+import C_YTEmbed from "@/features/mdx/components/customCompsForEditor/C_YTEmbed";
+import AnchorTag from "@/features/mdx/components/customCompsForEditor/customElements/AnchorTag";
+import ImageTag from "@/features/mdx/components/customCompsForEditor/customElements/ImageTag";
+import remark_env from "@/features/mdx/customPlugins/remark_env";
 import { getMDFromLexical } from "@/payload/features/lexical/getMDFromLexical";
 import fs from "fs";
 import { bundleMDX } from 'mdx-bundler';
@@ -21,20 +21,21 @@ export async function getMdxComp(dir, fileWExtension, explicitFilePath, CMS) {
   const __dirname = dirname(__filename);
   
   // gets custom components to import directly into mdx
-    const mdxCompsDirPath = path.resolve(__dirname, '../../components/specifically_for_mdx'); 
+    const customCompsRelativePath = "../../features/mdx/components/customCompsForEditor"
+    const customCompsDirPath = path.resolve(__dirname, customCompsRelativePath); 
     let mdxCustomComps = {};
     try {
-      const mdxComps = fs.readdirSync(mdxCompsDirPath);
+      const mdxComps = fs.readdirSync(customCompsDirPath);
 
       mdxComps.forEach((mdxCompFileWExt) => {
-        const mdxCompPath = path.join(mdxCompsDirPath, mdxCompFileWExt);
+        const mdxCompPath = path.join(customCompsDirPath, mdxCompFileWExt);
 
         // checks if it is a directory
         const stat = fs.statSync(mdxCompPath)
         if (stat.isDirectory()) return
 
         const mdxCompContent = fs.readFileSync(mdxCompPath, 'utf-8');
-        mdxCustomComps[`../../components/specifically_for_mdx/${mdxCompFileWExt}`] = mdxCompContent
+        mdxCustomComps[`${customCompsRelativePath}/${mdxCompFileWExt}`] = mdxCompContent
       });
     } catch (err) { console.error('Error with mdx components files!:', err.message) }
 

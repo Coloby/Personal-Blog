@@ -1,7 +1,7 @@
-import { getMdxComp } from "@/lib/mdx/getMdxComp";
-import { getFrontmatterBySlug } from "@/lib/mdx/mdxManager";
-import { defaultProseSettings } from "@/lib/mdx/proseSettings";
-import GetAuthorsComp from "@/utils/GetAuthorsComp";
+import GetAuthorsComp from "@/features/mdx/GetAuthorsComp";
+import { getMdxComp } from "@/features/mdx/getMdxComp";
+import { getFrontmatterBySlug } from "@/features/mdx/mdxManager";
+import { defaultProseSettings } from "@/features/mdx/proseSettings";
 import Image from "next/image";
 
 const page = async () => {

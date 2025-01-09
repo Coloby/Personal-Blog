@@ -1,14 +1,14 @@
 import C_ShareBtns from "@/components/clientComps/C_ShareBtns";
 import SettingsBtn from "@/components/logic/settings/SettingsBtn";
-import { getAllArticlesFrontmatter, getFrontmatterBySlug, getTOCCompBySlug } from '@/lib/mdx/mdxManager';
-import { defaultProseSettings } from "@/lib/mdx/proseSettings";
+import GetAuthorsComp from "@/features/mdx/GetAuthorsComp";
+import { getAllArticlesFrontmatter, getFrontmatterBySlug, getTOCCompBySlug } from '@/features/mdx/mdxManager';
+import { defaultProseSettings } from "@/features/mdx/proseSettings";
 import configPromise from '@/payload/payload.config';
 import { getBaseUrl } from "@/utils/baseUrl";
-import GetAuthorsComp from "@/utils/GetAuthorsComp";
 import { reverseDateString } from "@/utils/reverseDateString";
 import Image from "next/image";
 import { getPayload } from 'payload';
-import { getMdxComp } from "../../../../../lib/mdx/getMdxComp";
+import { getMdxComp } from "../../../../../features/mdx/getMdxComp";
 
 const Page = async props => {
   const params = await props.params

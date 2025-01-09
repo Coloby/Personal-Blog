@@ -1,5 +1,5 @@
 import C_Cards from "@/features/cards/components/client/C_Cards";
-import { getFrontmatterBySlug } from "@/lib/mdx/mdxManager";
+import { getFrontmatterBySlug } from "@/features/mdx/mdxManager";
 import configPromise from '@/payload/payload.config';
 import { getBaseUrl } from "@/utils/baseUrl";
 import { getPayload } from 'payload';
@@ -11,7 +11,6 @@ const page = async () => {
     collection: 'tools',
     depth: 1,
     limit: 12,
-    overrideAccess: false,
     limit: 1000,
     pagination: false,
     draft: false,

@@ -1,5 +1,5 @@
-import { isSelfAuthor } from "@/payload/auth/butAlsoAdmin/isSelf/isSelfAuthor"
-import { isAdmin, isAdminField } from "@/payload/auth/isAdmin"
+import { isSelfAuthor } from "@/payload/features/accessControl/butAlsoAdmin/isSelf/isSelfAuthor"
+import { isAdmin, isAdminField } from "@/payload/features/accessControl/isAdmin"
 import type { CollectionConfig } from 'payload'
 
 export const Users: CollectionConfig = {

@@ -1,17 +1,18 @@
 import { genericMedia } from "@/payload/constants/collections/defaultColumns"
 import { anyone } from "@/payload/features/accessControl/anyone"
-import { authenticated } from "@/payload/features/accessControl/authenticated"
+import { isAuthor } from "@/payload/features/accessControl/butAlsoAdmin/isAuthor"
+import { isSelfAuthor } from "@/payload/features/accessControl/butAlsoAdmin/isSelf/isSelfAuthor"
 import { isAdmin } from "@/payload/features/accessControl/isAdmin"
 import type { CollectionConfig } from 'payload'
 
-export const Media: CollectionConfig = {
-  slug: 'media',
+export const media_authors: CollectionConfig = {
+  slug: 'media_authors',
   upload: true,
   access: {
-    create: authenticated,
+    create: isAuthor,
     read: anyone,
-    update: authenticated,
-    delete: isAdmin
+    update: isSelfAuthor,
+    delete: isAdmin,
   },
   admin: {
     group: "Media",

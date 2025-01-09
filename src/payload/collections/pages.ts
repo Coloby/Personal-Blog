@@ -1,13 +1,12 @@
-import type { CollectionConfig } from 'payload'
-import { isPublished } from "@/payload/auth/butAlsoAdmin/isPublished"
+import { isPublished } from "@/payload/features/accessControl/butAlsoAdmin/isPublished"
 import {
   MetaDescriptionField,
-  MetaImageField,
   MetaTitleField,
   PreviewField
 } from '@payloadcms/plugin-seo/fields'
+import type { CollectionConfig } from 'payload'
+import { isAdmin } from "../features/accessControl/isAdmin"
 import { generatePreviewPath } from "../utils/generatePreviewPath"
-import { isAdmin } from "../auth/isAdmin"
 
 export const pages: CollectionConfig = {
   slug: 'pages',

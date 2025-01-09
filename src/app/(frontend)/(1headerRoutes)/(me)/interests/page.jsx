@@ -1,5 +1,5 @@
-import C_interests from "@/components/clientComps/C_Interests"
-import { getMdxComp } from "@/lib/mdx/getMdxComp"
+import C_interests from "@/components/clientComps/C_Interests";
+import { getMdxComp } from "@/features/mdx/getMdxComp";
 
 const page = async ({ params }) => {
   const interests = {

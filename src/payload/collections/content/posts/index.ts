@@ -1,10 +1,10 @@
-import { isAuthor } from "@/payload/auth/butAlsoAdmin/isAuthor"
-import { isSelfAuthor } from "@/payload/auth/butAlsoAdmin/isSelf/isSelfAuthor"
-import { isAdmin } from "@/payload/auth/isAdmin"
+import { isAuthor } from "@/payload/features/accessControl/butAlsoAdmin/isAuthor"
+import { isSelfAuthor } from "@/payload/features/accessControl/butAlsoAdmin/isSelf/isSelfAuthor"
+import { isAdmin } from "@/payload/features/accessControl/isAdmin"
 import { formatTitleToSlug } from "@/payload/utils/formatTitleToSlug"
 import { generatePreviewPath } from '@/payload/utils/generatePreviewPath'
 
-import { isSelfAuthorOrPublished } from "@/payload/auth/butAlsoAdmin/isSelf/OR/isSelfAuthorOrPublished"
+import { isSelfAuthorOrPublished } from "@/payload/features/accessControl/butAlsoAdmin/isSelf/OR/isSelfAuthorOrPublished"
 import {
   MetaDescriptionField,
   MetaImageField,

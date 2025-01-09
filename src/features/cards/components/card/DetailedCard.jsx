@@ -14,14 +14,14 @@ import {
   DialogTrigger
 } from "@/components/primitives/shadcn-ui/dialog"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/primitives/shadcn-ui/popover"
-import { defaultProseSettings } from "@/lib/mdx/proseSettings"
+import { currentCategoryTagsAtom, getCategoryTagsAtom } from "@/features/cards/stores/AtomStore"
+import { defaultProseSettings } from "@/features/mdx/proseSettings"
 import { scrollbar } from "@/lib/tailwind-scrollbar/settings"
+import { useAtom } from "jotai"
 import Image from "next/image"
 import Link from "next/link"
 import React from "react"
 import Stars from "./Stars"
-import { useAtom } from "jotai"
-import { currentCategoryTagsAtom, getCategoryTagsAtom } from "@/features/cards/stores/AtomStore";
 
 const DetailedCard = ({ config, baseUrl }) => {
   const [currentCategoryTags, _] = useAtom(currentCategoryTagsAtom)

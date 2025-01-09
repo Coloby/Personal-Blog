@@ -1,7 +1,7 @@
-import { isContentManager } from "@/payload/auth/butAlsoAdmin/isContentManager"
-import { isSelfContentManager } from "@/payload/auth/butAlsoAdmin/isSelf/isSelfContentManager"
-import { isSelfContentManagerOrPublished } from "@/payload/auth/butAlsoAdmin/isSelf/OR/isSelfContentManagerOrPublished"
-import { isAdmin } from "@/payload/auth/isAdmin"
+import { isContentManager } from "@/payload/features/accessControl/butAlsoAdmin/isContentManager"
+import { isSelfContentManager } from "@/payload/features/accessControl/butAlsoAdmin/isSelf/isSelfContentManager"
+import { isSelfContentManagerOrPublished } from "@/payload/features/accessControl/butAlsoAdmin/isSelf/OR/isSelfContentManagerOrPublished"
+import { isAdmin } from "@/payload/features/accessControl/isAdmin"
 import {
   FixedToolbarFeature,
   HeadingFeature,

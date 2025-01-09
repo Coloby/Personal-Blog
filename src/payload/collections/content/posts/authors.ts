@@ -1,4 +1,4 @@
-import { isAdmin } from "@/payload/auth/isAdmin"
+import { isAdmin } from "@/payload/features/accessControl/isAdmin"
 import type { CollectionConfig } from 'payload'
 
 export const authors: CollectionConfig = {

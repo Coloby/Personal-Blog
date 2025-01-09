@@ -8,7 +8,7 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import sharp from 'sharp'
 import { fileURLToPath } from 'url'
-import { payloadCollections } from "@/payload/data/payloadCollections"
+import { payloadCollections } from "@/payload/constants/payloadCollections"
 import { Users } from '@/payload/collections/Users'
 
 const filename = fileURLToPath(import.meta.url)

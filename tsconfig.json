@@ -41,14 +41,14 @@
     "src/app/(frontend)/page.jsx",
     "src/app/(mainHeaderRoutes)/blog/[slug]/page.jsx",
     "src/app/(mainHeaderRoutes)/blog/page.jsx",
-    "src/lib/mdx/mdxManager.js",
+    "src/features/mdx/mdxManager.js",
     "src/components/primitives/shadcn-ui/accordion.tsx",
     "src/app/(frontend)/sitemap.js",
     "src/app/(frontend)/robots.ts",
     "src/components/layout/header/Header.jsx",
     "src/components/layout/Footer.jsx", 
     "src/utils/formatToSlug.js"  
-, "src/payload/auth/utils/authOR.js", "src/payload/auth/utils/mixstuff.js"  ],
+, "src/payload/features/accessControl/utils/authOR.js", "src/payload/features/accessControl/utils/mixstuff.js"  ],
   "exclude": [
     "node_modules"
   ]

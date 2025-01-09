@@ -1,5 +1,5 @@
 // This is the RSS feed. Made using route handlers https://nextjs.org/docs/app/api-reference/file-conventions/route
-import { getAllArticlesFrontmatter } from '@/lib/mdx/mdxManager'
+import { getAllArticlesFrontmatter } from '@/features/mdx/mdxManager'
 import RSS from "rss"
 
 // guid

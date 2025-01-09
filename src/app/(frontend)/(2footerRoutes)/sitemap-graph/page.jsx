@@ -1,7 +1,7 @@
 import C_Markmap from "@/components/clientComps/C_Markmap";
 import SettingsBtn from "@/components/logic/settings/SettingsBtn";
 import Btn from "@/components/primitives/logic/Btn";
-import { defaultProseSettings } from "@/lib/mdx/proseSettings";
+import { defaultProseSettings } from "@/features/mdx/proseSettings";
 import fs from 'fs';
 import { Transformer } from 'markmap-lib';
 import { fillTemplate } from 'markmap-render';
