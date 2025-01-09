@@ -90,7 +90,7 @@ export async function getMdxComp(dir, fileWExtension, explicitFilePath, CMS) {
     })
 
     const Component = getMDXComponent(code) // executes the code
-    // const C_YTEmbed = dynamic(() => import('@/components/specifically_for_mdx/C_YTEmbed'), {
+    // const C_YTEmbed = dynamic(() => import('@/features/mdx/components/customCompsForEditor/C_YTEmbed'), {
     //   ssr: false, // This disables SSR for this component.
     // });
     function Comp() {
