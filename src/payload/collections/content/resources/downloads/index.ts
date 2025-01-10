@@ -1,7 +1,8 @@
 import { isContentManager } from "@/payload/features/accessControl/butAlsoAdmin/isContentManager"
-import { isSelfContentManager } from "@/payload/features/accessControl/butAlsoAdmin/isSelf/isSelfContentManager"
-import { isSelfContentManagerOrPublished } from "@/payload/features/accessControl/butAlsoAdmin/isSelf/OR/isSelfContentManagerOrPublished"
+import { isSelfContentOwner } from "@/payload/features/accessControl/butAlsoAdmin/isSelf/isSelfContentOwner"
+import { isSelfContentOwnerOrPublished } from "@/payload/features/accessControl/butAlsoAdmin/isSelf/OR/isSelfContentOwnerOrPublished"
 import { isAdmin } from "@/payload/features/accessControl/isAdmin"
+import { formatFieldToSlug } from "@/payload/utils/formatFieldToSlug"
 import {
   FixedToolbarFeature,
   HeadingFeature,
@@ -15,13 +16,22 @@ export const downloads: CollectionConfig = {
   slug: 'downloads',
   access: {
     create: isContentManager,
-    read: isSelfContentManagerOrPublished,
-    update: isSelfContentManager,
+    read: isSelfContentOwnerOrPublished,
+    update: isSelfContentOwner,
     delete: isAdmin,
+    readVersions: isSelfContentOwner,
   },
   admin: {
     group: "Content",
-    defaultColumns: ['title', 'contentManager', 'score', 'downloadUrl', 'updatedAt', 'createdAt',],
+    defaultColumns: ['title', 'contentOwner', 'score', "_status", 'downloadUrl', 'updatedAt', 'createdAt',],
+  },
+  versions: {
+    drafts: {
+      autosave: {
+        interval: 100, // We set this interval for optimal live preview
+      },
+    },
+    maxPerDoc: 10,
   },
   fields: [
     {
@@ -31,24 +41,11 @@ export const downloads: CollectionConfig = {
           name: 'title',
           type: 'text',
           required: true,
-          admin: {
-            position: "sidebar"
-          }
         },
         {
           name: 'download url',
           type: 'text',
           required: true,
-          // admin: {
-          //   width: 38
-          // },
-          hooks: {
-            beforeChange: [
-              async ({ data, originalDoc }) => {
-                console.log(`data:`, data)
-              }
-            ]
-          }
         },
         {
           name: 'downloads_score',
@@ -66,7 +63,6 @@ export const downloads: CollectionConfig = {
     {
       name: 'description',
       type: 'text',
-      // required: true,
     },
     {
       name: "download-thumbnail",
@@ -94,19 +90,31 @@ export const downloads: CollectionConfig = {
     },
     // sidebar
     {
-      name: 'contentManager',
-      label: "Content Manager",
+      name: 'contentOwner',
       type: "relationship",
       relationTo: "users",
-      filterOptions: {
-        roles : {
-          equals : "contentManager"
-        }
-      },
       admin: {
+        readOnly: true,
         position: "sidebar"
       },
+      hooks: {
+        beforeChange: [
+          async ({ req }) => req.user?.id
+        ],
+      },
       required: true
+    },
+    {
+      name: 'slug',
+      label: 'Slug',
+      type: 'text',
+      admin: {
+        position: 'sidebar',
+        readOnly: true,
+      },
+      hooks: {
+        beforeChange: [formatFieldToSlug('title')]
+      },
     },
     {
       name: 'content',

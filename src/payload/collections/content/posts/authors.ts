@@ -20,13 +20,36 @@ export const authors: CollectionConfig = {
   },
   fields: [
     {
-      name: 'name',
-      type: 'text',
-      required: true,
-    },
-    {
-      name: 'url',
-      type: 'text',
+      type: "row",
+      fields: [
+        {
+          name: 'userAuthor',
+          label: "User owner",
+          type: "relationship",
+          relationTo: "users",
+          admin: {
+            width: "33%",
+          },
+          filterOptions: {
+            roles : {
+              equals : "author"
+            }
+          },
+          required: true,
+        },
+        {
+
+          name: 'name',
+          type: 'text',
+          admin: {width: "33%"},
+          required: true,
+        },
+        {
+          name: 'url',
+          type: 'text',
+          admin: {width: "33%"},
+        },
+      ]
     },
     {
       name: "authorImage",

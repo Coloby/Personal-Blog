@@ -2,6 +2,7 @@ import configPromise from '@/payload/payload.config'
 import { getPayload } from 'payload'
 
 export const GET = async () => {
+  return
   const payload = await getPayload({config: configPromise})
 
   const data = await payload.find({

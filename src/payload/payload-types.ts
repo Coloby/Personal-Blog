@@ -106,6 +106,7 @@ export interface User {
  */
 export interface Author {
   id: number;
+  userAuthor: number | User;
   name: string;
   url?: string | null;
   authorImage?: (number | null) | MediaAuthor;
@@ -123,6 +124,7 @@ export interface Author {
 export interface MediaAuthor {
   id: number;
   alt: string;
+  mediaOwners?: (number | User)[] | null;
   prefix?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -205,6 +207,7 @@ export interface Post {
 export interface MediaPost {
   id: number;
   alt: string;
+  mediaOwners?: (number | User)[] | null;
   prefix?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -264,9 +267,9 @@ export interface Tool {
     id?: string | null;
   }[];
   title: string;
-  contentManager: number | User;
   publishedAt?: string | null;
   icon: number | MediaTool;
+  contentOwner: number | User;
   slug?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -279,6 +282,7 @@ export interface Tool {
 export interface MediaTool {
   id: number;
   alt: string;
+  mediaOwners?: (number | User)[] | null;
   prefix?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -327,7 +331,8 @@ export interface Download {
         id?: string | null;
       }[]
     | null;
-  contentManager: number | User;
+  contentOwner: number | User;
+  slug?: string | null;
   content: {
     root: {
       type: string;
@@ -345,6 +350,7 @@ export interface Download {
   };
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -353,6 +359,7 @@ export interface Download {
 export interface MediaDownload {
   id: number;
   alt: string;
+  mediaOwners?: (number | User)[] | null;
   prefix?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -531,6 +538,7 @@ export interface UsersSelect<T extends boolean = true> {
  * via the `definition` "authors_select".
  */
 export interface AuthorsSelect<T extends boolean = true> {
+  userAuthor?: T;
   name?: T;
   url?: T;
   authorImage?: T;
@@ -578,9 +586,9 @@ export interface ToolsSelect<T extends boolean = true> {
         id?: T;
       };
   title?: T;
-  contentManager?: T;
   publishedAt?: T;
   icon?: T;
+  contentOwner?: T;
   slug?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -640,10 +648,12 @@ export interface DownloadsSelect<T extends boolean = true> {
         image?: T;
         id?: T;
       };
-  contentManager?: T;
+  contentOwner?: T;
+  slug?: T;
   content?: T;
   updatedAt?: T;
   createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -684,6 +694,7 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface MediaPostsSelect<T extends boolean = true> {
   alt?: T;
+  mediaOwners?: T;
   prefix?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -717,6 +728,7 @@ export interface MediaPostsSelect<T extends boolean = true> {
  */
 export interface MediaToolsSelect<T extends boolean = true> {
   alt?: T;
+  mediaOwners?: T;
   prefix?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -760,6 +772,7 @@ export interface MediaToolsSelect<T extends boolean = true> {
  */
 export interface MediaDownloadsSelect<T extends boolean = true> {
   alt?: T;
+  mediaOwners?: T;
   prefix?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -803,6 +816,7 @@ export interface MediaDownloadsSelect<T extends boolean = true> {
  */
 export interface MediaAuthorsSelect<T extends boolean = true> {
   alt?: T;
+  mediaOwners?: T;
   prefix?: T;
   updatedAt?: T;
   createdAt?: T;

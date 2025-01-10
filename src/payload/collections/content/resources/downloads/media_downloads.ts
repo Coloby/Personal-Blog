@@ -1,7 +1,7 @@
 import { genericMedia } from "@/payload/constants/collections/defaultColumns"
 import { anyone } from "@/payload/features/accessControl/anyone"
 import { isContentManager } from "@/payload/features/accessControl/butAlsoAdmin/isContentManager"
-import { isSelfContentManager } from "@/payload/features/accessControl/butAlsoAdmin/isSelf/isSelfContentManager"
+import { isSelfMediaOwner } from "@/payload/features/accessControl/butAlsoAdmin/isSelf/isSelfMediaOwner"
 import { isAdmin } from "@/payload/features/accessControl/isAdmin"
 import type { CollectionConfig } from 'payload'
 
@@ -32,7 +32,7 @@ export const media_downloads: CollectionConfig = {
   access: {
     create: isContentManager,
     read: anyone,
-    update: isSelfContentManager,
+    update: isSelfMediaOwner,
     delete: isAdmin,
   },
   admin: {
@@ -44,6 +44,22 @@ export const media_downloads: CollectionConfig = {
       name: 'alt',
       type: 'text',
       required: true,
+    },
+    // admin
+    {
+      name: 'mediaOwners',
+      type: "relationship",
+      relationTo: "users",
+      hasMany: true,
+      admin: {
+        readOnly: true,
+        position: "sidebar",
+      },
+      hooks: {
+        beforeChange: [
+          async ({ req }) => req.user?.id
+        ],
+      },
     },
   ],
 }

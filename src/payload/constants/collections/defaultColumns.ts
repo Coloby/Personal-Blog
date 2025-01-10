@@ -1,1 +1,1 @@
-export const genericMedia = ["fileName", 'alt', "FileSize", "width", "height", "updatedAt", "CreatedAt"]
+export const genericMedia = ["fileName", "mediaOwner", 'alt', "FileSize", "width", "height", "updatedAt", "CreatedAt"]

@@ -1,7 +1,7 @@
 import { isAuthor } from "@/payload/features/accessControl/butAlsoAdmin/isAuthor"
 import { isSelfAuthor } from "@/payload/features/accessControl/butAlsoAdmin/isSelf/isSelfAuthor"
 import { isAdmin } from "@/payload/features/accessControl/isAdmin"
-import { formatTitleToSlug } from "@/payload/utils/formatTitleToSlug"
+import { formatFieldToSlug } from "@/payload/utils/formatFieldToSlug"
 import { generatePreviewPath } from '@/payload/utils/generatePreviewPath'
 
 import { isSelfAuthorOrPublished } from "@/payload/features/accessControl/butAlsoAdmin/isSelf/OR/isSelfAuthorOrPublished"
@@ -27,6 +27,7 @@ export const posts: CollectionConfig = {
     read: isSelfAuthorOrPublished,
     update: isSelfAuthor,
     delete: isAdmin,
+    readVersions: isSelfAuthor,
   },
   admin: {
     group: "Content",
@@ -223,7 +224,7 @@ export const posts: CollectionConfig = {
         position: 'sidebar',
       },
       hooks: {
-        beforeChange: [formatTitleToSlug('postTitle')]
+        beforeChange: [formatFieldToSlug('postTitle')]
       },
     },
     // invisible

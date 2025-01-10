@@ -1,21 +1,22 @@
 import { isContentManager } from "@/payload/features/accessControl/butAlsoAdmin/isContentManager"
-import { isSelfContentManager } from "@/payload/features/accessControl/butAlsoAdmin/isSelf/isSelfContentManager"
-import { isSelfContentManagerOrPublished } from "@/payload/features/accessControl/butAlsoAdmin/isSelf/OR/isSelfContentManagerOrPublished"
+import { isSelfContentOwner } from "@/payload/features/accessControl/butAlsoAdmin/isSelf/isSelfContentOwner"
+import { isSelfContentOwnerOrPublished } from "@/payload/features/accessControl/butAlsoAdmin/isSelf/OR/isSelfContentOwnerOrPublished"
 import { isAdmin } from "@/payload/features/accessControl/isAdmin"
-import { formatTitleToSlug } from "@/payload/utils/formatTitleToSlug"
+import { formatFieldToSlug } from "@/payload/utils/formatFieldToSlug"
 import type { CollectionConfig } from 'payload'
 
 export const tools: CollectionConfig = {
   slug: 'tools',
   access: {
     create: isContentManager,
-    read: isSelfContentManagerOrPublished,
-    update: isSelfContentManager,
+    read: isSelfContentOwnerOrPublished,
+    update: isSelfContentOwner,
     delete: isAdmin,
+    readVersions: isSelfContentOwner,
   },
   admin: {
     group: "Content",
-    defaultColumns: ['title', "contentManager", 'score', "_status", "publishDate", "websiteUrl", "moreInfoUrl"],
+    defaultColumns: ['title', "contentOwner", 'score', "_status", "publishDate", "websiteUrl", "moreInfoUrl"],
   },
   versions: {
     drafts: {
@@ -117,21 +118,6 @@ export const tools: CollectionConfig = {
       }
     },
     {
-      name: 'contentManager',
-      label: "Content Manager",
-      type: "relationship",
-      relationTo: "users",
-      filterOptions: {
-        roles : {
-          equals : "contentManager"
-        }
-      },
-      admin: {
-        position: "sidebar"
-      },
-      required: true
-    },
-    {
       name: 'publishedAt',
       label: 'publish date',
       type: 'date',
@@ -161,6 +147,21 @@ export const tools: CollectionConfig = {
       }
     },
     {
+      name: 'contentOwner',
+      type: "relationship",
+      relationTo: "users",
+      admin: {
+        readOnly: true,
+        position: "sidebar"
+      },
+      hooks: {
+        beforeChange: [
+          async ({ req }) => req.user?.id
+        ],
+      },
+      required: true
+    },
+    {
       name: 'slug',
       label: 'Slug',
       type: 'text',
@@ -169,7 +170,7 @@ export const tools: CollectionConfig = {
         readOnly: true,
       },
       hooks: {
-        beforeChange: [formatTitleToSlug('title')]
+        beforeChange: [formatFieldToSlug('title')]
       },
     },
   ],

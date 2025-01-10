@@ -1,6 +1,7 @@
 import { isSelfAuthor } from "@/payload/features/accessControl/butAlsoAdmin/isSelf/isSelfAuthor"
 import { isAdmin, isAdminField } from "@/payload/features/accessControl/isAdmin"
 import type { CollectionConfig } from 'payload'
+import { anyone } from "../features/accessControl/anyone"
 
 export const Users: CollectionConfig = {
   slug: 'users',
@@ -10,10 +11,11 @@ export const Users: CollectionConfig = {
   },
   access: {
     create: isAdmin,
-    read: isSelfAuthor,
+    read: isAdmin,
     update: isAdmin,
     delete: isAdmin,
-    // admin: authenticated,
+    unlock: isAdmin,
+    // admin: isAdmin,
   },
   auth: {
     tokenExpiration: 7200, // (7200 = 2h) How many seconds to keep the user logged in 

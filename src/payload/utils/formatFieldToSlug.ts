@@ -1,7 +1,7 @@
 import { formatToSlug } from "@/utils/formatToSlug"
 import type { FieldHook } from 'payload'
 
-export const formatTitleToSlug = (fallback: string): FieldHook => ({ value, originalDoc, data }) => {
+export const formatFieldToSlug = (fallback: string): FieldHook => ({ value, originalDoc, data }) => {
   if (data?.metadata?.[fallback]) return formatToSlug(data.metadata?.[fallback], "-")
   if (data?.[fallback]) return formatToSlug(data?.[fallback], "-")
   console.error("Double-check if this is the behaviour you want")
