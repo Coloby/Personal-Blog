@@ -6,21 +6,13 @@ import {
   AccordionTrigger,
 } from "@/components/primitives/shadcn-ui/accordion";
 import { getMDFromLexical } from "@/payload/features/lexical/getMDFromLexical";
+import configPromise from '@/payload/payload.config';
 import fs from 'fs';
 import path from 'path';
+import { getPayload } from "payload";
 import React from "react";
+import { getRawMdxByFilePath } from "./localMDX/getRawMdxByFilePath";
 import { useUnifiedPipeline } from "./unifiedPipeline";
-
-export const getRawMdxByFilePath = async (dir, fileNameWExt) => {
-  const contentRootDir = path.join(process.cwd(), 'assets', 'content', "route_specific_mdx", dir)
-  const fileNameNoExt = fileNameWExt.replace(/\.mdx$/, '')
-  const completeFilePath = path.join(contentRootDir, `${fileNameNoExt.replace(/%20/g, ' ')}.mdx`) // .replace adds support for files with spaces and &
-
-  try {
-    const rawMDX = fs.readFileSync(completeFilePath, { encoding: 'utf8' })
-    return { rawMDX }
-  } catch (error) { throw new Error(`Resource not found for: ${completeFilePath}`) }
-}
 
 export const getFrontmatterBySlug = async (CMS, dir, fileNameWExt, index = 0) => {
   const isSlugFromCMS = CMS?.mdxId && true || false
@@ -38,33 +30,31 @@ export const getFrontmatterBySlug = async (CMS, dir, fileNameWExt, index = 0) =>
   return { frontmatter }
 }
 
+export const getAllCMSDocsByCollection = async (collection) => {
+  const payload = await getPayload({ config : configPromise })
+  return await payload.find({
+    collection: collection,
+    limit: 100,
+    draft: false,
+    where: {
+      _status: {
+        equals: 'published',
+      },
+    },
+  });
+}
+
 export const getAllArticlesFrontmatter = async () => {
   const contentRootDir = path.join(process.cwd(), 'assets', 'content', "route_specific_mdx", "header_routes", "blog")
   const mdxPosts = fs.readdirSync(contentRootDir)
   let posts = []
   
-  // Takes care of local posts
-    let i = 0
-    for (const fileNameWExt of mdxPosts) {
-      i++
-      const { frontmatter } = await getFrontmatterBySlug(false, "header_routes/blog/", fileNameWExt, i)
-      posts.push(frontmatter)
-    }
-  // Takes care of CMS posts
-    // const payload = await getPayload({ config : configPromise })
-    // const postsFromCMS = await payload.find({
-    //   collection: "posts",
-    //   where: {
-    //     _status: {
-    //       equals: 'published',
-    //     },
-    //   },
-    // });
-    // postsFromCMS.docs.forEach((postFromCMS, i) => {
-    //   postFromCMS.url = formatToSlug(JSON.stringify(postFromCMS.metadata.postTitle), "-")
-    //   posts.push(postFromCMS)
-    // })
-
+  let i = 0
+  for (const fileNameWExt of mdxPosts) {
+    i++
+    const { frontmatter } = await getFrontmatterBySlug(false, "header_routes/blog/", fileNameWExt, i)
+    posts.push(frontmatter)
+  }
   return posts
 }
 

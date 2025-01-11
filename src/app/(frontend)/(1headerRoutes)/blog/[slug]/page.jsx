@@ -1,62 +1,33 @@
 import C_ShareBtns from "@/components/clientComps/C_ShareBtns";
 import SettingsBtn from "@/components/logic/settings/SettingsBtn";
 import GetAuthorsComp from "@/features/mdx/GetAuthorsComp";
-import { getAllArticlesFrontmatter, getFrontmatterBySlug, getTOCCompBySlug } from '@/features/mdx/mdxManager';
+import { getMdxComp } from "@/features/mdx/getMdxComp";
+import { getAllCMSDocsByCollection, getTOCCompBySlug } from '@/features/mdx/mdxManager';
 import { defaultProseSettings } from "@/features/mdx/proseSettings";
-import configPromise from '@/payload/payload.config';
+import { findCMSDocBySlug } from "@/payload/utils/findCMSDocBySlug";
 import { getBaseUrl } from "@/utils/baseUrl";
 import { reverseDateString } from "@/utils/reverseDateString";
 import Image from "next/image";
-import { getPayload } from 'payload';
-import { getMdxComp } from "../../../../../features/mdx/getMdxComp";
 
 const Page = async props => {
   const params = await props.params
   const postSlug = params.slug
-  const postFileName = postSlug + ".mdx"
 
-  const payload = await getPayload({ config : configPromise })
-  const findDocumentBySlug = async (collectionSlug, slug) => await payload.find({
-    collection: collectionSlug,
-    where: {
-      slug: {
-        equals: slug
-      },
-      _status: {
-        equals: 'published',
-      },
-    },
-  });
-
-  let document
-  try { document = await findDocumentBySlug("posts", await postSlug) } 
-  catch (error) { console.error("Error fetching from blog/[slug]/page.jsx: ", error.message) }
-
-  const CMSPost = document?.docs[0]
-  const isPostFromCMS = CMSPost?.id && true || false
-  let PostContentComp
-  let localFilePost
-
-  if (isPostFromCMS) PostContentComp = await getMdxComp(false, false, false, {
+  const CMSPost = (await findCMSDocBySlug("posts", postSlug)).docs[0]
+  const PostContentComp = await getMdxComp(false, false, false, {
     mdxId : CMSPost.id, 
     collection : "posts"
   })
-  else {
-    PostContentComp = await getMdxComp("header_routes/blog", postFileName)
-    localFilePost = (await getFrontmatterBySlug(false, "header_routes/blog/", postFileName)).frontmatter
-  }
 
-  const { TOCComponent, readingTime } = isPostFromCMS ? await getTOCCompBySlug({
-      mdxId : CMSPost.id,
-      collection : "posts"
-    })
-    : await getTOCCompBySlug(false, "header_routes/blog/", postFileName)
-  const postThumbnail   = isPostFromCMS ? `${await getBaseUrl()}${CMSPost?.metadata.postImage.url}` : localFilePost?.thumbnail ? "/assets/routes_specific/blog/"+localFilePost?.thumbnail : `https://picsum.photos/500/500?random=${localFilePost?.index}`
-  const postPublishedAt = isPostFromCMS ? reverseDateString(CMSPost?.publishedAt.slice(0, 10)): localFilePost.publishedAt
-  const postReadingTime = isPostFromCMS ? readingTime : localFilePost?.readingTime
-  const postDescription = CMSPost?.metadata.description || localFilePost.description
-  const authors         = GetAuthorsComp(CMSPost?.postAuthors || localFilePost.authors)
-  const postTitle       = CMSPost?.metadata.postTitle || localFilePost.title
+  const { TOCComponent, readingTime } = await getTOCCompBySlug({
+    mdxId : CMSPost.id,
+    collection : "posts"
+  })
+  const postThumbnail   = `${await getBaseUrl()}${CMSPost.metadata.postImage.url}`
+  const postPublishedAt = reverseDateString(CMSPost.publishedAt.slice(0, 10))
+  const postDescription = CMSPost.metadata.description
+  const authors         = GetAuthorsComp(CMSPost.postAuthors)
+  const postTitle       = CMSPost.metadata.postTitle
   
   return (
     <section className={`flexy !items-start gap-20 h-fit pb-8 !max-w-full w-full prose ${defaultProseSettings}`}>
@@ -88,7 +59,7 @@ const Page = async props => {
                 />
               </div>
             </div>
-            <span className="flex flex-wrap gap-x-8 gap-y-1 mb-4"><address className="flexy">{authors}</address><time>{postPublishedAt}</time><span>{postReadingTime}</span></span>
+            <span className="flex flex-wrap gap-x-8 gap-y-1 mb-4"><address className="flexy">{authors}</address><time>{postPublishedAt}</time><span>{readingTime}</span></span>
             <h1 className="text-bold-gradient">{postTitle}</h1>
             <div className="lead text-primary_text_color">{postDescription}</div>
             <div className="sl:hidden"><TOCComponent platform={"mobile"} open={false} /></div>
@@ -104,28 +75,32 @@ const Page = async props => {
 }
 
 export async function generateMetadata(props) {
-  const params = await props.params;
-  //! const postSlug = params.slug
-  const postSlug = "finding-you-identity-and-purpose-beginners-guide"
-  // const title = decodeURIComponent(postSlug).replace(/\.[^/.]+$/, ''); // removes potential file extensions and mutations like %20 instead of spaces
-  const { frontmatter } = await getFrontmatterBySlug(false, "header_routes/blog/", postSlug + ".mdx")
+  const params = await props.params
+  const postSlug = params.slug
+  
+  const CMSPost = (await findCMSDocBySlug("posts", postSlug)).docs[0]
+
+  const seoTitle       = CMSPost.seo.title
+  const seoDescription = CMSPost.seo.description
+  const authors         = CMSPost.postAuthors
+  const seoThumbnailUrl   = CMSPost.seo.image.url
 
   return {
-    title: "Blog | "+frontmatter.title,
-    description: frontmatter.description,
-    authors: frontmatter.authors, // mostly content creators and writers
+    title: "Blog | "+seoTitle,
+    description: seoDescription,
+    authors: authors, // mostly content creators and writers
     metadataBase: new URL(`${process.env.BASE_URL}`),
     alternates: {
       canonical: `${process.env.PREFERRED_URL}/blog/${postSlug}`,
     },
     openGraph: {
-      title: frontmatter.title,
-      description: frontmatter.description,
+      title: seoTitle,
+      description: seoDescription,
       url: `${process.env.BASE_URL}`,
       siteName: `Ed's corner`,
       images: [
         {
-          url: "/assets/routes_specific/blog/"+frontmatter.thumbnail,
+          url: seoThumbnailUrl,
           width: 800,
           height: 600,
           alt: '',
@@ -135,11 +110,11 @@ export async function generateMetadata(props) {
       type: 'website',
     },
     twitter: {
-      title: frontmatter.title,
-      description: frontmatter.description,
+      title: seoTitle,
+      description: seoDescription,
       card: 'summary_large_image',
       images: {
-        url: "/assets/routes_specific/blog/"+frontmatter.thumbnail,
+        url: seoThumbnailUrl,
         alt: '',
       },
     }
@@ -147,10 +122,10 @@ export async function generateMetadata(props) {
 }
 
 export async function generateStaticParams() { // build static routes for every mdx article https://nextjs.org/docs/app/api-reference/functions/generate-static-params. It won't overload the server even when fetching images into articles (for articles outside of this function) https://youtu.be/wTGVHLyV09M?t=2128
-  const posts = await getAllArticlesFrontmatter()
+  const CMSPosts = await getAllCMSDocsByCollection("posts")
  
-  return posts.map((post) => ({
-    slug: post.url,
+  return CMSPosts.docs.map((post) => ({
+    slug: post.slug,
   }))
 }
 

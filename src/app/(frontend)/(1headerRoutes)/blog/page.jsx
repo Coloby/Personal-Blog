@@ -1,50 +1,16 @@
 import GetAuthorsComp from "@/features/mdx/GetAuthorsComp";
-import { getAllArticlesFrontmatter, getFrontmatterBySlug } from '@/features/mdx/mdxManager';
-import configPromise from '@/payload/payload.config';
+import { getAllCMSDocsByCollection, getFrontmatterBySlug } from '@/features/mdx/mdxManager';
 import { getBaseUrl } from "@/utils/baseUrl";
-import { formatToSlug } from "@/utils/formatToSlug";
 import { reverseDateString } from "@/utils/reverseDateString";
 import Image from "next/image";
 import Link from 'next/link';
-import { getPayload } from 'payload';
 
 const Page = async () => {
-  const posts = await getAllArticlesFrontmatter()
-  const payload = await getPayload({ config : configPromise })
-  let postsCollection = await payload.find({
-    collection: 'posts',
-    limit: 1000,
-    pagination: false,
-    draft: false,
-    where: {
-      _status: {
-        equals: 'published',
-      },
-    },
-    select: {
-      slug: false,
-      authors: {
-        select: {
-          name: true,
-          url: true,
-          authorImage: {
-            url: true
-          },
-        }
-      }
-    },
-  })
-  postsCollection.docs.forEach((postFromCMS, i) => {
-    postFromCMS.url = formatToSlug(JSON.stringify(postFromCMS.metadata.postTitle), "-")
-    posts.push(postFromCMS)
-  })
+  let postsCollection = await getAllCMSDocsByCollection("posts")
 
-  const sortedPosts = posts.sort((a, b) => { 
-    const aIsPostFromCMS = a?.id && true || false
-    const bIsPostFromCMS = b?.id && true || false
-
-    const aDate = aIsPostFromCMS ? a?.publishedAt.slice(0, 10) : reverseDateString(a.publishedAt)
-    const bDate = bIsPostFromCMS ? b?.publishedAt.slice(0, 10) : reverseDateString(b.publishedAt)
+  const sortedPosts = postsCollection.docs.sort((a, b) => { 
+    const aDate = a?.publishedAt.slice(0, 10)
+    const bDate = b?.publishedAt.slice(0, 10)
 
     const aResult = new Date(aDate)
     const bResult = new Date(bDate);
@@ -54,29 +20,21 @@ const Page = async () => {
   return (
     <section className=' flex flex-wrap  gap-x-16 gap-y-12 w-md lg:w-[1334px] justify-center not-prose h-fit'>
       {sortedPosts?.map(async (frontmatter) => {
-        const isPostFromCMS   = frontmatter?.id && true || false
-        const postThumbnail   = isPostFromCMS ? `${await getBaseUrl()}${frontmatter?.metadata.postImage.url}` 
-          : frontmatter?.thumbnail ? `${await getBaseUrl()}/assets/routes_specific/blog/${frontmatter?.thumbnail}`
-          : `https://picsum.photos/500/500?random=${frontmatter?.index}`
-        const postTitle       = isPostFromCMS ? frontmatter?.metadata.postTitle : frontmatter.title
-        const postDescription = isPostFromCMS ? frontmatter?.metadata.description : frontmatter.description
-        const postPublishedAt = isPostFromCMS ? reverseDateString(frontmatter?.publishedAt.slice(0, 10)) : frontmatter.publishedAt
-
-        const authors = GetAuthorsComp(isPostFromCMS ? frontmatter?.postAuthors : frontmatter.authors)
-        let postReadingTime
-        if (isPostFromCMS) {
-          const postFrontmatter = await getFrontmatterBySlug({
-            mdxId : frontmatter.id,
-            collection : "posts"
-          })
-          postReadingTime = postFrontmatter.frontmatter.readingTime
-        }
-        postReadingTime = isPostFromCMS ? postReadingTime : frontmatter.readingTime
+        const postThumbnail   = `${await getBaseUrl()}${frontmatter?.metadata.postImage.url}` 
+        const postTitle       = frontmatter?.metadata.postTitle
+        const postDescription = frontmatter?.metadata.description
+        const postPublishedAt = reverseDateString(frontmatter?.publishedAt.slice(0, 10))
+        const postFrontmatter = await getFrontmatterBySlug({
+          mdxId : frontmatter.id,
+          collection : "posts"
+        })
+        const postReadingTime = postFrontmatter.frontmatter.readingTime
+        const authors = GetAuthorsComp(frontmatter?.postAuthors)
         
         return (
-          <article className="max-w-[334px] bg-secondary p-4 flex items-stretch flex-col min-h-[450px] !max-h-[450px] border border-primary  rounded-xs" key={frontmatter.url} >
+          <article className="max-w-[334px] bg-secondary p-4 flex items-stretch flex-col min-h-[450px] !max-h-[450px] border border-primary  rounded-xs" key={frontmatter.slug} >
             <Link
-              href={`blog/${frontmatter.url}`} 
+              href={`blog/${frontmatter.slug}`} 
               key={postTitle}
               className=''
             >

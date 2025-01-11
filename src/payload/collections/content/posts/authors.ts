@@ -23,7 +23,7 @@ export const authors: CollectionConfig = {
       type: "row",
       fields: [
         {
-          name: 'userAuthor',
+          name: 'userAuthorOwner',
           label: "User owner",
           type: "relationship",
           relationTo: "users",

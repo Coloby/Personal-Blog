@@ -106,7 +106,7 @@ export interface User {
  */
 export interface Author {
   id: number;
-  userAuthor: number | User;
+  userAuthorOwner: number | User;
   name: string;
   url?: string | null;
   authorImage?: (number | null) | MediaAuthor;
@@ -538,7 +538,7 @@ export interface UsersSelect<T extends boolean = true> {
  * via the `definition` "authors_select".
  */
 export interface AuthorsSelect<T extends boolean = true> {
-  userAuthor?: T;
+  userAuthorOwner?: T;
   name?: T;
   url?: T;
   authorImage?: T;

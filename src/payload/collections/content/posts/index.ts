@@ -1,6 +1,6 @@
 import { isAuthor } from "@/payload/features/accessControl/butAlsoAdmin/isAuthor"
 import { isSelfAuthor } from "@/payload/features/accessControl/butAlsoAdmin/isSelf/isSelfAuthor"
-import { isAdmin } from "@/payload/features/accessControl/isAdmin"
+import { isAdmin, isAdminField } from "@/payload/features/accessControl/isAdmin"
 import { formatFieldToSlug } from "@/payload/utils/formatFieldToSlug"
 import { generatePreviewPath } from '@/payload/utils/generatePreviewPath'
 
@@ -213,11 +213,26 @@ export const posts: CollectionConfig = {
       admin: {
         position: "sidebar"
       },
+      // access: {
+      //   update: isAdminField
+      // },
+      // hooks: {
+      //   beforeChange: [
+      //     async ({ req }) => {
+      //       if (!req?.user?.roles?.includes("author")) return
+      //       req.user?.id
+      //     }
+      //   ],
+      // },
+      // filterOptions: {
+      //   roles : {
+      //     equals : "author"
+      //   }
+      // },
       required: true
     },
     {
       name: 'slug',
-      label: 'Slug',
       type: 'text',
       admin: {
         readOnly: true,

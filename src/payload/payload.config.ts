@@ -76,7 +76,7 @@ const payloadConfig = buildConfig({
       // uploadsCollection: 'media/seo', // collection used to inject media-related seo tags for the collections mentioned above
       generateTitle: ({ doc }) => doc?.title || doc.metadata["post-title"] || "my title",
       generateDescription: ({ doc }) => doc?.excerpt ? doc.excerpt : "myDescription",
-      generateImage: ({ doc }) => doc.metadata["post-image"]
+      generateImage: ({ doc }) => doc.metadata["postImage"]
       // generateURL: ({doc}) => doc?.url ? formatSlug(doc.url, "-") : doc.url || "https..."
     })
   ],
