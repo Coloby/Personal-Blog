@@ -3,6 +3,7 @@ import C_YTEmbed from "@/features/mdx/components/customCompsForEditor/C_YTEmbed"
 import AnchorTag from "@/features/mdx/components/customCompsForEditor/customElements/AnchorTag";
 import ImageTag from "@/features/mdx/components/customCompsForEditor/customElements/ImageTag";
 import remark_env from "@/features/mdx/customPlugins/remark_env";
+import { defaultProseSettings } from "@/features/mdx/lib/proseSettings";
 import { getMDFromLexical } from "@/payload/features/lexical/getMDFromLexical";
 import fs from "fs";
 import { bundleMDX } from 'mdx-bundler';
@@ -13,7 +14,6 @@ import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import { fileURLToPath } from 'url';
-import { defaultProseSettings } from "./proseSettings";
 
 export async function getMdxComp(dir, fileWExtension, explicitFilePath, CMS) {
   const isSlugFromCMS = CMS?.mdxId && true || false
@@ -21,7 +21,7 @@ export async function getMdxComp(dir, fileWExtension, explicitFilePath, CMS) {
   const __dirname = dirname(__filename);
   
   // gets custom components to import directly into mdx
-    const customCompsRelativePath = "../../features/mdx/components/customCompsForEditor"
+    const customCompsRelativePath = "../../mdx/components/customCompsForEditor"
     const customCompsDirPath = path.resolve(__dirname, customCompsRelativePath); 
     let mdxCustomComps = {};
     try {
@@ -44,7 +44,7 @@ export async function getMdxComp(dir, fileWExtension, explicitFilePath, CMS) {
     if (isSlugFromCMS) rawMdx = await getMDFromLexical(CMS.mdxId, CMS.collection)
     else {
       const mdxFilePath = explicitFilePath ? path.resolve(__dirname, `../../../${explicitFilePath}`)
-        : path.resolve(__dirname, `../../../assets/content/route_specific_mdx/${dir}/${fileWExtension.replace(/%20/g, ' ')}`); // adds support to files with spaces
+        : path.resolve(__dirname, `../../../../assets/content/route_specific_mdx/${dir}/${fileWExtension.replace(/%20/g, ' ')}`); // adds support to files with spaces
       rawMdx = fs.readFileSync(mdxFilePath, 'utf8')
     }
 

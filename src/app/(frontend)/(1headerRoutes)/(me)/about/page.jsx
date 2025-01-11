@@ -1,4 +1,4 @@
-import { getMdxComp } from "@/features/mdx/getMdxComp"
+import { getMdxComp } from "@/features/mdx/getComp/getMdxComp"
 import Image from "next/image"
 
 const page = async () => {

@@ -1,10 +1,10 @@
 import GetUpdatesComps from "@/components/logic/GetUpdatesComps"
 import Btn from "@/components/primitives/logic/Btn"
 import SocialBTNs from "@/components/ui/SocialBTNs"
-import GetAuthorsComp from "@/features/mdx/GetAuthorsComp"
-import { getMdxComp } from "@/features/mdx/getMdxComp"
+import getAuthorsComp from "@/features/mdx/getComp/getAuthorsComp"
+import { getMdxComp } from "@/features/mdx/getComp/getMdxComp"
+import { defaultProseSettings } from "@/features/mdx/lib/proseSettings"
 import { getFrontmatterBySlug } from "@/features/mdx/mdxManager"
-import { defaultProseSettings } from "@/features/mdx/proseSettings"
 import { scrollbar } from "@/lib/tailwind-scrollbar/settings"
 import Image from "next/image"
 import Link from "next/link"
@@ -12,9 +12,9 @@ import Link from "next/link"
 export default async function Home() {
   const wonderRoomPieceLink = "https://www.youtube.com/watch?v=TDqsr3MNTTc"
   const { udpateComps } = GetUpdatesComps(6)
-  const NowOverviewComp =  await getMdxComp("header_routes/root", `now_overview.mdx`)
+  const NowOverviewComp =  await getMdxComp("","", "../assets/content/route_specific_mdx/header_routes/root/now_overview.mdx")
   const { frontmatter } = await getFrontmatterBySlug(false, "header_routes/blog", "finding-you-identity-and-purpose-beginners-guide.mdx")
-  const authors = GetAuthorsComp(frontmatter.authors)
+  const authors = getAuthorsComp(frontmatter.authors)
 
   return (
     <div className={`sm:w-[1300px] !max-w-none min-h-screen flex flex-col gap-[150px] lg:gap-[200px] prose ${defaultProseSettings}`}>

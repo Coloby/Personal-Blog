@@ -1,4 +1,4 @@
-import { getAllArticlesFrontmatter } from '@/features/mdx/mdxManager';
+import { getAllArticlesFrontmatter } from '@/features/mdx/localMDX/getAllArticlesFrontmatter';
 
 export default async function sitemap() {
   const posts = await getAllArticlesFrontmatter()

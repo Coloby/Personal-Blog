@@ -1,5 +1,5 @@
-import { getMdxComp } from "@/features/mdx/getMdxComp"
-import { defaultProseSettings } from "@/features/mdx/proseSettings"
+import { getMdxComp } from "@/features/mdx/getComp/getMdxComp"
+import { defaultProseSettings } from "@/features/mdx/lib/proseSettings"
 
 const page = async () => {
   const NowComp = await getMdxComp("header_routes/(me)/now", "now.mdx")

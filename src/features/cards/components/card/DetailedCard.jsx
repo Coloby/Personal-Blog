@@ -15,7 +15,7 @@ import {
 } from "@/components/primitives/shadcn-ui/dialog"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/primitives/shadcn-ui/popover"
 import { currentCategoryTagsAtom, getCategoryTagsAtom } from "@/features/cards/stores/AtomStore"
-import { defaultProseSettings } from "@/features/mdx/proseSettings"
+import { defaultProseSettings } from "@/features/mdx/lib/proseSettings"
 import { scrollbar } from "@/lib/tailwind-scrollbar/settings"
 import { useAtom } from "jotai"
 import Image from "next/image"

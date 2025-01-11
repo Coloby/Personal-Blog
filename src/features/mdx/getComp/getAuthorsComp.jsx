@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const GetAuthorsComp = (authors) => {
+const getAuthorsComp = (authors) => {
 
   return (
     <div className="flex gap-4 not-prose">
@@ -14,4 +14,4 @@ const GetAuthorsComp = (authors) => {
   )
 }
 
-export default GetAuthorsComp
+export default getAuthorsComp

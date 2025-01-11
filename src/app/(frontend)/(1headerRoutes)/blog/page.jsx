@@ -1,5 +1,6 @@
-import GetAuthorsComp from "@/features/mdx/GetAuthorsComp";
-import { getAllCMSDocsByCollection, getFrontmatterBySlug } from '@/features/mdx/mdxManager';
+import getAuthorsComp from "@/features/mdx/getComp/getAuthorsComp";
+import { getFrontmatterBySlug } from '@/features/mdx/mdxManager';
+import { getAllCMSDocsByCollection } from "@/payload/utils/queryCMS/getAllCMSDocsByCollection";
 import { getBaseUrl } from "@/utils/baseUrl";
 import { reverseDateString } from "@/utils/reverseDateString";
 import Image from "next/image";
@@ -29,7 +30,7 @@ const Page = async () => {
           collection : "posts"
         })
         const postReadingTime = postFrontmatter.frontmatter.readingTime
-        const authors = GetAuthorsComp(frontmatter?.postAuthors)
+        const authors = getAuthorsComp(frontmatter?.postAuthors)
         
         return (
           <article className="max-w-[334px] bg-secondary p-4 flex items-stretch flex-col min-h-[450px] !max-h-[450px] border border-primary  rounded-xs" key={frontmatter.slug} >

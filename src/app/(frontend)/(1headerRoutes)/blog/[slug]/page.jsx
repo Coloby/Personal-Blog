@@ -1,10 +1,11 @@
 import C_ShareBtns from "@/components/clientComps/C_ShareBtns";
 import SettingsBtn from "@/components/logic/settings/SettingsBtn";
-import GetAuthorsComp from "@/features/mdx/GetAuthorsComp";
-import { getMdxComp } from "@/features/mdx/getMdxComp";
-import { getAllCMSDocsByCollection, getTOCCompBySlug } from '@/features/mdx/mdxManager';
-import { defaultProseSettings } from "@/features/mdx/proseSettings";
-import { findCMSDocBySlug } from "@/payload/utils/findCMSDocBySlug";
+import getAuthorsComp from "@/features/mdx/getComp/getAuthorsComp";
+import { getMdxComp } from "@/features/mdx/getComp/getMdxComp";
+import { getTOCCompBySlug } from '@/features/mdx/getComp/getTOCCompBySlug';
+import { defaultProseSettings } from "@/features/mdx/lib/proseSettings";
+import { findCMSDocBySlug } from "@/payload/utils/queryCMS/findCMSDocBySlug";
+import { getAllCMSDocsByCollection } from "@/payload/utils/queryCMS/getAllCMSDocsByCollection";
 import { getBaseUrl } from "@/utils/baseUrl";
 import { reverseDateString } from "@/utils/reverseDateString";
 import Image from "next/image";
@@ -26,7 +27,7 @@ const Page = async props => {
   const postThumbnail   = `${await getBaseUrl()}${CMSPost.metadata.postImage.url}`
   const postPublishedAt = reverseDateString(CMSPost.publishedAt.slice(0, 10))
   const postDescription = CMSPost.metadata.description
-  const authors         = GetAuthorsComp(CMSPost.postAuthors)
+  const authors         = getAuthorsComp(CMSPost.postAuthors)
   const postTitle       = CMSPost.metadata.postTitle
   
   return (

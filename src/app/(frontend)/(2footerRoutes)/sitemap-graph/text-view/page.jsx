@@ -1,7 +1,7 @@
 import SettingsBtn from "@/components/logic/settings/SettingsBtn";
 import Btn from "@/components/primitives/logic/Btn";
-import { getMdxComp } from "@/features/mdx/getMdxComp";
-import { defaultProseSettings } from "@/features/mdx/proseSettings";
+import { getMdxComp } from "@/features/mdx/getComp/getMdxComp";
+import { defaultProseSettings } from "@/features/mdx/lib/proseSettings";
 
 const page = async () => {
   const SitemapText = await getMdxComp("","", "sitemap.md")

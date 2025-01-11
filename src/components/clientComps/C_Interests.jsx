@@ -4,7 +4,7 @@ import {
   Dialog,
   DialogContent
 } from "@/components/primitives/shadcn-ui/dialog"
-import { defaultProseSettings } from "@/features/mdx/proseSettings"
+import { defaultProseSettings } from "@/features/mdx/lib/proseSettings"
 import Image from "next/image"
 import { useState } from "react"
 import BigBtn from "../logic/BigBtn"

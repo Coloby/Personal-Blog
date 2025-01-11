@@ -1,6 +1,6 @@
 import C_Email_form from "@/components/clientComps/C_Email_form"
 import Btn from "@/components/primitives/logic/Btn"
-import { getMdxComp } from "@/features/mdx/getMdxComp"
+import { getMdxComp } from "@/features/mdx/getComp/getMdxComp"
 import Image from "next/image"
 
 const page = async () => {

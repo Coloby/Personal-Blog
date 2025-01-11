@@ -1,13 +1,13 @@
-import GetAuthorsComp from "@/features/mdx/GetAuthorsComp";
-import { getMdxComp } from "@/features/mdx/getMdxComp";
+import getAuthorsComp from "@/features/mdx/getComp/getAuthorsComp";
+import { getMdxComp } from "@/features/mdx/getComp/getMdxComp";
+import { defaultProseSettings } from "@/features/mdx/lib/proseSettings";
 import { getFrontmatterBySlug } from "@/features/mdx/mdxManager";
-import { defaultProseSettings } from "@/features/mdx/proseSettings";
 import Image from "next/image";
 
 const page = async () => {
   const Component = await getMdxComp("header_routes/(resources)/wonder-room/tools/(moreInfoTools)/", "activity_watch.mdx")
   const { frontmatter } = await getFrontmatterBySlug(false, "header_routes/(resources)/wonder-room/tools/(moreInfoTools)/", "activity_watch.mdx")
-  const authors = GetAuthorsComp(frontmatter.authors)
+  const authors = getAuthorsComp(frontmatter.authors)
 
   return (
     <section className={`flexy !items-start gap-20 h-fit pb-8 !max-w-full w-full prose ${defaultProseSettings}`}>

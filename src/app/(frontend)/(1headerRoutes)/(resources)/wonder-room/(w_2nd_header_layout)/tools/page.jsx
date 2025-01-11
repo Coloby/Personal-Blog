@@ -1,5 +1,5 @@
 import C_Cards from "@/features/cards/components/client/C_Cards";
-import { getAllCMSDocsByCollection } from "@/features/mdx/mdxManager";
+import { getAllCMSDocsByCollection } from "@/payload/utils/queryCMS/getAllCMSDocsByCollection";
 import { getBaseUrl } from "@/utils/baseUrl";
 import { Suspense } from "react";
 
