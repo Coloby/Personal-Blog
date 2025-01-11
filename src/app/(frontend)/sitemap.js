@@ -1,15 +1,12 @@
-import { getAllArticlesFrontmatter } from '@/features/mdx/localMDX/getAllArticlesFrontmatter';
+import { getAllCMSDocsByCollection } from "@/payload/utils/queryCMS/getAllCMSDocsByCollection"
 
 export default async function sitemap() {
-  const posts = await getAllArticlesFrontmatter()
-  const sitemapPosts = posts.map((post) => {
-    const dateString = post.updatedAt
-    const [day, month, year] = dateString.split('-');
-    const dateObject = new Date(year, month - 1, day); // JavaScript counts months from 0, so subtract 1 from the month
-    const isoDate = dateObject.toISOString();
+  const CMSposts = await getAllCMSDocsByCollection("posts")
+  const sitemapPosts = CMSposts.docs.map((post) => {
+    const isoDate = post.updatedAt
 
     return {
-      url: `${process.env.BASE_URL}/blog/`+post.url,
+      url: `${process.env.BASE_URL}/blog/`+post.slug,
       lastModified: isoDate, // if wrong, they will ignore this
       changeFrequency: "monthly",
       priority: 0.5
@@ -17,7 +14,7 @@ export default async function sitemap() {
   })
 
   return [
-    // ...sitemapPosts,
+    ...sitemapPosts,
     {
       url: `${process.env.BASE_URL}`,
       // lastModified: new Date(),

@@ -1,12 +1,9 @@
 // This is the RSS feed. Made using route handlers https://nextjs.org/docs/app/api-reference/file-conventions/route
-import { getAllArticlesFrontmatter } from '@/features/mdx/localMDX/getAllArticlesFrontmatter'
 import RSS from "rss"
-
-// guid
-// categories
+import { getAllCMSDocsByCollection } from "@/payload/utils/queryCMS/getAllCMSDocsByCollection"
 
 export async function GET() {
-  const posts = await getAllArticlesFrontmatter()
+  const CMSposts = await getAllCMSDocsByCollection("posts")
 
   const feed = new RSS({
     title: "Ed's personal website",
@@ -18,17 +15,14 @@ export async function GET() {
     pubDate: new Date(),
   })
 
-  posts.map((post) => {
-    const dateString = post.publishedAt
-    const [day, month, year] = dateString.split('/');
-    const dateObject = new Date(year, month - 1, day); // JavaScript counts months from 0, so subtract 1 from the month
-    const isoDate = dateObject.toISOString();
+  CMSposts.docs.map((post) => {
+    const isoDate = post.updatedAt
 
     feed.item({
       title: post.title,
       description: post.description,
       date: isoDate,
-      url: `${process.env.BASE_URL}/blog/${post.url}`,
+      url: `${process.env.BASE_URL}/blog/${post.slug}`,
     })
   })
 
