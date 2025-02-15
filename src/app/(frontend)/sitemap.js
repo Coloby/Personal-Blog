@@ -6,7 +6,7 @@ export default async function sitemap() {
     const isoDate = post.updatedAt
 
     return {
-      url: `${process.env.BASE_URL}/blog/`+post.slug,
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/blog/`+post.slug,
       lastModified: isoDate, // if wrong, they will ignore this
       changeFrequency: "monthly",
       priority: 0.5
@@ -16,53 +16,53 @@ export default async function sitemap() {
   return [
     ...sitemapPosts,
     {
-      url: `${process.env.BASE_URL}`,
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}`,
       // lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 1,
     },
     {
-      url: `${process.env.BASE_URL}/now`,
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/now`,
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
-      url: `${process.env.BASE_URL}/about`,
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/about`,
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
-      url: `${process.env.BASE_URL}/contact`,
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/contact`,
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
-      url: `${process.env.BASE_URL}/interests`,
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/interests`,
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
-      url: `${process.env.BASE_URL}/credits`,
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/credits`,
       changeFrequency: 'monthly',
       priority: 0.4,
     },
     {
-      url: `${process.env.BASE_URL}/work-in-progress`,
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/work-in-progress`,
       changeFrequency: 'yearly',
       priority: 0.1,
     },
     {
-      url: `${process.env.BASE_URL}/you-won`,
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/you-won`,
       changeFrequency: 'yearly',
       priority: 0.1,
     },
     {
-      url: `${process.env.BASE_URL}/blog`,
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/blog`,
       changeFrequency: 'weekly',
       priority: 0.5,
     },
     {
-      url: `${process.env.BASE_URL}/downloads`,
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/downloads`,
       changeFrequency: 'monthly',
       priority: 0.4,
     },

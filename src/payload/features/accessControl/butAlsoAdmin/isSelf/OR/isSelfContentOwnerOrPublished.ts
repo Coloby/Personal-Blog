@@ -5,11 +5,11 @@ export const isSelfContentOwnerOrPublished: Access = async ({ req: { user } }) =
   if (!user) return false; 
   if (user?.roles?.includes('admin')) return true
 
-  return { 
+  return { // that's a query constraint https://youtu.be/DoPLyXG26Dg?t=432.
     or : [
       {
         "contentOwner.id": { 
-          exists: user.id, 
+          equals: user.id, 
         },
       },
       {

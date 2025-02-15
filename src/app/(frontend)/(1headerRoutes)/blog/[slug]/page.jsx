@@ -8,23 +8,29 @@ import { findCMSDocBySlug } from "@/payload/utils/queryCMS/findCMSDocBySlug";
 import { getAllCMSDocsByCollection } from "@/payload/utils/queryCMS/getAllCMSDocsByCollection";
 import { getBaseUrl } from "@/utils/baseUrl";
 import { reverseDateString } from "@/utils/reverseDateString";
+import { draftMode } from 'next/headers';
 import Image from "next/image";
+import { RefreshRouteOnSave } from '@/payload/features/livePreview/RefreshRouteOnSave';
+
 
 const Page = async props => {
+  const { isEnabled } = await draftMode()
+  const isDraftModeEnabled = isEnabled
+  const ExtraQueryOptions = isDraftModeEnabled ? {
+    draft: true
+  }: {}
   const params = await props.params
   const postSlug = params.slug
-
-  const CMSPost = (await findCMSDocBySlug("posts", postSlug)).docs[0]
-  const PostContentComp = await getMdxComp(false, false, false, {
+  
+  let CMSPost = (await findCMSDocBySlug(`posts`, postSlug, ExtraQueryOptions)).docs[0]
+  const CMSarguments = {
     mdxId : CMSPost.id, 
-    collection : "posts"
-  })
-
-  const { TOCComponent, readingTime } = await getTOCCompBySlug({
-    mdxId : CMSPost.id,
-    collection : "posts"
-  })
-  const postThumbnail   = `${await getBaseUrl()}${CMSPost.metadata.postImage.url}`
+    collection : "posts",
+    extraQueryOptions : ExtraQueryOptions
+  }
+  const PostContentComp = await getMdxComp(false, false, false, CMSarguments)
+  const { TOCComponent, readingTime } = await getTOCCompBySlug(CMSarguments)
+  const postThumbnail   = `${getBaseUrl()}${CMSPost.metadata.postImage.url}`
   const postPublishedAt = reverseDateString(CMSPost.publishedAt.slice(0, 10))
   const postDescription = CMSPost.metadata.description
   const authors         = getAuthorsComp(CMSPost.postAuthors)
@@ -32,12 +38,13 @@ const Page = async props => {
   
   return (
     <section className={`flexy !items-start gap-20 h-fit pb-8 !max-w-full w-full prose ${defaultProseSettings}`}>
+      <RefreshRouteOnSave />
       {/* buttons */}
         <div className="absolute right-[1470px] top-[160px] max-w-[390px] w-fit h-full flex justify-end !items-start sl:block pb-[320px]">
           <div className="!sticky top-[120px] left-[-1150px] flex flex-col !items-end !justify-end gap-4 settings-btn">
             {/* TODO zen mode: hides everything apart from the text */}
             <SettingsBtn /> {/* workaround made bcs the AccordionContent component doesn't mount components when hidden. You can find the attributes to change this behaviour in the comment below, but using it will show the components and using "hidden" will make the animations not work at best */}
-            <C_ShareBtns url={`${process.env.BASE_URL}/blog/${postSlug}`} />
+            <C_ShareBtns url={`${process.env.NEXT_PUBLIC_BASE_URL}/blog/${postSlug}`} />
             {/* forceMount={true} hidden={isHidden} */}
           </div>
         </div>
@@ -76,10 +83,15 @@ const Page = async props => {
 }
 
 export async function generateMetadata(props) {
+  const { isEnabled } = await draftMode()
+  const isDraftModeEnabled = isEnabled
+  const ExtraQueryOptions = isDraftModeEnabled ? {
+    draft: true
+  }: {}
   const params = await props.params
   const postSlug = params.slug
   
-  const CMSPost = (await findCMSDocBySlug("posts", postSlug)).docs[0]
+  const CMSPost = (await findCMSDocBySlug("posts", postSlug, ExtraQueryOptions)).docs[0]
 
   const seoTitle       = CMSPost.seo.title
   const seoDescription = CMSPost.seo.description
@@ -90,14 +102,14 @@ export async function generateMetadata(props) {
     title: "Blog | "+seoTitle,
     description: seoDescription,
     authors: authors, // mostly content creators and writers
-    metadataBase: new URL(`${process.env.BASE_URL}`),
+    metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_URL}`),
     alternates: {
       canonical: `${process.env.PREFERRED_URL}/blog/${postSlug}`,
     },
     openGraph: {
       title: seoTitle,
       description: seoDescription,
-      url: `${process.env.BASE_URL}`,
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}`,
       siteName: `Ed's corner`,
       images: [
         {
@@ -123,7 +135,12 @@ export async function generateMetadata(props) {
 }
 
 export async function generateStaticParams() { // build static routes for every mdx article https://nextjs.org/docs/app/api-reference/functions/generate-static-params. It won't overload the server even when fetching images into articles (for articles outside of this function) https://youtu.be/wTGVHLyV09M?t=2128
-  const CMSPosts = await getAllCMSDocsByCollection("posts")
+  const extraFilters = {
+    _status: {
+      equals: 'published',
+    },
+  }
+  const CMSPosts = await getAllCMSDocsByCollection("posts", null, extraFilters)
  
   return CMSPosts.docs.map((post) => ({
     slug: post.slug,

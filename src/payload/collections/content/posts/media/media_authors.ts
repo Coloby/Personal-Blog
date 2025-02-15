@@ -48,17 +48,9 @@ export const media_authors: CollectionConfig = {
         readOnly: true,
         position: "sidebar",
       },
-      filterOptions: {
-        roles : {
-          equals : "author"
-        }
-      },
       hooks: {
         beforeChange: [
-          async ({ req }) => {
-            console.log(`req:`, req.user)
-            return req.user?.id
-          }
+          async ({ req }) => req.user?.id
         ],
       },
     },

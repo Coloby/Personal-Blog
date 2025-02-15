@@ -1,12 +1,22 @@
 import { Access } from "payload";
+import configPromise from '@/payload/payload.config';
+import { getPayload } from 'payload';
 
-export const isSelfAuthor: Access = ({ req: { user } }) => {
+export const isSelfAuthor: Access = async ({ req: { user } }) => {
   if (!user) return false; // Reject anyone not logged-in
   if (user?.roles?.includes('admin')) return true
 
-  return { // that's a query constraint https://youtu.be/DoPLyXG26Dg?t=432. If any other type of user, only provide access to themselves
-    "postAuthors.id": { // if id of the document === user.id, return true
-      exists: user.id, // https://payloadcms.com/docs/queries/overview#nested-properties
-    }
-  }
+  const payload = await getPayload({ config : configPromise })
+  const author = await payload.find({
+    collection: "authors",
+    where: {
+      "userAuthorOwner.id": {
+        equals: user?.id 
+      },
+    },
+  })
+  // @ts-ignore
+  const isUserOwnsPost = author.docs[0]?.userAuthorOwner.id === user.id
+  if (isUserOwnsPost) return true // if the owner of the doc has the same id of the current user, the current user is the owner of the doc, so allowed
+  return false
 }

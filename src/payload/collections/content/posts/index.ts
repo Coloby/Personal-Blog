@@ -1,9 +1,7 @@
 import { isAuthor } from "@/payload/features/accessControl/butAlsoAdmin/isAuthor"
 import { isSelfAuthor } from "@/payload/features/accessControl/butAlsoAdmin/isSelf/isSelfAuthor"
-import { isAdmin, isAdminField } from "@/payload/features/accessControl/isAdmin"
+import { isAdmin } from "@/payload/features/accessControl/isAdmin"
 import { formatFieldToSlug } from "@/payload/utils/formatFieldToSlug"
-import { generatePreviewPath } from '@/payload/utils/generatePreviewPath'
-
 import { isSelfAuthorOrPublished } from "@/payload/features/accessControl/butAlsoAdmin/isSelf/OR/isSelfAuthorOrPublished"
 import {
   MetaDescriptionField,
@@ -19,6 +17,9 @@ import {
   lexicalEditor
 } from '@payloadcms/richtext-lexical'
 import type { CollectionConfig } from 'payload'
+import { getBaseUrl } from "@/utils/baseUrl"
+import { autoFillAuthor } from "./hooks/autoFillAuthor"
+// import { revalidateDelete, revalidatePost } from "./hooks/revalidatePost"
 
 export const posts: CollectionConfig = {
   slug: 'posts',
@@ -32,34 +33,25 @@ export const posts: CollectionConfig = {
   admin: {
     group: "Content",
     defaultColumns: ['title', "postAuthors", "publishedAt", 'updatedAt', "createdAt", "_status"],
-    livePreview: {
-      url: ({ data, req }) => {
-        const path = generatePreviewPath({
-          slug: typeof data?.slug === 'string' ? data.slug : '',
-          collection: 'posts',
-          req,
-        })
-        return path
-      },
-    },
-    preview: (data, { req }) =>
-      generatePreviewPath({
-        slug: typeof data?.slug === 'string' ? data.slug : '',
-        collection: 'posts',
-        req,
-      }),
     useAsTitle: 'title',
+    livePreview: {
+      url: ({ data, req }) => `${getBaseUrl()}/api/draft-mode?secret=${process.env.DRAFT_MODE_SECRET}&slug=${data.slug}&collection=posts&path=%2Fblog%2F${data.slug}`
+      // url: `${getBaseUrl()}/api/draft-mode?secret=${process.env.DRAFT_MODE_SECRET}&slug=titleeeee&collection=posts&path=%2Fblog%2Ftitleeeee`,
+    },
+    preview: (data, { req }) => `${getBaseUrl()}/api/draft-mode?secret=${process.env.DRAFT_MODE_SECRET}&slug=${data.slug}&collection=posts&path=%2Fblog%2F${data.slug}`,
+    // preview: (data, { req }) => `${getBaseUrl()}/blog/titleeeee`,
   },
   versions: { // creates _status :)
     drafts: {
       autosave: {
-        interval: 100, // for optimal live preview
+        interval: 100, // (in milliseconds) for better live preview/draft-mode UX https://payloadcms.com/docs/live-preview/server
       },
     },
     maxPerDoc: 20,
   },
   hooks: {
-    // afterRead: [populateAuthors],
+    // afterChange: [revalidatePost],
+    // afterDelete: [revalidateDelete]
   },
   fields: [
     {
@@ -69,9 +61,9 @@ export const posts: CollectionConfig = {
       admin: {
         hidden: true,
       },
-      hooks: { // collection [hooks](https://payloadcms.com/docs/hooks/collections#beforeoperation)
+      hooks: { 
         beforeChange: [
-          async ({ data, originalDoc }) => data?.metadata["postTitle"] // movearound to not show a title field on top of the tabs
+          async ({ data }) => data?.metadata["postTitle"] // movearound to not show a title field on top of the tabs
         ]
       }
     },
@@ -157,6 +149,7 @@ export const posts: CollectionConfig = {
               overrides: {
                 minLength: 10,
                 maxLength: 50,
+                required: true,
               }
             }),
             MetaDescriptionField({
@@ -170,12 +163,16 @@ export const posts: CollectionConfig = {
                 // },
                 // label: "hhhhiiiiii",
                 minLength: 10,
-                maxLength: 85,
+                maxLength: 110,
+                required: true,
               }
             }),
             MetaImageField({
               hasGenerateFn: true,
               relationTo: 'media_posts',
+              overrides: {
+                required: true,
+              }
             }),
             PreviewField({
               titlePath: 'seo.title',
@@ -204,6 +201,7 @@ export const posts: CollectionConfig = {
           },
         ],
       },
+      required: true
     },
     {
       name: 'postAuthors',
@@ -213,22 +211,9 @@ export const posts: CollectionConfig = {
       admin: {
         position: "sidebar"
       },
-      // access: {
-      //   update: isAdminField
-      // },
-      // hooks: {
-      //   beforeChange: [
-      //     async ({ req }) => {
-      //       if (!req?.user?.roles?.includes("author")) return
-      //       req.user?.id
-      //     }
-      //   ],
-      // },
-      // filterOptions: {
-      //   roles : {
-      //     equals : "author"
-      //   }
-      // },
+      hooks: {
+        afterRead: [autoFillAuthor]
+      },
       required: true
     },
     {

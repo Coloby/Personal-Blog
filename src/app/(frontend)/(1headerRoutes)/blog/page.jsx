@@ -21,7 +21,7 @@ const Page = async () => {
   return (
     <section className=' flex flex-wrap  gap-x-16 gap-y-12 w-md lg:w-[1334px] justify-center not-prose h-fit'>
       {sortedPosts?.map(async (frontmatter) => {
-        const postThumbnail   = `${await getBaseUrl()}${frontmatter?.metadata.postImage.url}` 
+        const postThumbnail   = `${getBaseUrl()}${frontmatter?.metadata.postImage.url}` 
         const postTitle       = frontmatter?.metadata.postTitle
         const postDescription = frontmatter?.metadata.description
         const postPublishedAt = reverseDateString(frontmatter?.publishedAt.slice(0, 10))

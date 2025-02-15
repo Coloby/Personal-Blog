@@ -5,12 +5,19 @@ export const authors: CollectionConfig = {
   slug: 'authors',
   access: {
     create: isAdmin,
-    read: isAdmin,
+    read: ({ req: { user } }) => {
+      if (user?.roles?.includes('admin')) return true
+      return {
+        "name" : { 
+          equals: user?.name,
+        }
+      }
+    },
     update: isAdmin,
     delete: isAdmin,
   },
   admin: {
-    defaultColumns: ['name', "url", "relatedPosts", "updatedAt", "createdAt"],
+    defaultColumns: ['name', "userAuthorOwner", "url", "relatedPosts", "updatedAt", "createdAt"],
     useAsTitle: 'name',
   },
   defaultPopulate: {
@@ -31,9 +38,18 @@ export const authors: CollectionConfig = {
             width: "33%",
           },
           filterOptions: {
-            roles : {
-              equals : "author"
-            }
+            or : [
+              {
+                roles : {
+                  equals : "author"
+                }
+              },
+              {
+                roles : {
+                  equals : "admin"
+                }
+              },
+            ]
           },
           required: true,
         },

@@ -1,6 +1,6 @@
 // This is the RSS feed. Made using route handlers https://nextjs.org/docs/app/api-reference/file-conventions/route
-import RSS from "rss"
 import { getAllCMSDocsByCollection } from "@/payload/utils/queryCMS/getAllCMSDocsByCollection"
+import RSS from "rss"
 
 export async function GET() {
   const CMSposts = await getAllCMSDocsByCollection("posts")
@@ -8,8 +8,8 @@ export async function GET() {
   const feed = new RSS({
     title: "Ed's personal website",
     description: "My personal website to share anything useful about myself",
-    site_url: `${process.env.BASE_URL}/`,
-    feed_url: `${process.env.BASE_URL}/feed.xml`,
+    site_url: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
+    feed_url: `${process.env.NEXT_PUBLIC_BASE_URL}/feed.xml`,
     copyright: `${new Date().getFullYear()} Ed's personal website`,
     language: "en",
     pubDate: new Date(),
@@ -22,7 +22,7 @@ export async function GET() {
       title: post.title,
       description: post.description,
       date: isoDate,
-      url: `${process.env.BASE_URL}/blog/${post.slug}`,
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/blog/${post.slug}`,
     })
   })
 

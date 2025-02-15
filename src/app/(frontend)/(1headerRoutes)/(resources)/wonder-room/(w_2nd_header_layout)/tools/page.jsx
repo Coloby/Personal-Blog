@@ -1,20 +1,27 @@
 import C_Cards from "@/features/cards/components/client/C_Cards";
 import { getAllCMSDocsByCollection } from "@/payload/utils/queryCMS/getAllCMSDocsByCollection";
-import { getBaseUrl } from "@/utils/baseUrl";
 import { Suspense } from "react";
+import { draftMode } from 'next/headers';
+import { RefreshRouteOnSave } from '@/payload/features/livePreview/RefreshRouteOnSave';
 
 const page = async () => {
-  let toolsCollection = await getAllCMSDocsByCollection("tools")
-  const baseUrl = getBaseUrl()
+  const { isEnabled } = await draftMode()
+  const isDraftModeEnabled = isEnabled
+  const extraQueryOptions = isDraftModeEnabled ? {
+    draft: true
+  } : {}
+  let toolsCollection = await getAllCMSDocsByCollection("tools", extraQueryOptions)
+  console.log(`toolsCollection:`, toolsCollection)
 
   toolsCollection.docs.forEach((tool, i) => {
-    tool.imgs.forEach((img) => img.image.url = `${baseUrl}${img.image.url}`)
+    tool.imgs.forEach((img) => img.image.url = `${img.image.url}`)
   })
-  
+
   return (
     <div id="cards-wrapper-container">
       <Suspense>
-        <C_Cards cardConfigurations={toolsCollection.docs} categoryTags="tools" baseUrl={baseUrl}/>
+        <RefreshRouteOnSave />
+        <C_Cards cardConfigurations={toolsCollection.docs} categoryTags="tools" />
       </Suspense>
     </div>
   )

@@ -4,7 +4,7 @@ import { getMdxComp } from "@/features/mdx/getComp/getMdxComp";
 import { defaultProseSettings } from "@/features/mdx/lib/proseSettings";
 
 const page = async () => {
-  const SitemapText = await getMdxComp("","", "sitemap.md")
+  const SitemapText = await getMdxComp("","", "../sitemap.md")
 
   return (
     <div className={`prose ${defaultProseSettings}`}>

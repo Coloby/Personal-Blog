@@ -6,8 +6,9 @@ import Fuse from 'fuse.js';
 import { useAtom } from "jotai";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { RefreshRouteOnSave } from '@/payload/features/livePreview/RefreshRouteOnSave';
 
-const C_Cards = ({children, cardConfigurations, categoryTags, baseUrl}) => {
+const C_Cards = ({children, cardConfigurations, categoryTags}) => {
   const [_, setCurrentCategoryTagsAtom] = useAtom(currentCategoryTagsAtom)
   useEffect(() => { // currentCategoryTagsAtom is used in the layout, the parent of this component. Using useEffect prevent us from having an infinite loop
     setCurrentCategoryTagsAtom(categoryTags)
@@ -105,7 +106,8 @@ const C_Cards = ({children, cardConfigurations, categoryTags, baseUrl}) => {
 
   return (
     <div className="flexy !items-start gap-[100px] sm:gap-[58px] flex-wrap cards-wrapper2">
-      {CardsConfigs.map((cardConfig, index) => <DetailedCard config={cardConfig} key={index} baseUrl={baseUrl} />) || null}
+      <RefreshRouteOnSave />
+      {CardsConfigs.map((cardConfig, index) => <DetailedCard config={cardConfig} key={index} />) || null}
     </div>
   )
 }

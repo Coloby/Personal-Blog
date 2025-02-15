@@ -22,8 +22,10 @@ import Image from "next/image"
 import Link from "next/link"
 import React from "react"
 import Stars from "./Stars"
+import { getBaseUrl } from '@/utils/baseUrl';
+import { RefreshRouteOnSave } from '@/payload/features/livePreview/RefreshRouteOnSave';
 
-const DetailedCard = ({ config, baseUrl }) => {
+const DetailedCard = ({ config }) => {
   const [currentCategoryTags, _] = useAtom(currentCategoryTagsAtom)
   const { score, icon, websiteUrl, websiteLabel, title, moreInfoUrl, imgs, tags, description, imgClasses = "scale[1.3]"} = config ?? {}
   const currentCategoryTag = getCategoryTagsAtom(currentCategoryTags || "tools").init
@@ -33,10 +35,11 @@ const DetailedCard = ({ config, baseUrl }) => {
 
   const isImgsFromCMS = imgs[0].image !== undefined
   isImgsFromCMS && imgs.forEach((img, i) => imgs[i] = img.image)
-
+  console.log(`imgs:`, imgs)
   
   return (
     <article className={`flex flex-col sm:items-end gap-8 sm:justify-end ${tags ? "pb-[88px] sm:pb-[56px]" : "pb-[88px] sm:pb-[56px]"}  pt-[28px] hd:pt-0 sm:w-[638px] hd:w-[718px]`}>
+      <RefreshRouteOnSave />
       <div className={`w-[100vw] sm:w-[638px] hd:w-full relative flex flex-col items-center ml-[-16px] min-h-[186px] sm:border-2 border-l-0 border-r-0 border-primary bg-body_shade px-4 py-9
         sm:justify-end hd:mt-[26px]  sm:h-[240px] hd:h-[242px] sm:inline sm:border-l-2 sm:border-r-2 sm:rounded-tl-lg sm:rounded-br-lg`}>
         <div className="flex flex-col gap-24">
@@ -46,7 +49,7 @@ const DetailedCard = ({ config, baseUrl }) => {
                 {icon || icon.url ? (
                   <div className="w-[68px] h-[68px]">
                     <Image
-                      src={icon.url ? `${baseUrl}${icon.url}` : `${baseUrl}${icon}`}
+                      src={icon.url ? `${getBaseUrl()}${icon.url}` : `${getBaseUrl()}${icon}`}
                       width={68}
                       height={68}
                       priority={false}
@@ -137,7 +140,7 @@ const DetailedCard = ({ config, baseUrl }) => {
                   <Link href={moreInfoUrl} className="h-[40px] w-full text-lg border-2 border-primary rounded-tl-lg bg-secondary flexy">{"More info"}</Link>
                 ) : null}
                 {websiteUrl ? (
-                  <Link href={ websiteUrl} target="_blank" rel="noopener noreferrer" className={`h-[40px] w-full text-lg border-2 border-primary ${moreInfoUrl ? "border-l-0" : "rounded-br-[30px] rounded-tl-[30px]"} rounded-br-[30px] bg-secondary flexy`}>{websiteLabel ? websiteLabel : "Website"}</Link>
+                  <Link href={websiteUrl} target="_blank" rel="noopener noreferrer" className={`h-[40px] w-full text-lg border-2 border-primary ${moreInfoUrl ? "border-l-0" : "rounded-br-[30px] rounded-tl-[30px]"} rounded-br-[30px] bg-secondary flexy`}>{websiteLabel ? websiteLabel : "Website"}</Link>
                 ) : null}
               </div>
             </div>

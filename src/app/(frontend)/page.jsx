@@ -217,6 +217,6 @@ export const metadata = {
   title : "Home | Ed's Corner (personal website)",
   description : "My personal website to share anything useful about myself",
   other: {
-    "google-site-verification": `${process.env.BASE_URL === "https://edondigital.vercel.app" ? "ch8SW0k7KoJLvJs89lwiCddadys_8LzbVlP7DzNxs7g" : "kmGLrA1y23ju7KDoNZNFr2obsQTJhBSakwDmO1C82DI"}`,
+    "google-site-verification": `${process.env.NEXT_PUBLIC_BASE_URL === "https://edondigital.vercel.app" ? "ch8SW0k7KoJLvJs89lwiCddadys_8LzbVlP7DzNxs7g" : "kmGLrA1y23ju7KDoNZNFr2obsQTJhBSakwDmO1C82DI"}`,
   }
 }

@@ -3,6 +3,7 @@ import { isSelfContentOwner } from "@/payload/features/accessControl/butAlsoAdmi
 import { isSelfContentOwnerOrPublished } from "@/payload/features/accessControl/butAlsoAdmin/isSelf/OR/isSelfContentOwnerOrPublished"
 import { isAdmin } from "@/payload/features/accessControl/isAdmin"
 import { formatFieldToSlug } from "@/payload/utils/formatFieldToSlug"
+import { getBaseUrl } from "@/utils/baseUrl"
 import type { CollectionConfig } from 'payload'
 
 export const tools: CollectionConfig = {
@@ -17,6 +18,10 @@ export const tools: CollectionConfig = {
   admin: {
     group: "Content",
     defaultColumns: ['title', "contentOwner", 'score', "_status", "publishDate", "websiteUrl", "moreInfoUrl"],
+    livePreview: {
+      url: ({ data, req }) => `${getBaseUrl()}/api/draft-mode?secret=${process.env.DRAFT_MODE_SECRET}&slug=noslug&collection=tools&path=%2Fwonder-room%2Ftools`
+    },
+    preview: (data, { req }) => `${getBaseUrl()}/api/draft-mode?secret=${process.env.DRAFT_MODE_SECRET}&slug=noslug&collection=tools&path=%2Fwonder-room%2Ftools`,
   },
   versions: {
     drafts: {
@@ -39,19 +44,19 @@ export const tools: CollectionConfig = {
           name: 'score',
           type: 'number',
           required: true,
-          admin: {width: "10%"},
+          admin: {width: "14%"},
           min: 0,
           max: 5
         },
         {
           name: 'websiteUrl',
           type: 'text',
-          admin: {width: "45%"}
+          admin: {width: "43%"}
         },
         {
           name: 'moreInfoUrl',
           type: 'text',
-          admin: {width: "45%"}
+          admin: {width: "43%"}
         },
       ]
     },
@@ -159,7 +164,6 @@ export const tools: CollectionConfig = {
           async ({ req }) => req.user?.id
         ],
       },
-      required: true
     },
     {
       name: 'slug',

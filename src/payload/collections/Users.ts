@@ -1,7 +1,6 @@
-import { isSelfAuthor } from "@/payload/features/accessControl/butAlsoAdmin/isSelf/isSelfAuthor"
 import { isAdmin, isAdminField } from "@/payload/features/accessControl/isAdmin"
 import type { CollectionConfig } from 'payload'
-import { anyone } from "../features/accessControl/anyone"
+import { isSelfAuthor } from "../features/accessControl/butAlsoAdmin/isSelf/isSelfAuthor"
 
 export const Users: CollectionConfig = {
   slug: 'users',
@@ -11,7 +10,14 @@ export const Users: CollectionConfig = {
   },
   access: {
     create: isAdmin,
-    read: isAdmin,
+    read: ({ req: { user } }) => {
+      if (user?.roles?.includes('admin')) return true
+      return {
+        "name" : { 
+          equals: user?.name,
+        }
+      }
+    },
     update: isAdmin,
     delete: isAdmin,
     unlock: isAdmin,
@@ -53,11 +59,17 @@ export const Users: CollectionConfig = {
           label: "Owner", // posts-related
           value: 'owner',
         },
-      ]
+      ],
     },
     {
       name: 'notes',
       type: 'text',
+      access: {
+        update: ({ req: { user } }) => {
+          if (user) return true
+          return false
+        },
+      }
     },
     {
       name: "adminNotes",

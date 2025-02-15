@@ -43,7 +43,7 @@ export const metadata = {
     telephone: false,
   },
   // metadataBase & alternates - essential when you have languages in the route like /en-US
-    metadataBase: new URL(`${process.env.BASE_URL}`),
+    metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_URL}`),
     alternates: {
       canonical: process.env.PREFERRED_URL, // still useful even if the content is the original one but essential if it's a duplicate
     },
@@ -53,7 +53,7 @@ export const metadata = {
       template : "%s" // template: '%s | Acme'    outputs based on specified title but adds | Acme. E.g: Output: <title>About | Acme</title>
     },
     description: 'My personal website to share anything useful about myself',
-    url: `${process.env.BASE_URL}`,
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}`,
     siteName: `Ed's corner`,
     images: [
       {

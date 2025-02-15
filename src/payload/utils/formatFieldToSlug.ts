@@ -6,6 +6,8 @@ export const formatFieldToSlug = (fallback: string): FieldHook => ({ value, orig
   if (data?.[fallback]) return formatToSlug(data?.[fallback], "-")
   console.error("Double-check if this is the behaviour you want")
   
+  console.log(`value:`, value)
+  return value
   if (typeof value === 'string') return formatToSlug(value, "-")
   const fallbackData = data?.[fallback] || originalDoc?.[fallback]
   if (fallbackData && typeof fallbackData === 'string') return formatToSlug(fallbackData, "-")

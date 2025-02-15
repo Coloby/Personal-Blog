@@ -12,7 +12,7 @@ import React from "react"
 
 export const getTOCCompBySlug = async (CMS, dir, fileNameWExt) => {
   const isSlugFromCMS = CMS?.mdxId && true || false
-  const rawMDX = isSlugFromCMS ? await getMDFromLexical(CMS.mdxId, CMS.collection)
+  const rawMDX = isSlugFromCMS ? await getMDFromLexical(CMS.mdxId, CMS.collection, CMS.extraQueryOptions)
     : await getRawMdxByFilePath(dir, fileNameWExt.replace(/\.mdx$/, ''))
   const { processedMDX } = await useUnifiedPipeline(isSlugFromCMS ? {rawMDX} : rawMDX)
   const TOC = processedMDX.data.toc

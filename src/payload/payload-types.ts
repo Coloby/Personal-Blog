@@ -177,15 +177,15 @@ export interface Post {
     postImageCaption?: string | null;
     categories?: ('self-improvement' | 'tech')[] | null;
   };
-  seo?: {
-    title?: string | null;
-    description?: string | null;
+  seo: {
+    title: string;
+    description: string;
     /**
      * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
      */
-    image?: (number | null) | MediaPost;
+    image: number | MediaPost;
   };
-  publishedAt?: string | null;
+  publishedAt: string;
   postAuthors: (number | Author)[];
   slug?: string | null;
   populatedAuthors?:
@@ -269,7 +269,7 @@ export interface Tool {
   title: string;
   publishedAt?: string | null;
   icon: number | MediaTool;
-  contentOwner: number | User;
+  contentOwner?: (number | null) | User;
   slug?: string | null;
   updatedAt: string;
   createdAt: string;

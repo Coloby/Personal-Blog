@@ -41,7 +41,7 @@ export async function getMdxComp(dir, fileWExtension, explicitFilePath, CMS) {
 
   // removes frontmatter from the mdx getting only the raw text
     let rawMdx
-    if (isSlugFromCMS) rawMdx = await getMDFromLexical(CMS.mdxId, CMS.collection)
+    if (isSlugFromCMS) rawMdx = await getMDFromLexical(CMS.mdxId, CMS.collection, CMS.extraQueryOptions)
     else {
       const mdxFilePath = explicitFilePath ? path.resolve(__dirname, `../../../${explicitFilePath}`)
         : path.resolve(__dirname, `../../../../assets/content/route_specific_mdx/${dir}/${fileWExtension.replace(/%20/g, ' ')}`); // adds support to files with spaces

@@ -26,13 +26,41 @@ const payloadConfig = buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
-    // autoLogin : process.env.ENABLE_AUTOLOGIN === 'true' && process.env.NODE_ENV === "development"
-    //   ? {
-    //       email: process.env.AUTOLOGIN_EMAIL,
-    //       password: process.env.AUTOLOGIN_PASSWORD,
-    //       // prefillOnly: true,
-    //     }
-    //   : false,
+    livePreview: {
+      breakpoints: [
+        {
+          label: 'Mobile',
+          name: 'mobile',
+          width: 320,
+          height: 800,
+        },
+        {
+          label: 'Tablet',
+          name: 'tablet',
+          width: 768,
+          height: 1024,
+        },
+        {
+          label: 'Laptop',
+          name: 'laptop',
+          width: 1366,
+          height: 768,
+        },
+        {
+          label: 'Desktop',
+          name: 'desktop',
+          width: 1920,
+          height: 1080,
+        },
+      ],
+    },
+    autoLogin : process.env.ENABLE_AUTOLOGIN === 'true' && process.env.NODE_ENV === "development"
+      ? {
+          email: process.env.AUTOLOGIN_EMAIL,
+          password: process.env.AUTOLOGIN_PASSWORD,
+          // prefillOnly: true,
+        }
+      : false,
   },
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
@@ -46,7 +74,7 @@ const payloadConfig = buildConfig({
     defaultMaxTextLength: 8000,
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.NODE_ENV === "development" ? process.env.DEV_DATABASE_URI : process.env.PROD_DATABASE_URI,
+      connectionString: process.env.PROD_DATABASE_URI,
       // connectionString: process.env.PROD_DATABASE_URI,
     },
   }),
@@ -56,17 +84,17 @@ const payloadConfig = buildConfig({
       // @ts-ignore
       collections: payloadMediaCollections,
       // @ts-ignore
-      bucket: process.env.NODE_ENV === "development" ? process.env.DEV_S3_BUCKET : process.env.PROD_S3_BUCKET,
+      bucket: process.env.PROD_S3_BUCKET,
       config: {
         forcePathStyle: true, // fixes problems if you use supabase
         credentials: {
           // @ts-ignore
-          accessKeyId: process.env.NODE_ENV === "development" ? process.env.DEV_S3_ACCESS_KEY_ID : process.env.PROD_S3_ACCESS_KEY_ID,
+          accessKeyId: process.env.PROD_S3_ACCESS_KEY_ID,
           // @ts-ignore
-          secretAccessKey: process.env.NODE_ENV === "development" ? process.env.DEV_S3_SECRET_ACCESS_KEY : process.env.PROD_S3_SECRET_ACCESS_KEY,
+          secretAccessKey: process.env.PROD_S3_SECRET_ACCESS_KEY,
         },
-        region: process.env.NODE_ENV === "development" ? process.env.DEV_S3_REGION : process.env.PROD_S3_REGION,
-        endpoint: process.env.NODE_ENV === "development" ? process.env.DEV_S3_ENDPOINT : process.env.PROD_S3_ENDPOINT,
+        region: process.env.PROD_S3_REGION,
+        endpoint: process.env.PROD_S3_ENDPOINT,
       },
     }),
     seoPlugin({ // Adds a meta field group to every SEO-enabled collection or global, gives fields to let marketers write SEO related content, etc: https://payloadcms.com/docs/plugins/seo#core-features

@@ -48,11 +48,6 @@ export const media_posts: CollectionConfig = {
         readOnly: true,
         position: "sidebar",
       },
-      filterOptions: {
-        roles : {
-          equals : "author"
-        }
-      },
       hooks: {
         beforeChange: [
           async ({ req }) => req.user?.id
