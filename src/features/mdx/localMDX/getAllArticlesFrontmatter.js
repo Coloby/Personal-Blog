@@ -1,6 +1,6 @@
-import { getFrontmatterBySlug } from "../mdxManager"
 import fs from 'fs';
 import path from 'path';
+import { getFrontmatterBySlug } from "../getFrontmatterBySlug";
 
 export const getAllArticlesFrontmatter = async () => {
   const contentRootDir = path.join(process.cwd(), 'assets', 'content', "route_specific_mdx", "header_routes", "blog")

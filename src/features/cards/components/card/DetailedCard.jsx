@@ -25,17 +25,17 @@ import Stars from "./Stars"
 import { getBaseUrl } from '@/utils/baseUrl';
 import { RefreshRouteOnSave } from '@/payload/features/livePreview/RefreshRouteOnSave';
 
-const DetailedCard = ({ config }) => {
+const DetailedCard = ({ config, categoryTags }) => {
   const [currentCategoryTags, _] = useAtom(currentCategoryTagsAtom)
-  const { score, icon, websiteUrl, websiteLabel, title, moreInfoUrl, imgs, tags, description, imgClasses = "scale[1.3]"} = config ?? {}
+  const { score, icon, websiteUrl, websiteLabel, title, content, slug, imgs, tags, description, imgClasses = "scale[1.3]"} = config ?? {}
   const currentCategoryTag = getCategoryTagsAtom(currentCategoryTags || "tools").init
+  const moreInfoUrl = content?.root?.children[0]?.children[0] && getBaseUrl()+`/wonder-room/${categoryTags}/`+slug // content?.root?.children[0]?.children[0] strange way to check if anything is written but works. Why checking? if you had written content in the past but deleted it after, it would still think there's "content" (nested objects without meaningful data)
 
   const isTagsFromCMS = tags.License !== undefined
   const FlattenedTags = isTagsFromCMS ? [...Object.values(tags)].flat() : tags?.flatMap(tag => Object.values(tag)).flat(); // this happens because on local `tags` is an array of arrays, but payload gives an object of arrays...
 
   const isImgsFromCMS = imgs[0].image !== undefined
   isImgsFromCMS && imgs.forEach((img, i) => imgs[i] = img.image)
-  console.log(`imgs:`, imgs)
   
   return (
     <article className={`flex flex-col sm:items-end gap-8 sm:justify-end ${tags ? "pb-[88px] sm:pb-[56px]" : "pb-[88px] sm:pb-[56px]"}  pt-[28px] hd:pt-0 sm:w-[638px] hd:w-[718px]`}>

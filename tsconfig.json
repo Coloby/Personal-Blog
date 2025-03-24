@@ -41,7 +41,7 @@
     "src/app/(frontend)/page.jsx",
     "src/app/(mainHeaderRoutes)/blog/[slug]/page.jsx",
     "src/app/(mainHeaderRoutes)/blog/page.jsx",
-    "src/features/mdx/mdxManager.js",
+    "src/features/mdx/getFrontmatterBySlug.js",
     "src/components/primitives/shadcn-ui/accordion.tsx",
     "src/app/(frontend)/sitemap.js",
     "src/app/(frontend)/robots.ts",

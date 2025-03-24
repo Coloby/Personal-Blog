@@ -7,6 +7,7 @@ export const getFrontmatterBySlug = async (CMS, dir, fileNameWExt, index = 0) =>
   const rawMDX = isSlugFromCMS ? await getMDFromLexical(CMS.mdxId, CMS.collection) 
     : await getRawMdxByFilePath(dir, fileNameWExt)
   const { processedMDX } = await useUnifiedPipeline(isSlugFromCMS ? {rawMDX} : rawMDX)
+  
   const frontmatter = processedMDX.data.frontmatter || {}
   frontmatter.readingTime = processedMDX.data.readingTime.text
 

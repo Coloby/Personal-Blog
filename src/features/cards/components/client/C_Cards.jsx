@@ -107,7 +107,7 @@ const C_Cards = ({children, cardConfigurations, categoryTags}) => {
   return (
     <div className="flexy !items-start gap-[100px] sm:gap-[58px] flex-wrap cards-wrapper2">
       <RefreshRouteOnSave />
-      {CardsConfigs.map((cardConfig, index) => <DetailedCard config={cardConfig} key={index} />) || null}
+      {CardsConfigs.map((cardConfig, index) => <DetailedCard config={cardConfig} key={index} categoryTags={categoryTags} />) || null}
     </div>
   )
 }

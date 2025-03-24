@@ -1,5 +1,5 @@
 import getAuthorsComp from "@/features/mdx/getComp/getAuthorsComp";
-import { getFrontmatterBySlug } from '@/features/mdx/mdxManager';
+import { getFrontmatterBySlug } from '@/features/mdx/getFrontmatterBySlug';
 import { getAllCMSDocsByCollection } from "@/payload/utils/queryCMS/getAllCMSDocsByCollection";
 import { getBaseUrl } from "@/utils/baseUrl";
 import { reverseDateString } from "@/utils/reverseDateString";

@@ -6,7 +6,6 @@ import { getTOCCompBySlug } from '@/features/mdx/getComp/getTOCCompBySlug';
 import { defaultProseSettings } from "@/features/mdx/lib/proseSettings";
 import { findCMSDocBySlug } from "@/payload/utils/queryCMS/findCMSDocBySlug";
 import { getAllCMSDocsByCollection } from "@/payload/utils/queryCMS/getAllCMSDocsByCollection";
-import { getBaseUrl } from "@/utils/baseUrl";
 import { reverseDateString } from "@/utils/reverseDateString";
 import { draftMode } from 'next/headers';
 import Image from "next/image";
@@ -22,21 +21,21 @@ const Page = async props => {
   const params = await props.params
   const postSlug = params.slug
   
-  let CMSPost = (await findCMSDocBySlug(`posts`, postSlug, ExtraQueryOptions)).docs[0]
-  if (!CMSPost) return notFound()
+  let CMSPost = (await findCMSDocBySlug(`tools`, postSlug, ExtraQueryOptions)).docs[0]
+  if (!CMSPost.content?.root?.children[0]?.children[0]) return notFound()
 
   const CMSarguments = {
     mdxId : CMSPost.id, 
-    collection : "posts",
+    collection : "tools",
     extraQueryOptions : ExtraQueryOptions
   }
   const PostContentComp = await getMdxComp(false, false, false, CMSarguments)
   const { TOCComponent, readingTime } = await getTOCCompBySlug(CMSarguments)
-  const postThumbnail   = `${getBaseUrl()}${CMSPost.metadata.postImage.url}`
+  const postThumbnail   = CMSPost.imgs[0].image.url
   const postPublishedAt = reverseDateString(CMSPost.publishedAt.slice(0, 10))
-  const postDescription = CMSPost.metadata.description
-  const authors         = getAuthorsComp(CMSPost.postAuthors)
-  const postTitle       = CMSPost.metadata.postTitle
+  const postDescription = CMSPost.description
+  const authors         = getAuthorsComp([CMSPost.contentOwner])
+  const postTitle       = CMSPost.postTitle
   
   return (
     <section className={`flexy !items-start gap-20 h-fit pb-8 !max-w-full w-full prose ${defaultProseSettings}`}>
@@ -93,15 +92,21 @@ export async function generateMetadata(props) {
   const params = await props.params
   const postSlug = params.slug
   
-  const CMSPost = (await findCMSDocBySlug("posts", postSlug, ExtraQueryOptions)).docs[0]
+  const CMSPost = (await findCMSDocBySlug("tools", postSlug, ExtraQueryOptions)).docs[0]
+  if (!CMSPost) return
 
-  const seoTitle       = CMSPost.seo.title
-  const seoDescription = CMSPost.seo.description
-  const authors         = CMSPost.postAuthors
-  const seoThumbnailUrl   = CMSPost.seo.image.url
+  const authors         = [CMSPost.contentOwner]
+  let seoTitle          = CMSPost.seo?.title
+  let seoDescription    = CMSPost.seo?.description
+  let seoThumbnailUrl   = CMSPost.seo?.image?.url
+  if (!seoTitle || !seoDescription || !seoThumbnailUrl) {
+    seoDescription  = CMSPost.description
+    seoTitle        = CMSPost.title
+    seoThumbnailUrl = CMSPost.imgs[0].image.url
+  }
 
   return {
-    title: "Blog | "+seoTitle,
+    title: "Tools | "+seoTitle,
     description: seoDescription,
     authors: authors, // mostly content creators and writers
     metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_URL}`),
@@ -142,11 +147,11 @@ export async function generateStaticParams() { // build static routes for every 
       equals: 'published',
     },
   }
-  const CMSPosts = await getAllCMSDocsByCollection("posts", null, extraFilters)
+  const CMSPosts = await getAllCMSDocsByCollection("tools", null, extraFilters)
  
-  return CMSPosts.docs.map((post) => ({
-    slug: post.slug,
-  }))
+  return CMSPosts.docs
+    .filter(post => post.content?.root?.children[0]?.children[0])
+    .map(post => ({ slug: post.slug }))
 }
 
 export default Page

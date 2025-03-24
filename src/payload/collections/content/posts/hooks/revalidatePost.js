@@ -40,7 +40,7 @@ export const revalidatePost = ({doc, previousDoc, req: { payload, context },}) =
 }
 
 export const revalidateDelete = ({ doc, req: { context } }) => {
-  console.log(`doccceawqqw:`, doc)
+  // console.log(`doccceawqqw:`, doc)
   if (context.disableRevalidate) return doc
   
   const path = `/blog/${doc?.slug}`

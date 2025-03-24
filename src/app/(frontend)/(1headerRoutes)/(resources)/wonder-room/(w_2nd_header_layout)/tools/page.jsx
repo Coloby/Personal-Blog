@@ -11,7 +11,6 @@ const page = async () => {
     draft: true
   } : {}
   let toolsCollection = await getAllCMSDocsByCollection("tools", extraQueryOptions)
-  console.log(`toolsCollection:`, toolsCollection)
 
   toolsCollection.docs.forEach((tool, i) => {
     tool.imgs.forEach((img) => img.image.url = `${img.image.url}`)

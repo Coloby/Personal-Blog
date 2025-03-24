@@ -256,7 +256,6 @@ export interface Tool {
   description: string;
   score: number;
   websiteUrl?: string | null;
-  moreInfoUrl?: string | null;
   tags: {
     License: ('Free' | 'Freemium' | 'Paid' | 'Open source' | 'Closed source')[];
     Features: ('+Offline' | 'Lightweight' | 'Privacy focused' | 'High customizability')[];
@@ -266,6 +265,29 @@ export interface Tool {
     image?: (number | null) | MediaTool;
     id?: string | null;
   }[];
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  seo?: {
+    title?: string | null;
+    description?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | MediaTool;
+  };
   title: string;
   publishedAt?: string | null;
   icon: number | MediaTool;
@@ -571,7 +593,6 @@ export interface ToolsSelect<T extends boolean = true> {
   description?: T;
   score?: T;
   websiteUrl?: T;
-  moreInfoUrl?: T;
   tags?:
     | T
     | {
@@ -584,6 +605,14 @@ export interface ToolsSelect<T extends boolean = true> {
     | {
         image?: T;
         id?: T;
+      };
+  content?: T;
+  seo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
       };
   title?: T;
   publishedAt?: T;

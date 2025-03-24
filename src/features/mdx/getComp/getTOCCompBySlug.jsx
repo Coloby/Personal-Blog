@@ -15,7 +15,9 @@ export const getTOCCompBySlug = async (CMS, dir, fileNameWExt) => {
   const rawMDX = isSlugFromCMS ? await getMDFromLexical(CMS.mdxId, CMS.collection, CMS.extraQueryOptions)
     : await getRawMdxByFilePath(dir, fileNameWExt.replace(/\.mdx$/, ''))
   const { processedMDX } = await useUnifiedPipeline(isSlugFromCMS ? {rawMDX} : rawMDX)
+
   const TOC = processedMDX.data.toc
+  const readingTime = processedMDX.data.readingTime.text
 
   const TOCComponent = ({ platform = "mobile", open = true }) => {
 
@@ -68,6 +70,5 @@ export const getTOCCompBySlug = async (CMS, dir, fileNameWExt) => {
     );
   };
 
-  const readingTime = processedMDX.data.readingTime.text
   return { TOCComponent, readingTime }
 }

@@ -4,17 +4,17 @@ import SocialBTNs from "@/components/ui/SocialBTNs"
 import getAuthorsComp from "@/features/mdx/getComp/getAuthorsComp"
 import { getMdxComp } from "@/features/mdx/getComp/getMdxComp"
 import { defaultProseSettings } from "@/features/mdx/lib/proseSettings"
-import { getFrontmatterBySlug } from "@/features/mdx/mdxManager"
 import { scrollbar } from "@/lib/tailwind-scrollbar/settings"
 import Image from "next/image"
 import Link from "next/link"
+import { findCMSDocBySlug } from '@/payload/utils/queryCMS/findCMSDocBySlug';
 
 export default async function Home() {
   const wonderRoomPieceLink = "https://www.youtube.com/watch?v=TDqsr3MNTTc"
   const { udpateComps } = GetUpdatesComps(6)
   const NowOverviewComp =  await getMdxComp("","", "../assets/content/route_specific_mdx/header_routes/root/now_overview.mdx")
-  const { frontmatter } = await getFrontmatterBySlug(false, "header_routes/blog", "finding-you-identity-and-purpose-beginners-guide.mdx")
-  const authors = getAuthorsComp(frontmatter.authors)
+  const CMSpost = (await findCMSDocBySlug("posts", "finding-you-identity-and-purpose-beginners-guide")).docs[0]
+  const authors = getAuthorsComp(CMSpost.postAuthors)
 
   return (
     <div className={`sm:w-[1300px] !max-w-none min-h-screen flex flex-col gap-[150px] lg:gap-[200px] prose ${defaultProseSettings}`}>
@@ -102,13 +102,13 @@ export default async function Home() {
             <div className="w-full h-fit gap-6 lg:max-h-[320px] justify-between items-center flex-col lg:flex-row lg:p-4 lg:pr-0 bg-secondary border border-primary/80 rounded-sm  flex ">
               <div className="flex !h-fit flex-col p-4 lg:p-0 !pb-0 w-full ">
                 <h3 className="!text-xl !mt-4 inline-block">From the <span><Link href={"blog"} className="text-xl"><span>Blog</span></Link></span></h3>
-                <h4 className="font-semibold text-[20px] "><a href={"blog/" + frontmatter.url} className="!no-underline"><span className="!no-underline !text-primary_text_color">{frontmatter.title}</span></a></h4>
-                <p className="!mb-0 text-lg ">{frontmatter.description}</p>
-                <span className="flex flex-wrap gap-x-8 gap-y-1 my-4 items-center "><address className="flex !text-base">Author:&nbsp;{authors}</address><time>{frontmatter.publishedAt}</time><span>{frontmatter.readingTime}</span></span>
+                <h4 className="font-semibold text-[20px] "><a href={"blog/" + CMSpost.url} className="!no-underline"><span className="!no-underline !text-primary_text_color">{CMSpost.title}</span></a></h4>
+                <p className="!mb-0 text-lg ">{CMSpost.description}</p>
+                <span className="flex flex-wrap gap-x-8 gap-y-1 my-4 items-center "><address className="flex !text-base">Author:&nbsp;{authors}</address><time>{CMSpost.publishedAt}</time><span>{CMSpost.readingTime}</span></span>
               </div>
-              <a className="flexy flex-col w-full items-center" href={"blog/" + frontmatter.url}>
+              <a className="flexy flex-col w-full items-center" href={"blog/" + CMSpost.url}>
                 <Image
-                  src={"/assets/routes_specific/blog/" + frontmatter.thumbnail}
+                  src={CMSpost.metadata.postImage.url}
                   width={360}
                   height={230}
                   className=" h-full object-cover not-prose sm:rounded-b-[0] lg:rounded-bl-sm !w-full  lg:rounded-r-[0] max-w-[370px] lg:mr-[-16px] lg:max-h-[208px] !mx-0 ml-[38px] rounded-sm border border-primary"

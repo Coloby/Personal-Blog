@@ -20,14 +20,16 @@ const headlessEditor = createHeadlessEditor({
 })
 
 export const getMDFromLexical = async (id: number, collection : CollectionSlug, otherOptions: {}) => {
-  const blogPost = await payload.findByID({
+  const CMSPost = await payload.findByID({
     id: id,
     collection: collection,
     depth: 0,
     ...otherOptions
   });
   // @ts-ignore
-  const serializedEditorState: SerializedEditorState = blogPost.content 
+  if (!CMSPost.content) return ""
+  // @ts-ignore
+  const serializedEditorState: SerializedEditorState = CMSPost.content 
 
   try {
     headlessEditor.update(
